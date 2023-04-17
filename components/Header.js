@@ -12,8 +12,14 @@ import {
 import { BiMenu, IconName } from "react-icons/bi";
 import TopHeader from "./TopHeader";
 import navbar from "../src/styles/home_style/hero.module.css";
+import { useContext } from "react";
+import { AuthContext } from "@/ContextApi";
 
 const Header = () => {
+  const{user,logOut} = useContext(AuthContext);
+  const name = user?.email?.split("@");
+  console.log(user)
+ 
   return (
     <>
       <TopHeader />
@@ -172,9 +178,11 @@ const Header = () => {
                   tabIndex={0}
                   className="hover:text-white hover:border rounded"
                 >
-                  <Link href="/register" className={`${navbar.link_style}`}>
-                    Login | Register
-                  </Link>
+                 {
+                  name?<p>{name[0]}</p> :  <Link href="/register" className={`${navbar.link_style}`}>
+                  Login | Register
+                </Link>
+                 }
                 </li>
               </ul>
             </div>
@@ -231,7 +239,7 @@ const Header = () => {
                   </li>
 
                   <li>
-                    <a>Logout</a>
+                    <a><button onClick={()=>logOut()}>LogOut</button></a>
                   </li>
                 </ul>
               </div>

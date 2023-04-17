@@ -2,8 +2,50 @@ import Link from "next/link";
 import { BsFacebook, BsPencilSquare } from "react-icons/bs";
 import { AiFillGoogleCircle, AiFillTwitterCircle } from "react-icons/ai";
 import classNames from "classnames";
+import { useContext } from "react";
+import { AuthContext } from "@/ContextApi";
 
 const Registration = () => {
+  const { user, createUser, Gsignin,loading,setLoading } = useContext(AuthContext);
+  
+
+  const submit = (e) => {
+    e.preventDefault();
+    const Email = e.target.email.value;
+    const username = e.target.username.value;
+    const country = e.target.country.value;
+    const fullname = e.target.fullname.value;
+    const phone = e.target.phone.value;
+    const password = e.target.password.value;
+
+    if (!Email || !username || !country || !fullname || !phone || !password) {
+
+      return <p>fillup all form</p>
+
+    }
+    else {
+      createUser(Email, password)
+        .then(res => {
+          if (res) {
+            console.log(res)
+          }
+        }).then(r => {
+          console.log(r)
+        })
+    }
+
+  }
+  const googlesubmit = () => {
+    Gsignin().then(res => {
+      console.log(res)
+    }).then(e => {
+      console.log(e)
+    })
+  }
+
+
+
+
   const backgroundClass = classNames(
     "bg-[url('https://i.ibb.co/cktYxxd/res1.png')] max-h-[120%] bg-no-repeat bg-center bg-cover bg-fixed"
   );
@@ -25,35 +67,41 @@ const Registration = () => {
             <h1 className="text-center py-5 text-xl">Create an account </h1>
             <div className="text-left px-5">
               {/* -------Registration form-------- */}
-              <form className="text-left">
+              <form className="text-left" onSubmit={submit}>
                 <div>
                   <input
                     type="text"
+                    name="username"
                     placeholder="User Name"
                     className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
                   />
                   <input
                     type="text"
+                    name="fullname"
                     placeholder="Full Name"
                     className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
                   />
                   <input
                     type="text"
+                    name="phone"
                     placeholder="Phone No"
                     className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
                   />
                   <input
                     type="text"
+                    name="country"
                     placeholder="Country"
                     className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
                   />
                   <input
                     type="email"
+                    name="email"
                     placeholder="Email"
                     className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
                   />
                   <input
                     type="password"
+                    name="password"
                     placeholder="Password"
                     className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
                   />
@@ -81,13 +129,13 @@ const Registration = () => {
                 <div>More Sign In Methods</div>
                 <div className="divider bg-white h-[2px] my-2"></div>
                 <div className="flex gap-5 text-3xl justify-center items-center">
-                  <AiFillGoogleCircle
+                  <AiFillGoogleCircle onClick={googlesubmit}
                     className={`${buttonAnimation} text-4xl`}
                   />
-                  <BsFacebook className={`${buttonAnimation}`} />
+                  {/* <BsFacebook className={`${buttonAnimation}`} />
                   <AiFillTwitterCircle
                     className={`${buttonAnimation} text-4xl`}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
