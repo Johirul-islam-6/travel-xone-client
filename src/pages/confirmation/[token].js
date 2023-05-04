@@ -1,4 +1,18 @@
+import { RootContext } from "@/context/RootContext";
+import { useContext, useEffect } from "react";
+import toast from 'react-hot-toast';
+
 const Confirmation = () => {
+    const {VERIFTOKEN} = useContext(RootContext)
+
+useEffect(()=>{
+    const token = window.location.pathname.split('/')[2]
+    VERIFTOKEN(token).then(res=>{
+        toast.success('verification success')
+    })
+    .catch(err => {console.log(err) ; toast.error(err.data?.message)} )
+},[])
+    
     return ( 
         <>
         <div class="flex items-center justify-center min-h-screen p-10 bg-gradient-to-tl from-green-400 to-indigo-900 min-w-screen">

@@ -10,23 +10,40 @@ function Context(props) {
  }
  const REGISTER = (newUser)=>{
    console.log('newUser =>', newUser)
-        const url = '/auth/login'
+        const url = '/auth/register'
         return  axios.post(url,newUser)
 
  }
+ const  SENTEMAIL= ({email})=>{
+  const url = `/auth/forget-password?email=${email}`
+  return axios.get(url)
+ }
+ const  VERIFTOKEN= (token)=>{
+   const url = `/auth/confirm/${token}`
+   console.log(url)
+  return axios.get(url)
+ }
 
+const LOGOUT = ()=>{
+      const url = '/auth/logout'
+      return axios.get(url)
+}
 useEffect(()=>{
         const unSubscribe = async()=>{
+                try{
                   const url = '/auth/profile'
                   const profile =  await axios.get(url)
                   setUser(profile.data.data)
                   setStatus({...status,loading:false})
+                }
+                catch{setStatus({...status,loading:false})}
+                  
 
       }
       // return ()=>  unSubscribe()
 },[])
 
-  const  RootContextValue = {status,setStatus,LOGIN,REGISTER,user,setUser}
+  const  RootContextValue = {status,setStatus,LOGIN,LOGOUT,SENTEMAIL,VERIFTOKEN,REGISTER,user,setUser}
 
   return (
   <RootContext.Provider value={RootContextValue}> 

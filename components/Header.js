@@ -14,8 +14,23 @@ import TopHeader from "./TopHeader";
 import navbar from "../src/styles/home_style/hero.module.css";
 import Meta from "./Meta";
 import Image from "next/image";
+import { useContext } from "react";
+import { RootContext } from "@/context/RootContext";
+import toast from 'react-hot-toast';
+
 
 const Header = () => {
+  const { LOGOUT,setUser} = useContext(RootContext)
+
+  const HandleLogOut=()=>{
+    LOGOUT()
+      .then(res=>{ 
+        setUser(null)
+        toast.success('Logout success')
+        })
+      .catch(err => {console.log(err) ; toast.error(err.data?.message)} )
+
+  }
   return (
     <>
       <TopHeader />
@@ -234,7 +249,7 @@ const Header = () => {
                   </li>
 
                   <li>
-                    <a>Logout</a>
+                    <a onClick={HandleLogOut}>Logout</a>
                   </li>
                 </ul>
               </div>
