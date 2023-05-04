@@ -18,7 +18,7 @@ const AddNew = () => {
   return (
     <>
       <Head>
-        <title>Add New</title>
+        <title>Add New Post</title>
       </Head>
       <div className="block lg:flex justify-between">
         <div className="w-[100%] lg:w-[20%] h-14 lg:h-screen flex justify-between ">
