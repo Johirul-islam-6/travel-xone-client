@@ -38,7 +38,7 @@ const UserSidebar = () => {
                 </div>
               </li>
               <li>
-                <a href="/admin" className={iconStyle}>
+                <a href="/dashboard/user" className={iconStyle}>
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
                       className="w-5 h-5"
@@ -61,7 +61,7 @@ const UserSidebar = () => {
                 </a>
               </li>
               <li className="dropdown dropdown-hover">
-                <a href="/user/posts" className={iconStyle}>
+                <a href="/dashboard/user/booking" className={iconStyle}>
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
                       className="w-5 h-5"
@@ -79,25 +79,9 @@ const UserSidebar = () => {
                     </svg>
                   </span>
                   <span tabIndex={0} className="ml-2 text-sm tracking-wide truncate">
-                    Posts
+                    Booking
                   </span>
                 </a>
-                {/* -----------Dropdown menu start--------- */}
-                  <ul
-                    tabIndex={0}
-                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-64 ml-4 text-sm"
-                  >
-                    <li>
-                    <a href="/user/posts/allPosts" className={iconStyle}>All Posts</a>
-                    </li>
-                    <li>
-                    <a href="/user/posts/addNew" className={iconStyle}>Add New</a>
-                    </li>
-                    <li>
-                    <a href="/user/posts/tourType" className={iconStyle}>Tour Type</a>
-                    </li>
-                  </ul>
-                  {/* -----------Dropdown menu start--------- */}
               </li>
               <li className="dropdown dropdown-hover">
                 <a href="/user/Pages/allPages" className={iconStyle}>
@@ -121,19 +105,6 @@ const UserSidebar = () => {
                     Pages
                   </span>
                 </a>
-                {/* -----------Dropdown menu start--------- */}
-                <ul
-                    tabIndex={0}
-                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-64 ml-4 text-sm"
-                  >
-                    <li>
-                    <a href="/user/Pages/allPages" className={iconStyle}>All Pages</a>
-                    </li>
-                    <li>
-                    <a href="/user/Pages/addNew" className={iconStyle}>Add New</a>
-                    </li>
-                  </ul>
-                  {/* -----------Dropdown menu start--------- */}
               </li>
               <li>
                 <a href="/user/reviews" className={iconStyle}>
@@ -367,7 +338,7 @@ const UserSidebar = () => {
                 </a>
               </li>
               <li className="dropdown dropdown-hover">
-                <a href="/user/posts/allPosts" className={iconStyle}>
+                <a href="/dashboard/user/order" className={iconStyle}>
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
                       className="w-5 h-5"
@@ -385,7 +356,7 @@ const UserSidebar = () => {
                     </svg>
                   </span>
                   <span tabIndex={0} className="ml-2 text-sm tracking-wide truncate">
-                    Posts
+                    Booking
                   </span>
                 </a>
                 {/* -----------Dropdown menu start--------- */}
@@ -394,7 +365,7 @@ const UserSidebar = () => {
                     className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-64 ml-4 text-sm"
                   >
                     <li>
-                    <a href="/user/posts/allPosts" className={iconStyle}>All Posts</a>
+                    <a href="/dashboard/booking/restaurant" className={iconStyle}>Restaurant</a>
                     </li>
                     <li>
                     <a href="/user/posts/addNew" className={iconStyle}>Add New</a>

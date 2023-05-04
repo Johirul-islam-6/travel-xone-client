@@ -1,0 +1,83 @@
+[
+    {
+        "id": "P1",
+        "transport": "plain",
+        "img" : "",
+        "imageList": [
+            {
+                "image": "httpss"
+            },
+            {
+                "image": "httpss"
+            },
+            {
+                "image": "httpss"
+            }
+        ],
+        "titele": "VIP TREVAL AIR PLAIN",
+        "location": "Dhaka to Chitagong",
+        "description": "lorem20fsldkjflksjddjjjjjjjjjjjjjjjjjjjjjjjjj 500 Length",
+        "price": "100",
+        "Off": "5"
+    },
+    {
+        "id": "P1",
+        "transport": "plain",
+        "imageList": [
+            {
+                "image": "httpss"
+            },
+            {
+                "image": "httpss"
+            },
+            {
+                "image": "httpss"
+            }
+        ],
+        "titele": "VIP TREVAL AIR PLAIN",
+        "location": "Dhaka to Chitagong",
+        "description": "lorem20fsldkjflksjddjjjjjjjjjjjjjjjjjjjjjjjjj 500 Length",
+        "price": "100",
+        "Off": "5"
+    },
+    {
+        "id": "B1",
+        "transport": "Bus",
+        "imageList": [
+            {
+                "image": "httpss"
+            },
+            {
+                "image": "httpss"
+            },
+            {
+                "image": "httpss"
+            }
+        ],
+        "titele": "VIP TREVAL TRANSPORT",
+        "location": "Dhaka to Chitagong",
+        "description": "lorem20fsldkjflksjddjjjjjjjjjjjjjjjjjjjjjjjjj 500 Length",
+        "price": "250",
+        "Off": "5"
+    },
+    {
+        "id": "T1",
+        "transport": "Train",
+        "imageList": [
+            {
+                "image": "httpss"
+            },
+            {
+                "image": "httpss"
+            },
+            {
+                "image": "httpss"
+            }
+        ],
+        "titele": "VIP KEBIN TREVAL",
+        "location": "Dhaka to Chitagong",
+        "description": "lorem20fsldkjflksjddjjjjjjjjjjjjjjjjjjjjjjjjj 500 Length",
+        "price": "200",
+        "Off": "5"
+    }
+]
