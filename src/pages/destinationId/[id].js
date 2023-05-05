@@ -8,11 +8,19 @@ import {
 import { TbWorld } from "react-icons/tb";
 import { FaShoePrints, FaUserAlt, FaUsers } from "react-icons/fa";
 import Link from "next/link";
+import { useState } from "react";
+
+
+
 
 const detailsHostel01 = ({ detailsHotel }) => {
+    const [singleData, setSingleData] = useState([]);
   console.log(detailsHotel.data[0], "This is single data");
   const singelsHotels = detailsHotel?.data[0];
   console.log("details hotels", detailsHotel.data);
+    
+
+
 
   const bookingsubmit = (e) => {
     e.preventDefault();
