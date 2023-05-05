@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styles from '../../styles/mainService.module.css';
+import Link from "next/link";
 
 const Plain = () => {
     const router = useRouter();
@@ -43,6 +44,7 @@ const Plain = () => {
 
     return (
         <div className="bg-light-800">
+            
             <div className="py-3">
                 <img className={styles.transportBanner} src={two}></img>
             </div>
