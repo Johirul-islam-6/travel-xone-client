@@ -11,8 +11,40 @@ import Link from "next/link";
 
 
 const detailsHostel01 = ({ detailsHotel }) => {
+    console.log( detailsHotel.data[0], "This is single data");
     const singelsHotels = detailsHotel?.data[0];
-    console.log("details hotels", detailsHotel.data)
+    console.log("details hotels", detailsHotel.data);
+
+    const bookingsubmit = (e)=>{
+        e.preventDefault();
+        const fullname = e.target.fullname.value;
+        const email = e.target.email.value;
+        const phone = e.target.phone.value;
+        const countryRegion = e.target.countryRegion.value;
+        const duration = e.target.duration.value;
+        const date = e.target.date.value;
+        const Destinationplace = e.target.Destinationplace.value;
+        const GroupSize = e.target.GroupSize.value;
+        const notes = e.target.notes.value;
+        const bookingData = detailsHotel.data;
+        
+        
+            const bookingInfo = {
+                fullname,email,phone,countryRegion,duration,date,Destinationplace,GroupSize,notes
+              }
+              console.log(bookingInfo,bookingData.push(bookingInfo));
+              
+              fetch("", {
+                method: "POST", // or 'PUT'
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(bookingInfo),
+              }).then(res => res.json()).then(data =>{
+                console.log(data);
+              })
+       
+      }
 
     return (
         <>
@@ -359,84 +391,92 @@ const detailsHostel01 = ({ detailsHotel }) => {
                                 <h2 className="text-xl text-slate-600">
                                     Find your dream tour today
                                 </h2>
-                                <div className=" my-3">
-                                    <input
-                                        type="text"
-                                        placeholder="Full Name"
-                                        className="input input-bordered w-full max-w-xs"
-                                    />
-                                </div>
-                                <div className=" my-3">
-                                    <input
-                                        type="email"
-                                        placeholder="Email"
-                                        className="input input-bordered w-full max-w-xs"
-                                    />
-                                </div>
-                                <div className=" my-3">
-                                    <input
-                                        type="text"
-                                        placeholder="Phone"
-                                        className="input input-bordered w-full max-w-xs"
-                                    />
-                                </div>
-                                <div className=" my-3">
-                                    <input
-                                        type="text"
-                                        placeholder="Country Region"
-                                        className="input input-bordered w-full max-w-xs"
-                                        disabled
-                                    />
-                                </div>
-                                <div className=" my-3">
-                                    <input
-                                        type="text"
-                                        placeholder="Destination Place"
-                                        className="input input-bordered w-full max-w-xs"
-                                        disabled
-                                    />
-                                </div>
-                                <div className=" my-3">
-                                    <h1 className="text-sm text-slate-600 pl-4">Check In :</h1>
-                                    <input
-                                        type="date"
-                                        placeholder="Check In"
-                                        className="input input-bordered w-full max-w-xs text-slate-500"
-                                    />
-                                </div>
-                                <div className=" my-3">
-                                    <select className="select select-bordered w-full max-w-xs text-slate-500">
-                                        <option disabled selected>
-                                            SELECT DAYS
-                                        </option>
-                                        <option>All</option>
-                                        <option>3 days</option>
-                                        <option>5 days</option>
-                                        <option>7 days</option>
-                                        <option>9 days</option>
-                                    </select>
-                                </div>
-                                <div className=" my-3">
-                                    <input
-                                        type="number"
-                                        placeholder="Group Size (people)"
-                                        className="input input-bordered w-full max-w-xs"
-                                    />
-                                </div>
-                                <div className=" my-3">
-                                    <textarea
-                                        className="textarea textarea-bordered w-full"
-                                        placeholder="Notes"
-                                    ></textarea>
-                                </div>
-                                <Link href="/checkout">
-                                <button
-                                    type="submit"
-                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
-                                >
-                                    Book Now
-                                </button>
-                                </Link>
+                                <form onSubmit={bookingsubmit}>
+                <div className=" my-3">
+                  <input
+                    type="text"
+                    name="fullname"
+                    placeholder="Full Name"
+                    className="input input-bordered w-full max-w-xs"
+                  />
+                </div>
+                <div className=" my-3">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    className="input input-bordered w-full max-w-xs"
+                  />
+                </div>
+                <div className=" my-3">
+                  <input
+                    type="text"
+                    name="phone"
+                    placeholder="Phone"
+                    className="input input-bordered w-full max-w-xs"
+                  />
+                </div>
+                <div className=" my-3">
+                  <input
+                    type="text"
+                    name="countryRegion"
+                    placeholder="Country Region"
+                    className="input input-bordered w-full max-w-xs"
+                   
+                  />
+                </div>
+                <div className=" my-3">
+                  <input
+                    type="text"
+                    name="Destinationplace"
+                    placeholder="Destination Place"
+                    className="input input-bordered w-full max-w-xs"
+                    
+                  />
+                </div>
+                <div className=" my-3">
+                  <h1 className="text-sm text-slate-600 pl-4">Check In :</h1>
+                  <input
+                    type="date"
+                    name="date"
+                    placeholder="Check In"
+                    className="input input-bordered w-full max-w-xs text-slate-500"
+                  />
+                </div>
+                <div className=" my-3">
+                  <select name="duration" className="select select-bordered w-full max-w-xs text-slate-500">
+                    <option disabled selected>
+                      SELECT DAYS
+                    </option>
+                    
+                    <option>3 days</option>
+                    <option>5 days</option>
+                    <option>7 days</option>
+                    <option>9 days</option>
+                  </select>
+                </div>
+                <div className=" my-3">
+                  <input
+                    type="number"
+                    name="GroupSize"
+                    placeholder="Group Size (people)"
+                    className="input input-bordered w-full max-w-xs"
+                  />
+                </div>
+                <div className=" my-3">
+                  <textarea
+                  name="notes"
+                    className="textarea textarea-bordered w-full"
+                    placeholder="Notes"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+                >
+                  Book Now
+                </button>
+                </form>
                             </div>
                             <div className="w-11/12 p-5 border">
                                 <h1 className="text-2xl ">Tour Information</h1>
