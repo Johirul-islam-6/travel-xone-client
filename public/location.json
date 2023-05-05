@@ -28,6 +28,7 @@
                     "reviews" : "5",
                     "tourType" : "Archaeological",
                     "language" : "Bangla | English",
+                    "location"  : "Paharpur",
                     "placeName" : "Rest House",
                     "district" : "Paharpur, Bangladesh"  
                 },
@@ -97,7 +98,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "6",
-                    "tourType" : "Ancient City,",
+                    "tourType" : "Ancient City",
                     "language" : "Bangla | English",
                     "placeName" : "Bogra",
                     "district" : "Rangpur Road Nawdapara, Bogra, Bangladesh"  
@@ -227,7 +228,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "6",
-                    "tourType" : "Cultural,",
+                    "tourType" : "Cultural",
                     "language" : "Bangla | English",
                     "placeName" : "Dinajpur",
                     "district" : "MRD Tower, Chokbazar, Dinajpur Bangladesh"  
@@ -247,7 +248,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "5",
-                    "tourType" : "Cultural,",
+                    "tourType" : "Cultural",
                     "language" : "Bangla | English",
                     "placeName" : "Dinajpur",
                     "district" : "Mohanbati Post Raiganj Uttar Dinajpur, Dinajpur Bangladesh"  
@@ -267,7 +268,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "7",
-                    "tourType" : "Cultural,",
+                    "tourType" : "Cultural",
                     "language" : "Bangla | English",
                     "placeName" : "Dinajpur",
                     "district" : "Nimtola, Dinajpur Bangladesh"  
@@ -287,7 +288,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "7",
-                    "tourType" : "Cultural,",
+                    "tourType" : "Cultural",
                     "language" : "Bangla | English",
                     "placeName" : "Dinajpur",
                     "district" : "Phulbari, Dinajpur 5260 Bangladesh"  
@@ -307,7 +308,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "4",
-                    "tourType" : "Cultural,",
+                    "tourType" : "Cultural",
                     "language" : "Bangla | English",
                     "placeName" : "Dinajpur",
                     "district" : "Dinajpur 5200 Bangladesh"  
@@ -343,7 +344,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "10",
-                    "tourType" : "Historical,",
+                    "tourType" : "Historical",
                     "language" : "Bangla | English",
                     "placeName" : "Dhaka",
                     "district" : "17 Plot #27 Road Banani C/A, Dhaka City 1213 Bangladesh"  
@@ -363,7 +364,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "10",
-                    "tourType" : "Historical,",
+                    "tourType" : "Historical",
                     "language" : "Bangla | English",
                     "placeName" : "Dhaka",
                     "district" : "10/B/2, Road 54/B, Gulshan, Dhaka City 1212 Bangladesh"  
@@ -383,7 +384,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "5",
-                    "tourType" : "Historical,",
+                    "tourType" : "Historical",
                     "language" : "Bangla | English",
                     "placeName" : "Dhaka",
                     "district" : "Nr 96 House Nr 19 Road Gulshan 2, Dhaka City 1212 Bangladesh"  
@@ -403,7 +404,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "10",
-                    "tourType" : "Historical,",
+                    "tourType" : "Historical",
                     "language" : "Bangla | English",
                     "placeName" : "Dhaka",
                     "district" : "Road 17-18 | Kabi Farooq Sharoni | Dhaka | 1229 Plot 1C-2C, Dhaka City 1229 Bangladesh"  
@@ -423,7 +424,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "6",
-                    "tourType" : "Historical,",
+                    "tourType" : "Historical",
                     "language" : "Bangla | English",
                     "placeName" : "Dhaka",
                     "district" : "23 Shahid Tajuddin Ahmed Sharani Tejgaon, Dhaka City 1208 Bangladesh"  
@@ -443,7 +444,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "3",
-                    "tourType" : "Historical,",
+                    "tourType" : "Historical",
                     "language" : "Bangla | English",
                     "placeName" : "Dhaka",
                     "district" : "78 Gulshan Avenue Gulshan 1, Dhaka City 1212 Bangladesh"  
@@ -463,7 +464,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "5",
-                    "tourType" : "Historical,",
+                    "tourType" : "Historical",
                     "language" : "Bangla | English",
                     "placeName" : "Dhaka",
                     "district" : "90 Road House 1/A, Dhaka City 1212 Bangladesh"  
@@ -483,7 +484,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "8",
-                    "tourType" : "Historical,",
+                    "tourType" : "Historical",
                     "language" : "Bangla | English",
                     "placeName" : "Dhaka",
                     "district" : "Main Gulshan Avenue Plot 1 cwn , Road 45, Gulshan 2, Dhaka, Dhaka City 1212 Bangladesh"  
@@ -503,7 +504,7 @@
                     "group_size" : "1",
                     "duration" : "3",
                     "reviews" : "8",
-                    "tourType" : "Historical,",
+                    "tourType" : "Historical",
                     "language" : "Bangla | English",
                     "placeName" : "Dhaka",
                     "district" : "NO 85 ROAD No. 25A, BLOCK A, BANANI Dhaka, Dhaka City 1213 Bangladesh"  
@@ -580,7 +581,7 @@
                     "reviews" : "10 reviews",
                     "placeName" : "Sea-Beach",
                     "district" : "Cox’s-bazar,Bangladesh",
-                    "tourType" : "Beach,",
+                    "tourType" : "Beach",
                     "language" : "Bangla | English",
                     "distance" : "5 kilomitres from Cox’s-bazar",
                     "descriptions" : " Situated on the beachfront and offering a 24-hour front desk, Hotel Sea Crown is located just 1.5 km from the famous Sugandha Beach. Free WiFi access is available. Each air-conditioned room here will provide you with a seating area and work desk. Featuring a shower, private bathroom comes with free toiletries. At Hotel Sea Crown you will find a garden. Other facilities offered at the property include a shared lounge, a tour desk and luggage storage. The property offers free parking. The property is located just 3 km from the scenic Laboni Beach and 4.1 km from Buddhist Temple and the popular Cox's Bazar. The Cox's Bazar Airport and Cox's Bazar Bus Station are located within 4.8 km.The guests can enjoy their meals at the in-house restaurant and refreshing alcoholic and non-alcoholic beverages at the bar. Room service is available for 24-hour."
@@ -612,7 +613,7 @@
                     "reviews" : "10 reviews",
                     "placeName" : "River",
                     "district" : "Teknaf,Bangladesh",
-                    "tourType" : "adventure,",
+                    "tourType" : "Adventure",
                     "language" : "Bangla | English",
                     "distance" : "4 kilomitres from Teknaf",
                     "descriptions" : " Situated on the beachfront and offering a 24-hour front desk, Hotel Sea Crown is located just 1.5 km from the famous Sugandha Beach. Free WiFi access is available. Each air-conditioned room here will provide you with a seating area and work desk. Featuring a shower, private bathroom comes with free toiletries. At Hotel Sea Crown you will find a garden. Other facilities offered at the property include a shared lounge, a tour desk and luggage storage. The property offers free parking. The property is located just 3 km from the scenic Laboni Beach and 4.1 km from Buddhist Temple and the popular Cox's Bazar. The Cox's Bazar Airport and Cox's Bazar Bus Station are located within 4.8 km.The guests can enjoy their meals at the in-house restaurant and refreshing alcoholic and non-alcoholic beverages at the bar. Room service is available for 24-hour."
@@ -644,7 +645,7 @@
                     "reviews" : "10 reviews",
                     "placeName" : "Sea-Beach",
                     "district" : "Bandarban,Bangladesh",
-                    "tourType" : "adventure,",
+                    "tourType" : "Adventure,",
                     "language" : "Bangla | English",
                     "distance" : "11 kilomitres from Bandarban",
                     "descriptions" : " Situated on the beachfront and offering a 24-hour front desk, Hotel Sea Crown is located just 1.5 km from the famous Sugandha Beach. Free WiFi access is available. Each air-conditioned room here will provide you with a seating area and work desk. Featuring a shower, private bathroom comes with free toiletries. At Hotel Sea Crown you will find a garden. Other facilities offered at the property include a shared lounge, a tour desk and luggage storage. The property offers free parking. The property is located just 3 km from the scenic Laboni Beach and 4.1 km from Buddhist Temple and the popular Cox's Bazar. The Cox's Bazar Airport and Cox's Bazar Bus Station are located within 4.8 km.The guests can enjoy their meals at the in-house restaurant and refreshing alcoholic and non-alcoholic beverages at the bar. Room service is available for 24-hour."
@@ -676,7 +677,7 @@
                     "reviews" : "10 reviews",
                     "placeName" : "Sea-Beach",
                     "district" : "Rangamati,Bangladesh",
-                    "tourType" : "Beach,",
+                    "tourType" : "Beach",
                     "distance" : ".5 kilomitres from Rangamati",
                     "language" : "Bangla | English",
                     "descriptions" : " Situated on the beachfront and offering a 24-hour front desk, Hotel Sea Crown is located just 1.5 km from the famous Sugandha Beach. Free WiFi access is available. Each air-conditioned room here will provide you with a seating area and work desk. Featuring a shower, private bathroom comes with free toiletries. At Hotel Sea Crown you will find a garden. Other facilities offered at the property include a shared lounge, a tour desk and luggage storage. The property offers free parking. The property is located just 3 km from the scenic Laboni Beach and 4.1 km from Buddhist Temple and the popular Cox's Bazar. The Cox's Bazar Airport and Cox's Bazar Bus Station are located within 4.8 km.The guests can enjoy their meals at the in-house restaurant and refreshing alcoholic and non-alcoholic beverages at the bar. Room service is available for 24-hour."
@@ -718,7 +719,7 @@
                     "reviews" : "10 reviews",
                     "placeName" : "Pull",
                     "district" : "Sunamganj,Bangladesh",
-                    "tourType" : "",
+                    "tourType" : "Adventure",
                     "distance" : "11 kilomitres from Sunamganj",
                     
                     "language" : "Bangla | English",

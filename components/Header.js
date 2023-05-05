@@ -12,42 +12,59 @@ import {
 import { BiMenu, IconName } from "react-icons/bi";
 import TopHeader from "./TopHeader";
 import navbar from "../src/styles/home_style/hero.module.css";
+import Meta from "./Meta";
+import Image from "next/image";
 import { useContext } from "react";
-import { AuthContext } from "@/ContextApi";
+import { RootContext } from "@/context/RootContext";
+import toast from 'react-hot-toast';
+
 
 const Header = () => {
-  const{user,logOut} = useContext(AuthContext);
-  const name = user?.email?.split("@");
-  console.log(user)
- 
+  const { LOGOUT,setUser} = useContext(RootContext)
+
+  const HandleLogOut=()=>{
+    LOGOUT()
+      .then(res=>{ 
+        setUser(null)
+        toast.success('Logout success')
+        })
+      .catch(err => {console.log(err) ; toast.error(err.data?.message)} )
+
+  }
   return (
     <>
       <TopHeader />
-      <header className="w-[100%] justify-center bg-[#ffffffe5] flex mx-auto absolute ">
+      <header className="w-[100%] justify-center bg-[#ffffffe5] flex mx-auto absolute h-[110px]">
         <div className="navbar w-[100%]">
           {/* <!-- -------- toggle left small size slider ------ --> */}
-          <div className="dropdown dropdown-start lg:hidden">
+          <div className="dropdown dropdown-start lg:hidden z-50">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-8 rounded-full">
-                <BiMenu className="w-8 h-8 text-[#000000] bg-base-300 p-2" />
+              <div className="w-10 rounded-full">
+                <BiMenu className="w-10 h-10 text-[#ffffff] bg-base-300 p-2" />
               </div>
             </label>
 
             <ul
               tabIndex="1"
-              className="menu menu-compact dropdown-content mt-3 bg-[#020202e7] rounded-box w-[70vw] md:w-[50vw] h-[90vh]"
+              className="menu menu-compact dropdown-content mt-3 bg-[#020202e7] rounded-box w-[70vw] md:w-[50vw] h-[90vh] pl-5"
             >
-              travel
+
               {/* Dropdown menu */}
               <div className="h-[100vh] p-0 space-y-2  md:w-60 lg:hidden block py-4">
                 <div className="flex justify-between w-[60%]  ">
                   <Link href="/" className="cursor-pointer bg-base-100 rounded">
-                    <img src="https://i.ibb.co/Z2SgSq2/travel-xone.png" />
+                    <Image
+                      src="https://i.ibb.co/Z2SgSq2/travel-xone.png"
+                      alt="TRAVEL.XONE LOGO"
+                      width={600}
+                      height={450}
+                      loading="lazy"
+                    />
                   </Link>
                 </div>
                 <div className="divide-gray-700 pt-6 relative z-50">
                   <ul>
-                    <li className="hover:bg-[#0458c6]">
+                    <li className="w-32 hover:bg-blue-500">
                       <Link
                         rel="noopener noreferrer"
                         href="/"
@@ -57,17 +74,7 @@ const Header = () => {
                         <span>Home</span>
                       </Link>
                     </li>
-                    <li className="hover:bg-[#0458c6] mt-1">
-                      <a
-                        rel="noopener noreferrer"
-                        href="/restaurants"
-                        className={`${navbar.link_style_sm} flex items-center p-2 space-x-3 rounded-md`}
-                      >
-                        <FaAirbnb />
-                        <span>Restaurants</span>
-                      </a>
-                    </li>
-                    <li className="hover:bg-[#0458c6] mt-1">
+                    <li className="w-32 hover:bg-blue-500 mt-1">
                       <a
                         rel="noopener noreferrer"
                         href="/destination"
@@ -77,7 +84,7 @@ const Header = () => {
                         <span>Destination</span>
                       </a>
                     </li>
-                    <li className="hover:bg-[#0458c6] mt-1">
+                    <li className="w-32 hover:bg-blue-500 mt-1">
                       <a
                         rel="noopener noreferrer"
                         href="/transport"
@@ -87,7 +94,7 @@ const Header = () => {
                         <span>Transport</span>
                       </a>
                     </li>
-                    <li className="hover:bg-[#0458c6] mt-1">
+                    <li className="w-32 hover:bg-blue-500 mt-1">
                       <a
                         rel="noopener noreferrer"
                         href="/blogs"
@@ -97,7 +104,7 @@ const Header = () => {
                         <span>Blogs</span>
                       </a>
                     </li>
-                    <li className="hover:bg-[#0458c6] mt-1">
+                    <li className="w-32 hover:bg-blue-500 mt-1">
                       <a
                         rel="noopener noreferrer"
                         href="/contact"
@@ -116,7 +123,13 @@ const Header = () => {
           {/* <!-- -----only small size navbar----- --> */}
           <div className="flex-1 flex justify-start relative lg:hidden navbar-center pl-2">
             <Link href="/" className="cursor-pointer md:w-[60%]">
-              <img src="https://i.ibb.co/Z2SgSq2/travel-xone.png" />
+              <Image
+                src="https://i.ibb.co/Z2SgSq2/travel-xone.png"
+                alt="TRAVEL.XONE LOGO"
+                width={600}
+                height={450}
+                loading="lazy"
+              />
             </Link>
           </div>
 
@@ -132,13 +145,17 @@ const Header = () => {
           {/* -----------only small size navbar end----------- */}
 
           {/* ======== only larze size show ============ */}
-          <ul className="align-middle hidden lg:flex justify-center w-full">
-            <div className="navbar ">
+          <ul className="align-middle hidden lg:flex justify-center w-full px-20">
+            <div className="navbar">
               <Link href="/" className="cursor-pointer ">
-                <img
-                  src="https://i.ibb.co/Z2SgSq2/travel-xone.png"
-                  alt="TRAVEL.XONE LOGO"
-                />
+              <Image
+                      src="https://i.ibb.co/Z2SgSq2/travel-xone.png"
+                      alt="TRAVEL.XONE LOGO"
+                      width={600}
+                      height={450}
+                      loading="lazy"
+                      className="w-[70%]"
+                    />
               </Link>
             </div>
 
@@ -152,11 +169,6 @@ const Header = () => {
                 <li className="hover:text-white hover:border rounded">
                   <Link href="/destination" className={`${navbar.link_style}`}>
                     Destination
-                  </Link>
-                </li>
-                <li className="hover:text-white hover:border rounded">
-                  <Link href="/restaurants" className={`${navbar.link_style}`}>
-                    Restaurants
                   </Link>
                 </li>
                 <li className="hover:text-white hover:border rounded">
@@ -186,7 +198,7 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            <div className="navbar-end flex items-center">
+            <div className="flex items-center">
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle">
                   <div className="indicator">
@@ -225,7 +237,7 @@ const Header = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-8 rounded-full">
-                    <FaUserAlt className="w-8 h-8 text-blue-700 bg-base-300 p-2" />
+                    <FaUserAlt className="w-8 h-8 text-blue-700 bg-white p-2" />
                   </div>
                 </label>
                 <ul
@@ -239,12 +251,11 @@ const Header = () => {
                   </li>
 
                   <li>
-                    <a><button onClick={()=>logOut()}>LogOut</button></a>
+                    <a onClick={HandleLogOut}>Logout</a>
                   </li>
                 </ul>
               </div>
             </div>
-            <div className="navbar-end flex justify-center items-center"></div>
           </ul>
         </div>
       </header>

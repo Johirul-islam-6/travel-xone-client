@@ -1,0 +1,30 @@
+[
+        { 
+            "id" : "1",
+            "image" :"https://i.ibb.co/Sx3HydM/126515.png",
+            "number" : "3.456K",
+            "title" : "Total views",
+            "percent" : "0.43%"
+        },
+        { 
+            "id" : "2",
+            "image" : "https://i.ibb.co/8dCqKX1/cart-icon-14.png",
+            "number" : "45,2K",
+            "title" : "Total Profit",
+            "percent" : "4.35%"
+        },
+        { 
+            "id" : "3",
+            "image" : "https://i.ibb.co/nRq4CFP/eye-outline.png",
+            "number" : "2.450",
+            "title" : "Total Product",
+            "percent" : "2.59%"
+        },
+        { 
+            "id" : "4",
+            "image" : "https://i.ibb.co/m9D0Wr1/images.png",
+            "number" : "3.456",
+            "title" : "Total Users",
+            "percent" : "0.95%"
+        }
+    ]

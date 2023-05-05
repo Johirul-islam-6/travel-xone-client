@@ -2,64 +2,44 @@ import Link from "next/link";
 import { BsFacebook, BsPencilSquare } from "react-icons/bs";
 import { AiFillGoogleCircle, AiFillTwitterCircle } from "react-icons/ai";
 import classNames from "classnames";
-import { useContext } from "react";
-import { AuthContext } from "@/ContextApi";
+import { useForm } from "react-hook-form";
+import Head from "next/head";
+import { useContext, useState } from "react";
+import { RootContext } from "@/context/RootContext";
+import toast from 'react-hot-toast';
 
 const Registration = () => {
-  const { user, createUser, Gsignin,loading,setLoading } = useContext(AuthContext);
-  
-
-  const submit = (e) => {
-    e.preventDefault();
-    const Email = e.target.email.value;
-    const username = e.target.username.value;
-    const country = e.target.country.value;
-    const fullname = e.target.fullname.value;
-    const phone = e.target.phone.value;
-    const password = e.target.password.value;
-
-    if (!Email || !username || !country || !fullname || !phone || !password) {
-
-      return <p>fillup all form</p>
-
-    }
-    else {
-      createUser(Email, password)
-        .then(res => {
-          if (res) {
-            console.log(res)
-          }
-        }).then(r => {
-          console.log(r)
-        })
-    }
-
-  }
-  const googlesubmit = () => {
-    Gsignin().then(res => {
-      console.log(res)
-    }).then(e => {
-      console.log(e)
+  const {REGISTER} = useContext(RootContext)
+  const [errors,setErrors]= useState(null)
+  const { register, handleSubmit } = useForm();
+  const handleRegister = (data)=>{
+    console.log(data)
+    REGISTER(data).then(res=>{
+      toast.success('REGISTER success')
+      setErrors(null)
     })
+    .catch(err => {
+      console.log(err) ; 
+      toast.error(err.data?.message)
+      setErrors(err.data.errors)
+      
+    
+    } )
+
+
   }
-
-
-
-
-  const backgroundClass = classNames(
-    "bg-[url('https://i.ibb.co/cktYxxd/res1.png')] max-h-[120%] bg-no-repeat bg-center bg-cover bg-fixed"
-  );
-  const formClass = classNames(
-    "relative bg-[#000000b0] w-[80%] md:w-[50%] lg:w-[35%] text-white mx-auto mt-20 lg:mt-32 py-10 px-8 rounded shadow-2xl"
-  );
-  const buttonAnimation = classNames(
-    "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-[#627ff4]  duration-300"
-  );
-  const registerButton = classNames(
-    "bg-[#627FF4] w-full py-1 my-3 rounded-lg hover:bg-slate-300 hover:text-[#627FF4] hover:font-bold"
-  );
+  
+  const backgroundClass = classNames("bg-[url('https://i.ibb.co/cktYxxd/res1.png')] max-h-[120%] bg-no-repeat bg-center bg-cover bg-fixed");
+  const formClass = classNames("relative bg-[#000000b0] w-[80%] md:w-[50%] lg:w-[35%] text-white mx-auto mt-20 lg:mt-32 py-10 px-8 rounded shadow-2xl");
+  const buttonAnimation = classNames("transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-[#627ff4]  duration-300");
+  const registerButton = classNames("bg-[#627FF4] w-full py-1 my-3 rounded-lg hover:bg-slate-300 hover:text-[#627FF4] hover:font-bold");
+  const errorClassName = classNames("input input-error input-sm w-full max-w-sm my-2 focus:outline-none")
+  const sucessClassName = classNames("input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300 ")
   return (
     <>
+    <Head>
+      <title>Register Page</title>
+    </Head>
       <div className={backgroundClass}>
         <div className="py-20">
           <div className={formClass}>
@@ -67,44 +47,53 @@ const Registration = () => {
             <h1 className="text-center py-5 text-xl">Create an account </h1>
             <div className="text-left px-5">
               {/* -------Registration form-------- */}
-              <form className="text-left" onSubmit={submit}>
+              <form className="text-left" onSubmit={handleSubmit(handleRegister)}>
                 <div>
                   <input
+                  {...register("username")}
                     type="text"
                     name="username"
                     placeholder="User Name"
-                    className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
+                    className={ errors?.username ? errorClassName:sucessClassName}
                   />
+                  {errors?.username && <p className="text-red-600 text-[14px] mt-[-6px] mb-[5px] text-right">{errors.username?.message}</p>}
+                 
                   <input
-                    type="text"
-                    name="fullname"
-                    placeholder="Full Name"
-                    className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
-                  />
-                  <input
+                  {...register("phone")}
                     type="text"
                     name="phone"
                     placeholder="Phone No"
-                    className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
+                    className={ errors?.phone ? errorClassName:sucessClassName}
                   />
+                  {errors?.phone && <p className="text-red-600 text-[14px] mt-[-6px] mb-[5px] text-right">{errors.phone?.message}</p>}
+
                   <input
+                  {...register("country")}
                     type="text"
                     name="country"
                     placeholder="Country"
-                    className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
+                    className={ errors?.country ? errorClassName:sucessClassName}
                   />
+                  {errors?.country && <p className="text-red-600 text-[14px] mt-[-6px] mb-[5px] text-right">{errors.country?.message}</p>}
+
                   <input
+                  {...register("email")}
                     type="email"
                     name="email"
                     placeholder="Email"
-                    className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
+                    className={ errors?.email ? errorClassName:sucessClassName}
                   />
+                  {errors?.email && <p className="text-red-600 text-[14px] mt-[-6px] mb-[5px] text-right">{errors.email?.message}</p>}
+
                   <input
+                  {...register("password")}
                     type="password"
                     name="password"
                     placeholder="Password"
-                    className="input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300"
+                    className={ errors?.password ? errorClassName:sucessClassName}
                   />
+                  {errors?.password && <p className="text-red-600 text-[14px] mt-[-6px] mb-[5px] text-right">{errors.password?.message}</p>}
+
                 </div>
                 <button type="submit" className={`${registerButton}`}>
                   Register

@@ -1,0 +1,114 @@
+[
+    {
+        "area_name" : "North West Region",
+        "images" : [    
+            {
+            "img" : "https://i.ibb.co/30dL9sc/paharpur.png",
+            "title" :  "Paharpur"
+            },
+            {
+                "img" : "https://i.ibb.co/3ChF5Vs/mahasthangarh.png",
+                "title" :  "Mahasthangar" 
+            },
+            {
+                "img" : "https://i.ibb.co/jVs1Lj7/Dinajpur.png",
+                "title" :  "Dinajpur" 
+            }
+        ]      
+    },
+    {
+        "area_name" : "Capital and Central Region",
+        "images" : [    
+            {
+            "img" : "https://i.ibb.co/jLdXTLy/Dhaka-city.png",
+            "title" :  "Dhaka city"
+            },
+            {
+                "img" : "https://i.ibb.co/h833y0n/lalbagfort.png",
+                "title" :  "Lalbagh fort" 
+            },
+            {
+                "img" : "https://i.ibb.co/JvkZCjH/Ahsan-manjil.png",
+                "title" :  "Ahsan Manzil" 
+            },
+            {
+                "img" : "https://i.ibb.co/X3bXrXS/panama-nagar.png",
+                "title" :  "Panamnagar" 
+            },
+            {
+                "img" : "https://i.ibb.co/jMWWFgV/sonarga.png",
+                "title" :  "Sonargaon" 
+            },
+            {
+                "img" : "https://i.ibb.co/jy0TxND/shalbon.png",
+                "title" :  "Shalban Vihara" 
+            }
+        ]      
+    },
+    {
+        "area_name" : "South East Region",
+        "images" : [    
+            {
+            "img" : "https://i.ibb.co/Hdb3xJD/cox-bazar.png",
+            "title" :  "Cox's bazar"
+            },
+            {
+                "img" : "https://i.ibb.co/t4GQwx8/teknaf.png",
+                "title" :  "Teknaf" 
+            },
+            {
+                "img" : "https://i.ibb.co/YjQyzBF/Bandarban.png",
+                "title" :  "Bandarban" 
+            },
+            {
+                "img" : "https://i.ibb.co/GnxNNRd/rangamati.png",
+                "title" :  "Rangamati" 
+            }
+        ]      
+    },
+    {
+        "area_name" : "North East Region",
+        "images" : [    
+            {
+            "img" : "https://i.ibb.co/hyVbmN9/tanguar-haor.png",
+            "title" :  "Tanguar Haor"
+            },
+            {
+                "img" : "https://i.ibb.co/bm7R1f8/shadapathor.png",
+                "title" :  "Shadapathor" 
+            },
+            {
+                "img" : "https://i.ibb.co/C0C2DTn/zaflong.png",
+                "title" :  "Jaflong" 
+            },
+            {
+                "img" : "https://i.ibb.co/516B2jq/sreemangal.png",
+                "title" :  "Sreemangal" 
+            }
+        ]      
+    },
+    {
+        "area_name" : "South West Region",
+        "images" : [    
+            {
+            "img" : "https://i.ibb.co/rwHzHBp/shundarban.png",
+            "title" :  "Sunderbans"
+            },
+            {
+                "img" : "https://i.ibb.co/yn4dgNT/1.png",
+                "title" :  "Kuakata Sea Beach" 
+            },
+            {
+                "img" : "https://i.ibb.co/zZjKbf2/baberhat.png",
+                "title" :  "Bagerhat" 
+            }
+        ]      
+    }
+]
+
+
+
+
+
+
+

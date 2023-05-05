@@ -30,15 +30,15 @@ const details = () => {
                 </div>
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4 ">
                     <div>
-                        <img className={styles.MainImg} src={data?.pictures} />
+                        <img className={styles.MainImg} src={data?.pictures} loading="lazy"/>
                     </div>
                     <div>
-                        <img className="w-70 h-30 mb-3" src={data?.pictures} />
-                        <img className="w-70 h-30" src={data?.pictures} />
+                        <img className="w-70 h-30 mb-3" src={data?.pictures} loading="lazy" />
+                        <img className="w-70 h-30" src={data?.pictures} loading="lazy"/>
                     </div>
                     <div>
-                        <img className="w-70 h-30 mb-3" src={data?.pictures} />
-                        <img className="w-70 h-30" src={data?.pictures} />
+                        <img className="w-70 h-30 mb-3" src={data?.pictures} loading="lazy"/>
+                        <img className="w-70 h-30" src={data?.pictures} loading="lazy"/>
                     </div>
                 </div>
                 {/* // text section */}
