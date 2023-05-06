@@ -34,6 +34,9 @@ const AdminProfile = () => {
             <form>
               {/* <!--Input for user name--> */}
               <div class="relative mb-5">
+                <p class="text-base font-medium leading-none text-gray-800 pb-2">
+                  User Name :
+                </p>
                 <input
                   type="text"
                   class="peer m-0 block h-[58px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-400 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[0.625rem] placeholder:text-sm "
@@ -47,6 +50,9 @@ const AdminProfile = () => {
               </div>
               {/* <!--Input for email--> */}
               <div class="relative mb-5">
+              <p class="text-base font-medium leading-none text-gray-800 pb-2">
+                  Email :
+                </p>
                 <input
                   type="email"
                   class={valueStyle}
@@ -62,6 +68,9 @@ const AdminProfile = () => {
               </div>
               {/* <!--Input for First Name--> */}
               <div class="relative mb-5">
+              <p class="text-base font-medium leading-none text-gray-800 pb-2">
+                  First Name :
+                </p>
                 <input
                   type="text"
                   class={valueStyle}
@@ -71,6 +80,9 @@ const AdminProfile = () => {
               </div>
               {/* <!--Input for Last Name--> */}
               <div class="relative mb-5">
+              <p class="text-base font-medium leading-none text-gray-800 pb-2">
+                  Last Name:
+                </p>
                 <input
                   type="text"
                   class={valueStyle}
@@ -80,6 +92,9 @@ const AdminProfile = () => {
               </div>
               {/* <!--Input for website--> */}
               <div class="relative mb-5">
+              <p class="text-base font-medium leading-none text-gray-800 pb-2">
+                  Website :
+                </p>
                 <input
                   type="text"
                   class={valueStyle}
@@ -123,42 +138,52 @@ const AdminProfile = () => {
               {/* <!--Input for Password Generate--> */}
               <div class="relative mb-6">
                 <div>
-                <div onClick={()=>setIsActive(!isActive)} className="border px-10 py-4 hover:cursor-pointer hover:shadow-lg transition duration-200 ease-linear max-w-xs rounded hover:bg-gray-500 hover:text-white">Set New Password</div>
+                  <div
+                    onClick={() => setIsActive(!isActive)}
+                    className="border px-10 py-4 hover:cursor-pointer hover:shadow-lg transition duration-200 ease-linear max-w-xs rounded hover:bg-gray-500 hover:text-white"
+                  >
+                    Set New Password
+                  </div>
                 </div>
-                {isActive &&
-                <div className="flex gap-3 pt-3"><div>
-                  <input
-                    type="password"
-                    class={valueStyle}
-                    id="floatingInput"
-                    value="*************"
-                  />
-                </div>
-                <div className="flex gap-3">
-                <div>
-                  <button className="btn btn-outline btn-info gap-2">
-                    {/* <AiFillEye/> */}
-                    <AiFillEyeInvisible />
-                    Hide
-                  </button>
-                </div>
-                <div>
-                  <button className="btn btn-outline btn-error">
-                    Cancel
-                  </button>
-                </div>
-                </div></div>
-                }
+                {isActive && (
+                  <div className="flex gap-3 pt-3">
+                    <div>
+                      <input
+                        type="password"
+                        class={valueStyle}
+                        id="floatingInput"
+                        value="*************"
+                      />
+                    </div>
+                    <div className="flex gap-3">
+                      <div>
+                        <button className="btn btn-outline btn-info gap-2">
+                          {/* <AiFillEye/> */}
+                          <AiFillEyeInvisible />
+                          Hide
+                        </button>
+                      </div>
+                      <div>
+                        <button className="btn btn-outline btn-error">
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
               {/* -----------log out---------- */}
               <div className="mb-5">
-              <button className="btn btn-outline btn-error">Log Out Everywhere Else</button>
-              <p className="text-sm text-gray-400 w-full lg:w-[55%]">
-              Did you lose your phone or leave your account logged in at a public computer? You can log out everywhere else, and stay logged in here.
+                <button className="btn btn-outline btn-error">
+                  Log Out Everywhere Else
+                </button>
+                <p className="text-sm text-gray-400 w-full lg:w-[55%]">
+                  Did you lose your phone or leave your account logged in at a
+                  public computer? You can log out everywhere else, and stay
+                  logged in here.
                 </p>
               </div>
-             
-              
+
               {/* <!--Submit button--> */}
               <button
                 type="submit"

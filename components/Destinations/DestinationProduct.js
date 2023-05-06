@@ -1,14 +1,5 @@
-import classNames from "classnames";
 import { GiLoveHowl } from "react-icons/gi";
 import { RiHotelBedLine, RiHotelLine } from "react-icons/ri";
-import { BiLocationPlus } from "react-icons/bi";
-import {
-  AiFillStar,
-  AiOutlineClockCircle,
-  AiOutlineUser,
-  IconName,
-} from "react-icons/ai";
-import Link from "next/link";
 import HotelCards from "../HotelCards/HotelCards";
 
 const DestinationProduct = (props) => {
