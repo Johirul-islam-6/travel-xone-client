@@ -4,8 +4,10 @@ import { RiMessage2Fill } from "react-icons/ri";
 import Link from "next/link";
 import { AiFillPushpin } from "react-icons/ai";
 import { MdDateRange } from "react-icons/md";
+import { useState } from "react";
 
 const Reviews = () => {
+  const [edit, setEdit] = useState();
   const posts = [
     {
       id: "1",
@@ -45,7 +47,7 @@ const Reviews = () => {
           {/* -------------body content Start------------------ */}
           <div className="overflow-x-auto text-black">
             {/* ---------------Edit Comment---------------- */}
-            <form class="w-full">
+            {edit && <form class="w-full">
               <div className="grid gap-5 grid-cols-1 lg:grid-cols-2 pb-10">
                 {/* ---------Left Side Content---------- */}
                 <div className="bg-white p-10">
@@ -103,10 +105,17 @@ const Reviews = () => {
                     </div>
                   </div>
                   <div className="flex py-2"><MdDateRange/><p className="ml-2">Submitted on: 21 February 2023 at 06:12</p></div>
-                  <div className="flex py-2"><RiMessage2Fill/><p className="ml-2"> In response to: Hello world!</p></div>
+                  <div className="flex py-2"><RiMessage2Fill/><p className="ml-2"> In response to: <a href="/" className="text-blue-700">Hello world!</a></p></div>
+                  <div className="divider"></div>
+                  {/* ------------------Button----------- */}
+                  <div className="flex justify-between">
+                    <div><button className="btn btn-error">Delete</button></div>
+                    <div><button className="btn btn-primary">Update</button></div>
+                  </div>
                 </div>
               </div>
-            </form>
+            </form>}
+            
 
             {/* -----------Show All comments----------- */}
             <div className="text-sm pb-2">
@@ -163,7 +172,7 @@ const Reviews = () => {
                             Replay
                           </span>{" "}
                           |{" "}
-                          <span className="hover:text-blue-800 hover:cursor-pointer">
+                          <span onClick={()=> setEdit(!edit)} className="hover:text-blue-800 hover:cursor-pointer">
                             Edit
                           </span>{" "}
                           |{" "}
