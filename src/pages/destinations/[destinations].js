@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
-import Adventures from "../../../components/Adventure/Adventures";
 import Slider from "../../../components/Destinations/Slider";
-import { useRouter } from "next/router";
 import DestinationProduct from "../../../components/Destinations/DestinationProduct";
-import FeatureService from "../../../components/Home/Service/FeatureService/FeatureService";
+import Head from "next/head";
+
 
 const Destinations = ({ singelLocation }) => {
 
@@ -21,6 +19,9 @@ const Destinations = ({ singelLocation }) => {
 
   return (
     <>
+      <Head>
+        <title>Restaurants</title>
+      </Head>
       <Slider value={singelLocation} />
       <DestinationProduct value={singelLocation} />
     </>
