@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Destinations = ({ location }) => {
     console.log(location)
-    const [locationid, setlocationId] = useState()
+
     const id1 = "643c2ace24a8114c69217526"
     const id2 = "643c2b61f7c5a823c7ca6272"
     const id3 = "643c2bce11de3a4be5df416f"
