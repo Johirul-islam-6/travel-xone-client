@@ -13,7 +13,7 @@ const AddNew = () => {
   );
 
   const selectStyle = classNames(
-    "peer m-0 block h-[58px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[0.625rem] placeholder:text-sm hover:shadow-lg"
+    "peer m-0 block h-[58px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[0.625rem] placeholder:text-sm hover:shadow-lg bg-slate-50 rounded"
   );
 
   return (
@@ -25,7 +25,7 @@ const AddNew = () => {
         <div className="w-[100%] lg:w-[20%] h-14 lg:h-screen flex justify-between">
           <AdminSidebar />
         </div>
-        <div className="w-[100%] lg:w-[80%] bg-slate-100 px-10">
+        <div className="w-[100%] lg:w-[80%] bg-slate-300 px-10">
           {/* -------------body content Start------------------ */}
           <div className=" px-0 py-0 lg:px-20 lg:py-10">
             <h1 className="text-lg lg:text-xl">
@@ -34,7 +34,7 @@ const AddNew = () => {
             <div className="divider -mt-1"></div>
             <form>
               {/* <!--Input for user name--> */}
-              <div class="relative mb-3">
+              <div class="relative mb-3 bg-slate-50 rounded">
                 <input
                   type="text"
                   class={inputStyles}
@@ -47,7 +47,7 @@ const AddNew = () => {
                 </label>
               </div>
               {/* <!--Input for email--> */}
-              <div class="relative mb-3">
+              <div class="relative mb-3 bg-slate-50 rounded">
                 <input
                   type="email"
                   class={inputStyles}
@@ -60,7 +60,7 @@ const AddNew = () => {
                 </label>
               </div>
               {/* <!--Input for First Name--> */}
-              <div class="relative mb-3">
+              <div class="relative mb-3 bg-slate-50 rounded">
                 <input
                   type="text"
                   class={inputStyles}
@@ -72,7 +72,7 @@ const AddNew = () => {
                 </label>
               </div>
               {/* <!--Input for Last Name--> */}
-              <div class="relative mb-3">
+              <div class="relative mb-3 bg-slate-50 rounded">
                 <input
                   type="text"
                   class={inputStyles}
@@ -84,7 +84,7 @@ const AddNew = () => {
                 </label>
               </div>
               {/* <!--Input for website--> */}
-              <div class="relative mb-3">
+              <div class="relative mb-3 bg-slate-50 rounded">
                 <input
                   type="text"
                   class={inputStyles}
@@ -96,7 +96,7 @@ const AddNew = () => {
                 </label>
               </div>
               {/* <!--Input for Password Generate--> */}
-              <div class="grid gap-3 grid-cols-1 lg:grid-cols-3 relative mb-3">
+              <div class="grid gap-3 grid-cols-1 lg:grid-cols-3 relative mb-3 items-center">
                 <div className="">
                   <input
                     type="text"
@@ -124,7 +124,7 @@ const AddNew = () => {
               {/* <!--Select for duration, tour type and group size--> */}
               
                 {/* -----------------Select for Role---------------- */}
-                <div class="relative mb-3 max-w-xs">
+                <div class="relative mb-3 bg-slate-50 rounded max-w-xs">
                   <select class={selectStyle}>
                     <option
                       disabled
@@ -146,7 +146,7 @@ const AddNew = () => {
                   <label className="cursor-pointer label">
                   <input
                       type="checkbox"
-                      className="checkbox checkbox-success"
+                      className="checkbox checkbox-primary"
                     />
                     <span className="label-text">Send the new user notification an email about their account</span>
                   </label>

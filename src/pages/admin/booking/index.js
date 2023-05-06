@@ -43,12 +43,12 @@ const Booking = () => {
         <div className="w-[100%] lg:w-[20%] h-14 lg:h-screen flex justify-between">
           <AdminSidebar />
         </div>
-        <div className="w-[100%] lg:w-[80%] bg-slate-100 py-10 px-5 lg:px-10">
+        <div className="w-[100%] lg:w-[80%] bg-slate-300 py-10 px-5 lg:px-10">
           {/* -------------body content Start------------------ */}
-          <h3 class="text-xl xl:text-2xl dark:text-white font-semibold leading-7 xl:leading-9 w-full md:text-left text-gray-800">
+          <h3 class="text-xl xl:text-2xl dark:text-white font-semibold leading-7 xl:leading-9 w-full md:text-left text-blue-700">
             All Booking List
           </h3>
-          <p class="text-sm leading-none dark:text-white pb-0 lg:pb-5 text-gray-800">
+          <p class="text-sm leading-none dark:text-white pb-0 lg:pb-5 text-black">
             Paid using credit card ending with Bkash, Nagad, Visa Card</p>
           <div className="overflow-x-auto">
 

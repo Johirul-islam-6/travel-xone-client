@@ -3,6 +3,7 @@ import AdminSidebar from "../../../../components/admin/adminSidebar";
 import classNames from "classnames";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
+import UserDashboardLayout from "../../../../components/userDashboardLayout";
 
 const AdminProfile = () => {
   const [isActive, setIsActive] = useState();
@@ -19,13 +20,9 @@ const AdminProfile = () => {
       <Head>
         <title>Profile</title>
       </Head>
-      <div className="block lg:flex justify-between">
-        <div className="w-[100%] lg:w-[20%] h-14 lg:h-screen flex justify-between">
-          <AdminSidebar />
-        </div>
-        <div className="w-[100%] lg:w-[80%] bg-slate-300 px-10">
+      <UserDashboardLayout>
           {/* -------------body content Start------------------ */}
-          <div className=" px-0 py-0 lg:px-20 lg:py-10">
+          <div className=" px-0 lg:px-20 ">
             <h1 className="text-lg lg:text-xl">Personal Options :</h1>
             <div className="divider -mt-1"></div>
             <form>
@@ -193,8 +190,7 @@ const AdminProfile = () => {
             </form>
           </div>
           {/* -------------body content End------------------ */}
-        </div>
-      </div>
+          </UserDashboardLayout>
     </>
   );
 };

@@ -23,7 +23,7 @@ const Transport = () => {
             <div className="w-[100%] lg:w-[20%] h-14 lg:h-screen flex justify-between">
               <AdminSidebar />
             </div>
-            <div className="w-[100%] lg:w-[80%] bg-slate-100 py-10 px-5 lg:px-10">
+            <div className="w-[100%] lg:w-[80%] bg-slate-300 py-10 px-5 lg:px-10">
               {/* -------------body content Start------------------ */}
               <h3 class="text-xl xl:text-2xl dark:text-white font-semibold leading-7 xl:leading-9 w-full md:text-left text-gray-800">
               Restaurant Bookings

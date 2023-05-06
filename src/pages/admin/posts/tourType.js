@@ -34,7 +34,7 @@ const TourType = () => {
         <div className="w-[100%] lg:w-[20%] h-14 lg:h-screen flex justify-between">
           <AdminSidebar />
         </div>
-        <div className="w-[100%] lg:w-[80%] bg-slate-100 py-10 px-10">
+        <div className="w-[100%] lg:w-[80%] bg-slate-300 py-10 px-10">
           {/* -------------body content Start------------------ */}
           <div className="w-[100%] grid gap-10 grid-cols-1 lg:grid-cols-2 px-0 lg:px-10">
             {/* -------------Create tour type------------- */}
@@ -43,7 +43,7 @@ const TourType = () => {
               <form>
                 <div>
                   {/* <!--Input for name--> */}
-                  <div class="relative mb-3">
+                  <div class="relative mb-3 bg-slate-50 rounded">
                     <input
                       type="text"
                       class={inputStyles}
@@ -55,7 +55,7 @@ const TourType = () => {
                     </label>
                   </div>
                   {/* <!--Input for slug--> */}
-                  <div class="relative mb-3">
+                  <div class="relative mb-3 bg-slate-50 rounded">
                     <input
                       type="text"
                       class={inputStyles}
@@ -67,7 +67,7 @@ const TourType = () => {
                     </label>
                   </div>
                   {/* -----------------Select for duration---------------- */}
-                  <div class="relative mb-3">
+                  <div class="relative mb-3 bg-slate-50 rounded">
                     <select class={selectStyle}>
                       <option
                         disabled
@@ -88,7 +88,7 @@ const TourType = () => {
                     </select>
                   </div>
                   {/* <!-------Input for details--------> */}
-                  <div class="relative mb-3" data-te-input-wrapper-init>
+                  <div class="relative mb-3 bg-slate-50 rounded" data-te-input-wrapper-init>
                     <textarea
                       class="peer m-0 block h-[100px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem] hover:shadow-lg"
                       id="exampleFormControlTextarea1"
@@ -116,7 +116,7 @@ const TourType = () => {
               <table className="table w-full">
                 {/* head */}
                 <thead>
-                  <tr className="bg-blue-700">
+                  <tr className="shadow-lg border-b-2 border-blue-300">
                     <th>Name</th>
                     <th>Description</th>
                     <th>Slug</th>

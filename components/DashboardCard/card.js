@@ -22,7 +22,7 @@ const Card = () => {
         {
             boardCard.map((cards) =>{
                 return(
-                    <div key={cards.id} className="bg-stone-50 shadow p-5">
+                    <div key={cards.id} className="bg-stone-50 shadow-lg p-5">
                         <div>
                         <img src={cards.image} className="w-10 h-10 bg-blue-400 rounded-full p-2"/>
                         </div>
