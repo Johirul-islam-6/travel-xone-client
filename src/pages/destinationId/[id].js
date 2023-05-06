@@ -15,36 +15,37 @@ import { useState } from "react";
 
 const detailsHostel01 = ({ detailsHotel }) => {
     const [singleData, setSingleData] = useState([]);
-  console.log(detailsHotel.data[0], "This is single data");
+  // console.log(detailsHotel.data[0], "This is single data");
   const singelsHotels = detailsHotel?.data[0];
-  console.log("details hotels", detailsHotel.data);
+  // console.log("details hotels", detailsHotel.data);
     
 
 
 
   const bookingsubmit = (e) => {
     e.preventDefault();
+    // console.log(singelsHotels,'hotel');
     const fullname = e.target.fullname.value;
     const email = e.target.email.value;
     const phone = e.target.phone.value;
 
     const date = e.target.date.value;
-
-    const GroupSize = e.target.GroupSize.value;
+    const duration = e.target.duration.value;
+    const GroupSize = parseInt(e.target.GroupSize.value);
     const notes = e.target.notes.value;
-    const bookingData = detailsHotel.data;
-    const _id = bookingData?._id;
-    const descriptions = bookingData?.descriptions;
-    const district = bookingData?.district;
-    const duration = bookingData?.duration;
-    const title = bookingData?.title;
-    const price = bookingData?.price;
-    const placeID = bookingData?.placeID;
-    const reviews = bookingData?.reviews;
-    const tourType = bookingData?.tourType;
-    // const pictureOne = bookingData?.pictures[0];
-    // const pictureTwo = bookingData?.pictures[1];
-    // const pictureThree = bookingData?.pictures[2];
+   
+    const _id = singelsHotels?._id;
+    const descriptions = singelsHotels?.descriptions;
+    const district = singelsHotels?.district;
+    
+    const title = singelsHotels?.title;
+    const price = singelsHotels?.price;
+    const placeID = singelsHotels?.placeID;
+    const reviews = singelsHotels?.reviews;
+    const tourType = singelsHotels?.tourType;
+    const pictureOne = singelsHotels?.pictures[0];
+    const pictureTwo = singelsHotels?.pictures[1];
+    const pictureThree = singelsHotels?.pictures[2];
 
     const bookingInfo = {
       fullname,
@@ -64,6 +65,9 @@ const detailsHostel01 = ({ detailsHotel }) => {
       placeID,
       reviews,
       tourType,
+      pictureOne,
+      pictureTwo,
+      pictureThree
       
     };
     console.log(bookingInfo);
@@ -80,7 +84,32 @@ const detailsHostel01 = ({ detailsHotel }) => {
         console.log(data);
       });
   };
+const handleReview =(e)=>{
+ e.preventDefault();
+ const name = e.target.name.value;
+ const designation= e.target.designation.value;
+ const title = e.target.title.value;
+ const message = e.target.message.value;
+ const _id = singelsHotels?._id
+ console.log(name,designation,title,message,_id );
+ const reviewInfo={
+  name,designation,title,message,_id,rating:5
+ }
 
+ fetch("", {
+  method: "POST", // or 'PUT'
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(reviewInfo),
+})
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+  })
+
+
+}
   return (
     <>
       <section>
@@ -428,11 +457,101 @@ const detailsHostel01 = ({ detailsHotel }) => {
                   </div>
                 </div>
               </div>
-              <Link href="/comment">
+              {/* <Link href="/comment">
                 <div className="bg-[#3264FF] inline-block p-2 lg:p-3 text-white text-md lg:text-xl ">
                   <h1>Write a Review</h1>
                 </div>
-              </Link>
+              </Link> */}
+              {/* The button to open modal */}
+<label htmlFor="my-modal-3" className="btn">open modal</label>
+
+{/* Put this part before </body> tag */}
+<input type="checkbox" id="my-modal-3" className="modal-toggle" />
+<div className="modal">
+  <div className="modal-box relative">
+    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <form onSubmit={handleReview}>
+                <div className="p-5 md:p-16 lg:p-16">
+                  <div className="form-control py-1 ">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                      className="input input-bordered text-start text-md text-md"
+                      required
+                    />
+                  </div>
+                  <div className="form-control py-1 ">
+                    <input
+                      type="text"
+                      name="designation"
+                      placeholder="Designation"
+                      className="input input-bordered text-start text-md"
+                      value={singelsHotels?.title}
+                      disabled
+                    />
+                  </div>
+
+                  <div className="form-control py-1 ">
+                    <input
+                      type="text"
+                      name="title"
+                      placeholder="Title"
+                      className="input input-bordered text-start text-md"
+                      required
+                    />
+                  </div>
+                 
+
+                  <div className="form-control py-1  border rounded-lg mt-3">
+                    <textarea
+                      name="message"
+                      className="textarea text-start text-md"
+                      placeholder="Message"
+                    ></textarea>
+                  </div>
+                  <h2 className="text-start text-md font-semibold text-sky-500 text-xl mt-5">
+                    Provide Ratings
+                  </h2>
+                  <div className="rating my-4 block text-start text-sm">
+                    <input
+                      type="radio"
+                      name="rating-2"
+                      className="mask mask-star-2 bg-orange-500"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-2"
+                      className="mask mask-star-2 bg-orange-500"
+                      checked
+                    />
+                    <input
+                      type="radio"
+                      name="rating-2"
+                      className="mask mask-star-2 bg-orange-400"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-2"
+                      className="mask mask-star-2 bg-orange-400"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-2"
+                      className="mask mask-star-2 bg-orange-400"
+                    />
+                  </div>
+                  <div className="form-control py-1  mt-6">
+                    <input
+                      className="btn border-none text-white font-semibold"
+                      type="submit"
+                      value="SUBMIT"
+                    />
+                  </div>
+                </div>
+              </form>
+  </div>
+</div>
             </div>
             {/* -----------------Carousel End-------------- */}
             {/*------- Single Package Details End------- */}
@@ -474,22 +593,8 @@ const detailsHostel01 = ({ detailsHotel }) => {
                       className="input input-bordered w-full max-w-xs"
                     />
                   </div>
-                  <div className=" my-3">
-                    <input
-                      type="text"
-                      name="countryRegion"
-                      placeholder="Country Region"
-                      className="input input-bordered w-full max-w-xs"
-                    />
-                  </div>
-                  <div className=" my-3">
-                    <input
-                      type="text"
-                      name="Destinationplace"
-                      placeholder="Destination Place"
-                      className="input input-bordered w-full max-w-xs"
-                    />
-                  </div>
+                  
+                  
                   <div className=" my-3">
                     <h1 className="text-sm text-slate-600 pl-4">Check In :</h1>
                     <input

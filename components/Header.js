@@ -190,11 +190,11 @@ const Header = () => {
                   tabIndex={0}
                   className="hover:text-white hover:border rounded"
                 >
-                 {
-                  name?<p>{name[0]}</p> :  <Link href="/register" className={`${navbar.link_style}`}>
-                  Login | Register
-                </Link>
-                 }
+                 
+
+<Link href="/register" className={`${navbar.link_style}`}>
+                    Login | Register
+                  </Link>
                 </li>
               </ul>
             </div>
