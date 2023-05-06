@@ -2,11 +2,16 @@ import styles from "../../src/styles/home_style/hero.module.css";
 import { FaAward, FaPlaneDeparture, FaWalking } from "react-icons/fa";
 import { BiCommentCheck } from "react-icons/bi";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const Hero = () => {
   const [singelServeics, setServices] = useState("Toure");
   const [showModal, setShowModal] = useState(false);
   const [bookingData, setBooking] = useState()
+
+  const router = useRouter()
+
   // input value resive state
   const [location, setLocation] = useState('')
   const [TO, setTO] = useState('')
@@ -65,6 +70,7 @@ const Hero = () => {
 
   // ----confirm booking ----
   const confirmBooking = (e) => {
+
     e.preventDefault();
     const targetValue = e?.target;
     const names = targetValue?.name?.value;
@@ -73,8 +79,8 @@ const Hero = () => {
     const tolocations = targetValue?.tLocation?.value;
     const JarnyDate = targetValue?.jdate?.value;
     const ReturnDate = targetValue?.rdate?.value;
-    const Members = targetValue?.member?.value;
-    const phone = targetValue?.phone?.value;
+    const Members = parseFloat(targetValue?.member?.value);
+    const phone = parseFloat(targetValue?.phone?.value);
 
     const bookingMember = {
       name: names,
@@ -86,27 +92,32 @@ const Hero = () => {
       ReturnDate: ReturnDate,
       Member: Members
     }
-    console.log(bookingMember)
+    console.log("show booking", bookingMember)
 
-    fetch('http://localhost:5000/', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(bookingMember)
-    })
-      .then(result => result.json())
-      .then(data => {
-        console.log(data)
-        if (data?.acknowledged) {
-          console.log('Your Booking successfuly ')
-          targetValue.reset()
-          // bookItem(null);
-        } else {
-          console.log(data?.messsage)
-        }
-
+    try {
+      fetch('http://localhost:5000/api/v1/sbooking', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(bookingMember)
       })
+        .then(result => result.json())
+        .then(data => {
+          console.log(data)
+          if (data) {
+            toast.success('Your Booking successfuly ')
+            targetValue.reset()
+            setShowModal(false)
+          } else {
+            console.log(data)
+            toast.error(error)
+          }
+
+        })
+    } catch (error) {
+      toast.error(error)
+    }
 
 
   }
