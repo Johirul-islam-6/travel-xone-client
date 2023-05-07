@@ -10,8 +10,8 @@ import { BiLocationPlus } from "react-icons/bi";
 
 const HotelCards = (props) => {
 
-    const [cityArea, setCityArea] = useState()
-    const [hotelAll, sethotelAll] = useState()
+    const [cityArea, setCityArea] = useState('')
+    const [hotelAll, sethotelAll] = useState('')
     const [loding, setLoding] = useState(true);
 
     useEffect(() => {

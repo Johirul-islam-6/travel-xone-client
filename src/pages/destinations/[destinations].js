@@ -1,3 +1,5 @@
+
+import Adventures from "../../../components/Adventure/Adventures";
 import Slider from "../../../components/Destinations/Slider";
 import DestinationProduct from "../../../components/Destinations/DestinationProduct";
 import Head from "next/head";
@@ -9,12 +11,6 @@ const Destinations = ({ singelLocation }) => {
   // const [singelLocation, setLocation] = useState()
   const id = '643c2b61f7c5a823c7ca6272'
 
-  // useEffect(() => {
-  //   fetch(`https://travel-xone-server.vercel.app/api/v1/location/${id}`)
-  //     .then(res => res.json())
-  //     .then(data => setLocation(data))
-
-  // }, [])
 
 
 

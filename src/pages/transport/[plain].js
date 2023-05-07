@@ -9,7 +9,7 @@ const Plain = () => {
   const [one, setOne] = useState(null);
   const [two, setTwo] = useState(null);
   const [three, setThree] = useState(null);
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState('');
   const [seat, setSeat] = useState(1);
 
   useEffect(() => {

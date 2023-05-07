@@ -5,41 +5,42 @@ import app from './firebase.config';
 
 
 const Gprovider = new GoogleAuthProvider();
-export const AuthContext = createContext()
-const ContextApi = ({children}) => {
-    const auth = getAuth(app)
-    const [user,setUser] = useState(null)
-    const[loading,setLoading] = useState(true)
+export const AuthContext = createContext();
 
-    const createUser = (email,password)=>{
+const ContextApi = ({ children }) => {
+    const auth = getAuth(app)
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     };
-    const Login = (email,password)=>{
+    const Login = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     };
-    const Gsignin = ()=>{
+    const Gsignin = () => {
         setLoading(true)
         return signInWithPopup(auth, Gprovider)
     };
-    const logOut = ()=>{
+    const logOut = () => {
         setLoading(true)
         return signOut(auth)
     }
-    useEffect( () =>{
-        const unsubscribe = onAuthStateChanged(auth, currentUser =>{
-            
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+
             setUser(currentUser);
             setLoading(false);
         });
 
-        return () =>{
+        return () => {
             return unsubscribe();
         }
     }, [])
 
-    const info = {user,createUser,Login,Gsignin,logOut,user,setUser,loading,setLoading}
+    const info = { user, createUser, Login, Gsignin, logOut, user, setUser, loading, setLoading }
     return (
         <AuthContext.Provider value={info}>
             {children}

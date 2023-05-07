@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const Location = () => {
 
-  const [locationid, setlocationId] = useState()
+  const [locationid, setlocationId] = useState('');
   const id1 = "643c2ace24a8114c69217526"
   const id2 = "643c2b61f7c5a823c7ca6272"
   const id3 = "643c2bce11de3a4be5df416f"
@@ -39,9 +39,9 @@ const Location = () => {
           {/*----- section header -----*/}
           {/*----- Location Container -----*/}
           <div className="block md:flex lg:flex px-10 lg:px-0">
-          
+
             <div className="w-full md:w-[131%] lg:max-w-[33.3%] group relative">
-              
+
               <Image
                 src="https://i.ibb.co/ByXW3K0/location10.png"
                 alt="TRAVEL.XONE LOGO"
@@ -50,11 +50,11 @@ const Location = () => {
                 loading="lazy"
               />
               <a href={`/destinations/${id1}`}>
-              <div className={`${overlayClass}`}>
+                <div className={`${overlayClass}`}>
                   <h1 className="text-sm md:text-xl lg:text-2xl text-white bg-[#1751E4] p-2 rounded hover:cursor-pointer">
                     North West Region
                   </h1>
-              </div>
+                </div>
               </a>
             </div>
 
