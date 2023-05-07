@@ -20,15 +20,15 @@ import toast from 'react-hot-toast';
 
 
 const Header = () => {
-  const { LOGOUT,setUser} = useContext(RootContext)
+  const { LOGOUT, setUser } = useContext(RootContext)
 
-  const HandleLogOut=()=>{
+  const HandleLogOut = () => {
     LOGOUT()
-      .then(res=>{ 
+      .then(res => {
         setUser(null)
         toast.success('Logout success')
-        })
-      .catch(err => {console.log(err) ; toast.error(err.data?.message)} )
+      })
+      .catch(err => { console.log(err); toast.error(err.data?.message) })
 
   }
   return (
@@ -148,14 +148,14 @@ const Header = () => {
           <ul className="align-middle hidden lg:flex justify-center w-full px-20">
             <div className="navbar">
               <Link href="/" className="cursor-pointer ">
-              <Image
-                      src="https://i.ibb.co/Z2SgSq2/travel-xone.png"
-                      alt="TRAVEL.XONE LOGO"
-                      width={600}
-                      height={450}
-                      loading="lazy"
-                      className="w-[70%]"
-                    />
+                <Image
+                  src="https://i.ibb.co/Z2SgSq2/travel-xone.png"
+                  alt="TRAVEL.XONE LOGO"
+                  width={600}
+                  height={450}
+                  loading="lazy"
+                  className="w-[70%]"
+                />
               </Link>
             </div>
 
