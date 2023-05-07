@@ -6,24 +6,29 @@ import { useContext, useState } from "react";
 import { RootContext } from "../context/RootContext";
 import toast from 'react-hot-toast';
 import Head from 'next/head'
+import { useRouter } from "next/router";
 const Login = () => {
+  const router = useRouter()
   const { register, handleSubmit } = useForm();
   const {LOGIN,setUser,user} = useContext(RootContext)
   const [errors,setErrors]= useState(null)
+  const redirect = router.pathname===router.asPath?'/dashboard':router.asPath
+  
   const handleLogin = (data)=>{
       LOGIN(data)
       .then(res=>{
         setUser(res.data.user)
         toast.success('Login success')
+        router.push(redirect)
         setErrors(null)
       })
-      .catch(err => {console.log(err) ; toast.error(err.data?.message.type) ; setErrors(err.data?.message)} )
+      .catch(err => {console.log(err) ; toast.error(err.data?.message?.type) ; setErrors(err.data?.message)} )
   }
   const backgroundClass = classNames("bg-[url('https://i.ibb.co/hRKMMLH/Rectangle.png')] max-h-screen bg-no-repeat bg-center bg-cover bg-fixed");
   const formClass = classNames("relative bg-[#000000b0] w-[80%] md:w-[40%] lg:w-[25%] text-white mx-auto mt-20 lg:mt-32 py-10 px-5 rounded shadow-2xl");
   const loginButton = classNames("bg-[#627FF4] w-full py-1 my-3 rounded-sm hover:bg-slate-300 hover:text-[#627FF4] hover:font-bold");
   return (
-    <>  { console.log(errors)}
+    <> 
     <Head>
       <title>Login Page</title>
     </Head>

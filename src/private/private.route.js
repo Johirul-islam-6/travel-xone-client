@@ -5,9 +5,8 @@ import { RootContext } from '@/context/RootContext';
 function Private(props) {
   const {user,status} = useContext(RootContext)
   const router = useRouter()
-  
   if(status.loading){ 
-                     return( <> {console.log(user)}
+                     return( <> 
                             <div className=' grid h-screen place-items-center'>  <div>
                               <h1 className=' text-4xl font-bold text-center'>Loading</h1> 
                               <progress className="progress  w-[50vw]"></progress> </div>
@@ -16,7 +15,7 @@ function Private(props) {
  )} 
   if(user){ return props.children}
 
-  return router.push('/login')
+  else{ router.replace({pathname:'/login'},router.pathname)}
 }
 
 export default Private;
