@@ -20,7 +20,7 @@ const TopHeader = () => {
             </div>
             <div className="flex items-center  text-slate-200 hover:text-white">
               <AiOutlineMail className="mt-1" />
-              <p className="ml-1 text-sm">contact@example.com</p>
+              <p className="ml-1 text-sm">travelxone3@gmail.com</p>
             </div>
           </div>
           <div className="flex gap-5 items-center text-base-300 absolute end-10 top-0 ">
@@ -33,11 +33,6 @@ const TopHeader = () => {
               <Link href="/about">
                 <p className="ml-2 text-sm text-slate-200 hover:text-white">
                   About us
-                </p>
-              </Link>
-              <Link href="/admin">
-                <p className="ml-2 text-sm text-slate-200 hover:text-white">
-                  admin
                 </p>
               </Link>
             </div>

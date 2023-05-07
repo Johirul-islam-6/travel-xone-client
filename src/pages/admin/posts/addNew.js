@@ -24,7 +24,7 @@ const AddNew = () => {
         <div className="w-[100%] lg:w-[20%] h-14 lg:h-screen flex justify-between ">
           <AdminSidebar />
         </div>
-        <div className="w-[100%] lg:w-[80%] bg-slate-100 py-10 px-10 ">
+        <div className="w-[100%] lg:w-[80%] bg-slate-300 py-10 px-10 ">
           {/* -------------body content Start------------------ */}
           <div className=" px-0 py-0 lg:px-20 lg:py-10">
             <h1 className="text-lg lg:text-xl">Add New Post :</h1>
@@ -32,7 +32,7 @@ const AddNew = () => {
             <form>
               <div>
                 {/* <!--Input for title--> */}
-                <div class="relative mb-3">
+                <div class="relative mb-3 bg-slate-50 rounded">
                   <input
                     type="text"
                     class={inputStyles}
@@ -44,7 +44,7 @@ const AddNew = () => {
                   </label>
                 </div>
                 {/* <!--Input for details--> */}
-                <div class="relative mb-3" data-te-input-wrapper-init>
+                <div class="relative mb-3 bg-slate-50 rounded" data-te-input-wrapper-init>
                   <textarea
                     class="peer m-0 block h-[100px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem] hover:shadow-lg"
                     id="exampleFormControlTextarea1"
@@ -58,7 +58,7 @@ const AddNew = () => {
                 {/* <!--Input for price and tour Group size--> */}
                 <div className="grid gap-0 md:gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                   {/* -----------------Input for Price---------------- */}
-                  <div class="relative mb-3">
+                  <div class="relative mb-3 bg-slate-50 rounded">
                     <input
                       type="text"
                       class={inputStyles}
@@ -70,7 +70,7 @@ const AddNew = () => {
                     </label>
                   </div>
                   {/* -----------------Input for Group Size---------------- */}
-                  <div class="relative mb-3">
+                  <div class="relative mb-3 bg-slate-50 rounded">
                     <input
                       type="text"
                       class={inputStyles}
@@ -85,7 +85,7 @@ const AddNew = () => {
                 {/* <!--Select for duration, tour type and group size--> */}
                 <div className="grid gap-0 md:gap-3 grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
                   {/* -----------------Select for duration---------------- */}
-                  <div class="relative mb-3">
+                  <div class="relative mb-3 bg-slate-50 rounded">
                     <select class={selectStyle}>
                       <option
                         disabled
@@ -102,7 +102,7 @@ const AddNew = () => {
                     </select>
                   </div>
                   {/* -----------------Select for Tour Type---------------- */}
-                  <div class="relative mb-3">
+                  <div class="relative mb-3 bg-slate-50 rounded">
                     <select class={selectStyle}>
                       <option
                         disabled
@@ -123,7 +123,7 @@ const AddNew = () => {
                     </select>
                   </div>
                   {/* -----------------Input for Language---------------- */}
-                  <div class="relative mb-3">
+                  <div class="relative mb-3 bg-slate-50 rounded">
                     <input
                       type="text"
                       class={inputStyles}
@@ -138,7 +138,7 @@ const AddNew = () => {
                 {/* <!--Input for Place Address and tour District--> */}
                 <div className="grid gap-0 md:gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                   {/* -----------------Input for Place Address---------------- */}
-                  <div class="relative mb-3">
+                  <div class="relative mb-3 bg-slate-50 rounded">
                     <input
                       type="text"
                       class={inputStyles}
@@ -150,7 +150,7 @@ const AddNew = () => {
                     </label>
                   </div>
                   {/* -----------------Input for District---------------- */}
-                  <div class="relative mb-3">
+                  <div class="relative mb-3 bg-slate-50 rounded">
                     <input
                       type="text"
                       class={inputStyles}
@@ -163,7 +163,7 @@ const AddNew = () => {
                   </div>
                 </div>
                 {/* -------------Image Upload--------------- */}
-                <div class="mb-3">
+                <div class="mb-3 ">
                   <label
                     for="formFileMultiple"
                     class="mb-2 inline-block text-neutral-700 dark:text-neutral-200"
@@ -171,7 +171,7 @@ const AddNew = () => {
                     Upload Images
                   </label>
                   <input
-                    class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary hover:shadow-lg"
+                    class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary hover:shadow-lg bg-slate-50 "
                     type="file"
                     id="formFileMultiple"
                     multiple

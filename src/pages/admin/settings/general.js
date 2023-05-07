@@ -5,13 +5,13 @@ const General = () => {
   return (
     <>
       <Head>
-        <title>Admin Dashboard</title>
+        <title>Settings</title>
       </Head>
       <div className="block lg:flex justify-between">
         <div className="w-[100%] lg:w-[20%] h-14 lg:h-screen flex justify-between">
           <AdminSidebar />
         </div>
-        <div className="w-[100%] lg:w-[80%] bg-slate-100 px-0 lg:px-10">
+        <div className="w-[100%] lg:w-[80%] bg-slate-300 px-0 lg:px-10">
           {/* -------------body content Start------------------ */}
 
           {/* --------------Site Meta-------------------- */}
@@ -559,7 +559,7 @@ const General = () => {
                               <label className="cursor-pointer label">
                                 <input
                                   type="checkbox"
-                                  className="checkbox checkbox-success"
+                                  className="checkbox checkbox-primary"
                                 />
                                 <span className="label-text">
                                 Anyone can register

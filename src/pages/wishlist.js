@@ -1,6 +1,26 @@
 import Head from "next/head";
 
 const Wishlist = () => {
+  const wishlists = [
+    {
+        id: "1",
+        image: "https://i.ibb.co/QmfMRWw/New-Project-44.png",
+        title: "Archaeological Rest House",
+        price: 28
+      },
+    {
+      id: "2",
+      image: "https://i.ibb.co/2Nftgtg/New-Project-49.png",
+      title: "Red Chillies Restaurant a",
+      price: 28
+    },
+    {
+      id: "3",
+      image: "https://i.ibb.co/Nm4GrGK/New-Project-48.png",
+      title: "Hotel Eden Park",
+      price: 28
+    },
+  ];
   return (
     <>
       <Head>
@@ -23,7 +43,7 @@ const Wishlist = () => {
               Favourites
             </h1>
             <p class="text-base leading-4 text-gray-600 dark:text-white">
-              (<span>4</span> Items)
+              (<span>3</span> Items)
             </p>
           </div>
           <div class="flex justify-center items-center w-full mt-2 flex-col space-y-4">

@@ -11,8 +11,6 @@ import Link from "next/link";
 import { useEffect, useState} from "react";
 
 
-
-
 const detailsHostel01 = ({ detailsHotel }) => {
   const[singleRevie,setSingleRevie] = useState()
    
@@ -30,20 +28,12 @@ let Review={}
       .then(res=>res.json() )
       .then(data =>{
         if(data){
-         
-
-           
            setSingleRevie(data?.data)
-            
-       
-        
         }
       })
     },[pageid])
   }
-  
- 
-  
+
 const review = (id)=>{
   fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/review?id=${id}`)
   .then(res =>res.json())
@@ -52,9 +42,7 @@ const review = (id)=>{
   })
 }
 
-
 // review(pageid);
-
   const bookingsubmit = (e) => {
     e.preventDefault();
     // console.log(singelsHotels,'hotel');
@@ -140,10 +128,7 @@ const handleReview =(e)=>{
   .then((data) => {
     console.log(data);
   })
-
-
 }
-
   return (
     
     <>

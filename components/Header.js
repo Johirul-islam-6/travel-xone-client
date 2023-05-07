@@ -7,30 +7,35 @@ import {
   FaHome,
   FaPhoneSquareAlt,
   FaUserAlt,
-  FaUserLock,
 } from "react-icons/fa";
 import { BiMenu, IconName } from "react-icons/bi";
 import TopHeader from "./TopHeader";
 import navbar from "../src/styles/home_style/hero.module.css";
-import Meta from "./Meta";
 import Image from "next/image";
 import { useContext } from "react";
 import { RootContext } from "@/context/RootContext";
-import toast from 'react-hot-toast';
-
+import toast from "react-hot-toast";
+import { AiOutlineHeart } from "react-icons/ai";
+import classNames from "classnames";
 
 const Header = () => {
-  const { LOGOUT,setUser} = useContext(RootContext)
+  const { LOGOUT, setUser } = useContext(RootContext);
 
-  const HandleLogOut=()=>{
+  const HandleLogOut = () => {
     LOGOUT()
-      .then(res=>{ 
-        setUser(null)
-        toast.success('Logout success')
-        })
-      .catch(err => {console.log(err) ; toast.error(err.data?.message)} )
+      .then((res) => {
+        setUser(null);
+        toast.success("Logout success");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.data?.message);
+      });
+  };
 
-  }
+  const buttonStyle = classNames(
+    "border border-blue-500 p-2 rounded-full hover:bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"
+  );
   return (
     <>
       <TopHeader />
@@ -38,17 +43,15 @@ const Header = () => {
         <div className="navbar w-[100%]">
           {/* <!-- -------- toggle left small size slider ------ --> */}
           <div className="dropdown dropdown-start lg:hidden z-50">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <BiMenu className="w-10 h-10 text-[#ffffff] bg-base-300 p-2" />
+            <label tabIndex={0}>
+              <div className={buttonStyle}>
+                <BiMenu />
               </div>
             </label>
-
             <ul
               tabIndex="1"
               className="menu menu-compact dropdown-content mt-3 bg-[#020202e7] rounded-box w-[70vw] md:w-[50vw] h-[90vh] pl-5"
             >
-
               {/* Dropdown menu */}
               <div className="h-[100vh] p-0 space-y-2  md:w-60 lg:hidden block py-4">
                 <div className="flex justify-between w-[60%]  ">
@@ -132,14 +135,16 @@ const Header = () => {
               />
             </Link>
           </div>
-
-          <div className="flex-1 flex justify-end w-full  relative lg:hidden navbar-end">
+          {/* -------------Navbar end button----------------- */}
+          <div className="flex-1 flex gap-2 justify-end w-full  relative lg:hidden navbar-end">
             <button className="h-[33px] text-[13px] px-4 text-[#dfdfdf] bg-[#0272f2] rounded-md hover:bg-[#2d89f1da]">
               <Link href="/register">Register</Link>
             </button>
 
-            <div className="search_btn bg-slate-100 w-10 h-8 rounded-md ml-2">
-              <FaUserAlt className="w-full h-full rounded text-blue-700 bg-base-100 p-2" />
+            <div className={buttonStyle}>
+              <Link href="/dashboard">
+                <FaUserAlt />
+              </Link>
             </div>
           </div>
           {/* -----------only small size navbar end----------- */}
@@ -148,17 +153,16 @@ const Header = () => {
           <ul className="align-middle hidden lg:flex justify-center w-full px-20">
             <div className="navbar">
               <Link href="/" className="cursor-pointer ">
-              <Image
-                      src="https://i.ibb.co/Z2SgSq2/travel-xone.png"
-                      alt="TRAVEL.XONE LOGO"
-                      width={600}
-                      height={450}
-                      loading="lazy"
-                      className="w-[70%]"
-                    />
+                <Image
+                  src="https://i.ibb.co/Z2SgSq2/travel-xone.png"
+                  alt="TRAVEL.XONE LOGO"
+                  width={600}
+                  height={450}
+                  loading="lazy"
+                  className="w-[70%]"
+                />
               </Link>
             </div>
-
             <div className="navbar-cente flex justify-center text-slate-600 ">
               <ul className="menu menu-horizontal px-1">
                 <li className="hover:text-white hover:border rounded">
@@ -198,46 +202,19 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            <div className="flex items-center">
-              <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle">
-                  <div className="indicator">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                    <span className="badge badge-sm indicator-item">8</span>
-                  </div>
-                </label>
-                <div
-                  tabIndex={0}
-                  className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
-                >
-                  <div className="card-body">
-                    <span className="font-bold text-lg">8 Items</span>
-                    <span className="text-info">Subtotal: $999</span>
-                    <div className="card-actions">
-                      <button className="btn btn-primary btn-block">
-                        View cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
+            {/* -------------Navbar end button----------------- */}
+            <div className="flex items-center gap-2">
+              <div className={buttonStyle}>
+                <Link href="/wishlist">
+                  <AiOutlineHeart />
+                </Link>
               </div>
               <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                  <div className="w-8 rounded-full">
-                    <FaUserAlt className="w-8 h-8 text-blue-700 bg-white p-2" />
+                <label tabIndex={0}>
+                  <div className={buttonStyle}>
+                    <Link href="/dashboard">
+                      <FaUserAlt />
+                    </Link>
                   </div>
                 </label>
                 <ul

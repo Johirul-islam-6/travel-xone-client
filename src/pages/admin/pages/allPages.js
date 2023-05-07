@@ -35,13 +35,13 @@ const AllPages = () => {
       </Head>
       <div className="h-screen block lg:flex justify-between text-black">
         <div className="w-[100%] lg:w-[20%] h-14 lg:h-screen flex justify-between"><AdminSidebar /></div>
-        <div className="w-[100%] lg:w-[80%] bg-slate-100 py-10 px-10">
+        <div className="w-[100%] lg:w-[80%] bg-slate-300 py-10 px-10">
           {/* -------------body content Start------------------ */}
           <div className="overflow-x-auto">
             <table className="table w-full">
               {/* head */}
               <thead>
-                <tr className="bg-blue-700">
+                <tr className="shadow-lg border-b-2 border-blue-300">
                   <th>
                     <label>
                       <input type="checkbox" className="checkbox" />

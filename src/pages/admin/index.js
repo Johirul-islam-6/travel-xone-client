@@ -12,7 +12,7 @@ const admin = () => {
       </Head>
       <div className="h-screen block lg:flex justify-between">
         <div className="w-[100%] lg:w-[20%] h-14 lg:h-screen flex justify-between"><AdminSidebar /></div>
-        <div className="w-[100%] lg:w-[80%] bg-slate-100 py-10 px-10">
+        <div className="w-[100%] lg:w-[80%] bg-slate-300 py-10 px-10">
           {/* -------------body content------------------ */}
           <Card />
           <div className="w-[100%] grid gap-5 grid-cols-1 lg:grid-cols-2 pt-10">

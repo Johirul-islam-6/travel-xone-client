@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import Location from '../../../components/Home/Location';
 import classNames from "classnames";
 import Link from 'next/link';
 
+
 const Destinations = ({ location }) => {
+    
     console.log(location)
     const [locationid, setlocationId] = useState()
     const id1 = "643c2ace24a8114c69217526"
@@ -12,6 +13,9 @@ const Destinations = ({ location }) => {
     const id4 = "643c2c61f97a9e7ae141b4a1"
     const id5 = "643c3117e049fd5186b59ae1"
 
+   
+
+  
 
     const ClickLocation = (id) => {
         setlocationId(id)
@@ -22,13 +26,7 @@ const Destinations = ({ location }) => {
     );
     return (
         <>
-            {/* {
-                location?.data?.map(Are => {
-                    return <>
-                        <h1 className='text-black'>are : {Are?._id}</h1>
-                    </>
-                })
-            } */}
+            
             <section className="bg-[#F7FAFC] py-20">
                 <div className="container mx-auto">
                     {/*----- section header -----*/}

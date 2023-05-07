@@ -41,13 +41,13 @@ const AllPosts = () => {
         <div className="w-[100%] lg:w-[20%] h-14 lg:h-screen flex justify-between">
           <AdminSidebar />
         </div>
-        <div className="w-[100%] lg:w-[80%] bg-slate-100 py-10 px-10">
+        <div className="w-[100%] lg:w-[80%] bg-slate-300 py-10 px-10">
           {/* -------------body content Start------------------ */}
           <div className="overflow-x-auto">
             <table className="table w-full">
               {/* head */}
-              <thead>
-                <tr className="bg-blue-700">
+              <thead className="shadow-lg border-b-2 border-blue-300">
+                <tr>
                   <th>
                     <label>
                       <input type="checkbox" className="checkbox" />
@@ -76,7 +76,7 @@ const AllPosts = () => {
                       <td>
                         <div className="flex items-center space-x-3">
                           <div className="avatar">
-                            <div className="mask mask-squircle w-12 h-12">
+                            <div className="mask mask-square w-12 h-12">
                               <img
                                 src={post.image}
                                 alt="Avatar Tailwind CSS Component"
