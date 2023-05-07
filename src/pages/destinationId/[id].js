@@ -8,19 +8,52 @@ import {
 import { TbWorld } from "react-icons/tb";
 import { FaShoePrints, FaUserAlt, FaUsers } from "react-icons/fa";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState} from "react";
 
 
 
 
 const detailsHostel01 = ({ detailsHotel }) => {
-    const [singleData, setSingleData] = useState([]);
+  const[singleRevie,setSingleRevie] = useState()
+   
   // console.log(detailsHotel.data[0], "This is single data");
   const singelsHotels = detailsHotel?.data[0];
+  
   // console.log("details hotels", detailsHotel.data);
-    
+  const pageid = singelsHotels?._id;
+  console.log(pageid,'id');
+ 
+let Review={}
+  if(pageid){
+    useEffect(()=>{
+      fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/review?id=${pageid}`)
+      .then(res=>res.json() )
+      .then(data =>{
+        if(data){
+         
+
+           
+           setSingleRevie(data?.data)
+            
+       
+        
+        }
+      })
+    },[pageid])
+  }
+  
+ 
+  
+const review = (id)=>{
+  fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/review?id=${id}`)
+  .then(res =>res.json())
+  .then(data =>{
+    // setReviews(data)
+  })
+}
 
 
+// review(pageid);
 
   const bookingsubmit = (e) => {
     e.preventDefault();
@@ -34,7 +67,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
     const GroupSize = parseInt(e.target.GroupSize.value);
     const notes = e.target.notes.value;
    
-    const _id = singelsHotels?._id;
+    const id = singelsHotels?._id;
     const descriptions = singelsHotels?.descriptions;
     const district = singelsHotels?.district;
     
@@ -57,7 +90,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
       
       GroupSize,
       notes,
-      _id,
+      id,
       descriptions,
       district,
       title,
@@ -72,7 +105,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
     };
     console.log(bookingInfo);
 
-    fetch("", {
+    fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/bookings`, {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
@@ -90,13 +123,13 @@ const handleReview =(e)=>{
  const designation= e.target.designation.value;
  const title = e.target.title.value;
  const message = e.target.message.value;
- const _id = singelsHotels?._id
- console.log(name,designation,title,message,_id );
+ const id = singelsHotels?._id
+ console.log(name,designation,title,message,id );
  const reviewInfo={
-  name,designation,title,message,_id,rating:5
+  name,designation,title,message,id,rating:5
  }
 
- fetch("", {
+ fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/review`, {
   method: "POST", // or 'PUT'
   headers: {
     "Content-Type": "application/json",
@@ -110,8 +143,13 @@ const handleReview =(e)=>{
 
 
 }
+
   return (
+    
     <>
+    {
+      console.log(singleRevie)
+    }
       <section>
         {/* ---------- Header Title Part ---------------- */}
         <div className="bg-[url('https://i.ibb.co/nkNGLdF/banner.png')] bg-no-repeat bg-cover bg-left-bottom pt-28 md:pt-32 lg:pt-48 pb-4">
@@ -690,6 +728,9 @@ const handleReview =(e)=>{
             {/*------- Side Bar End------- */}
           </div>
         </div>
+        {
+          Review?.s? <button>ami</button> : 'nai'
+        }
       </section>
     </>
   );
