@@ -1,11 +1,14 @@
 import styles from "../../src/styles/home_style/hero.module.css";
 import { FaAward, FaPlaneDeparture, FaWalking } from "react-icons/fa";
 import { BiCommentCheck } from "react-icons/bi";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/router";
+import { RootContext } from "@/context/RootContext";
+
 
 const Hero = () => {
+  const { user } = useContext(RootContext)
   const [singelServeics, setServices] = useState("Toure");
   const [showModal, setShowModal] = useState(false);
   const [bookingData, setBooking] = useState()
@@ -18,6 +21,14 @@ const Hero = () => {
   const [JDate, setJDate] = useState('')
   const [RDate, setRDate] = useState('')
   const [Member, setMember] = useState('')
+  const [hotelLocation, setHotelLocation] = useState('')
+  const [HotelName, setHotelName] = useState('')
+  const [Flight, setFlight] = useState('')
+  const [FlightDate, setFlightDate] = useState('')
+
+
+
+  const [hotels, setHotels] = useState('');
 
 
   const HomeServecesClick = (value) => {
@@ -42,10 +53,35 @@ const Hero = () => {
     const field = e?.target?.value
     setRDate(field)
   }
+  const handelHotelLocation = (e) => {
+    const field = e?.target?.value
+    setHotelLocation(field)
+  }
   const handelMember = (e) => {
     const field = e?.target?.value
     setMember(field)
   }
+  const handelHoteName = (e) => {
+    const field = e?.target?.value
+    setHotelName(field)
+  }
+  const handelFlight = (e) => {
+    const field = e?.target?.value
+    setFlight(field)
+  }
+  const handelFlightDate = (e) => {
+    const field = e?.target?.value
+    setFlightDate(field)
+  }
+
+  // ------------hotel data----------
+
+  useEffect(() => {
+    fetch(`https://travel-xone-server.vercel.app/api/v1/hotels/`)
+      .then(res => res.json())
+      .then(data => setHotels(data))
+
+  }, [])
 
 
 
@@ -61,10 +97,15 @@ const Hero = () => {
       ToLocation: TO,
       JarnyDate: JDate,
       ReturnDate: RDate,
-      Member: Member
+      Member: Member,
+      HotelName: HotelName,
+      HotelPlaces: hotelLocation,
+      Flight: Flight,
+      FlightDate: FlightDate,
     }
     setBooking(bookingMember)
     console.log(bookingMember)
+
 
   }
 
@@ -81,6 +122,10 @@ const Hero = () => {
     const ReturnDate = targetValue?.rdate?.value;
     const Members = parseFloat(targetValue?.member?.value);
     const phone = parseFloat(targetValue?.phone?.value);
+    const FlightL = parseFloat(targetValue?.Flight?.value);
+    const FJDT = parseFloat(targetValue?.FJD?.value);
+    const HotelN = parseFloat(targetValue?.HotelN?.value);
+    const HotelL = parseFloat(targetValue?.HotelL?.value);
 
     const bookingMember = {
       name: names,
@@ -90,7 +135,11 @@ const Hero = () => {
       ToLocation: tolocations,
       JarnyDate: JarnyDate,
       ReturnDate: ReturnDate,
-      Member: Members
+      Member: Members,
+      HotelName: HotelN,
+      HotelPlace: HotelL,
+      Flight: FlightL,
+      FlightJurnyDate: FJDT
     }
     console.log("show booking", bookingMember)
 
@@ -123,9 +172,13 @@ const Hero = () => {
   }
 
 
-
+  // console.log(hotels?.data)
+  console.log("user", user)
   return (
     <>
+      {
+        console.log("user", user)
+      }
       <section className="Section01 text-center">
         {/* The button to open modal */}
         <div
@@ -172,9 +225,9 @@ const Hero = () => {
                   {
                     showModal ? <>
                       <div
-                        className="justify-center items-center hidden md:flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                        className="justify-center items-center hidden md:flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none "
                       >
-                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                        <div className="relative w-auto my-6 mx-auto max-w-3xl pt-16">
                           {/*content*/}
                           <form onSubmit={confirmBooking}>
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -257,6 +310,35 @@ const Hero = () => {
                                     <input name="member" type="text" defaultValue={bookingData?.Member} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
                                   </div>
                                 </div>
+                                <div className="grid grid-cols-2 gap-2">
+                                  <div className="form-control w-full max-w-xs">
+
+                                    <label className="label">
+                                      <span className="label-text">Flight Journey Date:</span>
+                                    </label>
+                                    <input name="FJD" type="text" defaultValue={bookingData?.FlightDate} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                  </div>
+                                  <div className="form-control w-full max-w-xs">
+                                    <label className="label">
+                                      <span className="label-text">Journey Location:</span>
+                                    </label>
+                                    <input name="Flight" type="text" defaultValue={bookingData?.Flight} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                  </div>
+                                </div>
+                                <div className="grid grid-cols-2 gap-2">
+                                  <div className="form-control w-full max-w-xs">
+                                    <label className="label">
+                                      <span className="label-text">your Hotel Location:</span>
+                                    </label>
+                                    <input name="HotelP" type="text" defaultValue={bookingData?.HotelPlaces} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                  </div>
+                                  <div className="form-control w-full max-w-xs">
+                                    <label className="label">
+                                      <span className="label-text">your Hotel Name :</span>
+                                    </label>
+                                    <input name="HotelN" type="text" defaultValue={bookingData?.HotelName} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                  </div>
+                                </div>
 
                               </div>
                               {/*footer*/}
@@ -267,7 +349,7 @@ const Hero = () => {
                                   type="button"
                                   onClick={() => setShowModal(false)}
                                 >
-                                  Skip
+                                  Cancel
                                 </button>
                                 <button
                                   className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -288,8 +370,6 @@ const Hero = () => {
                     </>
                       : null
                   }
-
-
 
 
                 </div>
@@ -333,6 +413,8 @@ const Hero = () => {
                         </option>
                         <option>Dhaka</option>
                         <option>cox's bazar</option>
+                        <option>Sajik</option>
+                        <option>Mymensingh</option>
                         <option>Borisal</option>
                         <option>Rongpur</option>
                         <option>Cummila</option>
@@ -491,7 +573,7 @@ const Hero = () => {
                                     type="button"
                                     onClick={() => setShowModal(false)}
                                   >
-                                    Skip
+                                    Cancel
                                   </button>
                                   <button
                                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -538,7 +620,7 @@ const Hero = () => {
 
                       <div select className="border-2 border-[#c7c6c6] py-3 px-5 rounded-lg">
                         <p className="text-[16px] text-[#dcdada] text-start pl-2 pb-1 font-mono font-bold">Airports Lisht</p>
-                        <select className="focus:outline-none bg-[#3a3939]  text-md font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
+                        <select onChange={(e) => handelFlight(e)} className="focus:outline-none bg-[#3a3939]  text-md font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
                           <option disabled selected>
                             Select Flight
                           </option>
@@ -553,7 +635,7 @@ const Hero = () => {
                       <div select className="border-2 border-[#c7c6c6] py-3 px-5 rounded-lg">
                         <p className="text-[16px] text-[#dcdada] text-start pl-2 pb-1 font-mono font-bold">JOURNEY DATE</p>
 
-                        <input
+                        <input onChange={(e) => handelFlightDate(e)}
                           type="date"
                           className="text-sm font-normal bg-[#3a3939]  focus:outline-nonew-[90%] px-5 py-2 w-[100%] rounded-md mx-auto cursor-pointer"
                         />
@@ -590,29 +672,26 @@ const Hero = () => {
 
                       <div select className="border-2 border-[#c7c6c6] py-3 px-5 rounded-lg">
                         <p className="text-[16px] text-[#dcdada] text-start pl-2 pb-1 font-mono font-bold">Locations</p>
-                        <select className="focus:outline-none text-md bg-[#3a3939]  font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
+                        <select onChange={(e) => handelHotelLocation(e)} className="focus:outline-none text-md bg-[#3a3939]  font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
                           <option disabled selected>
                             Select Locations
                           </option>
-                          <option>Dahaka</option>
-                          <option>Chittagong </option>
-                          <option>Cox's Bazar</option>
-                          <option> Rajshahi</option>
-                          <option>Sylhet</option>
+                          {
+                            hotels?.data?.map(hotel => <option>{hotel?.placeName}</option>)
+                          }
                         </select>
                       </div>
                       {/* ------------hotels name */}
                       <div select className="border-2 border-[#c7c6c6] py-3 px-5 rounded-lg">
                         <p className="text-[16px] text-[#dcdada] text-start pl-2 pb-1 font-mono font-bold">Hotels</p>
-                        <select className="focus:outline-none text-md bg-[#3a3939]  font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
+                        <select onChange={(e) => handelHoteName(e)} className="focus:outline-none text-md bg-[#3a3939]  font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
                           <option disabled selected>
                             Select Hotels
                           </option>
-                          <option>Dahaka</option>
-                          <option>Chittagong </option>
-                          <option>Cox's Bazar</option>
-                          <option> Rajshahi</option>
-                          <option>Sylhet</option>
+                          {
+                            hotels?.data?.map(hotel => <option>{hotel?.title}</option>)
+                          }
+
                         </select>
                       </div>
                     </div>
