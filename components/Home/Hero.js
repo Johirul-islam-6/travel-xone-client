@@ -1,18 +1,39 @@
 import styles from "../../src/styles/home_style/hero.module.css";
 import { FaAward, FaPlaneDeparture, FaWalking } from "react-icons/fa";
 import { BiCommentCheck } from "react-icons/bi";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
+import { RootContext } from "@/context/RootContext";
+import Link from "next/link";
+
 
 const Hero = () => {
+  const { user } = useContext(RootContext)
   const [singelServeics, setServices] = useState("Toure");
   const [showModal, setShowModal] = useState(false);
-  const [bookingData, setBooking] = useState('')
+  const [bookingData, setBooking] = useState();
+  const [singelUser, setUser] = useState({
+    name: "Rasel",
+    email: "rasel@gmail.com"
+  });
+
+  const router = useRouter()
+
   // input value resive state
   const [location, setLocation] = useState('')
   const [TO, setTO] = useState('')
   const [JDate, setJDate] = useState('')
   const [RDate, setRDate] = useState('')
   const [Member, setMember] = useState('')
+  const [hotelLocation, setHotelLocation] = useState('')
+  const [HotelName, setHotelName] = useState('')
+  const [Flight, setFlight] = useState('')
+  const [FlightDate, setFlightDate] = useState('')
+
+
+
+  const [hotels, setHotels] = useState('');
 
 
   const HomeServecesClick = (value) => {
@@ -37,10 +58,35 @@ const Hero = () => {
     const field = e?.target?.value
     setRDate(field)
   }
+  const handelHotelLocation = (e) => {
+    const field = e?.target?.value
+    setHotelLocation(field)
+  }
   const handelMember = (e) => {
     const field = e?.target?.value
     setMember(field)
   }
+  const handelHoteName = (e) => {
+    const field = e?.target?.value
+    setHotelName(field)
+  }
+  const handelFlight = (e) => {
+    const field = e?.target?.value
+    setFlight(field)
+  }
+  const handelFlightDate = (e) => {
+    const field = e?.target?.value
+    setFlightDate(field)
+  }
+
+  // ------------hotel data----------
+
+  useEffect(() => {
+    fetch(`https://travel-xone-server.vercel.app/api/v1/hotels/`)
+      .then(res => res.json())
+      .then(data => setHotels(data))
+
+  }, [])
 
 
 
@@ -49,22 +95,28 @@ const Hero = () => {
     setShowModal(true)
 
     const bookingMember = {
-      name: "kalek",
+      name: "Rasel Khan",
       email: "rasel@gmail.com",
       phone: "018282312",
       FromLocation: location,
       ToLocation: TO,
       JarnyDate: JDate,
       ReturnDate: RDate,
-      Member: Member
+      Member: Member,
+      HotelName: HotelName,
+      HotelPlaces: hotelLocation,
+      Flight: Flight,
+      FlightDate: FlightDate,
     }
     setBooking(bookingMember)
     console.log(bookingMember)
+
 
   }
 
   // ----confirm booking ----
   const confirmBooking = (e) => {
+
     e.preventDefault();
     const targetValue = e?.target;
     const names = targetValue?.name?.value;
@@ -73,8 +125,12 @@ const Hero = () => {
     const tolocations = targetValue?.tLocation?.value;
     const JarnyDate = targetValue?.jdate?.value;
     const ReturnDate = targetValue?.rdate?.value;
-    const Members = targetValue?.member?.value;
-    const phone = targetValue?.phone?.value;
+    const Members = parseFloat(targetValue?.member?.value);
+    const phone = parseFloat(targetValue?.phone?.value);
+    const FlightL = targetValue?.flight?.value;
+    const FJDT = targetValue?.fjd?.value;
+    const HotelN = targetValue?.hotelname?.value;
+    const HotelL = targetValue?.hotellocation?.value;
 
     const bookingMember = {
       name: names,
@@ -84,37 +140,48 @@ const Hero = () => {
       ToLocation: tolocations,
       JarnyDate: JarnyDate,
       ReturnDate: ReturnDate,
-      Member: Members
+      Member: Members,
+      HotelName: HotelN,
+      HotelPlace: HotelL,
+      Flight: FlightL,
+      FlightJurnyDate: FJDT
     }
-    console.log(bookingMember)
+    console.log("show booking", bookingMember)
 
-    fetch('http://localhost:5000/', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(bookingMember)
-    })
-      .then(result => result.json())
-      .then(data => {
-        console.log(data)
-        if (data?.acknowledged) {
-          console.log('Your Booking successfuly ')
-          targetValue.reset()
-          // bookItem(null);
-        } else {
-          console.log(data?.messsage)
-        }
-
+    try {
+      fetch('http://localhost:5000/api/v1/sbooking', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(bookingMember)
       })
+        .then(result => result.json())
+        .then(data => {
+          console.log(data)
+          if (data) {
+            toast.success('Your Booking successfuly ')
+            targetValue.reset()
+            setShowModal(false)
+          } else {
+            console.log(data)
+            toast.error(error)
+          }
+
+        })
+    } catch (error) {
+      toast.error(error)
+    }
 
 
   }
 
 
-
+  // console.log(hotels?.data)
+  console.log("user", singelUser)
   return (
     <>
+
       <section className="Section01 text-center">
         {/* The button to open modal */}
         <div
@@ -125,12 +192,6 @@ const Hero = () => {
             <h1 className="text-xl md:text-3xl lg:text-5xl hidden md:block text-[#ede7e7]  font-bold uppercase md:mb-60">
               Your World of Joy
             </h1>
-
-            {/* <h5 className="text-[14px] hidden md:block  text-slate-400 pt-1 px-[2px] w-10/12 md:w-7/12  lg:w-7/12 mx-auto mb-72">
-              Bangladesh has been ranked seventh out of ‘top ten best value’
-              travel destinations for 2019 launched by Lonely Planet, a global
-              leader of travel guidebook publisher.
-            </h5> */}
 
             <div className="flex justify-center items-center">
               <div className="grid grid-cols-3 top_div w-[60%] md:w-[30%] px-2 text-[#000000c9] font-semibold rounded-t-full bg-[#ffffffe5] absolute mx-auto z-10 top-[27%] md:top-[45.5%] ">
@@ -160,10 +221,11 @@ const Hero = () => {
 
                   {
                     showModal ? <>
-                      <div
-                        className="justify-center items-center hidden md:flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                      <d
+                        iv
+                        className="justify-center items-center hidden md:flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none "
                       >
-                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                        <div className="relative w-auto my-6 mx-auto max-w-3xl pt-16">
                           {/*content*/}
                           <form onSubmit={confirmBooking}>
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -181,112 +243,177 @@ const Hero = () => {
                                   </span>
                                 </button>
                               </div>
-                              {/* start modal  body*/}
+                              {/* -------------------- User Condition base --------------- */}
+                              {
+                                singelUser?.email ?
+                                  <>
+                                    {/* start modal  body*/}
+                                    <div className="relative p-6 flex-auto">
+                                      <p className="my-4 text-slate-500 text-lg leading-relaxed">
+                                        Travel takes us out of our comfort zones and inspires us to see,  try new things.
+                                      </p>
+                                      <div className="grid grid-cols-2 gap-2">
+                                        <div className="form-control w-full max-w-xs">
+                                          <label className="label">
+                                            <span className="label-text">your name Is :</span>
+                                          </label>
+                                          <input name="name" type="text" defaultValue={bookingData?.name} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                        <div className="form-control w-full max-w-xs">
+                                          <label className="label">
+                                            <span className="label-text">your Email Is :</span>
+                                          </label>
+                                          <input name="email" type="text" defaultValue={bookingData?.email} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                      </div>
+                                      <div className="grid grid-cols-2 gap-2">
+                                        <div className="form-control w-full max-w-xs">
+                                          <label className="label">
+                                            <span className="label-text">your From :</span>
+                                          </label>
+                                          <input name="fLocation" type="text" defaultValue={bookingData?.FromLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                        <div className="form-control w-full max-w-xs">
+                                          <label className="label">
+                                            <span className="label-text">your From To :</span>
+                                          </label>
+                                          <input name="tLocation" type="text" defaultValue={bookingData?.ToLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                      </div>
 
-                              <div className="relative p-6 flex-auto">
-                                <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                                  Travel takes us out of our comfort zones and inspires us to see,  try new things.
-                                </p>
+                                      <div className="grid grid-cols-2 gap-2">
+                                        <div className="form-control w-full max-w-xs">
+                                          <label className="label">
+                                            <span className="label-text">Journey Date is :</span>
+                                          </label>
+                                          <input name="jdate" type="text" defaultValue={bookingData?.JarnyDate} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                        <div className="form-control w-full max-w-xs">
+                                          <label className="label">
+                                            <span className="label-text">Return Date is:</span>
+                                          </label>
+                                          <input name="rdate" type="text" defaultValue={bookingData?.ReturnDate} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                      </div>
 
-                                <div className="grid grid-cols-2 gap-2">
-                                  <div className="form-control w-full max-w-xs">
-                                    <label className="label">
-                                      <span className="label-text">your name Is :</span>
-                                    </label>
-                                    <input name="name" type="text" defaultValue={bookingData?.name} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                  </div>
-                                  <div className="form-control w-full max-w-xs">
-                                    <label className="label">
-                                      <span className="label-text">your Email Is :</span>
-                                    </label>
-                                    <input name="email" type="text" defaultValue={bookingData?.email} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                  </div>
-                                </div>
-                                <div className="grid grid-cols-2 gap-2">
-                                  <div className="form-control w-full max-w-xs">
-                                    <label className="label">
-                                      <span className="label-text">your From :</span>
-                                    </label>
-                                    <input name="fLocation" type="text" defaultValue={bookingData?.FromLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                  </div>
-                                  <div className="form-control w-full max-w-xs">
-                                    <label className="label">
-                                      <span className="label-text">your From To :</span>
-                                    </label>
-                                    <input name="tLocation" type="text" defaultValue={bookingData?.ToLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                  </div>
-                                </div>
+                                      <div className="grid grid-cols-2 gap-2">
+                                        <div className="form-control w-full max-w-xs">
+                                          <label className="label">
+                                            <span className="label-text">your Phone is :</span>
+                                          </label>
+                                          <input name="phone" type="text" defaultValue={bookingData?.phone} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                        <div className="form-control w-full max-w-xs">
+                                          <label className="label">
+                                            <span className="label-text">your Members is:</span>
+                                          </label>
+                                          <input name="member" type="text" defaultValue={bookingData?.Member} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                      </div>
 
-                                <div className="grid grid-cols-2 gap-2">
-                                  <div className="form-control w-full max-w-xs">
-                                    <label className="label">
-                                      <span className="label-text">Journey Date is :</span>
-                                    </label>
-                                    <input name="jdate" type="text" defaultValue={bookingData?.JarnyDate} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                  </div>
-                                  <div className="form-control w-full max-w-xs">
-                                    <label className="label">
-                                      <span className="label-text">Return Date is:</span>
-                                    </label>
-                                    <input name="rdate" type="text" defaultValue={bookingData?.ReturnDate} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                  </div>
-                                </div>
+                                      <div className="grid grid-cols-2 gap-2">
+                                        <div className="form-control w-full max-w-xs">
 
-                                <div className="grid grid-cols-2 gap-2">
-                                  <div className="form-control w-full max-w-xs">
-                                    <label className="label">
-                                      <span className="label-text">your Phone is :</span>
-                                    </label>
-                                    <input name="phone" type="text" defaultValue={bookingData?.phone} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                  </div>
-                                  <div className="form-control w-full max-w-xs">
-                                    <label className="label">
-                                      <span className="label-text">your Members is:</span>
-                                    </label>
-                                    <input name="member" type="text" defaultValue={bookingData?.Member} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                  </div>
-                                </div>
+                                          <label className="label">
+                                            <span className="label-text">Flight Journey Date:</span>
+                                          </label>
+                                          <input name="fjd" type="text" defaultValue={bookingData?.FlightDate} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                        <div className="form-control w-full max-w-xs">
+                                          <label className="label">
+                                            <span className="label-text">Journey Location:</span>
+                                          </label>
+                                          <input name="flight" type="text" defaultValue={bookingData?.Flight} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                      </div>
+                                      <div className="grid grid-cols-2 gap-2">
+                                        <div className="form-control w-full max-w-xs">
+                                          <label className="label">
+                                            <span className="label-text">your Hotel Location:</span>
+                                          </label>
+                                          <input name="hotellocation" type="text" defaultValue={bookingData?.HotelPlaces} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                        <div className="form-control w-full max-w-xs">
+                                          <label className="label">
+                                            <span className="label-text">your Hotel Name :</span>
+                                          </label>
+                                          <input name="hotelname" type="text" defaultValue={bookingData?.HotelName} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                        </div>
+                                      </div>
 
-                              </div>
-                              {/*footer*/}
-                              <div className="flex items-center justify-between p-6 border-t border-solid border-slate-200 rounded-b">
+                                    </div>
+                                    {/*modal footer*/}
+                                    <div className="flex items-center justify-between p-6 border-t border-solid border-slate-200 rounded-b">
 
-                                <button
-                                  className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                  type="button"
-                                  onClick={() => setShowModal(false)}
-                                >
-                                  Skip
-                                </button>
-                                <button
-                                  className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                  type="submit" value="Submit"
-                                  onClick={() => confirmBooking}
-                                >
-                                  Confirm Booking
-                                </button>
+                                      <button
+                                        className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        type="button"
+                                        onClick={() => setShowModal(false)}
+                                      >
+                                        Cancel
+                                      </button>
+                                      <button
+                                        className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        type="submit" value="Submit"
+                                        onClick={() => confirmBooking}
+                                      >
+                                        Confirm Booking
+                                      </button>
 
-                              </div>
+                                    </div>
+                                  </>
+                                  : <>
+                                    <div className="relative p-6 flex-auto ">
+                                      <p className="my-4 text-slate-500 text-lg leading-relaxed ">
+                                        Travel takes us out of our comfort zones and inspires us to see,  try new things.
+                                      </p>
+
+                                      <h1 className="text-[#ef2323]">You Aren't a Valid User Our Treval.Xon</h1>
+                                      <h1 className="text-[#2391eb]">Please sign up Now.</h1>
+                                      <div className="flex w-full py-10">
+
+                                        <div className="grid h-20 flex-grow card bg-[#fff] rounded-box place-items-center">
+                                          <span class="relative flex h-12 w-32">
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-12 w-52 bg-sky-500 ">
+                                              <Link href={'/login'} className="text-center ml-10 mt-3 text-[#fff]">LOGIN</Link> </span>
+
+                                          </span>
+
+                                        </div>
+                                        <div className="divider divider-horizontal">OR</div>
+                                        <div className="grid h-20 flex-grow card bg-[#fff]  rounded-box place-items-center">
+                                          <span class="relative flex h-12 w-32">
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-12 w-44 bg-[#019ba0] ">
+                                              <Link href={'/register'} className="text-center ml-3 mt-3 text-[#fff]">REGISTRATION</Link> </span>
+
+                                          </span>
+                                        </div>
+
+                                      </div>
+
+                                    </div>
+                                  </>
+                              }
+
+
+
                             </div>
 
                           </form>
 
                         </div>
-                      </div>
+                      </d>
                       <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
                     </>
                       : null
                   }
 
 
-
-
                 </div>
 
               </from>
-
-
-
 
               {/* ===================condition rendaring============= */}
 
@@ -322,6 +449,8 @@ const Hero = () => {
                         </option>
                         <option>Dhaka</option>
                         <option>cox's bazar</option>
+                        <option>Sajik</option>
+                        <option>Mymensingh</option>
                         <option>Borisal</option>
                         <option>Rongpur</option>
                         <option>Cummila</option>
@@ -379,21 +508,21 @@ const Hero = () => {
 
                   </div>
                   <div className="flex justify-center mt-5 md:hidden">
-                    <button onClick={SubmitTourestData} className="btn btn-primary px-14 bg-[#ffffff] text-black">submit</button>
+
 
 
                     {
                       showModal ? <>
                         <div
-                          className="justify-center items-center flex md:hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                          className="justify-center pt-80 items-center flex md:hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
                         >
-                          <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                          <div className="relative w-auto my-6 mx-auto max-w-3xl ">
                             {/*content*/}
                             <form onSubmit={confirmBooking}>
                               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 {/*header*/}
                                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                                  <h3 className="text-3xl font-semibold text-center text-black">
+                                  <h3 className="text-3xl font-semibold text-black">
                                     Travel<span className="text-blue-600">.Xone</span>
                                   </h3>
                                   <button
@@ -405,107 +534,181 @@ const Hero = () => {
                                     </span>
                                   </button>
                                 </div>
-                                {/* start modal  body*/}
+                                {/* -------------------- User Condition base --------------- */}
+                                {
+                                  singelUser?.phone ?
+                                    <>
+                                      {/* start modal  body*/}
+                                      <div className="relative p-6 flex-auto ">
+                                        <p className="my-4 text-slate-500 text-lg leading-relaxed">
+                                          Travel takes us out of our comfort zones and inspires us to see,  try new things.
+                                        </p>
+                                        <div className="grid grid-cols-2 gap-2">
+                                          <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                              <span className="label-text">your name Is :</span>
+                                            </label>
+                                            <input name="name" type="text" defaultValue={bookingData?.name} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                          <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                              <span className="label-text">your Email Is :</span>
+                                            </label>
+                                            <input name="email" type="text" defaultValue={bookingData?.email} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-2">
+                                          <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                              <span className="label-text">your From :</span>
+                                            </label>
+                                            <input name="fLocation" type="text" defaultValue={bookingData?.FromLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                          <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                              <span className="label-text">your From To :</span>
+                                            </label>
+                                            <input name="tLocation" type="text" defaultValue={bookingData?.ToLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                        </div>
 
-                                <div className="relative p-6 flex-auto">
-                                  <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                                    Travel takes us out of our comfort zones and inspires us to see.
-                                  </p>
+                                        <div className="grid grid-cols-2 gap-2">
+                                          <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                              <span className="label-text">Journey Date is :</span>
+                                            </label>
+                                            <input name="jdate" type="text" defaultValue={bookingData?.JarnyDate} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                          <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                              <span className="label-text">Return Date is:</span>
+                                            </label>
+                                            <input name="rdate" type="text" defaultValue={bookingData?.ReturnDate} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                        </div>
 
-                                  <div className="grid grid-cols-2 gap-2">
-                                    <div className="form-control w-full max-w-xs">
-                                      <label className="label">
-                                        <span className="label-text">your name Is :</span>
-                                      </label>
-                                      <input name="name" type="text" defaultValue={bookingData?.name} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                    </div>
-                                    <div className="form-control w-full max-w-xs">
-                                      <label className="label">
-                                        <span className="label-text">your Email Is :</span>
-                                      </label>
-                                      <input name="email" type="text" defaultValue={bookingData?.email} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                    </div>
-                                  </div>
-                                  <div className="grid grid-cols-2 gap-2">
-                                    <div className="form-control w-full max-w-xs">
-                                      <label className="label">
-                                        <span className="label-text">your From :</span>
-                                      </label>
-                                      <input name="fLocation" type="text" defaultValue={bookingData?.FromLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                    </div>
-                                    <div className="form-control w-full max-w-xs">
-                                      <label className="label">
-                                        <span className="label-text">your From To :</span>
-                                      </label>
-                                      <input name="tLocation" type="text" defaultValue={bookingData?.ToLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                    </div>
-                                  </div>
+                                        <div className="grid grid-cols-2 gap-2">
+                                          <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                              <span className="label-text">your Phone is :</span>
+                                            </label>
+                                            <input name="phone" type="text" defaultValue={bookingData?.phone} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                          <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                              <span className="label-text">your Members is:</span>
+                                            </label>
+                                            <input name="member" type="text" defaultValue={bookingData?.Member} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                        </div>
 
-                                  <div className="grid grid-cols-2 gap-2">
-                                    <div className="form-control w-full max-w-xs">
-                                      <label className="label">
-                                        <span className="label-text">Journey Date is :</span>
-                                      </label>
-                                      <input name="jdate" type="text" defaultValue={bookingData?.JarnyDate} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                    </div>
-                                    <div className="form-control w-full max-w-xs">
-                                      <label className="label">
-                                        <span className="label-text">Return Date is:</span>
-                                      </label>
-                                      <input name="rdate" type="text" defaultValue={bookingData?.ReturnDate} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                    </div>
-                                  </div>
+                                        <div className="grid grid-cols-2 gap-2">
+                                          <div className="form-control w-full max-w-xs">
 
-                                  <div className="grid grid-cols-2 gap-2">
-                                    <div className="form-control w-full max-w-xs">
-                                      <label className="label">
-                                        <span className="label-text">your Phone is :</span>
-                                      </label>
-                                      <input name="phone" type="text" defaultValue={bookingData?.phone} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                    </div>
-                                    <div className="form-control w-full max-w-xs">
-                                      <label className="label">
-                                        <span className="label-text">your Members is:</span>
-                                      </label>
-                                      <input name="member" type="text" defaultValue={bookingData?.Member} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                    </div>
-                                  </div>
+                                            <label className="label">
+                                              <span className="label-text">Flight Journey Date:</span>
+                                            </label>
+                                            <input name="fjd" type="text" defaultValue={bookingData?.FlightDate} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                          <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                              <span className="label-text">Journey Location:</span>
+                                            </label>
+                                            <input name="flight" type="text" defaultValue={bookingData?.Flight} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-2">
+                                          <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                              <span className="label-text">your Hotel Location:</span>
+                                            </label>
+                                            <input name="hotellocation" type="text" defaultValue={bookingData?.HotelPlaces} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                          <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                              <span className="label-text">your Hotel Name :</span>
+                                            </label>
+                                            <input name="hotelname" type="text" defaultValue={bookingData?.HotelName} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                                          </div>
+                                        </div>
 
-                                </div>
-                                {/*footer*/}
-                                <div className="flex items-center justify-between p-6 border-t border-solid border-slate-200 rounded-b">
+                                      </div>
+                                      {/*modal footer*/}
+                                      <div className="flex items-center justify-between p-6 border-t border-solid border-slate-200 rounded-b">
 
-                                  <button
-                                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                    type="button"
-                                    onClick={() => setShowModal(false)}
-                                  >
-                                    Skip
-                                  </button>
-                                  <button
-                                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                    type="submit" value="Submit"
-                                    onClick={() => confirmBooking}
-                                  >
-                                    Confirm Booking
-                                  </button>
+                                        <button
+                                          className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                          type="button"
+                                          onClick={() => setShowModal(false)}
+                                        >
+                                          Cancel
+                                        </button>
+                                        <button
+                                          className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                          type="submit" value="Submit"
+                                          onClick={() => confirmBooking}
+                                        >
+                                          Confirm Booking
+                                        </button>
 
-                                </div>
+                                      </div>
+                                    </>
+                                    : <>
+                                      <div className="relative p-6 flex-auto ">
+                                        <p className="my-4 text-slate-500 text-lg leading-relaxed ">
+                                          Travel takes us out of our comfort zones and inspires us to see,  try new things.
+                                        </p>
+
+                                        <h1 className="text-[#ef2323]">You Aren't a Valid User Our Treval.Xon</h1>
+                                        <h1 className="text-[#2391eb]">Please sign up Now.</h1>
+                                        <div className="flex w-full py-10">
+
+                                          <div className="grid h-20 flex-grow card bg-[#fff] rounded-box place-items-center">
+                                            <span class="relative flex h-12 w-32">
+                                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                                              <span class="relative inline-flex rounded-full h-12 w-52 bg-sky-500 ">
+                                                <Link href={'/login'} className="text-center ml-10 mt-3 text-[#fff]">LOGIN</Link> </span>
+
+                                            </span>
+
+                                          </div>
+                                          <div className="divider divider-horizontal">OR</div>
+                                          <div className="grid h-20 flex-grow card bg-[#fff]  rounded-box place-items-center">
+                                            <span class="relative flex h-12 w-32">
+                                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                                              <span class="relative inline-flex rounded-full h-12 w-44 bg-[#019ba0] ">
+                                                <Link href={'/register'} className="text-center ml-3 mt-3 text-[#fff]">REGISTRATION</Link> </span>
+
+                                            </span>
+                                          </div>
+
+                                        </div>
+
+                                      </div>
+                                    </>
+                                }
+
+
+
                               </div>
 
                             </form>
 
                           </div>
                         </div>
+
                         <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
                       </>
                         : null
                     }
+                  </div>
 
-
+                  <div className="flex justify-center  items-end md:hidden">
+                    <button onClick={SubmitTourestData} className="btn btn-primary px-14 bg-[#ffffff] text-black">submit</button>
                   </div>
 
                 </div>
+
               </>}
               {
                 singelServeics === "Flight" && <>
@@ -526,8 +729,8 @@ const Hero = () => {
                     <div className="card grid grid-cols-2 justify-center items-center md:grid-cols-2 gap-2 ">
 
                       <div select className="border-2 border-[#c7c6c6] py-3 px-5 rounded-lg">
-                        <p className="text-[16px] text-[#dcdada] text-start pl-2 pb-1 font-mono font-bold">Airports Lisht</p>
-                        <select className="focus:outline-none bg-[#3a3939]  text-md font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
+                        <p className="text-[16px] text-[#dcdada] text-start pl-2 pb-1 font-mono font-bold">Airports</p>
+                        <select onChange={(e) => handelFlight(e)} className="focus:outline-none bg-[#3a3939]  text-md font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
                           <option disabled selected>
                             Select Flight
                           </option>
@@ -542,18 +745,18 @@ const Hero = () => {
                       <div select className="border-2 border-[#c7c6c6] py-3 px-5 rounded-lg">
                         <p className="text-[16px] text-[#dcdada] text-start pl-2 pb-1 font-mono font-bold">JOURNEY DATE</p>
 
-                        <input
+                        <input onChange={(e) => handelFlightDate(e)}
                           type="date"
                           className="text-sm font-normal bg-[#3a3939]  focus:outline-nonew-[90%] px-5 py-2 w-[100%] rounded-md mx-auto cursor-pointer"
                         />
                       </div>
                     </div>
-                    <div className="flex justify-center mt-5 md:hidden">
-                      <button className="btn btn-primary px-14 bg-[#ffffff] text-black">submit</button>
-                    </div>
+
 
                   </div>
-
+                  <div className="flex justify-center mt-28 md:hidden ">
+                    <button onClick={SubmitTourestData} className="btn btn-primary px-14 bg-[#ffffff] text-black">submit</button>
+                  </div>
                 </>
               }
               {
@@ -579,39 +782,38 @@ const Hero = () => {
 
                       <div select className="border-2 border-[#c7c6c6] py-3 px-5 rounded-lg">
                         <p className="text-[16px] text-[#dcdada] text-start pl-2 pb-1 font-mono font-bold">Locations</p>
-                        <select className="focus:outline-none text-md bg-[#3a3939]  font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
+                        <select onChange={(e) => handelHotelLocation(e)} className="focus:outline-none text-md bg-[#3a3939]  font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
                           <option disabled selected>
                             Select Locations
                           </option>
-                          <option>Dahaka</option>
-                          <option>Chittagong </option>
-                          <option>Cox's Bazar</option>
-                          <option> Rajshahi</option>
-                          <option>Sylhet</option>
+                          {
+                            hotels?.data?.map(hotel => <option>{hotel?.placeName}</option>)
+                          }
                         </select>
                       </div>
                       {/* ------------hotels name */}
                       <div select className="border-2 border-[#c7c6c6] py-3 px-5 rounded-lg">
                         <p className="text-[16px] text-[#dcdada] text-start pl-2 pb-1 font-mono font-bold">Hotels</p>
-                        <select className="focus:outline-none text-md bg-[#3a3939]  font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
+                        <select onChange={(e) => handelHoteName(e)} className="focus:outline-none text-md bg-[#3a3939]  font-normal w-[100%] px-5 py-2 rounded-md mx-auto">
                           <option disabled selected>
                             Select Hotels
                           </option>
-                          <option>Dahaka</option>
-                          <option>Chittagong </option>
-                          <option>Cox's Bazar</option>
-                          <option> Rajshahi</option>
-                          <option>Sylhet</option>
+                          {
+                            hotels?.data?.map(hotel => <option>{hotel?.title}</option>)
+                          }
+
                         </select>
                       </div>
                     </div>
-                    <div className="flex justify-center mt-5 md:hidden">
-                      <button className="btn btn-primary px-14 bg-[#ffffff] text-black">submit</button>
-                    </div>
 
+
+                  </div>
+                  <div className="flex justify-center mt-20 md:hidden ">
+                    <button onClick={SubmitTourestData} className="btn btn-primary px-14 bg-[#ffffff] text-black">submit</button>
                   </div>
                 </>
               }
+
 
             </div>
 
