@@ -37,10 +37,9 @@ const TopHeader = () => {
               </Link>
             </div>
             <div className="flex gap-x-6 gap-y-2 items-center primary-color p-[10px] mr-10">
-              <BsFacebook className="text-white cursor-pointer hover:text-[#000000]" />
-              <AiOutlineInstagram className="text-white cursor-pointer hover:text-[#000000]" />
-              <FaPinterest className="text-white cursor-pointer hover:text-[#000000]" />
-              <AiFillTwitterCircle className="text-white cursor-pointer hover:text-[#000000]" />
+              <Link href='https://web.facebook.com/profile.php?id=100092635233512'><BsFacebook className="text-white cursor-pointer hover:text-[#000000]" /></Link>
+              <Link href='https://www.instagram.com/travelxone3/'><AiOutlineInstagram className="text-white cursor-pointer hover:text-[#000000]" /></Link>
+              <Link href='https://twitter.com/travelxone3'><AiFillTwitterCircle className="text-white cursor-pointer hover:text-[#000000]" /></Link>
             </div>
           </div>
         </div>

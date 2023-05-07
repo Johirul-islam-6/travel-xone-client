@@ -236,11 +236,10 @@ const Footer = () => {
           <p className="text-xs text-slate-400">
             © 2023 Copyrights by TRAVEL.XONE. All Rights Reserved
           </p>
-          <div className="flex gap-2 items-center text-md lg:text-2xl  pt-2 lg:pt-0">
-            <BsFacebook className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
-            <AiOutlineInstagram className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
-            <FaPinterest className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
-            <AiFillTwitterCircle className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
+          <div className="flex gap-3 items-center text-md lg:text-3xl  pt-2 lg:pt-0">
+            <Link href='https://web.facebook.com/profile.php?id=100092635233512'><BsFacebook className="text-slate-400 cursor-pointer hover:text-[#026fc8]" /></Link>
+            <Link href='https://www.instagram.com/travelxone3/'><AiOutlineInstagram className="text-slate-400 cursor-pointer hover:text-[#026fc8]" /></Link>
+            <Link href='https://twitter.com/travelxone3'><AiFillTwitterCircle className="text-slate-400 cursor-pointer hover:text-[#026fc8]" /></Link>
           </div>
         </div>
       </footer>

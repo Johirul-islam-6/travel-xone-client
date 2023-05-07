@@ -18,7 +18,7 @@ const Testimonial = () => {
         <div className="text-center pb-12 md:pb-10 lg:pb-10">
           <h5 className="text-[#627FF4] font-bold">OUR TESTIMONIALS</h5>
           <div className="divider w-[30px] mx-auto my-1 bg-[#1751E4] h-1"></div>
-          <h1 className="font-bold text-2xl md:text-4xl lg:text-4xl">
+          <h1 className="font-bold text-2xl md:text-4xl text-[#01061b] lg:text-4xl">
             customers feedback
           </h1>
         </div>
