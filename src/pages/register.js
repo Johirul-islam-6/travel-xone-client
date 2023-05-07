@@ -21,7 +21,7 @@ const Registration = () => {
     .catch(err => {
       console.log(err) ; 
       toast.error(err.data?.message)
-      setErrors(err.data.errors)
+      setErrors(err.data?.errors)
       
     
     } )
