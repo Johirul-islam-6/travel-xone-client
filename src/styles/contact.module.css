@@ -1,21 +1,18 @@
-
-
-.contact_card{
-    background-image: linear-gradient(
-  305deg,
-  hsl(229deg 100% 30%) 0%,
-  hsl(227deg 100% 28%) 18%,
-  hsl(226deg 100% 26%) 29%,
-  hsl(224deg 100% 23%) 38%,
-  hsl(223deg 100% 21%) 47%,
-  hsl(221deg 100% 19%) 55%,
-  hsl(220deg 100% 17%) 65%,
-  hsl(219deg 95% 15%) 78%,
-  hsl(221deg 77% 14%) 100%
-);
-position: relative;
-overflow: hidden;
+.contact_card {
+    background-image: linear-gradient(305deg,
+            hsl(229deg 100% 30%) 0%,
+            hsl(227deg 100% 28%) 18%,
+            hsl(226deg 100% 26%) 29%,
+            hsl(224deg 100% 23%) 38%,
+            hsl(223deg 100% 21%) 47%,
+            hsl(221deg 100% 19%) 55%,
+            hsl(220deg 100% 17%) 65%,
+            hsl(219deg 95% 15%) 78%,
+            hsl(221deg 77% 14%) 100%);
+    position: relative;
+    overflow: hidden;
 }
+
 .orange_bg::before {
     content: "";
     bottom: -55px;
@@ -29,6 +26,7 @@ overflow: hidden;
     border-radius: 60% 5%;
     z-index: 0;
 }
+
 .white_bg::before {
     content: "";
     bottom: -73px;
@@ -42,7 +40,8 @@ overflow: hidden;
     border-radius: 60% 25%;
     z-index: 0;
 }
-.play_animation{
+
+.play_animation {
     width: 0px;
     height: 0px;
     text-align: center;
@@ -53,7 +52,8 @@ overflow: hidden;
     border-radius: 50%;
     color: #3ad3e7;
 }
-.play_animation::before{
+
+.play_animation::before {
     content: "";
     position: absolute;
     width: 80px;
@@ -62,25 +62,32 @@ overflow: hidden;
     border-radius: 50%;
     animation: playbtn 1.6s ease-out infinite;
 }
-@keyframes playbtn{
-    0%,30%{
+
+@keyframes playbtn {
+
+    0%,
+    30% {
         transform: scale(0);
         opacity: 1;
     }
-    50%{
-        transform:scale(1.5);
+
+    50% {
+        transform: scale(1.5);
         opacity: .7;
     }
-    100%{
-        transform:scale(2);
+
+    100% {
+        transform: scale(2);
         opacity: 0;
     }
 
 }
-.social_icon{
+
+.social_icon {
     display: block;
     transition: .5s;
 }
-.social_icon:hover{
-    color: red;
+
+.social_icon:hover {
+    color: #7f97f7;
 }

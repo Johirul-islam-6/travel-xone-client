@@ -1,11 +1,14 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import ContextApi from "@/ContextApi";
 const Layout = ({ children }) => {
   return (
     <>
-      <Header />
+     <ContextApi>
+     <Header />
       {children}
       <Footer />
+     </ContextApi>
     </>
   );
 };

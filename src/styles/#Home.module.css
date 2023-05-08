@@ -159,6 +159,17 @@ font-family: 'PT Sans Narrow', sans-serif; */
   background-clip: content-box;
 }
 
+/* Title Background */
+.title_background {
+  background-image: url("https://i.ibb.co/nkNGLdF/banner.png");
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {

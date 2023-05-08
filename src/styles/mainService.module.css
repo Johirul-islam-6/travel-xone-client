@@ -117,7 +117,7 @@
 /* register page css code end */
 
 /* login page code start */
-.LoginArea {
+.LoginArea{
     padding: 20px 5px;
     height: 400px;
     width: 400px;
@@ -126,39 +126,36 @@
     opacity: .6;
     border-radius: 10px;
     color: white;
+    margin-top: 40px;
+    
+ }
 
-}
-
-.userIcon {
+.userIcon{
     font-size: 70px;
-
+   
     height: 100px;
     width: 100px;
-    text-align: center;
-    justify-content: center;
-
-    background-color: #0808ee;
-
+  text-align: center;
+  justify-content: center;
+  
+  background-color: #0808ee;
+    
     border-radius: 50%;
     margin-top: -50px;
 }
-
-.RealIcon {
+.RealIcon{
     margin-left: 17px;
 }
-
-.loginInput {
+.loginInput{
     width: 100%;
     border: none;
     background-color: black;
-    border-bottom: 2px solid wheat;
+    border-bottom: 2px solid wheat; 
     margin-bottom: 20px;
 }
-
-.loginInput:focus {
+.loginInput:focus{
     outline: none;
 }
-
 /* login page code end */
 
 /* forget password code start */

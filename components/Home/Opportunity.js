@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Opportunity = () => {
   return (
     <>
@@ -15,14 +17,22 @@ const Opportunity = () => {
           {/*----- Opportunity section -----*/}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 pt-5 pb-10 px-10 lg:px-0">
             <div className="relative">
-              <img
-                className=""
+              <Image
                 src="https://i.ibb.co/mtjVx84/opportunity.png"
+                alt="TRAVEL.XONE LOGO"
+                width={1000}
+                height={667}
+                loading="lazy"
+                className="w-[100%] h-[100%]"
               />
               <div className="absolute w-[40%] bottom-[-20px] right-[-20px] border shadow-2xl">
-                <img
-                  className=""
+                <Image
                   src="https://i.ibb.co/59tgj81/opportunity3.png"
+                  alt="TRAVEL.XONE LOGO"
+                  width={1000}
+                  height={450}
+                  loading="lazy"
+                  className="w-[100%]"
                 />
               </div>
             </div>
@@ -32,10 +42,15 @@ const Opportunity = () => {
               </h1>
               <div>
                 <div className="flex py-3">
-                  <img
-                    className="mask mask-circle w-16 h-16 hover:animate-spin"
+                  <Image
                     src="https://i.ibb.co/3YnNq5Z/safety.png"
+                    alt="TRAVEL.XONE LOGO"
+                    width={1000}
+                    height={450}
+                    loading="lazy"
+                    className="mask mask-circle w-16 h-16 hover:animate-spin"
                   />
+
                   <div className="pl-5">
                     <h1 className="font-bold text-xl">Safety first always</h1>
                     <h5 className="text-lg text-slate-500">
@@ -46,10 +61,15 @@ const Opportunity = () => {
                   </div>
                 </div>
                 <div className="flex py-3">
-                  <img
+                  <Image
+                    src="https://i.ibb.co/sCV0tMp/price.png"
+                    alt="TRAVEL.XONE LOGO"
+                    width={1000}
+                    height={450}
+                    loading="lazy"
                     className="mask mask-circle w-16 h-16 hover:animate-spin bg-slate-200"
-                    src="https://i.ibb.co/sCV0tMp/price.png "
                   />
+
                   <div className="pl-5">
                     <h1 className="font-bold text-xl">Low price & friendly</h1>
                     <h5 className="text-lg text-slate-500">
@@ -60,9 +80,13 @@ const Opportunity = () => {
                   </div>
                 </div>
                 <div className="flex py-3">
-                  <img
-                    className="mask mask-circle w-16 h-16 hover:animate-spin bg-slate-200"
+                  <Image
                     src="https://i.ibb.co/FVT38Ww/travel.png"
+                    alt="TRAVEL.XONE LOGO"
+                    width={1000}
+                    height={450}
+                    loading="lazy"
+                    className="mask mask-circle w-16 h-16 hover:animate-spin bg-slate-200"
                   />
                   <div className="pl-5">
                     <h1 className="font-bold text-xl">Trusted travel guide</h1>
