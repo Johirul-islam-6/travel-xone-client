@@ -11,14 +11,11 @@ const Plain = ({ detailsTransport }) => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/transports/${detailsTransport?._id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setTransport(data);
-        setLoding(false)
+    setTransport(detailsTransport)
+    setLoding(false)
 
-      });
-  }, []);
+
+  }, [detailsTransport]);
 
   if (loding) {
     return <>
