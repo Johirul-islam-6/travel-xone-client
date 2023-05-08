@@ -14,8 +14,12 @@ import navbar from "../src/styles/home_style/hero.module.css";
 import Image from "next/image";
 import { AiOutlineHeart } from "react-icons/ai";
 import classNames from "classnames";
+import { useContext } from "react";
+import { AuthContext } from "@/ContextApi";
 
 const Header = () => {
+  const{user} = useContext(AuthContext);
+  console.log(user.email);
   const buttonStyle = classNames(
     "border border-blue-500 p-2 rounded-full hover:bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"
   );
@@ -120,9 +124,11 @@ const Header = () => {
           </div>
           {/* -------------Navbar end button----------------- */}
           <div className="flex-1 flex gap-2 justify-end w-full  relative lg:hidden navbar-end">
+           
             <button className="h-[33px] text-[13px] px-4 text-[#dfdfdf] bg-[#0272f2] rounded-md hover:bg-[#2d89f1da]">
               <Link href="/register">Register</Link>
             </button>
+          
 
             <div className={buttonStyle}>
               <Link href="/dashboard">
@@ -179,9 +185,11 @@ const Header = () => {
                 >
                  
 
-<Link href="/register" className={`${navbar.link_style}`}>
+                   {
+                    user? <p>{user.email}</p> : <Link href="/register" className={`${navbar.link_style}`}>
                     Login | Register
                   </Link>
+                   }
                 </li>
               </ul>
             </div>
