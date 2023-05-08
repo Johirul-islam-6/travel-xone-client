@@ -10,12 +10,11 @@ const Plain = ({ detailsTransport }) => {
   const [transport, setTransport] = useState();
 
 
-  // useEffect(() => {
-  //   setTransport(detailsTransport)
-  //   setLoding(false)
+  useEffect(() => {
+    setTransport(detailsTransport)
+    setLoding(false)
 
-
-  // }, [detailsTransport]);
+  }, [detailsTransport]);
 
   if (loding) {
     return <>
