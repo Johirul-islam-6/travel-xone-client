@@ -177,7 +177,9 @@ const Header = () => {
                   tabIndex={0}
                   className="hover:text-white hover:border rounded"
                 >
-                  <Link href="/register" className={`${navbar.link_style}`}>
+                 
+
+<Link href="/register" className={`${navbar.link_style}`}>
                     Login | Register
                   </Link>
                 </li>

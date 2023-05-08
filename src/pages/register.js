@@ -89,6 +89,7 @@ const Registration = () => {
                   <input
                   {...register("username")}
                     type="text"
+                    name="username"
                     placeholder="User Name"
                     className={sucessClassName}
                   />
@@ -97,6 +98,7 @@ const Registration = () => {
                   <input
                   {...register("phone")}
                     type="text"
+                    name="phone"
                     placeholder="Phone No"
                     className={ errors?.phone ? errorClassName:sucessClassName}
                   />
@@ -105,6 +107,7 @@ const Registration = () => {
                   <input
                   {...register("country")}
                     type="text"
+                    name="country"
                     placeholder="Country"
                     className={ errors?.country ? errorClassName:sucessClassName}
                   />
@@ -113,6 +116,7 @@ const Registration = () => {
                   <input
                   {...register("email")}
                     type="email"
+                    name="email"
                     placeholder="Email"
                     className={ errors?.email ? errorClassName:sucessClassName}
                   />
@@ -121,6 +125,7 @@ const Registration = () => {
                   <input
                   {...register("password")}
                     type="password"
+                    name="password"
                     placeholder="Password"
                     className={ errors?.password ? errorClassName:sucessClassName}
                   />
@@ -147,21 +152,17 @@ const Registration = () => {
 
               {/* -------Already have an account ?------- */}
               <div className="text-center pt-3">
-                <button
-                  class="group h-10  px-6 border-2 border-gray-300 rounded-full transition duration-300 
- hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
-                >
-                  <div class="relative flex items-center space-x-8 justify-center">
-                    <img
-                      src="https://tailus.io/sources/blocks/social/preview/images/google.svg"
-                      class="absolute left-0 w-5"
-                      alt="google logo"
-                    />
-                    <span class="block w-max tracking-wide text-white text-sm transition duration-300 group-hover:text-blue-600">
-                      Google Sign In
-                    </span>
-                  </div>
-                </button>
+                <div>More Sign In Methods</div>
+                <div className="divider bg-white h-[2px] my-2"></div>
+                <div className="flex gap-5 text-3xl justify-center items-center">
+                  <AiFillGoogleCircle onClick={googlesubmit}
+                    className={`${buttonAnimation} text-4xl`}
+                  />
+                  {/* <BsFacebook className={`${buttonAnimation}`} />
+                  <AiFillTwitterCircle
+                    className={`${buttonAnimation} text-4xl`}
+                  /> */}
+                </div>
               </div>
             </div>
           </div>
