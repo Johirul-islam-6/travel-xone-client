@@ -113,7 +113,7 @@ const Plain = ({ detailsTransport }) => {
 export default Plain;
 
 export const getStaticProps = async (context) => {
-  const id = context.params.plain;
+  const id = context.params.id;
   const res = await fetch(
     `http://localhost:5000/api/v1/transports/${id}`
   );
@@ -134,7 +134,7 @@ export const getStaticPaths = async () => {
   const paths = data?.map((currentLocation) => {
     return {
       params: {
-        plain: currentLocation?._id.toString(),
+        id: currentLocation?._id.toString(),
       },
     };
   });
