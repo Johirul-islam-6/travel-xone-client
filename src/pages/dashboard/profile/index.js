@@ -13,7 +13,7 @@ const AdminProfile = () => {
   );
 
   const valueStyle = classNames(
-    "peer m-0 block h-[58px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-400 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[0.625rem] placeholder:text-sm hover:shadow-lg bg-slate-50 rounded"
+    "peer m-0 block h-[58px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-400 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[0.625rem] placeholder:text-sm hover:shadow-lg bg-slate-50 rounded bg-white"
   );
   return (
     <>
@@ -26,6 +26,7 @@ const AdminProfile = () => {
             <h1 className="text-lg lg:text-xl">Personal Options :</h1>
             <div className="divider -mt-1"></div>
             <form>
+              <div className="grid gap-3 grid-cols-2">
               {/* <!--Input for user name--> */}
               <div class="relative mb-5">
                 <p class="text-base font-medium leading-none text-gray-800 pb-2">
@@ -33,7 +34,7 @@ const AdminProfile = () => {
                 </p>
                 <input
                   type="text"
-                  class="peer m-0 block h-[58px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-400 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[0.625rem] placeholder:text-sm bg-slate-50 "
+                  class="peer m-0 block h-[58px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-400 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[0.625rem] placeholder:text-sm bg-white "
                   id="floatingInput"
                   value="User Name"
                   disabled
@@ -54,12 +55,9 @@ const AdminProfile = () => {
                   value="name@example.com"
                   required
                 />
-                <p className="text-sm text-gray-400">
-                  If you change this, an email will be sent at your new address
-                  to confirm it. The new address will not become active until
-                  confirmed.
-                </p>
               </div>
+              </div>
+              <div className="grid gap-3 grid-cols-2">
               {/* <!--Input for First Name--> */}
               <div class="relative mb-5">
               <p class="text-base font-medium leading-none text-gray-800 pb-2">
@@ -84,22 +82,11 @@ const AdminProfile = () => {
                   value="Mia"
                 />
               </div>
-              {/* <!--Input for website--> */}
-              <div class="relative mb-5">
-              <p class="text-base font-medium leading-none text-gray-800 pb-2">
-                  Website :
-                </p>
-                <input
-                  type="text"
-                  class={valueStyle}
-                  id="floatingInput"
-                  value="https://demo.webapp.com"
-                />
               </div>
               {/* <!--Input for details--> */}
               <div class="relative mb-6" data-te-input-wrapper-init>
                 <textarea
-                  class="peer m-0 block h-[100px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem] hover:shadow-lg bg-slate-50"
+                  class="peer m-0 block h-[100px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem] hover:shadow-lg bg-white"
                   id="exampleFormControlTextarea1"
                   rows="4"
                   placeholder="Your message"

@@ -7,8 +7,8 @@ import {
 } from "react-icons/ai";
 import { TbWorld } from "react-icons/tb";
 import { FaShoePrints, FaUserAlt, FaUsers } from "react-icons/fa";
-import Link from "next/link";
 import { useEffect, useState} from "react";
+
 
 
 const detailsHostel01 = ({ detailsHotel }) => {

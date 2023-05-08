@@ -67,7 +67,7 @@ const WishList = () => {
                       <h3 class="text-md md:text-lg dark:text-white w-full font-semibold leading-6 md:leading-5 text-gray-800">
                         {list.title}
                       </h3>
-                      <div class="flex flex-row justify-start space-x-4 md:space-x-6 items-start mt-4">
+                      <div class="flex flex-row justify-start space-x-4 md:space-x-6 items-start mt-2 md:mt-4 lg:mt-4">
                         <p class="text-sm leading-none dark:text-gray-300 text-gray-600">
                           {list.des.slice(0, 50) + "..."}
                         </p>
@@ -75,9 +75,9 @@ const WishList = () => {
                     </div>
                   <div className="flex gap-3">
                     <div class="flex mt-4 md:mt-0 md:justify-end items-center w-full">
-                      <p class="mr-10 text-md md:text-lg dark:text-white font-semibold leading-5 lg:leading-6 text-gray-800">
-                        $ <span className="inline-block">{list.price}</span>.00
-                      </p>
+                    <p class="flex text-lg lg:text-xl dark:text-white font-semibold leading-5 lg:leading-6 text-gray-800">
+                          $ <span className="pl-1">{list.price}</span>.00
+                        </p>
                     </div>
                     <div class="flex mt-4 md:mt-0 md:justify-end items-center w-full">
                       <p class="text-sm bg-red-700 px-2 rounded hover:cursor-pointer dark:text-white font-semibold leading-5 lg:leading-6 text-white">

@@ -13,21 +13,7 @@ import { AuthContext } from "@/ContextApi";
 const Registration = () => {
   const{user,loading,setLoading,createUser,Gsignin} = useContext(AuthContext);
   console.log(user,'user');
-  // const {REGISTER} = useContext(RootContext)
-  // const [errors,setErrors]= useState(null)
-  // const { register, handleSubmit } = useForm();
-  // const handleRegister = (data)=>{
-  //   console.log(data)
-  //   REGISTER(data).then(res=>{
-  //     toast.success('REGISTER success')
-  //     setErrors(null)
-  //   })
-  //   .catch(err => {
-  //     console.log(err) ;
-  //     toast.error(err.data?.message)
-  //     setErrors(err.data?.errors)
-  //   } )
-  // }
+  
   const registerSubmit = e =>{
     e.preventDefault()
     const email = e.target.email.value;
@@ -39,7 +25,13 @@ const Registration = () => {
     else{
       createUser(email,password)
       .then(res =>{
-        console.log(res,'user');
+        if(res){
+          const userinfo = {
+            email : res?.email,
+            role : "user",
+          }
+          console.log(userinfo, "This is UserInfo");
+        };
       }).catch(e =>{
         console.log(e);
       })
