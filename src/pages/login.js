@@ -3,11 +3,13 @@ import { FaUserAlt } from "react-icons/fa";
 import classNames from "classnames";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
-import { RootContext } from "../context/RootContext";
+// import { RootContext } from "../context/RootContext";
 import toast from 'react-hot-toast';
 import Head from 'next/head'
 import { useRouter } from "next/router";
+import { AuthContext } from "@/ContextApi";
 const Login = () => {
+  const{user,Login,loading,setLoading,Gsignin} = useContext(AuthContext)
   // const router = useRouter()
   // const { register, handleSubmit } = useForm();
   // const {LOGIN,setUser,user} = useContext(RootContext)
@@ -24,6 +26,28 @@ const Login = () => {
   //     })
   //     .catch(err => {console.log(err) ; toast.error(err.data?.message?.type) ; setErrors(err.data?.message)} )
   // }
+
+const loginhandler = e=>{
+  e.prevnetDefault();
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+  Login(email,password)
+  .then(res => {
+    console.log(res);
+  }).catch(e => {
+    console.log(e);
+  })
+}
+const googlesignin= ()=>{
+  Gsignin()
+  .then(res =>{
+    console.log(res);
+  }).catch(e =>{
+    console.log(e);
+  })
+}
+
+
   const backgroundClass = classNames("bg-[url('https://i.ibb.co/hRKMMLH/Rectangle.png')] max-h-screen bg-no-repeat bg-center bg-cover bg-fixed");
   const formClass = classNames("relative bg-[#000000b0] w-[80%] md:w-[40%] lg:w-[25%] text-white mx-auto mt-20 lg:mt-32 py-10 px-5 rounded shadow-2xl");
   const loginButton = classNames("rounded-xl bg-[#627FF4] w-full py-1 my-3 rounded-sm hover:bg-slate-300 hover:text-[#627FF4] hover:font-bold");
@@ -73,14 +97,16 @@ const Login = () => {
               </form> */}
 
               {/* -------Registration form-------- */}
-              <form className="text-left">
+              <form className="text-left" onSubmit={loginhandler}>
                 <div>
                   <input
+                  name="email"
                     type="email"
                     placeholder="Email"
                     className={successClassName}
                   />
                   <input
+                   name="password"
                     type="password"
                     placeholder="Password"
                     className={successClassName}
@@ -109,7 +135,7 @@ const Login = () => {
               </p>
               {/* -------Already have an account ?------- */}
               <div className="text-center pt-3">
-                <button
+                <button onClick={googlesignin}
                   class="group h-10  px-6 border-2 border-gray-300 rounded-full transition duration-300 
  hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
                 >
