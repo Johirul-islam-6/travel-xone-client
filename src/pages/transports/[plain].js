@@ -1,13 +1,10 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import styles from "../../styles/mainService.module.css";
-import Head from "next/head";
-import Link from "next/link";
 import Carousel from "react-grid-carousel";
 import { toast } from "react-hot-toast";
 
 const Plain = ({ detailsTransport }) => {
-  console.log(detailsTransport)
+
   const router = useRouter();
   const [loding, setLoding] = useState(true)
   const [transport, setTransport] = useState({});
@@ -38,7 +35,7 @@ const Plain = ({ detailsTransport }) => {
     router.push('/checkout')
   }
 
-  console.log(detailsTransport)
+
 
   return (
     <section>
