@@ -1,13 +1,11 @@
 import Head from "next/head";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import AdminSidebar from "../../../../components/admin/adminSidebar";
-import { AuthContext } from "@/pages/contextApi";
+
 
 
 const AdminRestaurant = () => {
     const [payment, setPayment] = useState();
-    const abc = useContext(AuthContext);
-    console.log("context", abc);
   const posts = [
     {
       id: "1",

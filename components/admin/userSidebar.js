@@ -30,36 +30,6 @@ const UserSidebar = () => {
           {/* Toggle Menu */}
           {isToggle && <div className="w-[40%] md:w-[20%] overflow-y-auto overflow-x-hidden flex-grow flex lg:hidden bg-[#000000ee] border-r">
             <ul className="flex flex-col py-4 space-y-1 text-blue-800">
-              <li className="px-5">
-                <div className="flex flex-row items-center h-8">
-                  <div className="text-sm font-light tracking-wide text-blue-800">
-                    Menu
-                  </div>
-                </div>
-              </li>
-              <li>
-                <a href="/dashboard" className={iconStyle}>
-                  <span className="inline-flex justify-center items-center ml-4">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="ml-2 text-sm tracking-wide truncate">
-                    Dashboard
-                  </span>
-                </a>
-              </li>
               <li className="dropdown dropdown-hover">
                 <a href="/dashboard/booking" className={iconStyle}>
                   <span className="inline-flex justify-center items-center ml-4">
@@ -116,14 +86,6 @@ const UserSidebar = () => {
                   </span>
                 </a>
               </li>
-              
-              <li className="px-5">
-                <div className="flex flex-row items-center h-8">
-                  <div className="text-sm font-light tracking-wide text-blue-800">
-                    Settings
-                  </div>
-                </div>
-              </li>
               <li>
                 <a href="/dashboard/profile" className={iconStyle}>
                   <span className="inline-flex justify-center items-center ml-4">
@@ -144,35 +106,6 @@ const UserSidebar = () => {
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate">
                     Profile
-                  </span>
-                </a>
-              </li>
-              <li className="dropdown dropdown-hover">
-                <a href="/dashboard/settings" className={iconStyle}>
-                  <span className="inline-flex justify-center items-center ml-4">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                      ></path>
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span tabIndex={0} className="ml-2 text-sm tracking-wide truncate">
-                    Settings
                   </span>
                 </a>
               </li>
@@ -205,36 +138,6 @@ const UserSidebar = () => {
           {/* -----------------Menu Items--------------------- */}
           <div className="overflow-y-auto overflow-x-hidden flex-grow hidden lg:flex bg-white">
             <ul className="flex flex-col py-4 space-y-1">
-              <li className="px-5">
-                <div className="flex flex-row items-center h-8">
-                  <div className="text-sm font-light tracking-wide text-gray-500">
-                    Menu
-                  </div>
-                </div>
-              </li>
-              <li>
-                <a href="/dashboard" className={iconStyle}>
-                  <span className="inline-flex justify-center items-center ml-4">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="ml-2 text-sm tracking-wide truncate">
-                    Dashboard
-                  </span>
-                </a>
-              </li>
               <li className="dropdown dropdown-hover">
                 <a href="/dashboard/booking" className={iconStyle}>
                   <span className="inline-flex justify-center items-center ml-4">
@@ -282,7 +185,6 @@ const UserSidebar = () => {
                   </span>
                 </a>
               </li>
-
               <li>
                 <a href="/dashboard/reviews" className={iconStyle}>
                 <span className="inline-flex justify-center items-center ml-4">
@@ -292,14 +194,6 @@ const UserSidebar = () => {
                     Reviews
                   </span>
                 </a>
-              </li>
-              
-              <li className="px-5">
-                <div className="flex flex-row items-center h-8">
-                  <div className="text-sm font-light tracking-wide text-gray-500">
-                    Settings
-                  </div>
-                </div>
               </li>
               <li>
                 <a href="/dashboard/profile" className={iconStyle}>
@@ -321,35 +215,6 @@ const UserSidebar = () => {
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate">
                     Profile
-                  </span>
-                </a>
-              </li>
-              <li className="dropdown dropdown-hover">
-                <a href="/dashboard/settings" className={iconStyle}>
-                  <span className="inline-flex justify-center items-center ml-4">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                      ></path>
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span tabIndex={0} className="ml-2 text-sm tracking-wide truncate">
-                    Settings
                   </span>
                 </a>
               </li>

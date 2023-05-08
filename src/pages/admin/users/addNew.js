@@ -13,7 +13,7 @@ const AddNew = () => {
   );
 
   const selectStyle = classNames(
-    "peer m-0 block h-[58px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[0.625rem] placeholder:text-sm hover:shadow-lg bg-slate-50 rounded"
+    "peer m-0 block h-[58px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[0.625rem] placeholder:text-sm hover:shadow-lg bg-white rounded"
   );
 
   return (
@@ -59,6 +59,18 @@ const AddNew = () => {
                   Email
                 </label>
               </div>
+              {/* <!--Input for Password--> */}
+              <div class="relative mb-3 bg-slate-50 rounded">
+                <input
+                  type="password"
+                  class={inputStyles}
+                  id="floatingInput"
+                  placeholder="password"
+                />
+                <label for="floatingInput" class={labelStyle}>
+                  Password
+                </label>
+              </div>
               {/* <!--Input for First Name--> */}
               <div class="relative mb-3 bg-slate-50 rounded">
                 <input
@@ -95,32 +107,7 @@ const AddNew = () => {
                   Website
                 </label>
               </div>
-              {/* <!--Input for Password Generate--> */}
-              <div class="grid gap-3 grid-cols-1 lg:grid-cols-3 relative mb-3 items-center">
-                <div className="">
-                  <input
-                    type="text"
-                    class={selectStyle}
-                    id="floatingInput"
-                    value="Generate Password"
-                  />
-                </div>
-                <div className="">
-                  <input
-                    type="password"
-                    class={selectStyle}
-                    id="floatingInput"
-                    value="*************"
-                  />
-                </div>
-                <div className="">
-                  <button className="btn gap-2">
-                    {/* <AiFillEye/> */}
-                    <AiFillEyeInvisible />
-                    Hide
-                  </button>
-                </div>
-              </div>
+              
               {/* <!--Select for duration, tour type and group size--> */}
               
                 {/* -----------------Select for Role---------------- */}
