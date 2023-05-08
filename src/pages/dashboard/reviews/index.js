@@ -19,7 +19,7 @@ const Reviews = () => {
     },
     {
       id: "2",
-      author: "Babul",
+      author: "Abul",
       comment:
         "In publishing and graphic design, Lorem ipsum is a placeholder text commonly",
       response: "Hello World",
@@ -27,7 +27,7 @@ const Reviews = () => {
     },
     {
       id: "3",
-      author: "Kabul",
+      author: "Abul",
       comment:
         "In publishing and graphic design, Lorem ipsum is a placeholder text commonly",
       response: "Hello World",
@@ -45,7 +45,7 @@ const Reviews = () => {
           {/* ---------------Edit Comment---------------- */}
           {edit && (
             <form class="w-full">
-              <div className="grid gap-5 grid-cols-1 lg:grid-cols-2 pb-10">
+              <div className=" pb-10">
                 {/* ---------Left Side Content---------- */}
                 <div className="bg-white p-10">
                   <h1 className="-mb-2">Author</h1>
@@ -73,54 +73,6 @@ const Reviews = () => {
                       value="In publishing and graphic design, Lorem ipsum is a placeholder text commonly"
                     ></textarea>
                   </div>
-                </div>
-                {/* ----------Right side content---------- */}
-                <div className="bg-white p-10">
-                  <h1 className="-mb-2">Save</h1>
-                  <div className="divider"></div>
-                  <div className="flex">
-                    <AiFillPushpin />
-                    <h1 className="ml-2">Status</h1>
-                  </div>
-                  <div className="pl-5">
-                    <div className="flex">
-                      <input
-                        type="radio"
-                        name="radio"
-                        className="checked:bg-blue-500"
-                        checked
-                      />
-                      <label className="label">
-                        <span className="label-text">Approved</span>
-                      </label>
-                    </div>
-                    <div className="flex">
-                      <input
-                        type="radio"
-                        name="radio"
-                        className="checked:bg-blue-500"
-                      />
-                      <label className="label">
-                        <span className="label-text">Pending</span>
-                      </label>
-                    </div>
-                  </div>
-                  <div className="flex py-2">
-                    <MdDateRange />
-                    <p className="ml-2">
-                      Submitted on: 21 February 2023 at 06:12
-                    </p>
-                  </div>
-                  <div className="flex py-2">
-                    <RiMessage2Fill />
-                    <p className="ml-2">
-                      {" "}
-                      In response to:{" "}
-                      <a href="/" className="text-blue-700">
-                        Hello world!
-                      </a>
-                    </p>
-                  </div>
                   <div className="divider"></div>
                   {/* ------------------Button----------- */}
                   <div className="flex justify-between">
@@ -137,21 +89,6 @@ const Reviews = () => {
           )}
 
           {/* -----------Show All comments----------- */}
-          <div className="text-sm pb-2">
-            <span className="text-blue-800 hover:cursor-pointer">All (1)</span>{" "}
-            |{" "}
-            <span className="text-blue-800 hover:cursor-pointer">
-              Pending (0)
-            </span>{" "}
-            |{" "}
-            <span className="text-blue-800 hover:cursor-pointer">
-              Approved (1)
-            </span>{" "}
-            |{" "}
-            <span className="text-blue-800 hover:cursor-pointer">
-              Delete (0)
-            </span>
-          </div>
           <table className="table w-full">
             {/* head */}
             <thead>
@@ -179,25 +116,14 @@ const Reviews = () => {
                     </th>
                     <td>{post.author}</td>
                     <td>
-                      {post.comment.slice(0, 15) + "..."}
+                      {post.comment.slice(0,90) + "..."}
                       <div className="text-sm text-gray-400">
-                        <span className="hover:text-blue-800 hover:cursor-pointer">
-                          Unapprove
-                        </span>{" "}
-                        |{" "}
-                        <span className="hover:text-blue-800 hover:cursor-pointer">
-                          Replay
-                        </span>{" "}
-                        |{" "}
+                        
                         <span
                           onClick={() => setEdit(!edit)}
                           className="hover:text-blue-800 hover:cursor-pointer"
                         >
                           Edit
-                        </span>{" "}
-                        |{" "}
-                        <span className="hover:text-blue-800 hover:cursor-pointer">
-                          View
                         </span>{" "}
                         |{" "}
                         <span className="hover:text-red-600 hover:cursor-pointer">

@@ -1,11 +1,15 @@
 import Head from "next/head";
 import { useState } from "react";
 import UserDashboardLayout from "../../../../components/userDashboardLayout";
+import { useContext } from "react";
+import { AuthContext } from "@/ContextApi";
 
 
 const UserRestaurant = () => {
-  
+  const {user} = useContext(AuthContext);
+  console.log("I am user", user);
   const [payment, setPayment] = useState();
+
   const posts = [
     {
       id: "1",

@@ -70,7 +70,7 @@ const Reviews = () => {
                     />
                   </div>
                   <div className="form-control">
-                    <label className="label">Edit Review</label>
+                    <label className="label">Review</label>
                     <textarea
                       className="textarea textarea-bordered h-24 text-gray-500"
                       value="In publishing and graphic design, Lorem ipsum is a placeholder text commonly"
@@ -120,7 +120,7 @@ const Reviews = () => {
             {/* -----------Show All comments----------- */}
             <div className="text-sm pb-2">
               <span className="text-blue-800 hover:cursor-pointer">
-                All (1)
+                All (3)
               </span>{" "}
               |{" "}
               <span className="text-blue-800 hover:cursor-pointer">
@@ -168,15 +168,7 @@ const Reviews = () => {
                             Unapprove
                           </span>{" "}
                           |{" "}
-                          <span className="hover:text-blue-800 hover:cursor-pointer">
-                            Replay
-                          </span>{" "}
-                          |{" "}
                           <span onClick={()=> setEdit(!edit)} className="hover:text-blue-800 hover:cursor-pointer">
-                            Edit
-                          </span>{" "}
-                          |{" "}
-                          <span className="hover:text-blue-800 hover:cursor-pointer">
                             View
                           </span>{" "}
                           |{" "}
