@@ -62,7 +62,7 @@ const Footer = () => {
                 href="#"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
-                250 Main Street, Mirpur, Dhaka
+                Mirpur, Dhaka
               </Link>
             </p>
             <p>
@@ -74,43 +74,35 @@ const Footer = () => {
               </Link>
             </p>
             <p>
-              <Link
-                href="#"
+              <a
+                href="mailto:email@example.com"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
-                travelxone@gmail.com
-              </Link>
+                travelxone3@gmail.com
+              </a>
             </p>
             <p>
               <Link
-                href="#"
+                href="/contact"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
-                Corporate contact
-              </Link>
-            </p>
-            <p>
-              <Link
-                href="#"
-                className="hover:underline hover:text-indigo-200 text-sm font-light"
-              >
-                Sustainability
+                Contact
               </Link>
             </p>
           </div>
           <div className="pt-5 lg:pt-0">
             <p className="footer-title">SUPPORT</p>
             <p>
-              <Link
-                href="#"
+              <a
+                href="/footerMenu/help"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 Help Center
-              </Link>
+              </a>
             </p>
             <p>
               <Link
-                href="#"
+                href="/footerMenu/covid"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 Our COVID-19 Response
