@@ -23,7 +23,7 @@ const UserTransport = () => {
       <UserDashboardLayout>
         {/* -------------body content Start------------------ */}
         <h3 class="text-lg xl:text-xl dark:text-white font-semibold leading-7 xl:leading-9 w-full md:text-left text-gray-800">
-        Transport Bookings
+          Transport Bookings
         </h3>
         <p class="text-sm leading-none dark:text-white pb-0 lg:pb-5 text-gray-800">
           Paid using credit card ending with Bkash, Nagad, Visa Card
@@ -47,6 +47,7 @@ const UserTransport = () => {
                       src={post.image}
                       alt="girl-in-red-dress"
                     />
+                    {/* ------------dfdsfs--------- */}
                   </div>
                   <div class="flex justify-start md:justify-between items-start md:items-center flex-col md:flex-row w-full ml-3 md:ml-0 py-2 md:px-8">
                     <div class="flex flex-col md:flex-shrink-0 justify-start items-start">
