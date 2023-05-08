@@ -1,9 +1,13 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AdminSidebar from "../../../../components/admin/adminSidebar";
+import { AuthContext } from "@/pages/contextApi";
+
 
 const AdminRestaurant = () => {
     const [payment, setPayment] = useState();
+    const abc = useContext(AuthContext);
+    console.log("context", abc);
   const posts = [
     {
       id: "1",
@@ -32,7 +36,6 @@ const AdminRestaurant = () => {
               <p class="text-sm leading-none dark:text-white pb-0 lg:pb-5 text-black">
                 Paid using credit card ending with Bkash, Nagad, Visa Card</p>
               <div className="overflow-x-auto">
-    
                 <div class="flex justify-center items-center w-full mt-5 flex-col space-y-4 ">
                 {posts.map((post) => {
                   return (

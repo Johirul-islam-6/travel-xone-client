@@ -21,7 +21,8 @@ const HotelCards = (props) => {
                 sethotelAll(data.data)
                 setLoding(false)
             })
-    }, [])
+    }, []);
+    
 
 
     if (loding) {

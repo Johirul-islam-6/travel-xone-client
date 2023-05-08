@@ -1,6 +1,7 @@
 import Slider from "../../../components/Destinations/Slider";
 import DestinationProduct from "../../../components/Destinations/DestinationProduct";
 import Head from "next/head";
+import Card from "../../../components/RestaurantCard/card";
 
 
 const Destinations = ({ singelLocation }) => {
@@ -22,8 +23,10 @@ const Destinations = ({ singelLocation }) => {
       <Head>
         <title>Restaurants</title>
       </Head>
+      <div className="bg-gray-100 pt-4">
       <Slider value={singelLocation} />
       <DestinationProduct value={singelLocation} />
+      </div>
     </>
   );
 };
