@@ -19,21 +19,6 @@ import { AiOutlineHeart } from "react-icons/ai";
 import classNames from "classnames";
 
 const Header = () => {
-<<<<<<< HEAD
-  const { LOGOUT, setUser } = useContext(RootContext);
-
-  const HandleLogOut = () => {
-    LOGOUT()
-      .then((res) => {
-        setUser(null);
-        toast.success("Logout success");
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error(err.data?.message);
-      });
-  };
-=======
   const { LOGOUT, setUser } = useContext(RootContext)
 
   const HandleLogOut = () => {
@@ -43,8 +28,7 @@ const Header = () => {
         toast.success('Logout success')
       })
       .catch(err => { console.log(err); toast.error(err.data?.message) })
->>>>>>> johir/Transport
-
+  }
   const buttonStyle = classNames(
     "border border-blue-500 p-2 rounded-full hover:bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"
   );
