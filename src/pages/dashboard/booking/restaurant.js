@@ -1,11 +1,10 @@
 import Head from "next/head";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import UserDashboardLayout from "../../../../components/userDashboardLayout";
-import { RootContext } from "@/context/RootContext";
+
 
 const UserRestaurant = () => {
-  const {user} = useContext(RootContext);
-  console.log(user, "I am user");
+  
   const [payment, setPayment] = useState();
   const posts = [
     {

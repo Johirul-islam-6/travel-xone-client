@@ -12,27 +12,10 @@ import { BiMenu, IconName } from "react-icons/bi";
 import TopHeader from "./TopHeader";
 import navbar from "../src/styles/home_style/hero.module.css";
 import Image from "next/image";
-import { useContext } from "react";
-import { RootContext } from "@/context/RootContext";
-import toast from "react-hot-toast";
 import { AiOutlineHeart } from "react-icons/ai";
 import classNames from "classnames";
 
 const Header = () => {
-  const { LOGOUT, setUser } = useContext(RootContext);
-
-  const HandleLogOut = () => {
-    LOGOUT()
-      .then((res) => {
-        setUser(null);
-        toast.success("Logout success");
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error(err.data?.message);
-      });
-  };
-
   const buttonStyle = classNames(
     "border border-blue-500 p-2 rounded-full hover:bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"
   );
@@ -226,7 +209,7 @@ const Header = () => {
                   </li>
 
                   <li>
-                    <a onClick={HandleLogOut}>Logout</a>
+                    {/* <a onClick={HandleLogOut}>Logout</a> */}
                   </li>
                 </ul>
               </div>
