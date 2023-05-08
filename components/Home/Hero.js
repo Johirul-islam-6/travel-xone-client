@@ -245,47 +245,7 @@ const Hero = () => {
                                   </span>
                                 </button>
                               </div>
-<<<<<<< HEAD
-                              {/* -------------------- User Condition base --------------- */}
-                              {
-                                singelUser?.email ?
-                                  <>
-                                    {/* start modal  body*/}
-                                    <div className="relative p-6 flex-auto">
-                                      <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                                        Travel takes us out of our comfort zones and inspires us to see,  try new things.
-                                      </p>
-                                      <div className="grid grid-cols-2 gap-2">
-                                        <div className="form-control w-full max-w-xs">
-                                          <label className="label">
-                                            <span className="label-text">your name Is :</span>
-                                          </label>
-                                          <input name="name" type="text" defaultValue={bookingData?.name} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                        </div>
-                                        <div className="form-control w-full max-w-xs">
-                                          <label className="label">
-                                            <span className="label-text">your Email Is :</span>
-                                          </label>
-                                          <input name="email" type="text" defaultValue={bookingData?.email} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                        </div>
-                                      </div>
-                                      <div className="grid grid-cols-2 gap-2">
-                                        <div className="form-control w-full max-w-xs">
-                                          <label className="label">
-                                            <span className="label-text">your From :</span>
-                                          </label>
-                                          <input name="fLocation" type="text" defaultValue={bookingData?.FromLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                        </div>
-                                        <div className="form-control w-full max-w-xs">
-                                          <label className="label">
-                                            <span className="label-text">your From To :</span>
-                                          </label>
-                                          <input name="tLocation" type="text" defaultValue={bookingData?.ToLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                        </div>
-                                      </div>
-=======
                               {/* start modal  body*/}
->>>>>>> parent of 5e44009 (total submit design)
 
                               <div className="relative p-6 flex-auto">
                                 <p className="my-4 text-slate-500 text-lg leading-relaxed">
@@ -538,47 +498,7 @@ const Hero = () => {
                                     </span>
                                   </button>
                                 </div>
-<<<<<<< HEAD
-                                {/* -------------------- User Condition base --------------- */}
-                                {
-                                  singelUser?.phone ?
-                                    <>
-                                      {/* start modal  body*/}
-                                      <div className="relative p-6 flex-auto ">
-                                        <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                                          Travel takes us out of our comfort zones and inspires us to see,  try new things.
-                                        </p>
-                                        <div className="grid grid-cols-2 gap-2">
-                                          <div className="form-control w-full max-w-xs">
-                                            <label className="label">
-                                              <span className="label-text">your name Is :</span>
-                                            </label>
-                                            <input name="name" type="text" defaultValue={bookingData?.name} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                          </div>
-                                          <div className="form-control w-full max-w-xs">
-                                            <label className="label">
-                                              <span className="label-text">your Email Is :</span>
-                                            </label>
-                                            <input name="email" type="text" defaultValue={bookingData?.email} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                          </div>
-                                        </div>
-                                        <div className="grid grid-cols-2 gap-2">
-                                          <div className="form-control w-full max-w-xs">
-                                            <label className="label">
-                                              <span className="label-text">your From :</span>
-                                            </label>
-                                            <input name="fLocation" type="text" defaultValue={bookingData?.FromLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                          </div>
-                                          <div className="form-control w-full max-w-xs">
-                                            <label className="label">
-                                              <span className="label-text">your From To :</span>
-                                            </label>
-                                            <input name="tLocation" type="text" defaultValue={bookingData?.ToLocation} className="input input-bordered w-full max-w-xs bg-blue-400 text-white" />
-                                          </div>
-                                        </div>
-=======
                                 {/* start modal  body*/}
->>>>>>> parent of 5e44009 (total submit design)
 
                                 <div className="relative p-6 flex-auto">
                                   <p className="my-4 text-slate-500 text-lg leading-relaxed">
