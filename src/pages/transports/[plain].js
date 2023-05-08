@@ -7,7 +7,7 @@ const Plain = ({ detailsTransport }) => {
 
   const router = useRouter();
   const [loding, setLoding] = useState(true)
-  const [transport, setTransport] = useState({});
+  const [transport, setTransport] = useState();
 
 
   useEffect(() => {
