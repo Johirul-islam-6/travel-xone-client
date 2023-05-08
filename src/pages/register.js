@@ -5,12 +5,13 @@ import classNames from "classnames";
 import { useForm } from "react-hook-form";
 import Head from "next/head";
 import { useContext, useState } from "react";
-import { RootContext } from "@/context/RootContext";
+
 import toast from "react-hot-toast";
-import { AuthContext } from "@/AuthContext/AuthContext";
+import { AuthContext } from "@/ContextApi";
+
 
 const Registration = () => {
-  const{user} = useContext(AuthContext);
+  const{user,loading,setLoading,createUser,Gsignin} = useContext(AuthContext);
   console.log(user,'user');
   // const {REGISTER} = useContext(RootContext)
   // const [errors,setErrors]= useState(null)
@@ -27,6 +28,31 @@ const Registration = () => {
   //     setErrors(err.data?.errors)
   //   } )
   // }
+  const registerSubmit = e =>{
+    e.preventDefault()
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const confirm = e.target.confirm.value;
+    if(password !=confirm ){
+      return setLoading(true)
+    }
+    else{
+      createUser(email,password)
+      .then(res =>{
+        console.log(res,'user');
+      }).catch(e =>{
+        console.log(e);
+      })
+    }
+  }
+  const googlesignin= ()=>{
+    Gsignin()
+    .then(res =>{
+      console.log(res);
+    }).catch(e =>{
+      console.log(e);
+    })
+  }
 
   const backgroundClass = classNames(
     "bg-[url('https://i.ibb.co/cktYxxd/res1.png')] max-h-[120%] bg-no-repeat bg-center bg-cover bg-fixed"
@@ -59,21 +85,24 @@ const Registration = () => {
             <h1 className="text-center py-5 text-xl">Create an account </h1>
             <div className="text-left px-5">
               {/* -------Registration form-------- */}
-              <form className="text-left">
+              <form className="text-left" onSubmit={registerSubmit}>
                 <div>
                  
                  
                   <input
+                  name="email"
                     type="email"
                     placeholder="Email"
                     className={successClassName}
                   />
                   <input
+                  name="password"
                     type="password"
                     placeholder="Password"
                     className={successClassName}
                   />
                   <input
+                  name="confirm"
                     type="password"
                     placeholder="Confirm"
                     className={successClassName}
@@ -152,7 +181,7 @@ const Registration = () => {
 
               {/* -------Already have an account ?------- */}
               <div className="text-center pt-3">
-                <button
+                <button onClick={googlesignin}
                   class="group h-10  px-6 border-2 border-gray-300 rounded-full transition duration-300 
  hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
                 >
