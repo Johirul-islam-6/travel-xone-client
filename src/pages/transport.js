@@ -7,12 +7,18 @@ const Transport = () => {
   const [transport, setTransport] = useState();
   const [loding, setLoding] = useState(true)
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/transports/`)
-      .then((res) => res.json())
-      .then((data) => {
-        setTransport(data);
-        setLoding(false)
-      });
+    try {
+
+      fetch(`http://localhost:5000/api/v1/transports/`)
+        .then((res) => res.json())
+        .then((data) => {
+          setTransport(data);
+          setLoding(false)
+        });
+
+    } catch (error) {
+      console.log(error)
+    }
   }, []);
 
 
