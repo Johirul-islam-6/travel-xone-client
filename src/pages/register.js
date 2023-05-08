@@ -48,7 +48,14 @@ const Registration = () => {
   const googlesignin= ()=>{
     Gsignin()
     .then(res =>{
-      console.log(res);
+      if(res){
+        const userinfo = {
+          email : res?.email,
+          role : "user"
+        }
+        console.log(userinfo);
+
+      }
     }).catch(e =>{
       console.log(e);
     })
