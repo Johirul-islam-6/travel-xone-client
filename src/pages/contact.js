@@ -65,10 +65,10 @@ const Contact = () => {
               <div className="flex items-center mb-10">
                 <MdOutlineEmail className="text-[#7f97f7] hover:text-white font-bold text-3xl mr-4" />
                 <a
-                  href="mailto:info@jintupaul45@gmail.com"
+                  href="mailto:travelxone3@gmail.com"
                   className="text-slate-300 font-medium text-lg font-[monospace]"
                 >
-                  travelxone@gmail.com
+                  travelxone3@gmail.com
                 </a>
               </div>
               <div className="flex items-center mb-40">
@@ -78,26 +78,26 @@ const Contact = () => {
                 </h2>
               </div>
               <div className="flex mb-6">
-                <span
+                <Link href='https://web.facebook.com/profile.php?id=100092635233512'
                   className={`${styles.social_icon}  text-2xl md:text-3xl font-bold mr-3 xl:mr-6 text-white`}
                 >
                   <BsFacebook />
-                </span>
-                <span
-                  className={`${styles.social_icon}  text-2xl md:text-3xl font-bold mr-3 xl:mr-6 text-white`}
-                >
-                  <BsTwitter />
-                </span>
-                <span
+                </Link>
+                <Link href='https://www.instagram.com/travelxone3/'
                   className={`${styles.social_icon}  text-2xl md:text-3xl font-bold mr-3 xl:mr-6 text-white`}
                 >
                   <GrInstagram />
-                </span>
-                <a
+                </Link>
+                <Link href='https://twitter.com/travelxone3'
+                  className={`${styles.social_icon}  text-2xl md:text-3xl font-bold mr-3 xl:mr-6 text-white`}
+                >
+                  <BsTwitter />
+                </Link>
+                <Link href="https://www.linkedin.com/in/travelxone3/"
                   className={`${styles.social_icon}  text-2xl md:text-3xl font-bold mr-3 xl:mr-6 `}
                 >
                   <FaLinkedinIn />
-                </a>
+                </Link>
               </div>
               <span className={styles.play_animation}></span>
               <span className={styles.white_bg}></span>

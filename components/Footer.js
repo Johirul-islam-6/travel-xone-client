@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "../src/styles/#footer.module.css";
 import { BsFacebook } from "react-icons/bs";
 import { AiFillTwitterCircle, AiOutlineInstagram } from "react-icons/ai";
-import { FaPinterest } from "react-icons/fa";
+import { FaLinkedinIn, FaPinterest } from "react-icons/fa";
 import Image from "next/image";
 import NewsletterSubscribe from "./mailchimp/NewsletterSubscribe";
 
@@ -17,34 +17,28 @@ const Footer = () => {
           <div>
             <p className="text-left">Payment Methods</p>
             <div className="flex w-[100%] gap-2">
-            <Image
+              <Image
                 src="https://i.ibb.co/ZNdCyFB/Rectangle-66.png"
                 alt="TRAVEL.XONE LOGO"
                 width={70}
                 height={30}
                 loading="lazy"
               />
-            <Image
+              <Image
                 src="https://i.ibb.co/s5V1kc4/Rectangle-67.png"
                 alt="TRAVEL.XONE LOGO"
                 width={70}
                 height={30}
                 loading="lazy"
               />
-            <Image
+              <Image
                 src="https://i.ibb.co/1bd2yx2/Rectangle-65.png"
                 alt="TRAVEL.XONE LOGO"
                 width={70}
                 height={30}
                 loading="lazy"
               />
-            <Image
-                src="https://i.ibb.co/3r7KmxF/Rectangle-68.png"
-                alt="TRAVEL.XONE LOGO"
-                width={70}
-                height={30}
-                loading="lazy"
-              />
+            
             </div>
           </div>
           {/* ----------Mailchimp Newsletter form---------- */}
@@ -56,7 +50,7 @@ const Footer = () => {
         <div className="lg:flex justify-between px-10 lg:px-20 py-10 bg-black text-slate-500 text-left">
           <div className="text-left lg:text-center w-full md:w-[45%] lg:w-[20%]">
             <Link href="/" className="cursor-pointer ">
-            <Image
+              <Image
                 src="https://i.ibb.co/nMFwjww/foorer-logo.png"
                 alt="TRAVEL.XONE LOGO"
                 width={600}
@@ -75,7 +69,7 @@ const Footer = () => {
             <p className="footer-title">CONTACTS</p>
             <p>
               <Link
-                href="#"
+                href="/destination"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 250 Main Street, Mirpur, Dhaka
@@ -83,50 +77,42 @@ const Footer = () => {
             </p>
             <p>
               <Link
-                href="#"
+                href="tel:+880123456789"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 Phone: +880123456789
               </Link>
             </p>
             <p>
-              <Link
-                href="#"
+              <a
+                href="mailto:travelxone3@gmail.com"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
-                travelxone@gmail.com
-              </Link>
+                travelxone3@gmail.com
+              </a>
             </p>
             <p>
               <Link
-                href="#"
+                href="/contact"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
-                Corporate contact
-              </Link>
-            </p>
-            <p>
-              <Link
-                href="#"
-                className="hover:underline hover:text-indigo-200 text-sm font-light"
-              >
-                Sustainability
+                Contact
               </Link>
             </p>
           </div>
           <div className="pt-5 lg:pt-0">
-            <p className="footer-title">SUPPORT</p>
+            <p className="footer-title">EXPLORE</p>
             <p>
-              <Link
-                href="#"
+              <a
+                href="/footerMenu/help"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 Help Center
-              </Link>
+              </a>
             </p>
             <p>
               <Link
-                href="#"
+                href="/footerMenu/covid"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 Our COVID-19 Response
@@ -134,23 +120,15 @@ const Footer = () => {
             </p>
             <p>
               <Link
-                href="#"
+                href="/blogs"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
-                Cancellation options
+                Blogs
               </Link>
             </p>
             <p>
               <Link
-                href="#"
-                className="hover:underline hover:text-indigo-200 text-sm font-light"
-              >
-                Safety information
-              </Link>
-            </p>
-            <p>
-              <Link
-                href="#"
+                href="/destination"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 Places of interest
@@ -158,10 +136,10 @@ const Footer = () => {
             </p>
           </div>
           <div className="pt-5 lg:pt-0">
-            <p className="footer-title">MY ACCOUNT</p>
+            <p className="footer-title">PLAN YOUR TRIP</p>
             <p>
               <Link
-                href="#"
+                href="/login"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 Login
@@ -169,34 +147,18 @@ const Footer = () => {
             </p>
             <p>
               <Link
-                href="#"
+                href="/transport"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
-                Order History
+                Transport Booking
               </Link>
             </p>
             <p>
               <Link
-                href="#"
+                href="/register"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
-                My Wish list
-              </Link>
-            </p>
-            <p>
-              <Link
-                href="#"
-                className="hover:underline hover:text-indigo-200 text-sm font-light"
-              >
-                Track Order
-              </Link>
-            </p>
-            <p>
-              <Link
-                href="#"
-                className="hover:underline hover:text-indigo-200 text-sm font-light"
-              >
-                Be an affiliate partner
+                Create new Account
               </Link>
             </p>
           </div>
@@ -204,7 +166,7 @@ const Footer = () => {
             <p className="footer-title">QUICK LINKS</p>
             <p>
               <Link
-                href="#"
+                href="/footerMenu/support"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 Support Policy Page
@@ -212,7 +174,7 @@ const Footer = () => {
             </p>
             <p>
               <Link
-                href="#"
+                href="/footerMenu/returnPolicy"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 Return Policy Page
@@ -220,7 +182,7 @@ const Footer = () => {
             </p>
             <p>
               <Link
-                href="#"
+                href="/about"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 About Us
@@ -228,7 +190,7 @@ const Footer = () => {
             </p>
             <p>
               <Link
-                href="#"
+                href="/footerMenu/privacy_Policy"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 Privacy Policy Page
@@ -236,7 +198,7 @@ const Footer = () => {
             </p>
             <p>
               <Link
-                href="#"
+                href="/footerMenu/terms"
                 className="hover:underline hover:text-indigo-200 text-sm font-light"
               >
                 Term Conditions Page
@@ -252,11 +214,19 @@ const Footer = () => {
           <p className="text-xs text-slate-400">
             © 2023 Copyrights by travel.xone. All Rights Reserved
           </p>
-          <div className="flex gap-2 items-center text-md lg:text-2xl  pt-2 lg:pt-0">
-            <BsFacebook className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
-            <AiOutlineInstagram className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
-            <FaPinterest className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
-            <AiFillTwitterCircle className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
+          <div className="flex gap-3 items-center text-md lg:text-3xl  pt-2 lg:pt-0">
+            <Link href="https://web.facebook.com/profile.php?id=100092635233512">
+              <BsFacebook className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
+            </Link>
+            <Link href="https://www.instagram.com/travelxone3/">
+              <AiOutlineInstagram className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
+            </Link>
+            <Link href="https://twitter.com/travelxone3">
+              <AiFillTwitterCircle className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
+            </Link>
+            <Link href="https://www.linkedin.com/in/travelxone3/">
+              <FaLinkedinIn className="text-slate-400 cursor-pointer hover:text-[#026fc8]" />
+            </Link>
           </div>
         </div>
       </footer>
