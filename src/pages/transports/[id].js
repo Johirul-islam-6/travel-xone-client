@@ -219,11 +219,12 @@ const Plain = ({ detailsTransport }) => {
 
 
             <div className="card-actions justify-between items-center text-black">
-              <h1 className="bg-amber-700 p-1 text-white"> Ticket Rates : {transport?.price}$</h1>
-              <button onClick={BookingNowTransport} className="btn btn-slack-400">
-                Booking Now
-              </button>
-            </div>
+              <h1 className="bg-amber-700 p-1 text-white"> Ticket Rates : {transport?.price?.slice(0, 3)}$</h1>
+              <h1 className="bg-green-500 p-1 text-white"> Discount Rates : 15%$</h1>
+
+            </div><button onClick={BookingNowTransport} className="btn btn-slack-400 mt-5">
+              Booking Now
+            </button>
           </div>
 
         </div>
@@ -362,14 +363,14 @@ const Plain = ({ detailsTransport }) => {
                               <p className="py-3 px-2 rounded-md flex input-bordered w-full max-w-xs bg-white font-bold text-white text-center  justify-center text-[14px]">  <span className=" text-black text-[16px] px-1" >15%</span><span className="text-green-700">OFF</span></p>
                             </div>
                             <div className="form-control w-full max-w-xs">
-                              <label className="label flex justify-center">
+                              <label className="label flex justify-end">
                                 <span className="label-text">Total Prices Is :</span>
                               </label>
-                              <p className="py-1 px-2 rounded-md flex input-bordered w-full max-w-xs bg-white font-bold text-black text-center  justify-center text-[13px]"> <span className="divide-gray-800  divide-y block">
-                                price : <span className=" text-black text-[16px] px-1" > {displayPrice}</span>$ <br></br>
-                                discount :  <span className="text-red-700 pt-1 pr-1 absolute text-[12px]"><FaMinus /></span>
-                                <span className="px-4 text-yellow-500 text-[16px]" > {discountPrice}$</span>  <br></br>
-                                <span className=" text-black text-[16px] px-1 text-left bg-lime-500 mt-[2px]" >total = {PriceTotal} $</span>
+                              <p className="py-1 px-2 rounded-md flex input-bordered w-full max-w-xs bg-white font-bold text-[#969696] text-end justify-end text-[13px]"> <span className="divide-gray-800  divide-y block">
+                                price : <span className=" text-black text-[16px] px-1" > {displayPrice}$</span><br></br>
+                                discount :  <span className="text-red-700  pl-[1px] absolute text-[12px] pt-1"><FaMinus /></span>
+                                <span className="pl-4 text-yellow-500 text-[16px] " > {discountPrice}$</span>  <br></br>
+                                <span className=" text-black text-[16px] px-1 text-left bg-lime-500 mt-[2px] " >total = {PriceTotal} $</span>
                               </span>
                               </p>
                               <p className="py-3 px-2 rounded-md flex input-bordered w-full max-w-xs bg-white text-yellow-600 text-center  justify-center text-[12px]"> </p>
