@@ -4,6 +4,9 @@ import { BsFacebook } from "react-icons/bs";
 import { AiFillTwitterCircle, AiOutlineInstagram } from "react-icons/ai";
 import { FaPinterest } from "react-icons/fa";
 import Image from "next/image";
+import NewsletterSubscribe from "./mailchimp/NewsletterSubscribe";
+
+
 
 const Footer = () => {
   return (
@@ -44,27 +47,11 @@ const Footer = () => {
               />
             </div>
           </div>
+          {/* ----------Mailchimp Newsletter form---------- */}
           <div className="pt-5 md:pt-5 lg:pt-0">
-            <p className="text-left font-light">
-              Subscribe to get our latest update
-            </p>
-            <div className="flex justify-start lg:justify-end pt-1">
-              <input
-                type="text"
-                id="subscribe"
-                name="subscribe"
-                placeholder="Enter your email address"
-                className="px-2 py-2 text-slate-500 text-sm border"
-              />
-              <input
-                type="submit"
-                value="Subscribe"
-                className="bg-[#3264FF] text-sm p-2 border"
-              ></input>
-            </div>
+          <NewsletterSubscribe/>
           </div>
         </div>
-
         {/* -----------2nd Layer----------- */}
         <div className="lg:flex justify-between px-10 lg:px-20 py-10 bg-black text-slate-500 text-left">
           <div className="text-left lg:text-center w-full md:w-[45%] lg:w-[20%]">

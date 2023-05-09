@@ -6,9 +6,9 @@ import { AuthContext } from "@/ContextApi";
 
 
 const UserRestaurant = () => {
+  const [payment, setPayment] = useState();
   const {user} = useContext(AuthContext);
   console.log("I am user", user);
-  const [payment, setPayment] = useState();
 
   const posts = [
     {
