@@ -6,9 +6,11 @@ import { useContext, useState } from "react";
 // import { RootContext } from "../context/RootContext";
 import toast from 'react-hot-toast';
 import Head from 'next/head'
-import { useRouter } from "next/router";
+
 import { AuthContext } from "@/ContextApi";
+import { useRouter } from "next/router";
 const Login = () => {
+  const router = useRouter();
   const{user,Login,loading,setLoading,Gsignin} = useContext(AuthContext)
   // const router = useRouter()
   // const { register, handleSubmit } = useForm();
@@ -26,7 +28,9 @@ const Login = () => {
   //     })
   //     .catch(err => {console.log(err) ; toast.error(err.data?.message?.type) ; setErrors(err.data?.message)} )
   // }
-
+const handleRouter = ()=>{
+  router.push('/')
+}
 const loginhandler = e=>{
   e.prevnetDefault();
   const email = e.target.email.value;
@@ -34,6 +38,7 @@ const loginhandler = e=>{
   Login(email,password)
   .then(res => {
     console.log(res);
+    handleRouter()
   }).catch(e => {
     console.log(e);
   })
@@ -41,7 +46,23 @@ const loginhandler = e=>{
 const googlesignin= ()=>{
   Gsignin()
   .then(res =>{
-    console.log(res);
+    const userinfo = {
+      email : res?.user?.email,
+      role : "user"
+    }
+    fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/chena`, {
+  method: "POST", // or 'PUT'
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(userinfo),
+})
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    handleRouter()
+  });
+
   }).catch(e =>{
     console.log(e);
   })

@@ -8,11 +8,15 @@ import { useContext, useState } from "react";
 
 import toast from "react-hot-toast";
 import { AuthContext } from "@/ContextApi";
+import { useRouter } from "next/router";
 
 
 const Registration = () => {
+  const router = useRouter()
   const{user,loading,setLoading,createUser,Gsignin} = useContext(AuthContext);
-  console.log(user,'user');
+  const handleRouter = ()=>{
+    router.push('/')
+  }
   // const {REGISTER} = useContext(RootContext)
   // const [errors,setErrors]= useState(null)
   // const { register, handleSubmit } = useForm();
@@ -39,7 +43,23 @@ const Registration = () => {
     else{
       createUser(email,password)
       .then(res =>{
-        console.log(res,'user');
+        const userinfo = {
+          email : res?.user?.email,
+          role : "user"
+        }
+        fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/chena`, {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userinfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        handleRouter()
+      });
+
       }).catch(e =>{
         console.log(e);
       })
@@ -48,14 +68,26 @@ const Registration = () => {
   const googlesignin= ()=>{
     Gsignin()
     .then(res =>{
-      if(res){
+      
+        
         const userinfo = {
-          email : res?.email,
+          email : res?.user?.email,
           role : "user"
         }
-        console.log(userinfo);
+        fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/chena`, {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userinfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        handleRouter()
+      });
 
-      }
+     
     }).catch(e =>{
       console.log(e);
     })

@@ -16,10 +16,11 @@ import { AiOutlineHeart } from "react-icons/ai";
 import classNames from "classnames";
 import { useContext } from "react";
 import { AuthContext } from "@/ContextApi";
+import { Button } from "@mui/material";
 
 const Header = () => {
-  const{user} = useContext(AuthContext);
-  console.log(user.email);
+  const{user,logOut} = useContext(AuthContext);
+  console.log(user?.email);
   const buttonStyle = classNames(
     "border border-blue-500 p-2 rounded-full hover:bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"
   );
@@ -186,7 +187,7 @@ const Header = () => {
                  
 
                    {
-                    user? <p>{user.email}</p> : <Link href="/register" className={`${navbar.link_style}`}>
+                    user? <Button onClick={logOut}>LogOut</Button>: <Link href="/register" className={`${navbar.link_style}`}>
                     Login | Register
                   </Link>
                    }
