@@ -2,15 +2,16 @@ import { GiLoveHowl } from "react-icons/gi";
 import { RiHotelBedLine, RiHotelLine } from "react-icons/ri";
 import HotelCards from "../HotelCards/HotelCards";
 import Card from "../RestaurantCard/card";
+import { useState } from "react";
 
 const DestinationProduct = (props) => {
-  const singel_location = props?.value?.data
-
+  const singel_location = props?.value
+  const [placeID ,setPlaceID] = useState(null)
 
   // ------dynamic area hotel get--------
 
   const DynamicArea = (id) => {
-    console.log(id)
+    setPlaceID(id)
   }
 
 
@@ -84,16 +85,16 @@ const DestinationProduct = (props) => {
               {/*------- features property ------- */}
               {/*------- Location Button Start ------- */}
               <div className="flex-wrap md:flex lg:flex gap-5 mt-2">
-                <div onClick={() => DynamicArea(`${place._id}`)} className={`bg-slate-100 text-zinc-500 py-1 px-2 rounded hover:bg-[#627FF4] hover:text-white shadow text-sm my-2 md:my-0 lg:my-0 cursor-pointer`}>All</div>
+                <div onClick={() => DynamicArea(null)} className={`bg-slate-100 text-zinc-500 py-1 px-2 rounded hover:bg-[#627FF4] hover:text-white shadow text-sm my-2 md:my-0 lg:my-0 cursor-pointer`}>All</div>
                 {
-                  singel_location?.places?.map(place => <div className={`bg-slate-100 text-zinc-500 py-1 px-2 rounded hover:bg-[#627FF4] hover:text-white shadow text-sm my-2 md:my-0 lg:my-0 cursor-pointer`}>{place?.name}</div>)
+                  singel_location?.places?.map(place => <div onClick={() => DynamicArea(`${place._id}`)}  className={`bg-slate-100 text-zinc-500 py-1 px-2 rounded hover:bg-[#627FF4] hover:text-white shadow text-sm my-2 md:my-0 lg:my-0 cursor-pointer`}>{place?.name}</div>)
                 }
               </div>
               {/*------- Location Button End------- */}
               {/*------- package body Start------- */}
               <section class="py-10 bg-gray-100">
             <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-10 md:px-0 lg:px-0">
-              <Card/>
+              <Card id={placeID}/>
             </div>
             </section>
         {/*------- package body End------- */}

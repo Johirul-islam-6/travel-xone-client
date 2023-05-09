@@ -40,7 +40,7 @@ useEffect(()=>{
                   
 
       }
-      return ()=>  unSubscribe()
+      // return ()=>  unSubscribe()
 },[])
 
   const  RootContextValue = {status,setStatus,LOGIN,LOGOUT,SENTEMAIL,VERIFTOKEN,REGISTER,user,setUser}

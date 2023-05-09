@@ -1,15 +1,19 @@
 import Private from '@/private/private.route';
-import React, { useState } from 'react';
-
+import React, { useState , useEffect } from 'react';
+import axios from  '../../hooks/hook.axios'
 
 function chat(props) {
   
-
+  useEffect(()=>{
+    axios.get('/login',).then(res=>{
+      console.log("data =>" , res.data)
+    })
+  })
 
  
 
   return (
-    <Private> 
+    // <Private> 
     <div>
 
       this is chat page with soket   io <br />
@@ -18,7 +22,7 @@ function chat(props) {
       <button > Send </button>
 
     </div>
-  </Private>
+  // </Private>
   );
 }
 

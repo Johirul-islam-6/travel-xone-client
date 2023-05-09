@@ -1,19 +1,19 @@
 import Link from 'next/link';
 import { useEffect } from "react";
 import { useState } from "react";
-
+import axios from "../../hooks/hook.axios"
 const Card = (props) => {
 
     const [hotelAll, sethotelAll] = useState()
     const [loding, setLoding] = useState(true);
-
+      console.log(props.id)
     useEffect(() => {
-        fetch(`https://travel-xone-server.vercel.app/api/v1/hotels/`)
-            .then(res => res.json())
-            .then(data => {
-                sethotelAll(data.data)
-                setLoding(false)
-            })
+      const url = props.id ? `/api/v1/hotels?placeID=${props.id}` : '/api/v1/hotels'
+      axios.get(url).then(res=>{
+        sethotelAll(res.data.data)
+        setLoding(false)
+      })
+        
     }, [])
 
     if (loding) {
@@ -56,7 +56,7 @@ const Card = (props) => {
 
                   <div class="mt-1 p-2">
                     <h2 class="text-slate-700">{hotel?.title.slice(0, 25)}</h2>
-                    <p class="mt-1 text-sm text-slate-400">{hotel?.placeName}</p>
+                    <p class="mt-1 text-sm text-slate-400">{hotel?.placeName} hi </p>
 
                     <div class="mt-3 flex items-end justify-between">
                       <p class="text-lg font-bold text-blue-500">TK <span className="text-lg text-[#ce7c00]">{hotel?.price}</span></p>
@@ -95,3 +95,4 @@ const Card = (props) => {
 };
 
 export default Card;
+
