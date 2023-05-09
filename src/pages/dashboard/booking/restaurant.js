@@ -1,14 +1,17 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import UserDashboardLayout from "../../../../components/userDashboardLayout";
-import { useContext } from "react";
 import { AuthContext } from "@/ContextApi";
+import { useEffect } from "react";
 
 
 const UserRestaurant = () => {
+  const {user} =useContext(AuthContext);
+  console.log(user,'this under the rasturant ');
+  
+  const[bookingdata,setBookingData] = useState([]);
   const [payment, setPayment] = useState();
-  const {user} = useContext(AuthContext);
-  console.log("I am user", user);
+  
 
   const posts = [
     {
@@ -21,6 +24,16 @@ const UserRestaurant = () => {
       group_size: "2",
     },
   ];
+
+  useEffect(()=>{
+    fetch(`https://travel-xone-server-five.vercel.app/api/v1/bookings?email=${user?.email}`)
+     .then(res => res.json())
+     .then(data =>{
+       setBookingData(data)
+       console.log(data,'bookings');
+     })
+  },[user?.email])
+
   return (
     <>
       <Head>
@@ -36,7 +49,7 @@ const UserRestaurant = () => {
         </p>
         <div className="overflow-x-auto">
           <div class="flex justify-center items-center w-full mt-5 flex-col space-y-4 ">
-            {posts.map((post) => {
+            {bookingdata?.data?.map((post) => {
               return (
                 <div
                   key={post.id}
@@ -45,7 +58,7 @@ const UserRestaurant = () => {
                   <div class="-m-px w-40 md:w-32">
                     <img
                       class="hidden md:block"
-                      src={post.image}
+                      src={post?.pictureOne}
                       alt="girl-in-red-dress"
                     />
                     <img

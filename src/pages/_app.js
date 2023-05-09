@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }) {
   }
   return (
     <>
-    <ContextApi>
+     <ContextApi>
       <Layout>
         <Component {...pageProps} />
       </Layout>
