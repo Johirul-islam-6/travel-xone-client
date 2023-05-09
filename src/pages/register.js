@@ -5,41 +5,118 @@ import classNames from "classnames";
 import { useForm } from "react-hook-form";
 import Head from "next/head";
 import { useContext, useState } from "react";
-import { RootContext } from "@/context/RootContext";
-import toast from 'react-hot-toast';
+
+import toast from "react-hot-toast";
+import { AuthContext } from "@/ContextApi";
+import { useRouter } from "next/router";
+
 
 const Registration = () => {
-  const {REGISTER} = useContext(RootContext)
-  const [errors,setErrors]= useState(null)
-  const { register, handleSubmit } = useForm();
-  const handleRegister = (data)=>{
-    console.log(data)
-    REGISTER(data).then(res=>{
-      toast.success('REGISTER success')
-      setErrors(null)
-    })
-    .catch(err => {
-      console.log(err) ; 
-      toast.error(err.data?.message)
-      setErrors(err.data?.errors)
-      
-    
-    } )
-
-
+  const router = useRouter()
+  const{user,loading,setLoading,createUser,Gsignin} = useContext(AuthContext);
+  const handleRouter = ()=>{
+    router.push('/')
   }
-  
-  const backgroundClass = classNames("bg-[url('https://i.ibb.co/cktYxxd/res1.png')] max-h-[120%] bg-no-repeat bg-center bg-cover bg-fixed");
-  const formClass = classNames("relative bg-[#000000b0] w-[80%] md:w-[50%] lg:w-[35%] text-white mx-auto mt-20 lg:mt-32 py-10 px-8 rounded shadow-2xl");
-  const buttonAnimation = classNames("transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-[#627ff4]  duration-300");
-  const registerButton = classNames("bg-[#627FF4] w-full py-1 my-3 rounded-lg hover:bg-slate-300 hover:text-[#627FF4] hover:font-bold");
-  const errorClassName = classNames("input input-error input-sm w-full max-w-sm my-2 focus:outline-none")
-  const sucessClassName = classNames("input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300 ")
+  // const {REGISTER} = useContext(RootContext)
+  // const [errors,setErrors]= useState(null)
+  // const { register, handleSubmit } = useForm();
+  // const handleRegister = (data)=>{
+  //   console.log(data)
+  //   REGISTER(data).then(res=>{
+  //     toast.success('REGISTER success')
+  //     setErrors(null)
+  //   })
+  //   .catch(err => {
+  //     console.log(err) ;
+  //     toast.error(err.data?.message)
+  //     setErrors(err.data?.errors)
+  //   } )
+  // }
+  const registerSubmit = e =>{
+    e.preventDefault()
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const confirm = e.target.confirm.value;
+    if(password !=confirm ){
+      return setLoading(true)
+    }
+    else{
+      createUser(email,password)
+      .then(res =>{
+        const userinfo = {
+          email : res?.user?.email,
+          role : "user"
+        }
+        fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/chena`, {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userinfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        handleRouter()
+      });
+
+      }).catch(e =>{
+        console.log(e);
+      })
+    }
+  }
+  const googlesignin= ()=>{
+    Gsignin()
+    .then(res =>{
+      
+        
+        const userinfo = {
+          email : res?.user?.email,
+          role : "user"
+        }
+        fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/chena`, {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userinfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        handleRouter()
+      });
+
+     
+    }).catch(e =>{
+      console.log(e);
+    })
+  }
+
+  const backgroundClass = classNames(
+    "bg-[url('https://i.ibb.co/cktYxxd/res1.png')] max-h-[120%] bg-no-repeat bg-center bg-cover bg-fixed"
+  );
+  const formClass = classNames(
+    "relative bg-[#000000b0] w-[80%] md:w-[50%] lg:w-[35%] text-white mx-auto mt-20 lg:mt-32 py-10 px-8 rounded shadow-2xl"
+  );
+  const buttonAnimation = classNames(
+    "transition ease-in-out delay-150 hover:-translate-x-1 hover:scale-110 hover:text-[#627ff4] hover:bg-white hover:text-blue-500  duration-300"
+  );
+  const registerButton = classNames(
+    "bg-[#627FF4] w-full py-1 my-3 rounded-lg hover:bg-slate-300 hover:text-[#627FF4] hover:font-bold"
+  );
+  const errorClassName = classNames(
+    "input input-error input-sm w-full max-w-sm my-2 focus:outline-none"
+  );
+  const successClassName = classNames(
+    "input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300 "
+  );
+  // const sucessClassName = classNames("input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300 ")
   return (
     <>
-    <Head>
-      <title>Register Page</title>
-    </Head>
+      <Head>
+        <title>Register Page</title>
+      </Head>
       <div className={backgroundClass}>
         <div className="py-20">
           <div className={formClass}>
@@ -47,19 +124,49 @@ const Registration = () => {
             <h1 className="text-center py-5 text-xl">Create an account </h1>
             <div className="text-left px-5">
               {/* -------Registration form-------- */}
-              <form className="text-left" onSubmit={handleSubmit(handleRegister)}>
+              <form className="text-left" onSubmit={registerSubmit}>
+                <div>
+                 
+                 
+                  <input
+                  name="email"
+                    type="email"
+                    placeholder="Email"
+                    className={successClassName}
+                  />
+                  <input
+                  name="password"
+                    type="password"
+                    placeholder="Password"
+                    className={successClassName}
+                  />
+                  <input
+                  name="confirm"
+                    type="password"
+                    placeholder="Confirm"
+                    className={successClassName}
+                  />
+                </div>
+                <button type="submit" className={`${registerButton}`}>
+                  Register
+                </button>
+              </form>
+              {/* -------Registration form--------
+              <form className="text-left" >
                 <div>
                   <input
                   {...register("username")}
                     type="text"
+                    name="username"
                     placeholder="User Name"
-                    className={ errors?.username ? errorClassName:sucessClassName}
+                    className={sucessClassName}
                   />
                   {errors?.username && <p className="text-red-600 text-[14px] mt-[-6px] mb-[5px] text-right">{errors.username?.message}</p>}
                  
                   <input
                   {...register("phone")}
                     type="text"
+                    name="phone"
                     placeholder="Phone No"
                     className={ errors?.phone ? errorClassName:sucessClassName}
                   />
@@ -68,6 +175,7 @@ const Registration = () => {
                   <input
                   {...register("country")}
                     type="text"
+                    name="country"
                     placeholder="Country"
                     className={ errors?.country ? errorClassName:sucessClassName}
                   />
@@ -76,6 +184,7 @@ const Registration = () => {
                   <input
                   {...register("email")}
                     type="email"
+                    name="email"
                     placeholder="Email"
                     className={ errors?.email ? errorClassName:sucessClassName}
                   />
@@ -84,6 +193,7 @@ const Registration = () => {
                   <input
                   {...register("password")}
                     type="password"
+                    name="password"
                     placeholder="Password"
                     className={ errors?.password ? errorClassName:sucessClassName}
                   />
@@ -93,7 +203,7 @@ const Registration = () => {
                 <button type="submit" className={`${registerButton}`}>
                   Register
                 </button>
-              </form>
+              </form> */}
 
               {/* -------Already have an account ?------- */}
               <div className="text-center">
@@ -110,17 +220,21 @@ const Registration = () => {
 
               {/* -------Already have an account ?------- */}
               <div className="text-center pt-3">
-                <div>More Sign In Methods</div>
-                <div className="divider bg-white h-[2px] my-2"></div>
-                <div className="flex gap-5 text-3xl justify-center items-center">
-                  <AiFillGoogleCircle
-                    className={`${buttonAnimation} text-4xl`}
-                  />
-                  <BsFacebook className={`${buttonAnimation}`} />
-                  <AiFillTwitterCircle
-                    className={`${buttonAnimation} text-4xl`}
-                  />
-                </div>
+                <button onClick={googlesignin}
+                  class="group h-10  px-6 border-2 border-gray-300 rounded-full transition duration-300 
+ hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
+                >
+                  <div class="relative flex items-center space-x-8 justify-center">
+                    <img
+                      src="https://tailus.io/sources/blocks/social/preview/images/google.svg"
+                      class="absolute left-0 w-5"
+                      alt="google logo"
+                    />
+                    <span class="block w-max tracking-wide text-white text-sm transition duration-300 group-hover:text-blue-600">
+                      Google Sign In
+                    </span>
+                  </div>
+                </button>
               </div>
             </div>
           </div>

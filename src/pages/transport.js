@@ -69,6 +69,7 @@ const Transport = () => {
                     <button className="btn btn-slack-400">
                       <Link href={`/transports/${t?._id}`}>view Details</Link>
                     </button>
+
                   </div>
                 </div>
               </div>

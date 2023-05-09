@@ -4,11 +4,11 @@ import { BiCommentCheck } from "react-icons/bi";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/router";
-import { RootContext } from "@/context/RootContext";
+// import { RootContext } from "@/context/RootContext";
 
 
 const Hero = () => {
-  const { user } = useContext(RootContext)
+  // const { user } = useContext(RootContext)
   const [singelServeics, setServices] = useState("Toure");
   const [showModal, setShowModal] = useState(false);
   const [bookingData, setBooking] = useState()
@@ -172,13 +172,10 @@ const Hero = () => {
   }
 
 
-  // console.log(hotels?.data)
-  console.log("user", user)
+
   return (
     <>
-      {
-        console.log("user", user)
-      }
+
       <section className="Section01 text-center">
         {/* The button to open modal */}
         <div

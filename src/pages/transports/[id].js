@@ -1,17 +1,17 @@
+import { AuthContext } from "@/ContextApi";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Carousel from "react-grid-carousel";
 import { toast } from "react-hot-toast";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
 const Plain = ({ detailsTransport }) => {
+
+  const { user } = useContext(AuthContext);
   const priceTravel = detailsTransport?.price?.slice(0, 3);
 
   const router = useRouter();
-  const [singelUser, setUser] = useState({
-    name: "rase;",
-    email: "rasel@gmail.com"
-  })
   const [loding, setLoding] = useState(true)
   const [transport, setTransport] = useState();
 
@@ -294,7 +294,7 @@ const Plain = ({ detailsTransport }) => {
                   {/* -------------------- User Condition base --------------- */}
 
                   {
-                    singelUser?.email ?
+                    user?.email ?
                       <>
                         {/* start modal  body*/}
                         <div className="relative p-6 flex-auto">
