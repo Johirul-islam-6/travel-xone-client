@@ -154,8 +154,7 @@ const Plain = ({ detailsTransport }) => {
       location: location,
       JarnyDate: JarnyDate,
       message: message,
-      booking: "success",
-
+      booking: "success"
     }
     console.log("show booking", bookingMember)
 
