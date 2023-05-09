@@ -26,9 +26,9 @@ const Contact = () => {
   };
   return (
     <section className="">
-    <Head>
-      <title>Contact Page</title>
-    </Head>
+      <Head>
+        <title>Contact Page</title>
+      </Head>
       {/* -----------header design Start----------- */}
       <div className="bg-[url('https://i.ibb.co/nkNGLdF/banner.png')] bg-no-repeat bg-cover bg-left-bottom pt-32 lg:pt-40 pb-4 ">
         <h1 className="text-2xl lg:text-3xl text-white font-bold  pl-10 lg:pl-20">
@@ -105,6 +105,8 @@ const Contact = () => {
             </div>
             {/* ----------Form Part Start------------ */}
             <form
+              action="https://getform.io/f/c60a10e3-f44e-446d-9137-a95839361108"
+              method="POST"
               onSubmit={submitForm}
               className=" md:col-span-3 py-10 px-8 xl:px-12"
             >
