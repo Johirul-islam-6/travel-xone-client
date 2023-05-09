@@ -36,6 +36,7 @@ const Location = () => {
               go exotic places
             </h1>
           </div>
+          
           {/*----- section header -----*/}
           {/*----- Location Container -----*/}
           <div className="block md:flex lg:flex px-10 lg:px-0">
@@ -122,7 +123,7 @@ const Location = () => {
                     </Link>
                   </div>
                 </div>
-                <div className="group relative">
+                <div  className="group relative">
                   <Image
                     src="https://i.ibb.co/zxmNYFc/Sundarban.png"
                     alt="TRAVEL.XONE LOGO"

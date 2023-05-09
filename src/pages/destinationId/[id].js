@@ -9,9 +9,12 @@ import { TbWorld } from "react-icons/tb";
 import { FaShoePrints, FaUserAlt, FaUsers } from "react-icons/fa";
 import Link from "next/link";
 import { useEffect, useState} from "react";
+import { useContext } from "react";
+import { AuthContext } from "@/ContextApi";
 
 
 const detailsHostel01 = ({ detailsHotel }) => {
+  const{user} = useContext(AuthContext)
   const[singleRevie,setSingleRevie] = useState()
    
   // console.log(detailsHotel.data[0], "This is single data");
@@ -604,6 +607,7 @@ const handleReview =(e)=>{
                     <input
                       type="email"
                       name="email"
+                      value={user?.email}
                       placeholder="Email"
                       className="input input-bordered w-full max-w-xs"
                     />

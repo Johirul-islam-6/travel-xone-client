@@ -21,9 +21,13 @@ import { Button } from "@mui/material";
 const Header = () => {
   const{user,logOut} = useContext(AuthContext);
   console.log(user?.email);
+  const logout =e =>{
+    logOut()
+  }
   const buttonStyle = classNames(
     "border border-blue-500 p-2 rounded-full hover:bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"
   );
+ 
   return (
     <>
       <TopHeader />
@@ -187,15 +191,17 @@ const Header = () => {
                  
 
                    {
-                    user? <Button onClick={logOut}>LogOut</Button>: <Link href="/register" className={`${navbar.link_style}`}>
+                    user? <button onClick={logout}>Logout</button>: <Link href="/register" className={`${navbar.link_style}`}>
                     Login | Register
                   </Link>
                    }
                 </li>
+                
               </ul>
             </div>
             {/* -------------Navbar end button----------------- */}
-            <div className="flex items-center gap-2">
+            {
+              user? <><div className="flex items-center gap-2">
               <div className={buttonStyle}>
                 <Link href="/wishlist">
                   <AiOutlineHeart />
@@ -204,9 +210,9 @@ const Header = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0}>
                   <div className={buttonStyle}>
-                    <Link href="/dashboard">
+                    < >
                       <FaUserAlt />
-                    </Link>
+                    </>
                   </div>
                 </label>
                 <ul
@@ -214,8 +220,8 @@ const Header = () => {
                   className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <Link href="/userdashboard" className="justify-between">
-                      Profile
+                    <Link href="/dashboard" className="justify-between">
+                      dashboard
                     </Link>
                   </li>
 
@@ -224,7 +230,8 @@ const Header = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div></> : ""
+            }
           </ul>
         </div>
       </header>

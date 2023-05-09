@@ -12,11 +12,13 @@ const Transport = () => {
         setTransport(data);
       });
   }, []);
+  
   return (
     <section>
     <Head>
       <title>Transport Page</title>
     </Head>
+    
       {/* -----------header design Start----------- */}
       <div className="bg-[url('https://i.ibb.co/nkNGLdF/banner.png')] bg-no-repeat bg-cover bg-left-bottom pt-32 lg:pt-40 pb-4 ">
         <h1 className="text-2xl lg:text-3xl text-white font-bold  pl-10 lg:pl-20">
@@ -46,6 +48,7 @@ const Transport = () => {
                     <button className="btn btn-slack-400">
                       <Link href={`/transport/${t?.id}`}>Book Now</Link>
                     </button>
+                    
                   </div>
                 </div>
               </div>
