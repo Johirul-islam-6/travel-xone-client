@@ -5,7 +5,7 @@ import {
   AiOutlineMail,
 } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
-import { FaPinterest } from "react-icons/fa";
+import { FaLinkedin, FaLinkedinIn, FaPinterest } from "react-icons/fa";
 import Link from "next/link";
 
 const TopHeader = () => {
@@ -18,9 +18,16 @@ const TopHeader = () => {
               <BiLocationPlus />
               <p className="ml-1 text-sm">250 Main Street, Mirpur, Dhaka </p>
             </div>
-            <div className="flex items-center  text-slate-200 hover:text-white">
-              <AiOutlineMail className="mt-1" />
-              <p className="ml-1 text-sm">travelxone3@gmail.com</p>
+            <div className="flex items-center items-center text-slate-200 hover:text-white">
+              <AiOutlineMail className="" />
+              <span className="ml-1 text-sm">
+                <a
+                  href="mailto:travelxone3@gmail.com
+"
+                >
+                  travelxone3@gmail.com
+                </a>
+              </span>
             </div>
           </div>
           <div className="flex gap-5 items-center text-base-300 absolute end-10 top-0 ">
@@ -37,9 +44,18 @@ const TopHeader = () => {
               </Link>
             </div>
             <div className="flex gap-x-6 gap-y-2 items-center primary-color p-[10px] mr-10">
-              <Link href='https://web.facebook.com/profile.php?id=100092635233512'><BsFacebook className="text-white cursor-pointer hover:text-[#000000]" /></Link>
-              <Link href='https://www.instagram.com/travelxone3/'><AiOutlineInstagram className="text-white cursor-pointer hover:text-[#000000]" /></Link>
-              <Link href='https://twitter.com/travelxone3'><AiFillTwitterCircle className="text-white cursor-pointer hover:text-[#000000]" /></Link>
+              <Link href="https://web.facebook.com/profile.php?id=100092635233512">
+                <BsFacebook className="text-white cursor-pointer hover:text-[#000000]" />
+              </Link>
+              <Link href="https://www.instagram.com/travelxone3/">
+                <AiOutlineInstagram className="text-white cursor-pointer hover:text-[#000000]" />
+              </Link>
+              <Link href="https://twitter.com/travelxone3">
+                <AiFillTwitterCircle className="text-white cursor-pointer hover:text-[#000000]" />
+              </Link>
+              <Link href="https://www.linkedin.com/in/travelxone3/">
+                <FaLinkedinIn className="text-white cursor-pointer hover:text-[#000000]" />
+              </Link>
             </div>
           </div>
         </div>

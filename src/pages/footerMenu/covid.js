@@ -2,9 +2,9 @@ import React from 'react';
 
 const covid = () => {
     return (
-        <div className='px-18 max-w-screen-xl m-auto'>
-            <div>
-            <h2 className='text-4xl mb-8 text-sky-400 text-center'>Our COVID-19 Response: Ensuring Safe and Secure Travel</h2>
+        <div className=' max-w-screen-xl m-auto '>
+            <div className='mx-8 lg:mx-0 py-32'>
+            <h2 className='text-3xl lg:text-4xl mb-8 text-sky-400 text-center'>Our COVID-19 Response: Ensuring Safe and Secure Travel</h2>
             
             <p className='font-[system-ui] mt-2 font-medium text-slate-500'>At [Travel Xone], the safety and well-being of our customers have always been our top priority. As the world continues to navigate the challenges presented by the COVID-19 pandemic, we remain committed to providing a safe and secure travel experience for all our valued travelers. In line with the guidelines and recommendations of global health authorities, we have implemented comprehensive measures to ensure your peace of mind when booking and embarking on your next adventure. Read on to learn more about our COVID-19 response.</p>
           
