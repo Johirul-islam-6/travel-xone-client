@@ -73,6 +73,9 @@ const Location = () => {
             <div>
               <div className="flex">
                 <div
+                  data-aos="zoom-in"
+                  data-aos-easing="ease-in-out"
+                  data-aos-duration="900"
                   className="group relative">
                   <Image
                     src="https://i.ibb.co/JnXHGqk/Ahasan-manjill.png"
@@ -93,7 +96,11 @@ const Location = () => {
                     </div>
                   </Link>
                 </div>
-                <div className="group relative">
+                <div
+                  data-aos="fade-left"
+                  data-aos-easing="ease-in-out"
+                  data-aos-duration="1200"
+                  className="group relative">
                   <Image
                     src="https://i.ibb.co/yq1cb38/cox-bazer.png"
                     alt="TRAVEL.XONE LOGO"
@@ -102,7 +109,9 @@ const Location = () => {
                     loading="lazy"
                   />
 
-                  <div className={`${overlayClass}`}>
+                  <div
+
+                    className={`${overlayClass}`}>
                     <Link
                       href={`/destinations/643c2bce11de3a4be5df416f`}
                       className="cursor-pointer"
@@ -115,7 +124,11 @@ const Location = () => {
                 </div>
               </div>
               <div className="flex">
-                <div className="group relative">
+                <div
+                  // data-aos="zoom-in-right"
+                  // data-aos-easing="ease-in-out"
+                  // data-aos-duration="1200"
+                  className="group relative">
                   <Image
                     src="https://i.ibb.co/DQz7210/jaflong.png"
                     alt="TRAVEL.XONE LOGO"
@@ -135,7 +148,11 @@ const Location = () => {
                     </Link>
                   </div>
                 </div>
-                <div className="group relative">
+                <div
+                  // data-aos="fade-left"
+                  // data-aos-easing="ease-in-out"
+                  // data-aos-duration="1200"
+                  className="group relative">
                   <Image
                     src="https://i.ibb.co/zxmNYFc/Sundarban.png"
                     alt="TRAVEL.XONE LOGO"

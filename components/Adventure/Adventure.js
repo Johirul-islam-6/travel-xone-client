@@ -1,10 +1,23 @@
+import Aos from "aos";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { BiUser } from "react-icons/bi";
 const Adventure = ({ item }) => {
+
+  useEffect(() => {
+    setTimeout(() => {
+      Aos.init();
+    }, 5);
+
+  }, [])
+
   return (
     <div>
-      <div className="card card-compact relative  bg-slate-100 shadow-xl pb-5 mx-10 lg:ml-0">
+      <div
+        data-aos="zoom-in"
+        data-aos-easing="ease-in-out"
+        data-aos-duration="900"
+        className="card card-compact relative  bg-slate-100 shadow-xl pb-5 mx-10 lg:ml-0">
         <figure>
           {item.img ? (
             <Image

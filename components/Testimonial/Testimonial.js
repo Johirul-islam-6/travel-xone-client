@@ -39,7 +39,7 @@ const Testimonial = () => {
               </div>
               <div className="col-span-4">
                 <h1 className="text-justify text-black font-semibold text-2xl mt-4">
-                  Your name
+                  Md.Johirul Islam
                 </h1>
                 <div className="flex">
                   <span className="text-orange-500 text-2xl font-bold">
@@ -67,7 +67,7 @@ const Testimonial = () => {
                 <div className="mt-4 text-start flex items-center">
                   <div className="avatar">
                     <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <Image width={60} height={60} src={first} alt="user" />
+                      <Image width={60} height={60} src={img} alt="user" />
                     </div>
                   </div>
                   <div className=" text-start ml-3">
@@ -85,7 +85,7 @@ const Testimonial = () => {
               </div>
               <div className="col-span-4">
                 <h1 className="text-justify text-black font-semibold text-2xl mt-4">
-                Quality Services
+                  Quality Services
                 </h1>
                 <div className="flex">
                   <span className="text-orange-500 text-2xl font-bold">
