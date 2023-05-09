@@ -4,6 +4,7 @@ import Hero from "../../components/Home/Hero";
 import Opportunity from "../../components/Home/Opportunity";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import Location from "../../components/Home/Location";
+import 'aos/dist/aos.css';
 
 
 
@@ -21,12 +22,12 @@ const Home = () => {
           content="Be update on travel services from us"
         />
         <meta
-          name="keyword"
+          name="travel.xone"
           content="Tour Website, booking-management-system, tour-service, Tour Services, booking website"
         />
       </Head>
       <Hero />
-      <Location/>
+      <Location />
       <Opportunity />
       <Adventures />
       <Testimonial />

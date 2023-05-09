@@ -1,3 +1,4 @@
+import Aos from "aos";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +14,11 @@ const Location = () => {
   const id3 = "643c2bce11de3a4be5df416f"
   const id4 = "643c2c61f97a9e7ae141b4a1"
   const id5 = "643c3117e049fd5186b59ae1"
+
+  useEffect(() => {
+    Aos.init();
+  }, [])
+
 
 
   const ClickLocation = (id) => {
@@ -32,18 +38,23 @@ const Location = () => {
           <div className="text-center pb-6 md:pb-10 lg:pb-10">
             <h5 className="text-[#627FF4] font-bold">DESTINATION</h5>
             <div className="divider w-[30px] mx-auto my-1 bg-[#1751E4] h-1"></div>
-            <h1 className="font-bold text-2xl md:text-4xl lg:text-4xl">
+            <h1 className="font-bold text-2xl md:text-4xl lg:text-4xl text-[#393838]">
               go exotic places
             </h1>
           </div>
-          
+
           {/*----- section header -----*/}
           {/*----- Location Container -----*/}
           <div className="block md:flex lg:flex px-10 lg:px-0">
 
-            <div className="w-full md:w-[131%] lg:max-w-[33.3%] group relative">
+            <div
+              data-aos="zoom-in"
+              data-aos-easing="ease-in-out"
+              data-aos-duration="900"
+              className="w-full md:w-[131%] lg:max-w-[33.3%] group relative">
 
               <Image
+
                 src="https://i.ibb.co/ByXW3K0/location10.png"
                 alt="TRAVEL.XONE LOGO"
                 width={600}
@@ -61,7 +72,8 @@ const Location = () => {
 
             <div>
               <div className="flex">
-                <div className="group relative">
+                <div
+                  className="group relative">
                   <Image
                     src="https://i.ibb.co/JnXHGqk/Ahasan-manjill.png"
                     alt="TRAVEL.XONE LOGO"
@@ -123,7 +135,7 @@ const Location = () => {
                     </Link>
                   </div>
                 </div>
-                <div  className="group relative">
+                <div className="group relative">
                   <Image
                     src="https://i.ibb.co/zxmNYFc/Sundarban.png"
                     alt="TRAVEL.XONE LOGO"

@@ -1,6 +1,16 @@
+import Aos from "aos";
 import Image from "next/image";
+import { useEffect } from "react";
 
 const Opportunity = () => {
+
+  useEffect(() => {
+    setTimeout(() => {
+      Aos.init();
+    }, 5);
+
+  }, [])
+
   return (
     <>
       <section className="py-20 bg-[url('https://i.ibb.co/wrNvq7n/cement-texture.png')]">
@@ -17,7 +27,9 @@ const Opportunity = () => {
           {/*----- Opportunity section -----*/}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 pt-5 pb-10 px-10 lg:px-0">
             <div className="relative">
-              <Image
+              <Image data-aos="fade-right"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="900"
                 src="https://i.ibb.co/mtjVx84/opportunity.png"
                 alt="TRAVEL.XONE LOGO"
                 width={1000}
@@ -27,6 +39,9 @@ const Opportunity = () => {
               />
               <div className="absolute w-[40%] bottom-[-20px] right-[-20px] border shadow-2xl">
                 <Image
+                  data-aos="zoom-in"
+                  data-aos-easing="ease-in-out"
+                  data-aos-duration="1300"
                   src="https://i.ibb.co/59tgj81/opportunity3.png"
                   alt="TRAVEL.XONE LOGO"
                   width={1000}
@@ -37,7 +52,11 @@ const Opportunity = () => {
               </div>
             </div>
             <div>
-              <h1 className="font-bold text-xl md:text-2xl lg:text-2xl pb-5 text-slate-500">
+              <h1
+                data-aos="fade-left"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="900"
+                className="font-bold text-xl md:text-2xl lg:text-2xl pb-5 text-slate-500">
                 Great opportunity for adventure & travels -
               </h1>
               <div>
