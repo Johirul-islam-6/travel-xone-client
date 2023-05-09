@@ -173,6 +173,7 @@ const Plain = ({ detailsTransport }) => {
             toast.success('Your Booking successfuly ')
             targetValue.reset()
             setShowModal(false)
+            router.push('/admin/booking/transport')
           } else {
             console.log(data)
             toast.error(error)
