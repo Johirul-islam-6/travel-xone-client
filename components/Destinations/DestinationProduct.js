@@ -2,18 +2,50 @@ import { GiLoveHowl } from "react-icons/gi";
 import { RiHotelBedLine, RiHotelLine } from "react-icons/ri";
 import HotelCards from "../HotelCards/HotelCards";
 import Card from "../RestaurantCard/card";
+import { useState } from "react";
 
 const DestinationProduct = (props) => {
-  const singel_location = props?.value?.data
-
-
-  // ------dynamic area hotel get--------
+  const singel_location = props?.value
+  const [placeID ,setPlaceID] = useState(null)
 
   const DynamicArea = (id) => {
-    console.log(id)
+    setPlaceID(id)
   }
 
+  // ------dynamic area hotel get--------
+  useEffect(() => {
+    fetch(`https://travel-xone-server.vercel.app/api/v1/hotels?placeID=${cetagoryId}`)
+      .then(res => res.json())
+      .then(data => {
+        sethotelAll(data.data)
+        setLoding(false)
 
+      })
+  }, [cetagoryId]);
+
+  useEffect(() => {
+    fetch(`https://travel-xone-server.vercel.app/api/v1/hotels/`) //?placeID=643c2ace24a8114c69217529
+      .then(res => res.json())
+      .then(data => {
+        sethotelCetagory(data.data)
+        setLoding(false)
+      })
+  }, []);
+
+  // cetagory hotel place name
+
+
+  if (loding) {
+    return <>
+      <div className="w-[100%] h-[100vh] justify-center flex items-center">
+        <div className="fixed top-0 right-0 h-screen w-screen z-50 flex justify-center items-center bg-[#0000004d]">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-4 border-blue-700"></div>
+        </div>
+      </div>
+    </>
+  }
+
+  console.log(cetagoryId)
 
   return (
     <>
@@ -84,16 +116,16 @@ const DestinationProduct = (props) => {
               {/*------- features property ------- */}
               {/*------- Location Button Start ------- */}
               <div className="flex-wrap md:flex lg:flex gap-5 mt-2">
-                <div onClick={() => DynamicArea(`${place._id}`)} className={`bg-slate-100 text-zinc-500 py-1 px-2 rounded hover:bg-[#627FF4] hover:text-white shadow text-sm my-2 md:my-0 lg:my-0 cursor-pointer`}>All</div>
+                <div onClick={() => DynamicArea(null)} className={`bg-slate-100 text-zinc-500 py-1 px-2 rounded hover:bg-[#627FF4] hover:text-white shadow text-sm my-2 md:my-0 lg:my-0 cursor-pointer`}>All</div>
                 {
-                  singel_location?.places?.map(place => <div className={`bg-slate-100 text-zinc-500 py-1 px-2 rounded hover:bg-[#627FF4] hover:text-white shadow text-sm my-2 md:my-0 lg:my-0 cursor-pointer`}>{place?.name}</div>)
+                  singel_location?.places?.map(place => <div onClick={() => DynamicArea(`${place._id}`)}  className={`bg-slate-100 text-zinc-500 py-1 px-2 rounded hover:bg-[#627FF4] hover:text-white shadow text-sm my-2 md:my-0 lg:my-0 cursor-pointer`}>{place?.name}</div>)
                 }
               </div>
               {/*------- Location Button End------- */}
               {/*------- package body Start------- */}
               <section class="py-10 bg-gray-100">
             <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-10 md:px-0 lg:px-0">
-              <Card/>
+              <Card id={placeID}/>
             </div>
             </section>
         {/*------- package body End------- */}

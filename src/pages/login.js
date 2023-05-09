@@ -9,15 +9,16 @@ import Head from 'next/head'
 
 import { AuthContext } from "@/ContextApi";
 import { useRouter } from "next/router";
+
 const Login = () => {
   const router = useRouter();
-  const{user,Login,loading,setLoading,Gsignin} = useContext(AuthContext)
+  const { user, Login, loading, setLoading, Gsignin } = useContext(AuthContext)
   // const router = useRouter()
   // const { register, handleSubmit } = useForm();
   // const {LOGIN,setUser,user} = useContext(RootContext)
   // const [errors,setErrors]= useState(null)
   // const redirect = router.pathname===router.asPath?'/dashboard':router.asPath
-  
+
   // const handleLogin = (data)=>{
   //     LOGIN(data)
   //     .then(res=>{
@@ -28,45 +29,45 @@ const Login = () => {
   //     })
   //     .catch(err => {console.log(err) ; toast.error(err.data?.message?.type) ; setErrors(err.data?.message)} )
   // }
-const handleRouter = ()=>{
-  router.push('/')
-}
-const loginhandler = e=>{
-  e.prevnetDefault();
-  const email = e.target.email.value;
-  const password = e.target.password.value;
-  Login(email,password)
-  .then(res => {
-    console.log(res);
-    handleRouter()
-  }).catch(e => {
-    console.log(e);
-  })
-}
-const googlesignin= ()=>{
-  Gsignin()
-  .then(res =>{
-    const userinfo = {
-      email : res?.user?.email,
-      role : "user"
-    }
-    fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/chena`, {
-  method: "POST", // or 'PUT'
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(userinfo),
-})
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-    handleRouter()
-  });
+  const handleRouter = () => {
+    router.push('/')
+  }
+  const loginhandler = e => {
+    e.prevnetDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    Login(email, password)
+      .then(res => {
+        console.log(res);
+        handleRouter()
+      }).catch(e => {
+        console.log(e);
+      })
+  }
+  const googlesignin = () => {
+    Gsignin()
+      .then(res => {
+        const userinfo = {
+          email: res?.user?.email,
+          role: "user"
+        }
+        fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/chena`, {
+          method: "POST", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userinfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            handleRouter()
+          });
 
-  }).catch(e =>{
-    console.log(e);
-  })
-}
+      }).catch(e => {
+        console.log(e);
+      })
+  }
 
 
   const backgroundClass = classNames("bg-[url('https://i.ibb.co/hRKMMLH/Rectangle.png')] max-h-screen bg-no-repeat bg-center bg-cover bg-fixed");
@@ -76,10 +77,10 @@ const googlesignin= ()=>{
     "input input-ghost input-sm w-full max-w-sm my-2 placeholder:text-slate-300 "
   );
   return (
-    <> 
-    <Head>
-      <title>Login Page</title>
-    </Head>
+    <>
+      <Head>
+        <title>Login Page</title>
+      </Head>
       <div className={backgroundClass}>
         <div className="py-20">
           <div className={formClass}>
@@ -93,7 +94,7 @@ const googlesignin= ()=>{
                   </p>
                   <input
                     {...register("username")}
-                    className={`w-full border-b-2  focus:outline-none font-light text-slate-300 text-[14px] bg-[#00000000] ${errors?.username? 'border-red-600 text-red-400' :null}`}
+                    className={`w-full border-b-2  focus:outline-none font-light text-slate-300 text-[14px] bg-[#00000000] ${errors?.username ? 'border-red-600 text-red-400' : null}`}
                     // className={` w-full border-b-2  focus:outline-none font-light text-slate-300 text-[14px] bg-[#00000000] `}
                     type="text"
                   />
@@ -106,7 +107,7 @@ const googlesignin= ()=>{
                   </p>
                   <input
                     {...register("password")}
-                    className={`w-full border-b-2  focus:outline-none font-light text-slate-300 text-[14px] bg-[#00000000] ${errors?.password? 'border-red-600 text-red-400' :null}`}
+                    className={`w-full border-b-2  focus:outline-none font-light text-slate-300 text-[14px] bg-[#00000000] ${errors?.password ? 'border-red-600 text-red-400' : null}`}
                     type="password"
                   />
                   {errors?.password && <p className="text-red-600 text-[14px]  mb-[5px] text-right">{errors?.type}</p>}
@@ -121,13 +122,13 @@ const googlesignin= ()=>{
               <form className="text-left" onSubmit={loginhandler}>
                 <div>
                   <input
-                  name="email"
+                    name="email"
                     type="email"
                     placeholder="Email"
                     className={successClassName}
                   />
                   <input
-                   name="password"
+                    name="password"
                     type="password"
                     placeholder="Password"
                     className={successClassName}

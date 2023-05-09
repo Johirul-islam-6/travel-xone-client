@@ -18,15 +18,16 @@ import { AuthContext } from "@/ContextApi";
 
 
 const Header = () => {
-  const{user,logOut} = useContext(AuthContext);
-  console.log(user?.email);
-  const logout =e =>{
+  const { user, logOut } = useContext(AuthContext);
+
+  const logout = e => {
     logOut()
   }
   const buttonStyle = classNames(
     "border border-blue-500 p-2 rounded-full hover:bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"
   );
- 
+
+
   return (
     <>
       <TopHeader />
@@ -56,58 +57,47 @@ const Header = () => {
                     />
                   </Link>
                 </div>
+
                 <div className="divide-gray-700 pt-6 relative z-50">
-                  <ul>
-                    <li className="w-32 hover:bg-blue-500">
-                      <Link
-                        rel="noopener noreferrer"
-                        href="/"
-                        className={`${navbar.link_style_sm} flex items-center p-2 space-x-3 rounded-md`}
-                      >
-                        <FaHome />
-                        <span>Home</span>
+                  <ul className="menu menu-horizontal px-1 block">
+                    <li className="hover:text-white hover:border rounded">
+                      <Link href="/" className={`${navbar.link_style}`}>
+                        Home
                       </Link>
                     </li>
-                    <li className="w-32 hover:bg-blue-500 mt-1">
-                      <a
-                        rel="noopener noreferrer"
-                        href="/destination"
-                        className={`${navbar.link_style_sm} flex items-center p-2 space-x-3 rounded-md`}
-                      >
-                        <FaDelicious />
-                        <span>Destination</span>
-                      </a>
+                    <li className="hover:text-white hover:border rounded">
+                      <Link href="/destination" className={`${navbar.link_style}`}>
+                        Destination
+                      </Link>
                     </li>
-                    <li className="w-32 hover:bg-blue-500 mt-1">
-                      <a
-                        rel="noopener noreferrer"
-                        href="/transport"
-                        className={`${navbar.link_style_sm} flex items-center p-2 space-x-3 rounded-md`}
-                      >
-                        <FaDochub />
-                        <span>Transport</span>
-                      </a>
+                    <li className="hover:text-white hover:border rounded">
+                      <Link href="/transport" className={`${navbar.link_style}`}>
+                        Transport
+                      </Link>
                     </li>
-                    <li className="w-32 hover:bg-blue-500 mt-1">
-                      <a
-                        rel="noopener noreferrer"
-                        href="/blogs"
-                        className={`${navbar.link_style_sm} flex items-center p-2 space-x-3 rounded-md`}
-                      >
-                        <FaBloggerB />
-                        <span>Blogs</span>
-                      </a>
+                    <li className="hover:text-white hover:border rounded">
+                      <Link href="/blogs" className={`${navbar.link_style}`}>
+                        Blogs
+                      </Link>
                     </li>
-                    <li className="w-32 hover:bg-blue-500 mt-1">
-                      <a
-                        rel="noopener noreferrer"
-                        href="/contact"
-                        className={`${navbar.link_style_sm} flex items-center p-2 space-x-3 rounded-md`}
-                      >
-                        <FaPhoneSquareAlt />
-                        <span>Contact Us </span>
-                      </a>
+                    <li className="hover:text-white hover:border rounded">
+                      <Link href="/contact" className={`${navbar.link_style}`}>
+                        Contact Us
+                      </Link>
                     </li>
+                    <li
+                      tabIndex={0}
+                      className="hover:text-white hover:border rounded"
+                    >
+
+
+                      {
+                        user ? <button onClick={logout}>Logout</button> : <Link href="/register" className={`${navbar.link_style}`}>
+                          Login | Register
+                        </Link>
+                      }
+                    </li>
+
                   </ul>
                 </div>
               </div>
@@ -128,17 +118,18 @@ const Header = () => {
           </div>
           {/* -------------Navbar end button----------------- */}
           <div className="flex-1 flex gap-2 justify-end w-full  relative lg:hidden navbar-end">
-           
+
             <button className="h-[33px] text-[13px] px-4 text-[#dfdfdf] bg-[#0272f2] rounded-md hover:bg-[#2d89f1da]">
               <Link href="/register">Register</Link>
             </button>
-          
+
 
             <div className={buttonStyle}>
               <Link href="/dashboard">
                 <FaUserAlt />
               </Link>
             </div>
+
           </div>
           {/* -----------only small size navbar end----------- */}
 
@@ -194,7 +185,7 @@ const Header = () => {
                   </Link>
                    }
                 </li>
-                
+
               </ul>
             </div>
             {/* -------------Navbar end button----------------- */}

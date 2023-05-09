@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/About.module.css";
-import { useState } from "react";
+// import { useState } from "react";
 import Accordion from "../../components/Accordion";
 
 const accordionData = [

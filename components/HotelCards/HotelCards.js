@@ -113,3 +113,14 @@ const HotelCards = (props) => {
 };
 
 export default HotelCards;
+
+
+
+export const getServerSideProps = async (context) => {
+ const res = await axios.get(`/api/v1/locations?_id=${context.query}`)
+  return {
+      props: {
+          location: res.data.data[0]
+      }
+  }
+}
