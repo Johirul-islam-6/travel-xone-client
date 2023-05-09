@@ -107,7 +107,7 @@ const Contact = () => {
             <form
               action="https://getform.io/f/c60a10e3-f44e-446d-9137-a95839361108"
               method="POST"
-              onSubmit={submitForm}
+              // onSubmit={submitForm}
               className=" md:col-span-3 py-10 px-8 xl:px-12"
             >
               <div className="rounded p-12 shadow-lg">
