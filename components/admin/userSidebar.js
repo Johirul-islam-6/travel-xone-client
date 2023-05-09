@@ -1,11 +1,18 @@
+import { AuthContext } from "@/ContextApi";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const UserSidebar = () => {
   const [isToggle, setIsToggle] = useState(false);
+  const{user,logOut} = useContext(AuthContext);
+  console.log(user?.email);
+  const logout =e =>{
+    logOut()
+  }
 
   const iconStyle = classNames(
     "relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"

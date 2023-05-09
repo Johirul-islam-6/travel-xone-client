@@ -1,11 +1,10 @@
-import ContextApi from "@/ContextApi";
 import UserSidebar from "../admin/userSidebar";
 
 
 const UserDashboardLayout = ({children}) => {
+
     return ( 
         <>
-        <ContextApi>
         <div className="block lg:flex justify-between">
         <div className="w-[100%] lg:w-[15%] h-14 lg:h-screen flex justify-between ">
           <UserSidebar />
@@ -14,7 +13,6 @@ const UserDashboardLayout = ({children}) => {
             {children}
         </div>
         </div> 
-        </ContextApi>
         </>
      );
 }

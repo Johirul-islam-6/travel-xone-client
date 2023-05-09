@@ -1,12 +1,9 @@
 import Link from "next/link";
-import { BsFacebook, BsPencilSquare } from "react-icons/bs";
-import { AiFillGoogleCircle, AiFillTwitterCircle } from "react-icons/ai";
+import { BsPencilSquare } from "react-icons/bs";
 import classNames from "classnames";
 import { useForm } from "react-hook-form";
 import Head from "next/head";
 import { useContext, useState } from "react";
-
-import toast from "react-hot-toast";
 import { AuthContext } from "@/ContextApi";
 import { useRouter } from "next/router";
 
@@ -17,21 +14,7 @@ const Registration = () => {
   const handleRouter = ()=>{
     router.push('/')
   }
-  // const {REGISTER} = useContext(RootContext)
-  // const [errors,setErrors]= useState(null)
-  // const { register, handleSubmit } = useForm();
-  // const handleRegister = (data)=>{
-  //   console.log(data)
-  //   REGISTER(data).then(res=>{
-  //     toast.success('REGISTER success')
-  //     setErrors(null)
-  //   })
-  //   .catch(err => {
-  //     console.log(err) ;
-  //     toast.error(err.data?.message)
-  //     setErrors(err.data?.errors)
-  //   } )
-  // }
+  
   const registerSubmit = e =>{
     e.preventDefault()
     const email = e.target.email.value;
@@ -68,8 +51,6 @@ const Registration = () => {
   const googlesignin= ()=>{
     Gsignin()
     .then(res =>{
-      
-        
         const userinfo = {
           email : res?.user?.email,
           role : "user"
@@ -126,8 +107,6 @@ const Registration = () => {
               {/* -------Registration form-------- */}
               <form className="text-left" onSubmit={registerSubmit}>
                 <div>
-                 
-                 
                   <input
                   name="email"
                     type="email"
@@ -151,60 +130,6 @@ const Registration = () => {
                   Register
                 </button>
               </form>
-              {/* -------Registration form--------
-              <form className="text-left" >
-                <div>
-                  <input
-                  {...register("username")}
-                    type="text"
-                    name="username"
-                    placeholder="User Name"
-                    className={sucessClassName}
-                  />
-                  {errors?.username && <p className="text-red-600 text-[14px] mt-[-6px] mb-[5px] text-right">{errors.username?.message}</p>}
-                 
-                  <input
-                  {...register("phone")}
-                    type="text"
-                    name="phone"
-                    placeholder="Phone No"
-                    className={ errors?.phone ? errorClassName:sucessClassName}
-                  />
-                  {errors?.phone && <p className="text-red-600 text-[14px] mt-[-6px] mb-[5px] text-right">{errors.phone?.message}</p>}
-
-                  <input
-                  {...register("country")}
-                    type="text"
-                    name="country"
-                    placeholder="Country"
-                    className={ errors?.country ? errorClassName:sucessClassName}
-                  />
-                  {errors?.country && <p className="text-red-600 text-[14px] mt-[-6px] mb-[5px] text-right">{errors.country?.message}</p>}
-
-                  <input
-                  {...register("email")}
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    className={ errors?.email ? errorClassName:sucessClassName}
-                  />
-                  {errors?.email && <p className="text-red-600 text-[14px] mt-[-6px] mb-[5px] text-right">{errors.email?.message}</p>}
-
-                  <input
-                  {...register("password")}
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    className={ errors?.password ? errorClassName:sucessClassName}
-                  />
-                  {errors?.password && <p className="text-red-600 text-[14px] mt-[-6px] mb-[5px] text-right">{errors.password?.message}</p>}
-
-                </div>
-                <button type="submit" className={`${registerButton}`}>
-                  Register
-                </button>
-              </form> */}
-
               {/* -------Already have an account ?------- */}
               <div className="text-center">
                 <h5 className="text-slate-300 text-center font-normal text-md">
@@ -217,7 +142,6 @@ const Registration = () => {
                   </Link>
                 </h5>
               </div>
-
               {/* -------Already have an account ?------- */}
               <div className="text-center pt-3">
                 <button onClick={googlesignin}

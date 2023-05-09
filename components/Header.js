@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  FaAirbnb,
   FaBloggerB,
   FaDelicious,
   FaDochub,
@@ -8,7 +7,7 @@ import {
   FaPhoneSquareAlt,
   FaUserAlt,
 } from "react-icons/fa";
-import { BiMenu, IconName } from "react-icons/bi";
+import { BiMenu } from "react-icons/bi";
 import TopHeader from "./TopHeader";
 import navbar from "../src/styles/home_style/hero.module.css";
 import Image from "next/image";
@@ -16,7 +15,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import classNames from "classnames";
 import { useContext } from "react";
 import { AuthContext } from "@/ContextApi";
-import { Button } from "@mui/material";
+
 
 const Header = () => {
   const{user,logOut} = useContext(AuthContext);
@@ -188,8 +187,7 @@ const Header = () => {
                   tabIndex={0}
                   className="hover:text-white hover:border rounded"
                 >
-                 
-
+                    {/* ---------Logout Button----------- */}
                    {
                     user? <button onClick={logout}>Logout</button>: <Link href="/register" className={`${navbar.link_style}`}>
                     Login | Register
@@ -223,10 +221,6 @@ const Header = () => {
                     <Link href="/dashboard" className="justify-between">
                       dashboard
                     </Link>
-                  </li>
-
-                  <li>
-                    {/* <a onClick={HandleLogOut}>Logout</a> */}
                   </li>
                 </ul>
               </div>
