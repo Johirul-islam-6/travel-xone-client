@@ -8,6 +8,7 @@ import Link from "next/link";
 import { FaLinkedinIn, FaPhoneVolume } from "react-icons/fa";
 import classNames from "classnames";
 import Head from "next/head";
+import { toast } from "react-hot-toast";
 
 const Contact = () => {
   const inputStyle = classNames(
@@ -23,7 +24,15 @@ const Contact = () => {
     const email = form.email.value;
     const message = form.message.value;
     console.log(firstName, lastName, phone, email, message);
+
   };
+
+  const submitInformation = () => {
+    toast.success("Massage send Successfully")
+
+  }
+
+
   return (
     <section className="">
       <Head>
@@ -211,7 +220,7 @@ const Contact = () => {
                   ></textarea>
                 </div>
                 <div className="">
-                  <input
+                  <input onClick={submitInformation}
                     className="mt-5 btn w-full md:w-[30%] lg:w-[30%] bg-blue-500 border-none"
                     type="submit"
                     value="Submit"
