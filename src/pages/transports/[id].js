@@ -219,7 +219,7 @@ const Plain = ({ detailsTransport }) => {
 
 
             <div className="card-actions justify-between items-center text-black">
-              <h1 className="bg-amber-700 p-1 text-white"> Ticket Rates : {transport?.price}</h1>
+              <h1 className="bg-amber-700 p-1 text-white"> Ticket Rates : {transport?.price}$</h1>
               <button onClick={BookingNowTransport} className="btn btn-slack-400">
                 Booking Now
               </button>
