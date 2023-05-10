@@ -1,14 +1,29 @@
-
 import classNames from "classnames";
 import Link from 'next/link';
-import axios from '../../../hooks/hook.axios'
+
 
 const Destinations = ({ location }) => {
-    
-    let locations = [...location?.data]
-    locations.shift()
-    
-    const overlayClass = classNames("absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-[#00000083] opacity-0 group-hover:h-full group-hover:opacity-100 duration-500");
+
+
+    const id1 = "643c2ace24a8114c69217526"
+    const id2 = "643c2b61f7c5a823c7ca6272"
+    const id3 = "643c2bce11de3a4be5df416f"
+    const id4 = "643c2c61f97a9e7ae141b4a1"
+    const id5 = "643c3117e049fd5186b59ae1"
+
+
+
+
+
+    const goSinglepage = (id) => {
+        console.log(id);
+
+
+    };
+
+    const overlayClass = classNames(
+        "absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-[#00000083] opacity-0 group-hover:h-full group-hover:opacity-100 duration-500"
+    );
     return (
         <>
             <section className="bg-[#F7FAFC] py-20">
@@ -24,38 +39,78 @@ const Destinations = ({ location }) => {
                     {/*----- section header -----*/}
                     {/*----- Location Container -----*/}
                     <div className="block md:flex lg:flex px-10 lg:px-0">
-
-                        
-                        <div  className="w-full md:w-[131%] lg:max-w-[33.3%] group relative">
+                        <div className="w-full md:w-[131%] lg:max-w-[33.3%] group relative">
                             <img src="https://i.ibb.co/ByXW3K0/location10.png" />
                             <div className={`${overlayClass}`}>
-                                <Link href={`/destinations/${locations[0]._id}`}  className="cursor-pointer" >
+                                <Button onClick={goSinglepage(/destinations/643c2ace24a8114c69217526)}
+                                    // href={`/destinations/643c2ace24a8114c69217526`}
+                                    className="cursor-pointer"
+                                >
                                     <h1 className="text-sm md:text-xl lg:text-2xl text-white bg-[#1751E4] p-2 rounded">
-                                    {location.data[0].area}
+                                        North West Region
                                     </h1>
-                                </Link>
+                                </Button>
                             </div>
                         </div>
 
                         <div>
-                        <div className="grid grid-cols-2">
-                            {locations.map(item=>{
-                                return( 
-                                    
-                                    <div  key={item._id} className="group relative">
-                                        <img src={item.img} />
-                                        <Link href={`/destinations/${item._id}`}   className="cursor-pointer" >
-                                            <div className={`${overlayClass}`}>
-                                                <h1 className="text-sm md:text-xl lg:text-2xl text-white bg-[#1751E4] p-2 rounded">
-                                                   {item.area}
-                                                </h1>
-                                            </div>
+                            <div className="flex">
+                                <div onClick={() => ClickLocation(id2)} className="group relative">
+                                    <img src="https://i.ibb.co/JnXHGqk/Ahasan-manjill.png" />
+                                    <Link
+                                        href={`/destinations/643c2b61f7c5a823c7ca6272`}
+                                        className="cursor-pointer"
+                                    >
+                                        <div className={`${overlayClass}`}>
+                                            <h1 className="text-sm md:text-xl lg:text-2xl text-white bg-[#1751E4] p-2 rounded">
+                                                Central Region
+                                            </h1>
+                                        </div>
+                                    </Link>
+                                </div>
+                                <div onClick={() => ClickLocation(id3)} className="group relative">
+                                    <img src="https://i.ibb.co/yq1cb38/cox-bazer.png" />
+                                    <div className={`${overlayClass}`}>
+                                        <Link
+                                            href={`/destinations/643c2bce11de3a4be5df416f`}
+                                            className="cursor-pointer"
+                                        >
+                                            <h1 className="text-sm md:text-xl lg:text-2xl text-white bg-[#1751E4] p-2 rounded">
+                                                South East Region
+                                            </h1>
                                         </Link>
                                     </div>
-                                
+                                </div>
+                            </div>
 
-                                )}) 
-                            }
+                            <div className="flex">
+                                <div onClick={() => ClickLocation(id4)} className="group relative">
+                                    <img src="https://i.ibb.co/DQz7210/jaflong.png" />
+                                    <div className={`${overlayClass}`}>
+                                        <Link
+                                            href={`/destinations/643c2c61f97a9e7ae141b4a1`}
+                                            className="cursor-pointer"
+                                        >
+                                            <h1 className="text-sm md:text-xl lg:text-2xl text-white bg-[#1751E4] p-2 rounded">
+                                                North East Region
+                                            </h1>
+                                        </Link>
+                                    </div>
+                                </div>
+                                <div onClick={() => ClickLocation(id5)} className="group relative">
+                                    <img src="https://i.ibb.co/zxmNYFc/Sundarban.png" />
+                                    <div className={`${overlayClass}`}>
+                                        <Link
+                                            href={`/destinations/643c3117e049fd5186b59ae1`}
+                                            className="cursor-pointer"
+                                        >
+                                            <h1 className="text-sm md:text-xl lg:text-2xl text-white bg-[#1751E4] p-2 rounded">
+                                                South West Region
+                                            </h1>
+                                        </Link>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -69,11 +124,12 @@ const Destinations = ({ location }) => {
 export default Destinations;
 
 export const getServerSideProps = async () => {
-    const res = await axios.get('/api/v1/locations');
-   
+    const res = await fetch("https://travel-xone-server.vercel.app/api/v1/locations/");
+    const data = await res.json();
+
     return {
         props: {
-            location: res.data
+            location: data
         }
     }
 }

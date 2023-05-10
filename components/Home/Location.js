@@ -3,7 +3,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
+// import Aos from "aos";
 
 
 const Location = () => {
@@ -16,20 +16,15 @@ const Location = () => {
   const id5 = "643c3117e049fd5186b59ae1"
 
   useEffect(() => {
-    Aos.init();
+    Aos.init()
   }, [])
-
-
-
-  const ClickLocation = (id) => {
-    setlocationId(id)
-  };
-
-  console.log(locationid)
 
   const overlayClass = classNames(
     "absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-[#00000083] opacity-0 group-hover:h-full group-hover:opacity-100 duration-500"
   );
+
+
+
   return (
     <>
       <section className="bg-[#F7FAFC] py-20">

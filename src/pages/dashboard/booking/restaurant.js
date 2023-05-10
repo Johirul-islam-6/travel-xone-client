@@ -5,11 +5,18 @@ import { AuthContext } from "@/ContextApi";
 import { useEffect } from "react";
 
 const UserRestaurant = () => {
+<<<<<<< HEAD
   const { user, setLoading } = useContext(AuthContext);
+=======
+  const { user } = useContext(AuthContext);
+  console.log(user, 'this under the rasturant ');
+
+>>>>>>> johir/Transport_Booking
   const [bookingdata, setBookingData] = useState([]);
   const [payment, setPayment] = useState();
 
   useEffect(() => {
+<<<<<<< HEAD
     fetch(
       `https://travel-xone-server-five.vercel.app/api/v1/bookings?email=${user?.email}`
     )
@@ -19,6 +26,15 @@ const UserRestaurant = () => {
         setLoading(false);
       });
   }, [user?.email]);
+=======
+    fetch(`https://travel-xone-server-five.vercel.app/api/v1/bookings?email=${user?.email}`)
+      .then(res => res.json())
+      .then(data => {
+        setBookingData(data)
+        console.log(data, 'bookings');
+      })
+  }, [user?.email])
+>>>>>>> johir/Transport_Booking
 
   return (
     <>

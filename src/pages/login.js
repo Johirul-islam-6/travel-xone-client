@@ -72,37 +72,6 @@ const Login = () => {
             <FaUserAlt className="absolute top-[-10%] left-[40%] text-7xl bg-[#627FF4] px-5 rounded-full" />
             <h1 className="text-center py-5 text-xl">Login </h1>
             <div className="text-left px-5">
-              {/* <form className="text-left" onSubmit={handleSubmit(handleLogin)}>
-                <div className="py-2">
-                  <p className="text-left text-slate-200 text-[15px] font-normal">
-                    Email :
-                  </p>
-                  <input
-                    {...register("username")}
-                    className={`w-full border-b-2  focus:outline-none font-light text-slate-300 text-[14px] bg-[#00000000] ${errors?.username ? 'border-red-600 text-red-400' : null}`}
-                    // className={` w-full border-b-2  focus:outline-none font-light text-slate-300 text-[14px] bg-[#00000000] `}
-                    type="text"
-                  />
-                  {errors?.username && <p className="text-red-600 text-[14px]  mb-[5px] text-right">{errors?.type}</p>}
-
-                </div>
-                <div className="py-2">
-                  <p className="text-left text-slate-200 text-[15px] font-normal">
-                    Password :
-                  </p>
-                  <input
-                    {...register("password")}
-                    className={`w-full border-b-2  focus:outline-none font-light text-slate-300 text-[14px] bg-[#00000000] ${errors?.password ? 'border-red-600 text-red-400' : null}`}
-                    type="password"
-                  />
-                  {errors?.password && <p className="text-red-600 text-[14px]  mb-[5px] text-right">{errors?.type}</p>}
-
-                </div>
-                <button type="submit" className={`${loginButton}`}>
-                  Login
-                </button>
-              </form> */}
-
               {/* -------Registration form-------- */}
               <form className="text-left" onSubmit={loginhandler}>
                 <div>

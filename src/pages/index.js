@@ -6,9 +6,6 @@ import Testimonial from "../../components/Testimonial/Testimonial";
 import Location from "../../components/Home/Location";
 import 'aos/dist/aos.css';
 
-
-
-
 const Home = () => {
   return (
     <>
