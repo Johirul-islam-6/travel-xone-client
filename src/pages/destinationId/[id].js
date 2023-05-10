@@ -58,6 +58,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
     toast.success("user Review successfull")
   }
   const HotelBooking = () => {
+    router.push('/');
     router.push('/dashboard/booking/restaurant')
   }
   // review(pageid);

@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 const Login = () => {
   const router = useRouter();
   const { user, Login, loading, setLoading, Gsignin } = useContext(AuthContext)
-  
+
   const handleRouter = () => {
     router.push('/')
   }
@@ -111,7 +111,7 @@ const Login = () => {
               </p>
               <div className="divider my-1"></div>
               {/* -------Admin LogIn ?------- */}
-              <div className="text-center">
+              {/* <div className="text-center">
                 <h5 className="text-slate-300 text-center font-normal text-sm">
                   Log In for 
                   <Link
@@ -121,7 +121,7 @@ const Login = () => {
                     Admin 
                   </Link>
                 </h5>
-              </div>
+              </div> */}
               {/* -------Already have an account ?------- */}
               <div className="text-center pt-3">
                 <button onClick={googlesignin}

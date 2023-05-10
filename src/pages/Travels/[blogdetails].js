@@ -16,6 +16,8 @@ const Blogdetails = () => {
       });
   }, [id]);
 
+
+
   return (
     <section>
       {/* -----------header design Start----------- */}
@@ -30,9 +32,11 @@ const Blogdetails = () => {
       {/* -----------header design end----------- */}
       <div className="container mx-auto py-12">
         <div className="">
-          <img className={styles.BlogImg} src={single?.img} lazyLoad={true}></img>
-          <h1 className="pt-5 pb-1 text-lg font-semibold">Description :</h1>
-          <p className="text-justify text-sm">
+          <div className="flex justify-center items-center">
+            <img className={styles.BlogImg} src={single?.img} lazyLoad={true}></img>
+          </div>
+          <h1 className="pt-5 pb-1 text-lg font-semibold text-black text-center">Description :</h1>
+          <p className="text-justify text-md text-black px-10">
             {single?.description?.slice(101, 5000)}
           </p>
         </div>

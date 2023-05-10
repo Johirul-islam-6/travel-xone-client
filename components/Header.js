@@ -18,9 +18,15 @@ import { AuthContext } from "@/ContextApi";
 
 
 const Header = () => {
-  const { user, logOut, setLoading } = useContext(AuthContext);
+  const { user, logOut, setLoading, setAdmin } = useContext(AuthContext);
+
   const logout = e => {
     logOut()
+      .then(res => {
+        setAdmin(null)
+      }).catch(e => {
+        console.log(e);
+      })
   }
 
   const buttonStyle = classNames(
@@ -178,44 +184,44 @@ const Header = () => {
                   tabIndex={0}
                   className="hover:border rounded hover:text-blue-700"
                 >
-                    {/* ---------Logout Button----------- */}
-                   {
-                    user? <button onClick={logout}>Logout</button>: <Link href="/register" className={`${navbar.link_style}`}>
-                    Login | Register
-                  </Link>
-                   }
+                  {/* ---------Logout Button----------- */}
+                  {
+                    user ? <button onClick={logout}>Logout</button> : <Link href="/register" className={`${navbar.link_style}`}>
+                      Login | Register
+                    </Link>
+                  }
                 </li>
 
               </ul>
             </div>
             {/* -------------Navbar end button----------------- */}
             {
-              user? <><div className="flex items-center gap-2">
-              <div className={buttonStyle}>
-                <Link href="/wishlist">
-                  <AiOutlineHeart />
-                </Link>
-              </div>
-              <div className="dropdown dropdown-end">
-                <label tabIndex={0}>
-                  <div className={buttonStyle}>
-                    < >
-                      <FaUserAlt />
-                    </>
-                  </div>
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <Link href="/dashboard/booking" className="justify-between">
-                      dashboard
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div></> : ""
+              user ? <><div className="flex items-center gap-2">
+                <div className={buttonStyle}>
+                  <Link href="/wishlist">
+                    <AiOutlineHeart />
+                  </Link>
+                </div>
+                <div className="dropdown dropdown-end">
+                  <label tabIndex={0}>
+                    <div className={buttonStyle}>
+                      < >
+                        <FaUserAlt />
+                      </>
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <Link href="/dashboard/booking" className="justify-between">
+                        dashboard
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div></> : ""
             }
           </ul>
         </div>

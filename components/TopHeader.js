@@ -13,26 +13,25 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const TopHeader = () => {
-  const { user, logOut, setLoading } = useContext(AuthContext);
-  const [admin, setAdmin] = useState([]);
+  const { user, logOut, setLoading, admin, setAdmin } = useContext(AuthContext);
+
+
   const logout = e => {
     logOut()
   }
 
   useEffect(() => {
-    fetch(
-      `https://travel-xone-server-five.vercel.app/api/v1/chena?email=${user?.email}`
-    )
+    fetch(`https://travel-xone-server-five.vercel.app/api/v1/chena?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        setAdmin(data?.data);
-        console.log(data, "isAdmin");
-        setLoading(false);
+        if (data?.data[0]?.role == 'admin') {
+          setAdmin(true)
+        }
       });
   }, [user?.email]);
   return (
     <>
-    {console.log(admin[0], "admin")}
+
       <div className="hidden lg:block bg-[#026fc8] py-2 relative text-slate-500 px-20">
         <div className="flex justify-between">
           <div className="flex gap-8">
@@ -64,11 +63,13 @@ const TopHeader = () => {
                   About us
                 </p>
               </Link>
-              <Link href="/about">
-                <p className="ml-2 text-sm text-slate-200 hover:text-white">
-                  Admin
-                </p>
-              </Link>
+              {
+                admin ? <Link href="/admin">
+                  <p className="ml-2 text-sm text-slate-200 hover:text-white">
+                    Admin
+                  </p>
+                </Link> : ''
+              }
             </div>
             <div className="flex gap-x-6 gap-y-2 items-center primary-color p-[10px] mr-10">
               <Link href="https://web.facebook.com/profile.php?id=100092635233512">

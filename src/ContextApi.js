@@ -11,7 +11,7 @@ const ContextApi = ({ children }) => {
     const auth = getAuth(app)
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-
+    const [admin, setAdmin] = useState(null)
     const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
@@ -40,7 +40,7 @@ const ContextApi = ({ children }) => {
         }
     }, [])
 
-    const info = { user, createUser, Login, Gsignin, logOut, user, setUser, loading, setLoading }
+    const info = { user, createUser, admin, setAdmin, Login, Gsignin, logOut, user, setUser, loading, setLoading }
     return (
         <AuthContext.Provider value={info}>
             {children}
