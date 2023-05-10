@@ -5,14 +5,16 @@ import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/router";
 import Aos from "aos";
-import { Link } from "feather-icons-react/build/IconComponents";
 import Image from "next/image";
+import Link from "next/link";
 // import { RootContext } from "@/context/RootContext";
 
 
 const Hero = () => {
 
   const [showMessage, setShowMessage] = useState(false);
+
+
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -39,7 +41,7 @@ const Hero = () => {
   return (
     <>
 
-      {
+      {/* {
         showMessage && <>
           <div className=" w-[80%] border-2 border-[#0743c4] md:w-[40%]  h-[50vh] md:h-[60vh] bg-[#ffffff] justify-center flex fixed  z-[1000] md:left-[29%] left-[10%] top-[27%] mx-auto">
 
@@ -62,19 +64,53 @@ const Hero = () => {
 
 
         </>
-      }
+      } */}
 
       <section className="Section01 text-center">
         {/* The button to open modal */}
         <div
           className={`${styles.heroBg} flex justify-center items-center md:h-[95vh] h-[120vh]`}
         >
-          <div className="container">
+          <div className="container grid grid-cols-2 gap-2 item-center mt-10">
 
-            <h1 className="text-xl md:text-3xl lg:text-5xl hidden md:block text-[#ede7e7]  font-bold uppercase md:mb-60">
-              Your World of Joy
-            </h1>
+            <div className="text flex items-center w-11/12 pl-10">
+              <div className="block items-center">
+                <h1 className="text-xl text-start md:text-3xl lg:text-5xl hidden md:block text-[#ede7e7]  font-bold uppercase">
+                  Your World of Joy
+                </h1>
+                <p className="pt-5 w-10/12 text-start font-sans text-[18px]"> Travel writers submit pieces for publication in magazines, blogs, travel brands' websites, newsletters, and other print or digital outlets. They may pen feature stories, first-person articles, blog posts, listicles, itineraries, or contribute to ongoing columns.</p>
+                <div className="flex mt-6">
+                  <Link href={'/'}>  <button className="btn btn-primary px-20 ">Travel</button> </Link>
 
+                </div>
+              </div>
+            </div>
+
+            <div className="relative items-center flex justify-center">
+              <Image data-aos="fade-right"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="900"
+                src="https://i.ibb.co/mtjVx84/opportunity.png"
+                alt="TRAVEL.XONE LOGO"
+                width={1000}
+                height={667}
+                loading="lazy"
+                className="w-[90%] h-[90%]"
+              />
+              <div className="absolute w-[40%] bottom-[2px] right-[40px] border shadow-2xl">
+                <Image
+                  data-aos="zoom-in"
+                  data-aos-easing="ease-in-out"
+                  data-aos-duration="1300"
+                  src="https://i.ibb.co/59tgj81/opportunity3.png"
+                  alt="TRAVEL.XONE LOGO"
+                  width={1000}
+                  height={450}
+                  loading="lazy"
+                  className="w-[100%]"
+                />
+              </div>
+            </div>
 
           </div>
         </div>
