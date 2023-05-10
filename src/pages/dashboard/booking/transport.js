@@ -21,12 +21,12 @@ const UserTransport = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         route.push('/dashboard/booking/transport')
-
         toast.success("delete success")
 
       })
+
   }
 
   const paidSuccess = () => {

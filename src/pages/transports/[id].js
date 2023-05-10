@@ -11,10 +11,10 @@ const Plain = ({ detailsTransport }) => {
   console.log(detailsTransport)
   const { user } = useContext(AuthContext);
 
-  const transport = detailsTransport?.data[0]
+  const allTransport = detailsTransport?.data[0]
 
-  // const [transport, setTransport] = useState();
-  const priceTravel = detailsTransport?.price?.slice(0, 3);
+  const [transport, setTransport] = useState();
+  const priceTravel = detailsTransport?.data[0]?.price;
 
   const router = useRouter();
   const [loding, setLoding] = useState(true)
@@ -31,7 +31,7 @@ const Plain = ({ detailsTransport }) => {
 
 
   useEffect(() => {
-    // setTransport(detailsTransport)
+    setTransport(detailsTransport)
     setLoding(false)
 
   }, [detailsTransport]);
@@ -64,18 +64,16 @@ const Plain = ({ detailsTransport }) => {
     let discountPrice = 10 / 100 * priceTravel;
     console.log(discountPrice)
     let totalPrice = priceTravel - discountPrice;
-    let memberDiscount = discountPrice * privMember
-    let total = totalPrice * privMember
-    let TravelTotal = priceTravel * privMember
-
-
-    setTravelTotal(TravelTotal)
-    setDiscount(memberDiscount)
-    totalPrices(total)
-
-
+    let memberDiscount = discountPrice * privMember;
+    let total = totalPrice * privMember;
+    let TravelTotal = priceTravel * privMember;
+    setTravelTotal(TravelTotal);
+    setDiscount(memberDiscount);
+    totalPrices(total);
 
   };
+
+  // -------nagetive----
 
   let minus = () => {
     if (num > 1) {
@@ -111,14 +109,11 @@ const Plain = ({ detailsTransport }) => {
   // -------------modal Btn----------
 
   const BookingNowTransport = event => {
-
     setShowModal(true)
-
     const bookingMember = {
       name: "Rasel Khan",
       email: "rasel@gmail.com",
       phone: "018282312",
-
     }
     setBooking(bookingMember)
     // console.log(bookingMember)
@@ -144,7 +139,7 @@ const Plain = ({ detailsTransport }) => {
 
     const bookingMember = {
       names: names,
-      image: detailsTransport?.img,
+      image: detailsTransport?.data[0]?.img,
       email: email,
       transportName: transportName,
       location: location,
@@ -203,24 +198,25 @@ const Plain = ({ detailsTransport }) => {
       <div className="pt-5">
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center">
 
-          <img className="w-[80%] h-[60vh] mx-auto" src={transport?.imageList[0]?.image} alt="transport" lazyLoad={true} />
+          <img className="w-[80%] h-[60vh] mx-auto" src={allTransport?.imageList[0]?.image} alt="transport" lazyLoad={true} />
 
 
           <div className="card-body text-black">
             <h2 className="text-left  text-blue-500 font-semibol text-[25px] uppercase font-bold">
-              {transport?.transport} : <span className="pl-2 text-[#0aa7eb]">{transport?.title}</span>
+              {allTransport?.transport} : <span className="pl-2 text-[#0aa7eb]">{allTransport?.title}</span>
             </h2>
             <h2 className="text-left text-lime-500 font-semibol text-[18px] uppercase font-bold">
-              Location :    <span className="pl-2 text-[#1acd8f]"> {transport?.location}</span>
+              Location :    <span className="pl-2 text-[#1acd8f]"> {allTransport?.location}</span>
             </h2>
-            <p className="text-left text-black text-[18px]">{transport?.description?.slice(0, 500)} <span className="text-black">Means of transport are any of the different kinds of transport facilities used to carry people or cargo. They may include vehicles, riding animals, and pack animals. Vehicles may include wagons, automobiles, bicycles, buses, trains, trucks, helicopters, watercraft, spacecraft, and aircraft.</span></p>
+            <p className="text-left text-black text-[18px]">{allTransport?.description?.slice(0, 500)} <span className="text-black">Means of transport are any of the different kinds of transport facilities used to carry people or cargo. They may include vehicles, riding animals, and pack animals. Vehicles may include wagons, automobiles, bicycles, buses, trains, trucks, helicopters, watercraft, spacecraft, and aircraft.</span></p>
 
 
             <div className="card-actions justify-between items-center text-black">
-              <h1 className="bg-amber-700 p-1 text-white"> Ticket Rates : {transport?.price?.slice(0, 3)}$</h1>
+              <h1 className="bg-amber-700 p-1 text-white"> Ticket Rates : {allTransport?.price}$</h1>
               <h1 className="bg-green-500 p-1 text-white"> Discount Rates : 15%$</h1>
 
-            </div><button onClick={BookingNowTransport} className="btn btn-slack-400 mt-5">
+            </div>
+            <button onClick={BookingNowTransport} className="btn btn-slack-400 h-[30px] py-8 bg-slate-700 text-white mt-8 ">
               Booking Now
             </button>
           </div>
@@ -234,7 +230,7 @@ const Plain = ({ detailsTransport }) => {
               <Carousel.Item>
                 <div className="card sm:w-40 md:w-80 xl:w-[90%] bg-base-100 shadow-xl">
                   <figure className="w-[100%] h-[80%]" >
-                    <img className="w-[100%] h-[50vh]" src={transport?.imageList[0]?.image} alt="transport" lazyLoad={true} />
+                    <img className="w-[100%] h-[50vh]" src={allTransport?.imageList[0]?.image} alt="transport" lazyLoad={true} />
                   </figure>
 
                 </div>
@@ -242,7 +238,7 @@ const Plain = ({ detailsTransport }) => {
               <Carousel.Item>
                 <div className="card sm:w-40 md:w-80 xl:w-[90%] bg-base-100 shadow-xl">
                   <figure className="w-[100%] h-[60%]" >
-                    <img className="w-[100%] h-[50vh]" src={transport?.imageList[1]?.image} alt="transport" lazyLoad={true} />
+                    <img className="w-[100%] h-[50vh]" src={allTransport?.imageList[1]?.image} alt="transport" lazyLoad={true} />
                   </figure>
 
                 </div>
@@ -250,7 +246,7 @@ const Plain = ({ detailsTransport }) => {
               <Carousel.Item>
                 <div className="card sm:w-40 md:w-80 xl:w-[90%] bg-base-100 shadow-xl">
                   <figure className="w-[100%] h-[60%]" >
-                    <img className="w-[100%] h-[50vh]" src={transport?.imageList[2]?.image} alt="transport" lazyLoad={true} />
+                    <img className="w-[100%] h-[50vh]" src={allTransport?.imageList[2]?.image} alt="transport" lazyLoad={true} />
                   </figure>
 
                 </div>
@@ -304,7 +300,7 @@ const Plain = ({ detailsTransport }) => {
                               <label className="label">
                                 <span className="label-text">your name Is :</span>
                               </label>
-                              <input name="name" type="text" defaultValue={"Rasel Khan"} className="py-3 px-2 rounded-md input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                              <input placeholder="ex: Rasel" name="name" type="text" defaultValue={""} className="py-3 px-2 rounded-md input-bordered w-full max-w-xs bg-blue-400 text-white" />
                             </div>
                             <div className="form-control w-full max-w-xs ">
                               <label className="label">
@@ -318,13 +314,13 @@ const Plain = ({ detailsTransport }) => {
                               <label className="label">
                                 <span className="label-text">Transport Name :</span>
                               </label>
-                              <input name="transportName" type="text" desabled defaultValue={detailsTransport?.title} className="py-3 px-2 rounded-md  input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                              <input name="transportName" type="text" desabled defaultValue={allTransport?.title} className="py-3 px-2 rounded-md  input-bordered w-full max-w-xs bg-blue-400 text-white" />
                             </div>
                             <div className="form-control w-full max-w-xs">
                               <label className="label">
                                 <span className="label-text">Where To Go :</span>
                               </label>
-                              <input name="location" type="text" desabled defaultValue={detailsTransport?.location} className="py-3 px-2 rounded-md  input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                              <input name="location" type="text" desabled defaultValue={allTransport?.location} className="py-3 px-2 rounded-md  input-bordered w-full max-w-xs bg-blue-400 text-white" />
                             </div>
                           </div>
 
