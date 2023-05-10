@@ -37,7 +37,7 @@ const Destinations = ({ location }) => {
                         <div className="w-full md:w-[131%] lg:max-w-[33.3%] group relative">
                             <img src="https://i.ibb.co/ByXW3K0/location10.png" />
                             <div className={`${overlayClass}`}>
-                                <Button onClick={goSinglepage(/destinations/643c2ace24a8114c69217526)}
+                                <Button onClick={goSinglepage(`/destinations/643c2ace24a8114c69217526`)}
                                     // href={`/destinations/643c2ace24a8114c69217526`}
                                     className="cursor-pointer"
                                 >
