@@ -8,7 +8,6 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 
 const Plain = ({ detailsTransport }) => {
 
-  console.log(detailsTransport)
   const { user } = useContext(AuthContext);
 
   const allTransport = detailsTransport?.data[0]

@@ -1,13 +1,13 @@
 import styles from "../../src/styles/home_style/hero.module.css";
 import { FaAward, FaPlaneDeparture, FaRegWindowClose, FaWalking } from "react-icons/fa";
 import { BiCommentCheck } from "react-icons/bi";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/router";
 import Aos from "aos";
 import Image from "next/image";
 import Link from "next/link";
-// import { RootContext } from "@/context/RootContext";
+
 
 
 const Hero = () => {

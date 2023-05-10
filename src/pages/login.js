@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { FaUserAlt } from "react-icons/fa";
 import classNames from "classnames";
-import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
-// import { RootContext } from "../context/RootContext";
+
 import toast from 'react-hot-toast';
 import Head from 'next/head'
 

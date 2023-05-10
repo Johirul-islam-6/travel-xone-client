@@ -7,7 +7,6 @@ import {
 } from "react-icons/ai";
 import { TbWorld } from "react-icons/tb";
 import { FaCaretLeft, FaCaretRight, FaShoePrints, FaUserAlt, FaUsers } from "react-icons/fa";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "@/ContextApi";

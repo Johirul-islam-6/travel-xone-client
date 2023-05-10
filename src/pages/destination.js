@@ -1,9 +1,8 @@
 import classNames from "classnames";
 import Link from "next/link";
 import styles from "../styles/destination.module.css";
-import Meta from "../../components/Meta";
 import Head from "next/head";
-import jsonData from "../../public/destination.json";
+
 
 const Destination = () => {
   const regionHeader = classNames(
@@ -21,7 +20,7 @@ const Destination = () => {
           </h1>
         </div>
         <div
-          className= "block lg:flex gap-10 px-10 lg:px-20 mx-auto py-5 md:py-16 lg:py-16"
+          className="block lg:flex gap-10 px-10 lg:px-20 mx-auto py-5 md:py-16 lg:py-16"
         >
           <div className="max-w-full lg:max-w-[25%] shadow-md px-6 py-2 lg:py-5">
             <h1 className="text-lg lg:text-2xl font-bold dark:text-black">
