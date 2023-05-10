@@ -8,44 +8,53 @@ import {
 import { TbWorld } from "react-icons/tb";
 import { FaShoePrints, FaUserAlt, FaUsers } from "react-icons/fa";
 import Link from "next/link";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "@/ContextApi";
+import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
 
 
 const detailsHostel01 = ({ detailsHotel }) => {
-  const{user} = useContext(AuthContext)
-  const[singleRevie,setSingleRevie] = useState()
-   
+  const { user } = useContext(AuthContext)
+  const [singleRevie, setSingleRevie] = useState()
+  const router = useRouter();
   // console.log(detailsHotel.data[0], "This is single data");
   const singelsHotels = detailsHotel?.data[0];
-  
+
   // console.log("details hotels", detailsHotel.data);
   const pageid = singelsHotels?._id;
-  console.log(pageid,'id');
- 
-let Review={}
-  if(pageid){
-    useEffect(()=>{
+  console.log(pageid, 'id');
+
+  let Review = {}
+  if (pageid) {
+    useEffect(() => {
       fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/review?id=${pageid}`)
-      .then(res=>res.json() )
-      .then(data =>{
-        if(data){
-           setSingleRevie(data?.data)
-        }
-      })
-    },[pageid])
+        .then(res => res.json())
+        .then(data => {
+          if (data) {
+            setSingleRevie(data?.data)
+          }
+        })
+    }, [pageid])
   }
 
-const review = (id)=>{
-  fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/review?id=${id}`)
-  .then(res =>res.json())
-  .then(data =>{
-    // setReviews(data)
-  })
-}
+  const review = (id) => {
+    fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/review?id=${id}`)
+      .then(res => res.json())
+      .then(data => {
+        // setReviews(data)
+      })
+  }
 
-// review(pageid);
+  const SubmitReview = () => {
+    toast.success("user Review successfull")
+  }
+  const HotelBooking = () => {
+
+  }
+
+  // review(pageid);
   const bookingsubmit = (e) => {
     e.preventDefault();
     // console.log(singelsHotels,'hotel');
@@ -57,11 +66,11 @@ const review = (id)=>{
     const duration = e.target.duration.value;
     const GroupSize = parseInt(e.target.GroupSize.value);
     const notes = e.target.notes.value;
-   
+
     const id = singelsHotels?._id;
     const descriptions = singelsHotels?.descriptions;
     const district = singelsHotels?.district;
-    
+
     const title = singelsHotels?.title;
     const price = singelsHotels?.price;
     const placeID = singelsHotels?.placeID;
@@ -75,10 +84,10 @@ const review = (id)=>{
       fullname,
       email,
       phone,
-      
+
       duration,
       date,
-      
+
       GroupSize,
       notes,
       id,
@@ -92,7 +101,7 @@ const review = (id)=>{
       pictureOne,
       pictureTwo,
       pictureThree
-      
+
     };
     console.log(bookingInfo);
 
@@ -105,39 +114,39 @@ const review = (id)=>{
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        toast.success("user Booking Hotel successfull")
+
       });
   };
-const handleReview =(e)=>{
- e.preventDefault();
- const name = e.target.name.value;
- const designation= e.target.designation.value;
- const title = e.target.title.value;
- const message = e.target.message.value;
- const id = singelsHotels?._id
- console.log(name,designation,title,message,id );
- const reviewInfo={
-  name,designation,title,message,id,rating:5
- }
-
- fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/review`, {
-  method: "POST", // or 'PUT'
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(reviewInfo),
-})
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-  })
-}
-  return (
-    
-    <>
-    {
-      console.log(singleRevie)
+  const handleReview = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const designation = e.target.designation.value;
+    const title = e.target.title.value;
+    const message = e.target.message.value;
+    const id = singelsHotels?._id;
+    const email = e.target.email.value;
+    console.log(name, designation, title, message, id);
+    const reviewInfo = {
+      name, designation, title, message, id, rating: 5, email
     }
+
+    fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/review`, {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reviewInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+  }
+  return (
+
+    <>
+
       <section>
         {/* ---------- Header Title Part ---------------- */}
         <div className="bg-[url('https://i.ibb.co/nkNGLdF/banner.png')] bg-no-repeat bg-cover bg-left-bottom pt-28 md:pt-32 lg:pt-48 pb-4">
@@ -175,10 +184,10 @@ const handleReview =(e)=>{
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide4" className="btn btn-circle">
-                      ❮
+                      â®
                     </a>
                     <a href="#slide2" className="btn btn-circle">
-                      ❯
+                      â¯
                     </a>
                   </div>
                 </div>
@@ -193,10 +202,10 @@ const handleReview =(e)=>{
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide1" className="btn btn-circle">
-                      ❮
+                      â®
                     </a>
                     <a href="#slide3" className="btn btn-circle">
-                      ❯
+                      â¯
                     </a>
                   </div>
                 </div>
@@ -211,10 +220,10 @@ const handleReview =(e)=>{
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide2" className="btn btn-circle">
-                      ❮
+                      â®
                     </a>
                     <a href="#slide4" className="btn btn-circle">
-                      ❯
+                      â¯
                     </a>
                   </div>
                 </div>
@@ -489,95 +498,102 @@ const handleReview =(e)=>{
                 </div>
               </Link> */}
               {/* The button to open modal */}
-<label htmlFor="my-modal-3" className="btn">open modal</label>
+              <label htmlFor="my-modal-3" className="btn">Write Your Review</label>
 
-{/* Put this part before </body> tag */}
-<input type="checkbox" id="my-modal-3" className="modal-toggle" />
-<div className="modal">
-  <div className="modal-box relative">
-    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <form onSubmit={handleReview}>
-                <div className="p-5 md:p-16 lg:p-16">
-                  <div className="form-control py-1 ">
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Name"
-                      className="input input-bordered text-start text-md text-md"
-                      required
-                    />
-                  </div>
-                  <div className="form-control py-1 ">
-                    <input
-                      type="text"
-                      name="designation"
-                      placeholder="Designation"
-                      className="input input-bordered text-start text-md"
-                      value={singelsHotels?.title}
-                      disabled
-                    />
-                  </div>
+              {/* ---------------------------------Modal for Review--------------------------- */}
+              <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+              <div className="modal">
+                <div className="modal-box relative">
+                  <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">x</label>
+                  <form onSubmit={handleReview}>
+                    <div className="p-5 md:p-16 lg:p-16">
+                      <div className="form-control py-1 ">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Name"
+                          className="input input-bordered text-start text-md text-md"
+                          required
+                        />
+                      </div>
+                      <div className="form-control py-1 ">
+                        <input
+                          type="email"
+                          name="email"
+                          value={user?.email}
+                          placeholder="email"
+                          className="input input-bordered text-start text-md text-md"
+                        />
+                      </div>
+                      <div className="form-control py-1 ">
+                        <input
+                          type="text"
+                          name="designation"
+                          placeholder="Designation"
+                          className="input input-bordered text-start text-md"
+                          value={singelsHotels?.title}
+                          disabled
+                        />
+                      </div>
 
-                  <div className="form-control py-1 ">
-                    <input
-                      type="text"
-                      name="title"
-                      placeholder="Title"
-                      className="input input-bordered text-start text-md"
-                      required
-                    />
-                  </div>
-                 
-
-                  <div className="form-control py-1  border rounded-lg mt-3">
-                    <textarea
-                      name="message"
-                      className="textarea text-start text-md"
-                      placeholder="Message"
-                    ></textarea>
-                  </div>
-                  <h2 className="text-start text-md font-semibold text-sky-500 text-xl mt-5">
-                    Provide Ratings
-                  </h2>
-                  <div className="rating my-4 block text-start text-sm">
-                    <input
-                      type="radio"
-                      name="rating-2"
-                      className="mask mask-star-2 bg-orange-500"
-                    />
-                    <input
-                      type="radio"
-                      name="rating-2"
-                      className="mask mask-star-2 bg-orange-500"
-                      checked
-                    />
-                    <input
-                      type="radio"
-                      name="rating-2"
-                      className="mask mask-star-2 bg-orange-400"
-                    />
-                    <input
-                      type="radio"
-                      name="rating-2"
-                      className="mask mask-star-2 bg-orange-400"
-                    />
-                    <input
-                      type="radio"
-                      name="rating-2"
-                      className="mask mask-star-2 bg-orange-400"
-                    />
-                  </div>
-                  <div className="form-control py-1  mt-6">
-                    <input
-                      className="btn border-none text-white font-semibold"
-                      type="submit"
-                      value="SUBMIT"
-                    />
-                  </div>
+                      <div className="form-control py-1 ">
+                        <input
+                          type="text"
+                          name="title"
+                          placeholder="Title"
+                          className="input input-bordered text-start text-md"
+                          required
+                        />
+                      </div>
+                      <div className="form-control py-1  border rounded-lg mt-3">
+                        <textarea
+                          name="message"
+                          className="textarea text-start text-md"
+                          placeholder="Message"
+                        ></textarea>
+                      </div>
+                      <h2 className="text-start text-md font-semibold text-sky-500 text-xl mt-5">
+                        Provide Ratings
+                      </h2>
+                      <div className="rating my-4 block text-start text-sm">
+                        <input
+                          type="radio"
+                          name="rating-2"
+                          className="mask mask-star-2 bg-orange-500"
+                        />
+                        <input
+                          type="radio"
+                          name="rating-2"
+                          className="mask mask-star-2 bg-orange-500"
+                          checked
+                        />
+                        <input
+                          type="radio"
+                          name="rating-2"
+                          className="mask mask-star-2 bg-orange-400"
+                        />
+                        <input
+                          type="radio"
+                          name="rating-2"
+                          className="mask mask-star-2 bg-orange-400"
+                        />
+                        <input
+                          type="radio"
+                          name="rating-2"
+                          className="mask mask-star-2 bg-orange-400"
+                        />
+                      </div>
+                      <div className="form-control py-1  mt-6">
+                        <input onClick={SubmitReview}
+                          className="btn border-none text-white font-semibold"
+                          type="submit"
+                          value="SUBMIT"
+                        />
+                      </div>
+                    </div>
+                  </form>
                 </div>
-              </form>
-  </div>
-</div>
+              </div>
             </div>
             {/* -----------------Carousel End-------------- */}
             {/*------- Single Package Details End------- */}
@@ -620,8 +636,8 @@ const handleReview =(e)=>{
                       className="input input-bordered w-full max-w-xs"
                     />
                   </div>
-                  
-                  
+
+
                   <div className=" my-3">
                     <h1 className="text-sm text-slate-600 pl-4">Check In :</h1>
                     <input
@@ -661,7 +677,7 @@ const handleReview =(e)=>{
                       placeholder="Notes"
                     ></textarea>
                   </div>
-                  <button
+                  <button onClick={HotelBooking}
                     type="submit"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
                   >
@@ -718,7 +734,7 @@ const handleReview =(e)=>{
           </div>
         </div>
         {
-          Review?.s? <button>ami</button> : 'nai'
+          Review?.s ? <button>ami</button> : 'nai'
         }
       </section>
     </>

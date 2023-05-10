@@ -41,7 +41,7 @@ const Hero = () => {
       <section className="Section01 text-center">
         {/* The button to open modal */}
         <div
-          className={`${styles.heroBg} flex justify-center items-center md:h-[95vh] h-[120vh]`}
+          className={`${styles.heroBg} flex justify-center items-center w-[100vw] md:h-[95vh] h-[120vh]`}
         >
           <div className="container grid grid-cols-2 gap-2 item-center mt-10">
 

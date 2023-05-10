@@ -8,7 +8,6 @@ import 'aos/dist/aos.css';
 
 
 
-
 const Home = () => {
   return (
     <>
