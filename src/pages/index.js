@@ -4,7 +4,7 @@ import Hero from "../../components/Home/Hero";
 import Opportunity from "../../components/Home/Opportunity";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import Location from "../../components/Home/Location";
-
+import 'aos/dist/aos.css';
 
 
 
@@ -26,7 +26,7 @@ const Home = () => {
         />
       </Head>
       <Hero />
-      <Location/>
+      <Location />
       <Opportunity />
       <Adventures />
       <Testimonial />
