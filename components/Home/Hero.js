@@ -44,7 +44,7 @@ const Hero = () => {
         >
           <div className="container grid grid-cols-2 gap-2 item-center mt-10">
 
-            <div className="text flex items-center">
+            <div className="text flex items-center pl-5">
               <div className="block items-center">
                 <h1
                   data-aos="fade-right"
@@ -57,13 +57,13 @@ const Hero = () => {
                   data-aos="fade-right"
                   data-aos-easing="ease-in-out"
                   data-aos-duration="1200"
-                  className={` ${styles.text_font} pt-5 w-10/12 text-[#f5eeee] text-start font-sans text-[18px]`}> Travel writers submit pieces for publication in magazines, blogs, travel brands' websites, newsletters, and other print or digital outlets. They may pen feature stories, first-person articles, blog posts, listicles, itineraries, or contribute to ongoing columns.</p>
-                <div className="flex mt-6">
+                  className={` ${styles.text_font} pt-8 w-10/12  text-[#ffffff] text-start font-sans text-[21px]`}> Travel writers submit pieces for publication in magazines, blogs, travel brands' websites, newsletters, and other print or digital outlets. They may pen feature stories, first-person articles, blog posts, listicles, itineraries, or contribute to ongoing columns.</p>
+                <div className="flex mt-8">
                   <Link href={'/blogs'}>  <button
                     data-aos="zoom-in"
                     data-aos-easing="ease-in-out"
                     data-aos-duration="1300"
-                    className="btn btn-primary px-20 py-5">Travel</button> </Link>
+                    className="bg-[#3902dc] px-16 py-5">Travel</button> </Link>
 
                 </div>
               </div>
