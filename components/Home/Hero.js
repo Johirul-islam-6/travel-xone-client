@@ -75,39 +75,51 @@ const Hero = () => {
 
             <div className="text flex items-center w-11/12 pl-10">
               <div className="block items-center">
-                <h1 className="text-xl text-start md:text-3xl lg:text-5xl hidden md:block text-[#ede7e7]  font-bold uppercase">
+                <h1
+                  data-aos="fade-right"
+                  data-aos-easing="ease-in-out"
+                  data-aos-duration="900"
+                  className={`${styles.text_font01} text-xl text-start md:text-3xl lg:text-5xl hidden md:block text-[#ede7e7]  font-bold uppercase`}>
                   Your World of Joy
                 </h1>
-                <p className="pt-5 w-10/12 text-start font-sans text-[18px]"> Travel writers submit pieces for publication in magazines, blogs, travel brands' websites, newsletters, and other print or digital outlets. They may pen feature stories, first-person articles, blog posts, listicles, itineraries, or contribute to ongoing columns.</p>
+                <p
+                  data-aos="fade-right"
+                  data-aos-easing="ease-in-out"
+                  data-aos-duration="1200"
+                  className={` ${styles.text_font} pt-5 w-10/12 text-start font-sans text-[18px]`}> Travel writers submit pieces for publication in magazines, blogs, travel brands' websites, newsletters, and other print or digital outlets. They may pen feature stories, first-person articles, blog posts, listicles, itineraries, or contribute to ongoing columns.</p>
                 <div className="flex mt-6">
-                  <Link href={'/'}>  <button className="btn btn-primary px-20 ">Travel</button> </Link>
+                  <Link href={'/blogs'}>  <button
+                    data-aos="zoom-in"
+                    data-aos-easing="ease-in-out"
+                    data-aos-duration="1300"
+                    className="btn btn-primary px-20 ">Travel</button> </Link>
 
                 </div>
               </div>
             </div>
 
             <div className="relative items-center flex justify-center">
-              <Image data-aos="fade-right"
+              <Image data-aos="fade-left"
                 data-aos-easing="ease-in-out"
                 data-aos-duration="900"
-                src="https://i.ibb.co/mtjVx84/opportunity.png"
+                src="https://i.ibb.co/JBJ90Ky/4-K-Travel-Wallpaper-HD-Free-download.jpg"
                 alt="TRAVEL.XONE LOGO"
                 width={1000}
                 height={667}
                 loading="lazy"
-                className="w-[90%] h-[90%]"
+                className="w-[90%] h-[60vh] rounded-md"
               />
-              <div className="absolute w-[40%] bottom-[2px] right-[40px] border shadow-2xl">
+              <div className="absolute w-[50%] bottom-[-30px] right-[20px] border shadow-2xl">
                 <Image
                   data-aos="zoom-in"
                   data-aos-easing="ease-in-out"
                   data-aos-duration="1300"
-                  src="https://i.ibb.co/59tgj81/opportunity3.png"
+                  src="https://i.ibb.co/sJ1NSJT/4-K-Travel-Pictures.jpg"
                   alt="TRAVEL.XONE LOGO"
                   width={1000}
                   height={450}
                   loading="lazy"
-                  className="w-[100%]"
+                  className="w-[100%] h-[100%]"
                 />
               </div>
             </div>
