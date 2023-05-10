@@ -16,8 +16,10 @@ const Destinations = ({ location }) => {
 
 
 
-    const ClickLocation = (id) => {
-        setlocationId(id)
+    const goSinglepage = (id) => {
+        console.log(id);
+
+
     };
 
     const overlayClass = classNames(
@@ -25,7 +27,6 @@ const Destinations = ({ location }) => {
     );
     return (
         <>
-
             <section className="bg-[#F7FAFC] py-20">
                 <div className="container mx-auto">
                     {/*----- section header -----*/}
@@ -39,17 +40,17 @@ const Destinations = ({ location }) => {
                     {/*----- section header -----*/}
                     {/*----- Location Container -----*/}
                     <div className="block md:flex lg:flex px-10 lg:px-0">
-                        <div onClick={() => ClickLocation(id1)} className="w-full md:w-[131%] lg:max-w-[33.3%] group relative">
+                        <div className="w-full md:w-[131%] lg:max-w-[33.3%] group relative">
                             <img src="https://i.ibb.co/ByXW3K0/location10.png" />
                             <div className={`${overlayClass}`}>
-                                <Link
-                                    href={`/destinations/643c2ace24a8114c69217526`}
+                                <Button onClick={goSinglepage(`/destinations/643c2ace24a8114c69217526`)}
+                                    // href={`/destinations/643c2ace24a8114c69217526`}
                                     className="cursor-pointer"
                                 >
                                     <h1 className="text-sm md:text-xl lg:text-2xl text-white bg-[#1751E4] p-2 rounded">
                                         North West Region
                                     </h1>
-                                </Link>
+                                </Button>
                             </div>
                         </div>
 

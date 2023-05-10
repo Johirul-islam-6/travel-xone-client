@@ -9,11 +9,16 @@ import { TbWorld } from "react-icons/tb";
 import { FaShoePrints, FaUserAlt, FaUsers } from "react-icons/fa";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "@/ContextApi";
+import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
 
 
 const detailsHostel01 = ({ detailsHotel }) => {
+  const { user } = useContext(AuthContext)
   const [singleRevie, setSingleRevie] = useState()
-
+  const router = useRouter();
   // console.log(detailsHotel.data[0], "This is single data");
   const singelsHotels = detailsHotel?.data[0];
 
@@ -40,6 +45,13 @@ const detailsHostel01 = ({ detailsHotel }) => {
       .then(data => {
         // setReviews(data)
       })
+  }
+
+  const SubmitReview = () => {
+    toast.success("user Review successfull")
+  }
+  const HotelBooking = () => {
+
   }
 
   // review(pageid);
@@ -102,7 +114,8 @@ const detailsHostel01 = ({ detailsHotel }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        toast.success("user Booking Hotel successfull")
+
       });
   };
   const handleReview = (e) => {
@@ -111,10 +124,11 @@ const detailsHostel01 = ({ detailsHotel }) => {
     const designation = e.target.designation.value;
     const title = e.target.title.value;
     const message = e.target.message.value;
-    const id = singelsHotels?._id
+    const id = singelsHotels?._id;
+    const email = e.target.email.value;
     console.log(name, designation, title, message, id);
     const reviewInfo = {
-      name, designation, title, message, id, rating: 5
+      name, designation, title, message, id, rating: 5, email
     }
 
     fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/review`, {
@@ -130,16 +144,15 @@ const detailsHostel01 = ({ detailsHotel }) => {
       })
   }
   return (
+
     <>
-      {
-        console.log(singleRevie)
-      }
+
       <section>
         {/* ---------- Header Title Part ---------------- */}
         <div className="bg-[url('https://i.ibb.co/nkNGLdF/banner.png')] bg-no-repeat bg-cover bg-left-bottom pt-28 md:pt-32 lg:pt-48 pb-4">
           <div className="pl-10 lg:pl-20">
             <h1 className="text-xl md:text-2xl lg:text-3xl  font-bold text-white">
-              Hotel {singelsHotels?.placeName} Dhaka Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, eius!
+              Hotel {singelsHotels?.placeName} Dhaka
             </h1>
             <div className="text-slate-300 flex items-center ">
               <HiLocationMarker />
@@ -171,10 +184,10 @@ const detailsHostel01 = ({ detailsHotel }) => {
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide4" className="btn btn-circle">
-                      ❮
+                      â®
                     </a>
                     <a href="#slide2" className="btn btn-circle">
-                      ❯
+                      â¯
                     </a>
                   </div>
                 </div>
@@ -189,10 +202,10 @@ const detailsHostel01 = ({ detailsHotel }) => {
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide1" className="btn btn-circle">
-                      ❮
+                      â®
                     </a>
                     <a href="#slide3" className="btn btn-circle">
-                      ❯
+                      â¯
                     </a>
                   </div>
                 </div>
@@ -207,10 +220,10 @@ const detailsHostel01 = ({ detailsHotel }) => {
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide2" className="btn btn-circle">
-                      ❮
+                      â®
                     </a>
                     <a href="#slide4" className="btn btn-circle">
-                      ❯
+                      â¯
                     </a>
                   </div>
                 </div>
@@ -485,13 +498,13 @@ const detailsHostel01 = ({ detailsHotel }) => {
                 </div>
               </Link> */}
               {/* The button to open modal */}
-              <label htmlFor="my-modal-3" className="btn">open modal</label>
+              <label htmlFor="my-modal-3" className="btn">Write Your Review</label>
 
-              {/* Put this part before </body> tag */}
+              {/* ---------------------------------Modal for Review--------------------------- */}
               <input type="checkbox" id="my-modal-3" className="modal-toggle" />
               <div className="modal">
                 <div className="modal-box relative">
-                  <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                  <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">x</label>
                   <form onSubmit={handleReview}>
                     <div className="p-5 md:p-16 lg:p-16">
                       <div className="form-control py-1 ">
@@ -501,6 +514,15 @@ const detailsHostel01 = ({ detailsHotel }) => {
                           placeholder="Name"
                           className="input input-bordered text-start text-md text-md"
                           required
+                        />
+                      </div>
+                      <div className="form-control py-1 ">
+                        <input
+                          type="email"
+                          name="email"
+                          value={user?.email}
+                          placeholder="email"
+                          className="input input-bordered text-start text-md text-md"
                         />
                       </div>
                       <div className="form-control py-1 ">
@@ -523,8 +545,6 @@ const detailsHostel01 = ({ detailsHotel }) => {
                           required
                         />
                       </div>
-
-
                       <div className="form-control py-1  border rounded-lg mt-3">
                         <textarea
                           name="message"
@@ -564,7 +584,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                         />
                       </div>
                       <div className="form-control py-1  mt-6">
-                        <input
+                        <input onClick={SubmitReview}
                           className="btn border-none text-white font-semibold"
                           type="submit"
                           value="SUBMIT"
@@ -603,6 +623,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     <input
                       type="email"
                       name="email"
+                      value={user?.email}
                       placeholder="Email"
                       className="input input-bordered w-full max-w-xs"
                     />
@@ -656,7 +677,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                       placeholder="Notes"
                     ></textarea>
                   </div>
-                  <button
+                  <button onClick={HotelBooking}
                     type="submit"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
                   >

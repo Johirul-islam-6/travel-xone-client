@@ -4,6 +4,7 @@ import styles from "../../../../src/styles/mainService.module.css";
 import { useEffect, useState } from "react";
 import img from "../../../Images/Home/heroBg.png";
 console.log(img);
+//
 //-
 const FeatureService = () => {
   const [data, setData] = useState([]);

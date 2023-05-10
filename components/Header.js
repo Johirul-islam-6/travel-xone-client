@@ -12,30 +12,22 @@ import { BiMenu, IconName } from "react-icons/bi";
 import TopHeader from "./TopHeader";
 import navbar from "../src/styles/home_style/hero.module.css";
 import Image from "next/image";
-import { useContext } from "react";
-import { RootContext } from "@/context/RootContext";
-import toast from "react-hot-toast";
 import { AiOutlineHeart } from "react-icons/ai";
 import classNames from "classnames";
+import { useContext } from "react";
+import { AuthContext } from "@/ContextApi";
+import { Button } from "@mui/material";
 
 const Header = () => {
-  const { LOGOUT, setUser } = useContext(RootContext);
-
-  const HandleLogOut = () => {
-    LOGOUT()
-      .then((res) => {
-        setUser(null);
-        toast.success("Logout success");
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error(err.data?.message);
-      });
-  };
-
+  const{user,logOut} = useContext(AuthContext);
+  console.log(user?.email);
+  const logout =e =>{
+    logOut()
+  }
   const buttonStyle = classNames(
     "border border-blue-500 p-2 rounded-full hover:bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"
   );
+ 
   return (
     <>
       <TopHeader />
@@ -137,9 +129,11 @@ const Header = () => {
           </div>
           {/* -------------Navbar end button----------------- */}
           <div className="flex-1 flex gap-2 justify-end w-full  relative lg:hidden navbar-end">
+           
             <button className="h-[33px] text-[13px] px-4 text-[#dfdfdf] bg-[#0272f2] rounded-md hover:bg-[#2d89f1da]">
               <Link href="/register">Register</Link>
             </button>
+          
 
             <div className={buttonStyle}>
               <Link href="/dashboard">
@@ -194,14 +188,20 @@ const Header = () => {
                   tabIndex={0}
                   className="hover:text-white hover:border rounded"
                 >
-                  <Link href="/register" className={`${navbar.link_style}`}>
+                 
+
+                   {
+                    user? <button onClick={logout}>Logout</button>: <Link href="/register" className={`${navbar.link_style}`}>
                     Login | Register
                   </Link>
+                   }
                 </li>
+                
               </ul>
             </div>
             {/* -------------Navbar end button----------------- */}
-            <div className="flex items-center gap-2">
+            {
+              user? <><div className="flex items-center gap-2">
               <div className={buttonStyle}>
                 <Link href="/wishlist">
                   <AiOutlineHeart />
@@ -210,9 +210,9 @@ const Header = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0}>
                   <div className={buttonStyle}>
-                    <Link href="/dashboard">
+                    < >
                       <FaUserAlt />
-                    </Link>
+                    </>
                   </div>
                 </label>
                 <ul
@@ -220,17 +220,18 @@ const Header = () => {
                   className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <Link href="/userdashboard" className="justify-between">
-                      Profile
+                    <Link href="/dashboard" className="justify-between">
+                      dashboard
                     </Link>
                   </li>
 
                   <li>
-                    <a onClick={HandleLogOut}>Logout</a>
+                    {/* <a onClick={HandleLogOut}>Logout</a> */}
                   </li>
                 </ul>
               </div>
-            </div>
+            </div></> : ""
+            }
           </ul>
         </div>
       </header>

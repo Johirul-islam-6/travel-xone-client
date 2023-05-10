@@ -1,22 +1,24 @@
 import "@/styles/#globals.css";
 import Layout from "../../components/Layout";
 import  { Toaster } from 'react-hot-toast';
-import Context from "@/context/RootContext";
+import ContextApi from "@/ContextApi";
 
 
 
 export default function App({ Component, pageProps }) {
   if(Component.getLayout){
-    return Component.getLayout(<Component {...pageProps} />)
+    return Component.getLayout(<ContextApi><Component {...pageProps} /></ContextApi>)
   }
   return (
     <>
-    <Context>
+     <ContextApi>
       <Layout>
         <Component {...pageProps} />
       </Layout>
       <Toaster />
-    </Context>
+      </ContextApi>
+    
+    
     </>
   );
 }
