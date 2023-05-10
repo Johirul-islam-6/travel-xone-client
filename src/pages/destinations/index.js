@@ -4,26 +4,21 @@ import Link from 'next/link';
 
 const Destinations = ({ location }) => {
 
-
     const id1 = "643c2ace24a8114c69217526"
     const id2 = "643c2b61f7c5a823c7ca6272"
     const id3 = "643c2bce11de3a4be5df416f"
     const id4 = "643c2c61f97a9e7ae141b4a1"
     const id5 = "643c3117e049fd5186b59ae1"
 
-
-
-
-
     const goSinglepage = (id) => {
         console.log(id);
-
 
     };
 
     const overlayClass = classNames(
         "absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-[#00000083] opacity-0 group-hover:h-full group-hover:opacity-100 duration-500"
     );
+
     return (
         <>
             <section className="bg-[#F7FAFC] py-20">
