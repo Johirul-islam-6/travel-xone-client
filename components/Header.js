@@ -24,7 +24,7 @@ const Header = () => {
   }
 
   const buttonStyle = classNames(
-    "border border-blue-500 p-2 rounded-full hover:bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"
+    "border border-blue-500 hover:border-none p-2 rounded-full hover:bg-slate-700 bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"
   );
 
 
@@ -190,7 +190,7 @@ const Header = () => {
             </div>
             {/* -------------Navbar end button----------------- */}
             {
-              user? <><div className="flex items-center gap-2 dark:text-black">
+              user? <><div className="flex items-center gap-2">
               <div className={buttonStyle}>
                 <Link href="/wishlist">
                   <AiOutlineHeart />

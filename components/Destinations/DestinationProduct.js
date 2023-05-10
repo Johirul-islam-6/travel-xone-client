@@ -26,9 +26,8 @@ const DestinationProduct = (props) => {
               </h2>
               {/* ----------- Search Input ----------- */}
               <div className="form-control pt-3 lg:pt-0 md:pt-0">
-                <div className="input-group input-group-sm ">
-                  <p className="text-[#393838] text-[20px]">Discound Offer</p>
-
+                <div className="input-group input-group-sm bg-blue-600 py-1 px-2 rounded">
+                  <p className="text-white text-[20px]">Discound Offer 10%</p>
                 </div>
               </div>
             </div>

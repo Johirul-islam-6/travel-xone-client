@@ -53,9 +53,8 @@ const detailsHostel01 = ({ detailsHotel }) => {
     toast.success("user Review successfull")
   }
   const HotelBooking = () => {
-
+    router.push('/dashboard')
   }
-
   // review(pageid);
   const bookingsubmit = (e) => {
     e.preventDefault();
@@ -105,7 +104,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
       pictureThree
 
     };
-    console.log(bookingInfo);
+    
 
     fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/bookings`, {
       method: "POST", // or 'PUT'
@@ -239,7 +238,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     <AiOutlineClockCircle className="border text-3xl lg:text-5xl p-1 lg:p-3 text-slate-600" />
                   </div>
                   <div className="pl-3">
-                    <h1 className="text-sm lg:text-md">Duration</h1>
+                    <h1 className="text-sm lg:text-md dark:text-black">Duration</h1>
                     <h2 className="text-md lg:text-lg font-light text-slate-500">
                       <span className="text-[#627FF4]">
                         {singelsHotels?.duration}
@@ -254,7 +253,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     <FaShoePrints className="border text-3xl lg:text-5xl p-1 lg:p-3 text-slate-600" />
                   </div>
                   <div className="pl-3">
-                    <h1 className="text-sm lg:text-md">Tour Type</h1>
+                    <h1 className="text-sm lg:text-md dark:text-black">Tour Type</h1>
                     <h2 className="text-md lg:text-lg font-light text-slate-500">
                       {singelsHotels?.tourType}
                     </h2>
@@ -266,7 +265,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     <FaUsers className="border text-3xl lg:text-5xl p-1 lg:p-3 text-slate-600" />
                   </div>
                   <div className="pl-3">
-                    <h1 className="text-sm lg:text-md">Group Size</h1>
+                    <h1 className="text-sm lg:text-md dark:text-black">Group Size</h1>
                     <h2 className="text-md lg:text-lg font-light text-slate-500">
                       <span className="text-[#627FF4]">12</span> Peoples
                     </h2>
@@ -278,7 +277,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     <TbWorld className="border text-3xl lg:text-5xl p-1 lg:p-3 text-slate-600" />
                   </div>
                   <div className="pl-3">
-                    <h1 className="text-sm lg:text-md">Languages</h1>
+                    <h1 className="text-sm lg:text-md dark:text-black">Languages</h1>
                     <h2 className="text-md lg:text-lg font-light text-slate-500">
                       {singelsHotels?.language}
                     </h2>
@@ -385,28 +384,17 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     <AiFillStar />
                     <AiFillStar />
                   </div>
-                  <h1 className="text-md md:text-lg lg:text-xl pb-3">
+                  <h1 className="text-md md:text-lg lg:text-xl pb-3 dark:text-black">
                   {review.title}
                   </h1>
                   <h2 className="text-lg text-slate-500">
                   {review.message}
                   </h2>
-                  <div className="flex items-center gap-3 pt-2">
-                    <h1 className="text-[#627FF4] text-sm">View More</h1>
-                    <AiFillCaretDown />
-                  </div>
                 </div>
                     )
                   })
                 }
-                
               </div>
-              {/* <Link href="/comment">
-                <div className="bg-[#3264FF] inline-block p-2 lg:p-3 text-white text-md lg:text-xl ">
-                  <h1>Write a Review</h1>
-                </div>
-              </Link> */}
-              {/* The button to open modal */}
               <label htmlFor="my-modal-3" className="btn">Write Your Review</label>
 
               {/* ---------------------------------Modal for Review--------------------------- */}
@@ -508,14 +496,14 @@ const detailsHostel01 = ({ detailsHotel }) => {
             {/*------- Single Package Details End------- */}
             {/*------- Side Bar Start------- */}
             <div className="w-full md:w-[30%] lg:w-1/4 mt-10 md:mt-0 lg:mt-0 ">
-              <div className="pt-20 pb-5 px-5 shadow-lg relative mb-10">
+              <div className="pt-20 pb-5 px-5 shadow-lg relative mb-10 bg-slate-200">
                 <div className="flex justify-between bg-[#3264FF] py-3 px-4 absolute top-0 left-0  w-full">
                   <h1 className="text-slate-100 font-semibold text-2xl">
                     $<span> 149.00</span>
                   </h1>
                   <h1 className="text-slate-100">Dhaka</h1>
                 </div>
-                <h1 className="font-semibold text-2xl">BOOK TOUR</h1>
+                <h1 className="font-semibold text-2xl dark:text-black">BOOK TOUR</h1>
                 <h2 className="text-xl text-slate-600">
                   Find your dream tour today
                 </h2>
@@ -595,7 +583,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                 </form>
               </div>
               <div className="w-11/12 p-5 border">
-                <h1 className="text-2xl ">Tour Information</h1>
+                <h1 className="text-2xl dark:text-black">Tour Information</h1>
                 <div className="flex items-center pt-3">
                   <HiUsers className="text-4xl p-2 text-[#1751E4] " />
                   <div className="pl-5">
