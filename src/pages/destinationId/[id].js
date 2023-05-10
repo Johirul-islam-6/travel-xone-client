@@ -17,7 +17,7 @@ import { toast } from "react-hot-toast";
 
 const detailsHostel01 = ({ detailsHotel }) => {
   const { user } = useContext(AuthContext)
-  const [singleRevie, setSingleRevie] = useState()
+  const [singleRevie, setSingleRevie] = useState([])
   const router = useRouter();
   // console.log(detailsHotel.data[0], "This is single data");
   const singelsHotels = detailsHotel?.data[0];
@@ -34,6 +34,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
         .then(data => {
           if (data) {
             setSingleRevie(data?.data)
+            console.log(data, 'pageid')
           }
         })
     }, [pageid])
@@ -44,6 +45,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
       .then(res => res.json())
       .then(data => {
         // setReviews(data)
+        // console.log(data, 'id')
       })
   }
 
@@ -115,7 +117,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("user Booking Hotel successfull");
-        router.push(`/destinationId/${pageid}`);
+        router.push(`dashboard/booking/restaurant`);
 
       });
   };
@@ -349,7 +351,10 @@ const detailsHostel01 = ({ detailsHotel }) => {
                   Reviews
                 </h1>
                 {/* --------------- Single reviews -------------- */}
-                <div className="border p-5 my-7">
+                {
+                  singleRevie?.map( review => {
+                    return(
+                      <div key={review._id} className="border p-5 my-7">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center justify-between">
                       {/* <FaUserAlt className=" " /> */}
@@ -361,10 +366,10 @@ const detailsHostel01 = ({ detailsHotel }) => {
                       />
                       <div className="pl-5">
                         <p className="text-md md:text-md lg:text-xl text-black">
-                          Rasel Khan
+                          {review.name}
                         </p>
                         <h1 className="text-sm text-slate-500">
-                          Founder of travel.xone.com
+                        {review.designation}
                         </h1>
                       </div>
                     </div>
@@ -381,117 +386,20 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     <AiFillStar />
                   </div>
                   <h1 className="text-md md:text-lg lg:text-xl pb-3">
-                    Quality Services
+                  {review.title}
                   </h1>
                   <h2 className="text-lg text-slate-500">
-                    We have been on a couple of cycling trips before and this
-                    one was probably the best. Tri our guide was outstanding and
-                    all our fellow cyclists were a great bunch of people. We got
-                    a real flavour of life in Vietnam. Lots of interesting
-                    food.The meals were good and plentiful. Thought we would
-                    lose weight but didn't! Good
+                  {review.message}
                   </h2>
                   <div className="flex items-center gap-3 pt-2">
                     <h1 className="text-[#627FF4] text-sm">View More</h1>
                     <AiFillCaretDown />
                   </div>
                 </div>
-                {/* --------------- Single reviews -------------- */}
-                <div className="border p-5 my-7">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center justify-between">
-                      {/* <FaUserAlt className=" " /> */}
-                      <img
-                        loading="lazy"
-                        className="rounded-full bg-[#3D3D3D] text-6xl p-2 text-white w-20 h-20"
-                        src="https://media.licdn.com/dms/image/D5603AQHwrKq2JfCBhg/profile-displayphoto-shrink_400_400/0/1673467931951?e=1687996800&v=beta&t=oDo5LJ6gncC2mjRAks8TNbsIVcZEIIjg_pKL0Kd5lts"
-                        alt=""
-                      />
-                      <div className="pl-5">
-                        <p className="text-md md:text-md lg:text-xl text-black">
-                          Jorna katun
-                        </p>
-                        <h1 className="text-sm text-slate-500">
-                          Founder of travel.xone.com
-                        </h1>
-                      </div>
-                    </div>
-                    <div className="flex gap-2 items-center justify-between cursor-pointer">
-                      <AiOutlineLike className="text-[#627FF4] " />
-                      <p className="text-[#627FF4]">1k</p>
-                    </div>
-                  </div>
-                  <div className="text-[#e2a04a] flex text-lg pt-4">
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                  </div>
-                  <h1 className="text-md md:text-lg lg:text-xl pb-3">
-                    Quality Services
-                  </h1>
-                  <h2 className="text-lg text-slate-500">
-                    We have been on a couple of cycling trips before and this
-                    one was probably the best. Tri our guide was outstanding and
-                    all our fellow cyclists were a great bunch of people. We got
-                    a real flavour of life in Vietnam. Lots of interesting
-                    food.The meals were good and plentiful. Thought we would
-                    lose weight but didn't! Good
-                  </h2>
-                  <div className="flex items-center gap-3 pt-2">
-                    <h1 className="text-[#627FF4] text-sm">View More</h1>
-                    <AiFillCaretDown />
-                  </div>
-                </div>
-                {/* --------------- Single reviews -------------- */}
-                <div className="border p-5 my-7">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center justify-between">
-                      {/* <FaUserAlt className=" " /> */}
-                      <img
-                        loading="lazy"
-                        className="rounded-full bg-[#3D3D3D] text-6xl p-2 text-white w-20 h-20"
-                        src="https://media.licdn.com/dms/image/D5603AQGbtEaPt9PVKg/profile-displayphoto-shrink_400_400/0/1673089173008?e=1687996800&v=beta&t=4CkeUsiUmqjqkM5-KkPpGTG3EtUCiLqmJPlo7_3BVrI"
-                        alt=""
-                      />
-                      <div className="pl-5">
-                        <p className="text-md md:text-md lg:text-xl text-black">
-                          Rakib hasan
-                        </p>
-                        <h1 className="text-sm text-slate-500">
-                          Founder of travel.xone.com
-                        </h1>
-                      </div>
-                    </div>
-                    <div className="flex gap-2 items-center justify-between cursor-pointer">
-                      <AiOutlineLike className="text-[#627FF4] " />
-                      <p className="text-[#627FF4] ">1.5k</p>
-                    </div>
-                  </div>
-                  <div className="text-[#e2a04a] flex text-lg pt-4">
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                  </div>
-                  <h1 className="text-md md:text-lg lg:text-xl pb-3">
-                    Quality Services
-                  </h1>
-                  <h2 className="text-lg text-slate-500">
-                    We have been on a couple of cycling trips before and this
-                    one was probably the best. Tri our guide was outstanding and
-                    all our fellow cyclists were a great bunch of people. We got
-                    a real flavour of life in Vietnam. Lots of interesting
-                    food.The meals were good and plentiful. Thought we would
-                    lose weight but didn't! Good
-                  </h2>
-                  <div className="flex items-center gap-3 pt-2">
-                    <h1 className="text-[#627FF4] text-sm">View More</h1>
-                    <AiFillCaretDown />
-                  </div>
-                </div>
+                    )
+                  })
+                }
+                
               </div>
               {/* <Link href="/comment">
                 <div className="bg-[#3264FF] inline-block p-2 lg:p-3 text-white text-md lg:text-xl ">

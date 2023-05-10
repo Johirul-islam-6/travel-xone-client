@@ -13,16 +13,16 @@ import navbar from "../src/styles/home_style/hero.module.css";
 import Image from "next/image";
 import { AiOutlineHeart } from "react-icons/ai";
 import classNames from "classnames";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/ContextApi";
 
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
-
+  const { user, logOut, setLoading } = useContext(AuthContext);
   const logout = e => {
     logOut()
   }
+
   const buttonStyle = classNames(
     "border border-blue-500 p-2 rounded-full hover:bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"
   );
@@ -176,7 +176,7 @@ const Header = () => {
                 </li>
                 <li
                   tabIndex={0}
-                  className="hover:text-white hover:border rounded"
+                  className="hover:border rounded hover:text-blue-700"
                 >
                     {/* ---------Logout Button----------- */}
                    {
@@ -190,7 +190,7 @@ const Header = () => {
             </div>
             {/* -------------Navbar end button----------------- */}
             {
-              user? <><div className="flex items-center gap-2">
+              user? <><div className="flex items-center gap-2 dark:text-black">
               <div className={buttonStyle}>
                 <Link href="/wishlist">
                   <AiOutlineHeart />
@@ -209,7 +209,7 @@ const Header = () => {
                   className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <Link href="/dashboard" className="justify-between">
+                    <Link href="/dashboard/booking" className="justify-between">
                       dashboard
                     </Link>
                   </li>

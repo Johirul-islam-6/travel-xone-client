@@ -59,7 +59,7 @@ const AddNew = () => {
                 <div class="mb-3">
                   <label
                     for="formFileMultiple"
-                    class="mb-2 inline-block text-neutral-700 dark:text-neutral-200"
+                    class="mb-2 inline-block text-neutral-700 dark:text-[#333232]"
                   >
                     Featured Image
                   </label>

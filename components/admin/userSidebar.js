@@ -130,8 +130,9 @@ const UserSidebar = () => {
                 </a>
               </li>
               <li>
+                <button onClick={logout}>
                 <a href="#" className={iconStyle}>
-                  <span className={smallsidebarbtn}>
+                  <span className="inline-flex justify-center items-center ml-4">
                     <svg
                       className="w-5 h-5"
                       fill="none"
@@ -147,10 +148,12 @@ const UserSidebar = () => {
                       ></path>
                     </svg>
                   </span>
-                  <span className={smallsidebarstyle}>
+                  <span className="ml-2 text-sm tracking-wide truncate">
                     Logout
                   </span>
                 </a>
+                </button>
+                
               </li>
             </ul>
           </div>}

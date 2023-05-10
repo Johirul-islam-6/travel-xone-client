@@ -32,7 +32,7 @@ const Adventure = ({ item }) => {
           )}
         </figure>
         <div className="card-body text-justify">
-          <h1 className="text-xl font-semibold  text-center">{item.title}</h1>
+          <h1 className="text-xl font-semibold dark:text-black text-center">{item.title}</h1>
           <h5 className="text-center text-lg text-slate-500">
             {item.description}
           </h5>

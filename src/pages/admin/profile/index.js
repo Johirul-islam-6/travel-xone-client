@@ -5,7 +5,7 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 
 const AdminProfile = () => {
-  const [isActive, setIsActive] = useState();
+  
   
   const labelStyle = classNames(
     "pointer-events-none absolute left-0 top-0 origin-[0_0] border border-solid border-transparent px-3 py-4 text-neutral-500 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-2 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
@@ -14,6 +14,10 @@ const AdminProfile = () => {
   const valueStyle = classNames(
     "peer m-0 block h-[58px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-400 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[0.625rem] placeholder:text-sm hover:shadow-lg bg-slate-50 rounded bg-white"
   );
+  const inputStyles = classNames(
+    "peer m-0 block h-[58px] w-full rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-600 dark:text-neutral-200 dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem] placeholder:text-sm hover:shadow-lg"
+  );
+
   return (
     <>
       <Head>
@@ -26,7 +30,7 @@ const AdminProfile = () => {
         <div className="w-[100%] lg:w-[80%] bg-slate-300 px-10">
           {/* -------------body content Start------------------ */}
           <div className=" px-0 py-0 lg:px-20 lg:py-10">
-            <h1 className="text-lg lg:text-xl">Personal Options :</h1>
+            <h1 className="text-lg dark:text-black lg:text-xl">Personal Options :</h1>
             <div className="divider -mt-1"></div>
             <form>
               {/* <!--Input for user name--> */}
@@ -116,71 +120,19 @@ const AdminProfile = () => {
                 </p>
               </div>
 
-              {/* ----------Profile Image--------- */}
-              <div className="mb-6">
-                <div className="avatar">
-                  <div className="w-24 rounded">
-                    <img src="https://i.ibb.co/HB7Q1FD/young-bearded-man-with-striped-shirt-273609-5677.jpg" />
-                  </div>
-                </div>
-                <div>
-                  <a
-                    className="text-sm text-gray-400 hover:text-blue-700 underline"
-                    href="https://en.gravatar.com/"
-                  >
-                    You can change your profile picture on Gravatar.
-                  </a>
-                </div>
+              {/* <!--Input for Password--> */}
+              <div class="relative mb-3 bg-slate-50 rounded">
+                <input
+                  type="password"
+                  class={inputStyles}
+                  id="floatingInput"
+                  placeholder="password"
+                />
+                <label for="floatingInput" class={labelStyle}>
+                  Password
+                </label>
               </div>
-              {/* <!--Input for Password Generate--> */}
-              <div class="relative mb-6">
-                <div>
-                  <div
-                    onClick={() => setIsActive(!isActive)}
-                    className="bg-gray-500 px-10 py-4 hover:cursor-pointer hover:shadow-lg transition duration-200 ease-linear max-w-xs rounded hover:bg-blue-600 text-white"
-                  >
-                    Set New Password
-                  </div>
-                </div>
-                {isActive && (
-                  <div className="flex gap-3 pt-3">
-                    <div>
-                      <input
-                        type="password"
-                        class={valueStyle}
-                        id="floatingInput"
-                        value="*************"
-                      />
-                    </div>
-                    <div className="flex gap-3">
-                      <div>
-                        <button className="btn btn-outline btn-info gap-2">
-                          {/* <AiFillEye/> */}
-                          <AiFillEyeInvisible />
-                          Hide
-                        </button>
-                      </div>
-                      <div>
-                        <button className="btn btn-outline btn-error">
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-              {/* -----------log out---------- */}
-              <div className="mb-5">
-                <button className="btn btn-outline btn-error">
-                  Log Out Everywhere Else
-                </button>
-                <p className="text-sm text-gray-400 w-full lg:w-[55%]">
-                  Did you lose your phone or leave your account logged in at a
-                  public computer? You can log out everywhere else, and stay
-                  logged in here.
-                </p>
-              </div>
-
+              
               {/* <!--Submit button--> */}
               <button
                 type="submit"

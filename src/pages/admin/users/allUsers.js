@@ -66,7 +66,7 @@ const AllUsers = () => {
                 Subscriber (0)
               </span>
             </div>
-            <table className="table w-full ">
+            <table className="table w-full dark:text-[#d6d3d3] ">
               {/* ------------head----------------- */}
               <thead>
                 <tr className="shadow-lg border-b-2 border-blue-300 rounded">
