@@ -159,7 +159,7 @@ const Plain = ({ detailsTransport }) => {
     console.log("show booking", bookingMember)
 
     try {
-      fetch('http://localhost:5000/api/v1/booking-transport', {
+      fetch('https://travel-xone-server-five.vercel.app/api/v1/transfortbooking', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
