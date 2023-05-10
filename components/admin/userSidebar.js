@@ -2,16 +2,23 @@ import { AuthContext } from "@/ContextApi";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const UserSidebar = () => {
+  const router = useRouter();
   const [isToggle, setIsToggle] = useState(false);
   const{user,logOut} = useContext(AuthContext);
   console.log(user?.email);
-  const logout =e =>{
-    logOut()
+  const logout = e =>{
+    logOut().then(res=>{
+      router.push('/')
+    })
+    .catch(e=>{
+      console.log(e)
+    })
   }
 
   const iconStyle = classNames(
@@ -232,6 +239,7 @@ const UserSidebar = () => {
                 </a>
               </li>
               <li>
+                <button onClick={logout}>
                 <a href="#" className={iconStyle}>
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
@@ -253,6 +261,8 @@ const UserSidebar = () => {
                     Logout
                   </span>
                 </a>
+                </button>
+                
               </li>
             </ul>
           </div>

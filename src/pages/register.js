@@ -3,12 +3,13 @@ import { BsPencilSquare } from "react-icons/bs";
 import classNames from "classnames";
 import { useForm } from "react-hook-form";
 import Head from "next/head";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "@/ContextApi";
 import { useRouter } from "next/router";
 
 
 const Registration = () => {
+  const formRef = useRef(null);
   const router = useRouter()
   const{user,loading,setLoading,createUser,Gsignin} = useContext(AuthContext);
   const handleRouter = ()=>{
@@ -26,6 +27,7 @@ const Registration = () => {
     else{
       createUser(email,password)
       .then(res =>{
+        formRef.current.reset();
         const userinfo = {
           email : res?.user?.email,
           role : "user"
@@ -39,6 +41,7 @@ const Registration = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        e.target.reset();
         console.log(data);
         handleRouter()
       });
@@ -105,7 +108,7 @@ const Registration = () => {
             <h1 className="text-center py-5 text-xl">Create an account </h1>
             <div className="text-left px-5">
               {/* -------Registration form-------- */}
-              <form className="text-left" onSubmit={registerSubmit}>
+              <form ref={formRef} className="text-left" onSubmit={registerSubmit}>
                 <div>
                   <input
                   name="email"

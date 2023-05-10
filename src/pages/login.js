@@ -13,27 +13,12 @@ import { useRouter } from "next/router";
 const Login = () => {
   const router = useRouter();
   const { user, Login, loading, setLoading, Gsignin } = useContext(AuthContext)
-  // const router = useRouter()
-  // const { register, handleSubmit } = useForm();
-  // const {LOGIN,setUser,user} = useContext(RootContext)
-  // const [errors,setErrors]= useState(null)
-  // const redirect = router.pathname===router.asPath?'/dashboard':router.asPath
-
-  // const handleLogin = (data)=>{
-  //     LOGIN(data)
-  //     .then(res=>{
-  //       setUser(res.data.user)
-  //       toast.success('Login success')
-  //       router.push(redirect)
-  //       setErrors(null)
-  //     })
-  //     .catch(err => {console.log(err) ; toast.error(err.data?.message?.type) ; setErrors(err.data?.message)} )
-  // }
+  
   const handleRouter = () => {
     router.push('/')
   }
   const loginhandler = e => {
-    e.prevnetDefault();
+    e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     Login(email, password)

@@ -7,15 +7,21 @@ import {
 } from "react-icons/ai";
 import { TbWorld } from "react-icons/tb";
 import { FaShoePrints, FaUserAlt, FaUsers } from "react-icons/fa";
-import { useEffect, useState} from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState} from "react";
 import { useContext } from "react";
 import { AuthContext } from "@/ContextApi";
-
+import { useRouter } from "next/router";
 
 
 const detailsHostel01 = ({ detailsHotel }) => {
   const{user} = useContext(AuthContext)
-  const[singleRevie,setSingleRevie] = useState()
+  const[singleRevie,setSingleRevie] = useState();
+  const formRef = useRef(null);
+  const router = useRouter();
+  const handleRouter = ()=>{
+    router.push('/')
+  }
    
   // console.log(detailsHotel.data[0], "This is single data");
   const singelsHotels = detailsHotel?.data[0];
@@ -106,6 +112,8 @@ const review = (id)=>{
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        formRef.current.reset();
+        handleRouter()
       });
   };
 const handleReview =(e)=>{
@@ -114,10 +122,11 @@ const handleReview =(e)=>{
  const designation= e.target.designation.value;
  const title = e.target.title.value;
  const message = e.target.message.value;
- const id = singelsHotels?._id
+ const id = singelsHotels?._id;
+ const email = e.target.email.value;
  console.log(name,designation,title,message,id );
  const reviewInfo={
-  name,designation,title,message,id,rating:5
+  name,designation,title,message,id,rating:5,email
  }
 
  fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/review`, {
@@ -175,10 +184,10 @@ const handleReview =(e)=>{
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide4" className="btn btn-circle">
-                      ❮
+                      â®
                     </a>
                     <a href="#slide2" className="btn btn-circle">
-                      ❯
+                      â¯
                     </a>
                   </div>
                 </div>
@@ -193,10 +202,10 @@ const handleReview =(e)=>{
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide1" className="btn btn-circle">
-                      ❮
+                      â®
                     </a>
                     <a href="#slide3" className="btn btn-circle">
-                      ❯
+                      â¯
                     </a>
                   </div>
                 </div>
@@ -211,10 +220,10 @@ const handleReview =(e)=>{
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide2" className="btn btn-circle">
-                      ❮
+                      â®
                     </a>
                     <a href="#slide4" className="btn btn-circle">
-                      ❯
+                      â¯
                     </a>
                   </div>
                 </div>
@@ -489,13 +498,13 @@ const handleReview =(e)=>{
                 </div>
               </Link> */}
               {/* The button to open modal */}
-<label htmlFor="my-modal-3" className="btn">open modal</label>
+<label htmlFor="my-modal-3" className="btn">Write Your Review</label>
 
-{/* Put this part before </body> tag */}
+{/* ---------------------------------Modal for Review--------------------------- */}
 <input type="checkbox" id="my-modal-3" className="modal-toggle" />
 <div className="modal">
   <div className="modal-box relative">
-    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">âœ•</label>
     <form onSubmit={handleReview}>
                 <div className="p-5 md:p-16 lg:p-16">
                   <div className="form-control py-1 ">
@@ -505,6 +514,15 @@ const handleReview =(e)=>{
                       placeholder="Name"
                       className="input input-bordered text-start text-md text-md"
                       required
+                    />
+                  </div>
+                  <div className="form-control py-1 ">
+                    <input
+                      type="email"
+                      name="email"
+                      value={user?.email}
+                      placeholder="email"
+                      className="input input-bordered text-start text-md text-md"
                     />
                   </div>
                   <div className="form-control py-1 ">
@@ -527,8 +545,6 @@ const handleReview =(e)=>{
                       required
                     />
                   </div>
-                 
-
                   <div className="form-control py-1  border rounded-lg mt-3">
                     <textarea
                       name="message"
