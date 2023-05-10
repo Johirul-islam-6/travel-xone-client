@@ -103,16 +103,6 @@ const Plain = ({ detailsTransport }) => {
   }
 
 
-  // const minus = (e) => {
-  //   const add = parseFloat(member) - 1;
-  //   setAddMember(add)
-  // }
-  // const plus = (e) => {
-  //   const add = parseFloat(member) + 1;
-  //   setAddMember(add)
-  // }
-
-
   // -------------modal Btn----------
 
   const BookingNowTransport = event => {
@@ -149,17 +139,20 @@ const Plain = ({ detailsTransport }) => {
 
     const bookingMember = {
       names: names,
+      image: detailsTransport?.img,
       email: email,
       transportName: transportName,
       location: location,
       JarnyDate: JarnyDate,
       message: message,
-      booking: "success"
+      price: parseFloat(PriceTotal),
+      booking: "unpaid",
+      member: parseFloat(num)
     }
     console.log("show booking", bookingMember)
 
     try {
-      fetch('http://localhost:5000/api/v1/booking-transport', {
+      fetch('https://travel-xone-server-five.vercel.app/api/v1/transfortbooking', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -173,7 +166,7 @@ const Plain = ({ detailsTransport }) => {
             toast.success('Your Booking successfuly ')
             targetValue.reset()
             setShowModal(false)
-            router.push('/admin/booking/transport')
+            router.push('/dashboard/booking/transport')
           } else {
             console.log(data)
             toast.error(error)
@@ -312,7 +305,7 @@ const Plain = ({ detailsTransport }) => {
                               <label className="label">
                                 <span className="label-text">your Email Is :</span>
                               </label>
-                              <input name="email" type="text" defaultValue={"rasel@gmail.com"} className="py-3 px-2 rounded-md  input-bordered w-full max-w-xs bg-blue-400 text-white" />
+                              <input name="email" type="text" defaultValue={user?.email} className="py-3 px-2 rounded-md  input-bordered w-full max-w-xs bg-blue-400 text-white" />
                             </div>
                           </div>
                           <div className="grid grid-cols-2 gap-2">
@@ -461,7 +454,7 @@ export default Plain;
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   const res = await fetch(
-    `http://localhost:5000/api/v1/transports/${id}`
+    `https://travel-xone-server-five.vercel.app/api/v1/totalTransport?id=${id}`
   );
   const data = await res.json();
 
@@ -474,7 +467,7 @@ export const getStaticProps = async (context) => {
 
 export const getStaticPaths = async () => {
   const res = await fetch(
-    "http://localhost:5000/api/v1/transports/"
+    "https://travel-xone-server-five.vercel.app/api/v1/totalTransport/All"
   );
   const data = await res.json();
   const paths = data?.map((currentLocation) => {

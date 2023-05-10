@@ -6,13 +6,14 @@ import {
   AiOutlineLike,
 } from "react-icons/ai";
 import { TbWorld } from "react-icons/tb";
-import { FaShoePrints, FaUserAlt, FaUsers } from "react-icons/fa";
+import { FaCaretLeft, FaCaretRight, FaShoePrints, FaUserAlt, FaUsers } from "react-icons/fa";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "@/ContextApi";
 import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
+import Aos from "aos";
 
 
 const detailsHostel01 = ({ detailsHotel }) => {
@@ -24,7 +25,11 @@ const detailsHostel01 = ({ detailsHotel }) => {
 
   // console.log("details hotels", detailsHotel.data);
   const pageid = singelsHotels?._id;
-  console.log(pageid, 'id');
+
+  useEffect(() => {
+    Aos.init();
+  }, [])
+
 
   let Review = {}
   if (pageid) {
@@ -53,7 +58,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
     toast.success("user Review successfull")
   }
   const HotelBooking = () => {
-    router.push('/dashboard')
+    router.push('/dashboard/booking/restaurant')
   }
   // review(pageid);
   const bookingsubmit = (e) => {
@@ -104,7 +109,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
       pictureThree
 
     };
-    
+
 
     fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/bookings`, {
       method: "POST", // or 'PUT'
@@ -145,6 +150,9 @@ const detailsHostel01 = ({ detailsHotel }) => {
         console.log(data);
       })
   }
+
+
+
   return (
 
     <>
@@ -153,7 +161,11 @@ const detailsHostel01 = ({ detailsHotel }) => {
         {/* ---------- Header Title Part ---------------- */}
         <div className="bg-[url('https://i.ibb.co/nkNGLdF/banner.png')] bg-no-repeat bg-cover bg-left-bottom pt-28 md:pt-32 lg:pt-48 pb-4">
           <div className="pl-10 lg:pl-20">
-            <h1 className="text-xl md:text-2xl lg:text-3xl  font-bold text-white">
+            <h1
+              data-aos="zoom-in"
+              data-aos-easing="ease-in-out"
+              data-aos-duration="1500"
+              className="text-xl md:text-2xl lg:text-3xl  font-bold text-white">
               Hotel {singelsHotels?.placeName} Dhaka
             </h1>
             <div className="text-slate-300 flex items-center ">
@@ -185,11 +197,11 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     className="w-full h-[40vh] md:h-[65vh]"
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" className="btn btn-circle">
-                      â®
+                    <a href="#slide4" className="btn btn-circle text-white bg-slate-700">
+                      <FaCaretLeft />
                     </a>
-                    <a href="#slide2" className="btn btn-circle">
-                      â¯
+                    <a href="#slide2" className="btn btn-circle text-white bg-slate-700">
+                      <FaCaretRight />
                     </a>
                   </div>
                 </div>
@@ -351,46 +363,46 @@ const detailsHostel01 = ({ detailsHotel }) => {
                 </h1>
                 {/* --------------- Single reviews -------------- */}
                 {
-                  singleRevie?.map( review => {
-                    return(
+                  singleRevie?.map(review => {
+                    return (
                       <div key={review._id} className="border p-5 my-7">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center justify-between">
-                      {/* <FaUserAlt className=" " /> */}
-                      <img
-                        loading="lazy"
-                        className="rounded-full bg-[#3D3D3D] text-6xl p-2 text-white w-20 h-20"
-                        src="https://media.licdn.com/dms/image/D5603AQFAv-ZfyGJC6A/profile-displayphoto-shrink_400_400/0/1680587786974?e=1687996800&v=beta&t=Q7DRuXsOW-EXKMx1-eOOP3dE-vOuWz8gBkh_jba7lhE"
-                        alt=""
-                      />
-                      <div className="pl-5">
-                        <p className="text-md md:text-md lg:text-xl text-black">
-                          {review.name}
-                        </p>
-                        <h1 className="text-sm text-slate-500">
-                        {review.designation}
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center justify-between">
+                            {/* <FaUserAlt className=" " /> */}
+                            <img
+                              loading="lazy"
+                              className="rounded-full bg-[#3D3D3D] text-6xl p-2 text-white w-20 h-20"
+                              src="https://media.licdn.com/dms/image/D5603AQFAv-ZfyGJC6A/profile-displayphoto-shrink_400_400/0/1680587786974?e=1687996800&v=beta&t=Q7DRuXsOW-EXKMx1-eOOP3dE-vOuWz8gBkh_jba7lhE"
+                              alt=""
+                            />
+                            <div className="pl-5">
+                              <p className="text-md md:text-md lg:text-xl text-black">
+                                {review.name}
+                              </p>
+                              <h1 className="text-sm text-slate-500">
+                                {review.designation}
+                              </h1>
+                            </div>
+                          </div>
+                          <div className="flex gap-2 items-center justify-between cursor-pointer">
+                            <AiOutlineLike className="text-[#627FF4] " />
+                            <p className="text-[#627FF4] ">10.5k</p>
+                          </div>
+                        </div>
+                        <div className="text-[#e2a04a] flex text-lg pt-4">
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                        </div>
+                        <h1 className="text-md md:text-lg lg:text-xl pb-3 dark:text-black">
+                          {review.title}
                         </h1>
+                        <h2 className="text-lg text-slate-500">
+                          {review.message}
+                        </h2>
                       </div>
-                    </div>
-                    <div className="flex gap-2 items-center justify-between cursor-pointer">
-                      <AiOutlineLike className="text-[#627FF4] " />
-                      <p className="text-[#627FF4] ">10.5k</p>
-                    </div>
-                  </div>
-                  <div className="text-[#e2a04a] flex text-lg pt-4">
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                  </div>
-                  <h1 className="text-md md:text-lg lg:text-xl pb-3 dark:text-black">
-                  {review.title}
-                  </h1>
-                  <h2 className="text-lg text-slate-500">
-                  {review.message}
-                  </h2>
-                </div>
                     )
                   })
                 }
@@ -495,8 +507,13 @@ const detailsHostel01 = ({ detailsHotel }) => {
             {/* -----------------Carousel End-------------- */}
             {/*------- Single Package Details End------- */}
             {/*------- Side Bar Start------- */}
-            <div className="w-full md:w-[30%] lg:w-1/4 mt-10 md:mt-0 lg:mt-0 ">
-              <div className="pt-20 pb-5 px-5 shadow-lg relative mb-10 bg-slate-200">
+            <div
+              className="w-full md:w-[30%] lg:w-1/4 mt-10 md:mt-0 lg:mt-0 ">
+              <div
+                data-aos="fade-right"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="900"
+                className="pt-20 pb-5 px-5 shadow-lg relative mb-10">
                 <div className="flex justify-between bg-[#3264FF] py-3 px-4 absolute top-0 left-0  w-full">
                   <h1 className="text-slate-100 font-semibold text-2xl">
                     $<span> 149.00</span>

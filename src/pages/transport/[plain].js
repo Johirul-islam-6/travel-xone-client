@@ -31,27 +31,27 @@ const Plain = () => {
       setSeat(seat - 1);
     }
   };
-const transportsubmit = e =>{
+  const transportsubmit = e => {
     e.preventDefault();
     const email = e.target.email.value;
     const number = e.target.number.value;
     const country = e.target.country.value;
     const date = e.target.date.value;
-     const bookinfo={
-        email,number,country,date,price,seat,id
-     }
-     fetch(``, {
-        method: "POST", // or 'PUT'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bookinfo),
+    const bookinfo = {
+      email, number, country, date, price, seat, id
+    }
+    fetch(``, {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookinfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
       })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        })
-}
+  }
   return (
     <section>
       {/* -----------header design Start----------- */}

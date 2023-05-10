@@ -40,11 +40,11 @@ const Hero = () => {
       <section className="Section01 text-center">
         {/* The button to open modal */}
         <div
-          className={`${styles.heroBg} flex justify-center items-center w-[100vw] md:h-[95vh] h-[120vh]`}
+          className={`${styles.heroBg} flex justify-center items-center w-[100vw] h-[100vh] md:h-[95vh]  md:px-10`}
         >
-          <div className="container grid grid-cols-2 gap-2 item-center mt-10">
+          <div className="container grid grid-cols-1 md:grid-cols-2 gap-2 item-center mt-10">
 
-            <div className="text flex items-center">
+            <div className="text  items-center pl-5 hidden md:flex">
               <div className="block items-center">
                 <h1
                   data-aos="fade-right"
@@ -57,42 +57,43 @@ const Hero = () => {
                   data-aos="fade-right"
                   data-aos-easing="ease-in-out"
                   data-aos-duration="1200"
-                  className={` ${styles.text_font} pt-5 w-10/12 text-[#f5eeee] text-start font-sans text-[18px]`}> Travel writers submit pieces for publication in magazines, blogs, travel brands' websites, newsletters, and other print or digital outlets. They may pen feature stories, first-person articles, blog posts, listicles, itineraries, or contribute to ongoing columns.</p>
-                <div className="flex mt-6">
+                  className={` ${styles.text_font} pt-8 w-10/12  text-[#ffffff] text-start font-sans text-[21px]`}> Travel writers submit pieces for publication in magazines, blogs, travel brands' websites, newsletters, and other print or digital outlets. They may pen feature stories, first-person articles, blog posts, listicles, itineraries, or contribute to ongoing columns.</p>
+                <div className="flex mt-8">
                   <Link href={'/blogs'}>  <button
                     data-aos="zoom-in"
                     data-aos-easing="ease-in-out"
                     data-aos-duration="1300"
-                    className="btn btn-primary px-20 py-5">Travel</button> </Link>
+                    className="bg-[#026bdc] px-16 py-5">Travel</button> </Link>
 
                 </div>
               </div>
             </div>
 
-            <div className="relative items-center flex justify-center">
+            <div className="relative items-center flex justify-center md:mt-5">
               <Image data-aos="fade-left"
                 data-aos-easing="ease-in-out"
                 data-aos-duration="900"
                 src="https://i.ibb.co/JBJ90Ky/4-K-Travel-Wallpaper-HD-Free-download.jpg"
                 alt="TRAVEL.XONE LOGO"
-                width={1000}
+                width={700}
                 height={667}
                 loading="lazy"
-                className="w-[90%] h-[60vh] rounded-md"
+                className="w-[75%] h-[50vh] rounded-md"
               />
-              <div className="absolute w-[50%] bottom-[-30px] right-[20px] border shadow-2xl">
+              <div className="absolute h-[65%] w-[45%] bottom-[-30px] right-[20px] border shadow-2xl">
                 <Image
                   data-aos="zoom-in"
                   data-aos-easing="ease-in-out"
                   data-aos-duration="1300"
                   src="https://i.ibb.co/sJ1NSJT/4-K-Travel-Pictures.jpg"
                   alt="TRAVEL.XONE LOGO"
-                  width={1000}
-                  height={450}
+                  width={500}
+                  height={600}
                   loading="lazy"
                   className="w-[100%] h-[100%]"
                 />
               </div>
+
             </div>
 
           </div>

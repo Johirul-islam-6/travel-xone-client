@@ -9,10 +9,10 @@ const Transport = () => {
   useEffect(() => {
     try {
 
-      fetch(`http://localhost:5000/api/v1/transports/`)
+      fetch(`https://travel-xone-server-five.vercel.app/api/v1/totalTransport/All`)
         .then((res) => res.json())
         .then((data) => {
-          setTransport(data);
+          setTransport(data?.data);
           setLoding(false)
         });
 

@@ -3,22 +3,36 @@ import { useContext, useState } from "react";
 import UserDashboardLayout from "../../../../components/userDashboardLayout";
 import { AuthContext } from "@/ContextApi";
 import { useEffect } from "react";
+import Aos from "aos";
 
 const UserRestaurant = () => {
-  const { user, setLoading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
+  const [loding, setLoding] = useState(true)
   const [bookingdata, setBookingData] = useState([]);
   const [payment, setPayment] = useState();
 
   useEffect(() => {
-    fetch(
-      `https://travel-xone-server-five.vercel.app/api/v1/bookings?email=${user?.email}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setBookingData(data);
-        setLoading(false);
-      });
-  }, [user?.email]);
+    fetch(`https://travel-xone-server-five.vercel.app/api/v1/bookings?email=${user?.email}`)
+      .then(res => res.json())
+      .then(data => {
+        setBookingData(data)
+        setLoding(false)
+      })
+    Aos.init()
+
+  }, [user?.email])
+
+
+  if (loding) {
+    return <>
+      <div className="w-[100%] h-[100vh] justify-center flex items-center">
+        <div className="fixed top-0 right-0 h-screen w-screen z-50 flex justify-center items-center bg-[#0000004d]">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-4 border-blue-700"></div>
+        </div>
+      </div>
+    </>
+  }
 
   return (
     <>
@@ -28,7 +42,7 @@ const UserRestaurant = () => {
       <UserDashboardLayout>
         {/* -------------body content Start------------------ */}
         <h3 class="text-lg xl:text-xl dark:text-black font-semibold leading-7 xl:leading-9 w-full md:text-left text-black">
-          Restaurant Bookings
+          Restaurant Bookings <span className="text-[13px] text-amber-600">{user?.email}</span>
         </h3>
         <p class="text-sm leading-none dark:text-black pb-0 lg:pb-5 text-black">
           Paid using credit card ending with Bkash, Nagad, Visa Card
@@ -37,7 +51,9 @@ const UserRestaurant = () => {
           <div class="flex justify-center items-center w-full mt-5 flex-col space-y-4 ">
             {bookingdata?.data?.map((post) => {
               return (
-                <div
+                <div data-aos="zoom-in"
+                  data-aos-easing="ease-in-out"
+                  data-aos-duration="900"
                   key={post.id}
                   class="flex-cols lg:flex md:flex justify-start items-start md:items-center border border-gray-200 w-full shadow-lg bg-white text-black"
                 >
