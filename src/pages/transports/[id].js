@@ -8,12 +8,16 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 
 const Plain = ({ detailsTransport }) => {
 
+  console.log(detailsTransport)
   const { user } = useContext(AuthContext);
+
+  const transport = detailsTransport?.data[0]
+
+  // const [transport, setTransport] = useState();
   const priceTravel = detailsTransport?.price?.slice(0, 3);
 
   const router = useRouter();
   const [loding, setLoding] = useState(true)
-  const [transport, setTransport] = useState();
 
   //  --------------modal part-----------
   const [showModal, setShowModal] = useState(false);
@@ -25,8 +29,9 @@ const Plain = ({ detailsTransport }) => {
   // input value resive state
 
 
+
   useEffect(() => {
-    setTransport(detailsTransport)
+    // setTransport(detailsTransport)
     setLoding(false)
 
   }, [detailsTransport]);
@@ -470,7 +475,7 @@ export const getStaticPaths = async () => {
     "https://travel-xone-server-five.vercel.app/api/v1/totalTransport/All"
   );
   const data = await res.json();
-  const paths = data?.map((currentLocation) => {
+  const paths = data?.data?.map((currentLocation) => {
     return {
       params: {
         id: currentLocation?._id.toString(),
