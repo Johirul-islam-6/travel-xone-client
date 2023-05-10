@@ -1,8 +1,9 @@
+import Aos from "aos";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
+// import Aos from "aos";
 
 
 const Location = () => {
@@ -14,16 +15,16 @@ const Location = () => {
   const id4 = "643c2c61f97a9e7ae141b4a1"
   const id5 = "643c3117e049fd5186b59ae1"
 
-
-  const ClickLocation = (id) => {
-    setlocationId(id)
-  };
-
-  console.log(locationid)
+  useEffect(() => {
+    Aos.init()
+  }, [])
 
   const overlayClass = classNames(
     "absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-[#00000083] opacity-0 group-hover:h-full group-hover:opacity-100 duration-500"
   );
+
+
+
   return (
     <>
       <section className="bg-[#F7FAFC] py-20">
@@ -40,7 +41,11 @@ const Location = () => {
           {/*----- Location Container -----*/}
           <div className="block md:flex lg:flex px-10 lg:px-0">
 
-            <div className="w-full md:w-[131%] lg:max-w-[33.3%] group relative">
+            <div
+              data-aos="zoom-in"
+              data-aos-easing="ease-in-out"
+              data-aos-duration="900"
+              className="w-full md:w-[131%] lg:max-w-[33.3%] group relative">
 
               <Image
                 src="https://i.ibb.co/ByXW3K0/location10.png"
