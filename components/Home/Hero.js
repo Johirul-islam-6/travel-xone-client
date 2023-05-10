@@ -75,20 +75,20 @@ const Hero = () => {
                 data-aos-duration="900"
                 src="https://i.ibb.co/JBJ90Ky/4-K-Travel-Wallpaper-HD-Free-download.jpg"
                 alt="TRAVEL.XONE LOGO"
-                width={1000}
+                width={700}
                 height={667}
                 loading="lazy"
-                className="w-[90%] h-[60vh] rounded-md"
+                className="w-[75%] h-[50vh] rounded-md"
               />
-              <div className="absolute w-[50%] bottom-[-30px] right-[20px] border shadow-2xl">
+              <div className="absolute h-[65%] w-[45%] bottom-[-30px] right-[20px] border shadow-2xl">
                 <Image
                   data-aos="zoom-in"
                   data-aos-easing="ease-in-out"
                   data-aos-duration="1300"
                   src="https://i.ibb.co/sJ1NSJT/4-K-Travel-Pictures.jpg"
                   alt="TRAVEL.XONE LOGO"
-                  width={1000}
-                  height={450}
+                  width={500}
+                  height={600}
                   loading="lazy"
                   className="w-[100%] h-[100%]"
                 />

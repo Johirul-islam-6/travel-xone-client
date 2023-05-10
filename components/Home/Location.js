@@ -3,6 +3,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 // import Aos from "aos";
 
 
@@ -24,6 +25,11 @@ const Location = () => {
   );
 
 
+  const lodingBtn = () => {
+
+    toast.success("clicked")
+  }
+
 
   return (
     <>
@@ -42,7 +48,7 @@ const Location = () => {
           {/*----- Location Container -----*/}
           <div className="block md:flex lg:flex px-10 lg:px-0">
 
-            <div
+            <div onClick={lodingBtn}
               data-aos="zoom-in"
               data-aos-easing="ease-in-out"
               data-aos-duration="900"
@@ -67,7 +73,7 @@ const Location = () => {
 
             <div>
               <div className="flex">
-                <div
+                <div onClick={lodingBtn}
                   data-aos="zoom-in"
                   data-aos-easing="ease-in-out"
                   data-aos-duration="900"
@@ -91,7 +97,7 @@ const Location = () => {
                     </div>
                   </Link>
                 </div>
-                <div
+                <div onClick={lodingBtn}
                   data-aos="fade-left"
                   data-aos-easing="ease-in-out"
                   data-aos-duration="1200"
@@ -104,7 +110,7 @@ const Location = () => {
                     loading="lazy"
                   />
 
-                  <div
+                  <div onClick={lodingBtn}
 
                     className={`${overlayClass}`}>
                     <Link
@@ -119,7 +125,7 @@ const Location = () => {
                 </div>
               </div>
               <div className="flex">
-                <div
+                <div onClick={lodingBtn}
                   // data-aos="zoom-in-right"
                   // data-aos-easing="ease-in-out"
                   // data-aos-duration="1200"
@@ -143,7 +149,7 @@ const Location = () => {
                     </Link>
                   </div>
                 </div>
-                <div
+                <div onClick={lodingBtn}
                   // data-aos="fade-left"
                   // data-aos-easing="ease-in-out"
                   // data-aos-duration="1200"
