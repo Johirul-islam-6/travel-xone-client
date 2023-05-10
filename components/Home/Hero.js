@@ -40,11 +40,11 @@ const Hero = () => {
       <section className="Section01 text-center">
         {/* The button to open modal */}
         <div
-          className={`${styles.heroBg} flex justify-center items-center w-[100vw] md:h-[95vh] h-[120vh]`}
+          className={`${styles.heroBg} flex justify-center items-center w-[100vw] h-[100vh] md:h-[95vh]  md:px-10`}
         >
-          <div className="container grid grid-cols-2 gap-2 item-center mt-10">
+          <div className="container grid grid-cols-1 md:grid-cols-2 gap-2 item-center mt-10">
 
-            <div className="text flex items-center pl-5">
+            <div className="text  items-center pl-5 hidden md:flex">
               <div className="block items-center">
                 <h1
                   data-aos="fade-right"
@@ -63,13 +63,13 @@ const Hero = () => {
                     data-aos="zoom-in"
                     data-aos-easing="ease-in-out"
                     data-aos-duration="1300"
-                    className="bg-[#3902dc] px-16 py-5">Travel</button> </Link>
+                    className="bg-[#026bdc] px-16 py-5">Travel</button> </Link>
 
                 </div>
               </div>
             </div>
 
-            <div className="relative items-center flex justify-center">
+            <div className="relative items-center flex justify-center md:mt-5">
               <Image data-aos="fade-left"
                 data-aos-easing="ease-in-out"
                 data-aos-duration="900"
@@ -93,6 +93,7 @@ const Hero = () => {
                   className="w-[100%] h-[100%]"
                 />
               </div>
+
             </div>
 
           </div>

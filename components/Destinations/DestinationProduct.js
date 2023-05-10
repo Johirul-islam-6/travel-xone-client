@@ -17,7 +17,7 @@ const DestinationProduct = (props) => {
 
   return (
     <>
-      <section className=" container py-10 mx-auto">
+      <section className=" container py-10 mx-auto px-10">
         <div>
           <div>
             <div className="block md:flex lg:flex justify-between gap-5">
@@ -26,9 +26,8 @@ const DestinationProduct = (props) => {
               </h2>
               {/* ----------- Search Input ----------- */}
               <div className="form-control pt-3 lg:pt-0 md:pt-0">
-                <div className="input-group input-group-sm ">
+                <div className="">
                   <p className="text-[#393838] text-[20px]">Discound Offer</p>
-
                 </div>
               </div>
             </div>
@@ -65,7 +64,7 @@ const DestinationProduct = (props) => {
               {/*------- features property ------- */}
               {/*------- Location Button Start ------- */}
               <div className="flex-wrap md:flex lg:flex gap-5 mt-2">
-              
+
                 {
                   singel_location?.places?.map(place => <div className={`bg-slate-100 text-zinc-500 py-1 px-2 rounded hover:bg-[#627FF4] hover:text-white shadow text-sm my-2 md:my-0 lg:my-0 cursor-pointer`}>{place?.name}</div>)
                 }
@@ -73,11 +72,11 @@ const DestinationProduct = (props) => {
               {/*------- Location Button End------- */}
               {/*------- package body Start------- */}
               <section class="py-10 bg-gray-100">
-            <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-10 md:px-0 lg:px-0">
-              <Card/>
-            </div>
-            </section>
-        {/*------- package body End------- */}
+                <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-10 md:px-0 lg:px-0">
+                  <Card />
+                </div>
+              </section>
+              {/*------- package body End------- */}
               {/* ---------pagination Button---------- */}
 
             </div >
