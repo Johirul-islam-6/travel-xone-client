@@ -7,10 +7,32 @@ import {
 import { BsFacebook } from "react-icons/bs";
 import { FaLinkedin, FaLinkedinIn, FaPinterest } from "react-icons/fa";
 import Link from "next/link";
+import { useContext } from "react";
+import { AuthContext } from "@/ContextApi";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const TopHeader = () => {
+  const { user, logOut, setLoading } = useContext(AuthContext);
+  const [admin, setAdmin] = useState([]);
+  const logout = e => {
+    logOut()
+  }
+
+  useEffect(() => {
+    fetch(
+      `https://travel-xone-server-five.vercel.app/api/v1/chena?email=${user?.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setAdmin(data?.data);
+        console.log(data, "isAdmin");
+        setLoading(false);
+      });
+  }, [user?.email]);
   return (
     <>
+    {console.log(admin[0], "admin")}
       <div className="hidden lg:block bg-[#026fc8] py-2 relative text-slate-500 px-20">
         <div className="flex justify-between">
           <div className="flex gap-8">
@@ -18,7 +40,7 @@ const TopHeader = () => {
               <BiLocationPlus />
               <p className="ml-1 text-sm">250 Main Street, Mirpur, Dhaka </p>
             </div>
-            <div className="flex items-center items-center text-slate-200 hover:text-white">
+            <div className="flex items-center text-slate-200 hover:text-white">
               <AiOutlineMail className="" />
               <span className="ml-1 text-sm">
                 <a
@@ -40,6 +62,11 @@ const TopHeader = () => {
               <Link href="/about">
                 <p className="ml-2 text-sm text-slate-200 hover:text-white">
                   About us
+                </p>
+              </Link>
+              <Link href="/about">
+                <p className="ml-2 text-sm text-slate-200 hover:text-white">
+                  Admin
                 </p>
               </Link>
             </div>

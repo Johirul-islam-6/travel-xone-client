@@ -18,7 +18,7 @@ import Aos from "aos";
 
 const detailsHostel01 = ({ detailsHotel }) => {
   const { user } = useContext(AuthContext)
-  const [singleRevie, setSingleRevie] = useState()
+  const [singleRevie, setSingleRevie] = useState([])
   const router = useRouter();
   // console.log(detailsHotel.data[0], "This is single data");
   const singelsHotels = detailsHotel?.data[0];
@@ -39,6 +39,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
         .then(data => {
           if (data) {
             setSingleRevie(data?.data)
+            console.log(data, 'pageid')
           }
         })
     }, [pageid])
@@ -49,6 +50,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
       .then(res => res.json())
       .then(data => {
         // setReviews(data)
+        // console.log(data, 'id')
       })
   }
 
@@ -58,7 +60,6 @@ const detailsHostel01 = ({ detailsHotel }) => {
   const HotelBooking = () => {
     router.push('/dashboard/booking/restaurant')
   }
-
   // review(pageid);
   const bookingsubmit = (e) => {
     e.preventDefault();
@@ -108,7 +109,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
       pictureThree
 
     };
-    console.log(bookingInfo);
+
 
     fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/bookings`, {
       method: "POST", // or 'PUT'
@@ -120,7 +121,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("user Booking Hotel successfull");
-        router.push(`/destinationId/${pageid}`);
+        router.push(`dashboard/booking/restaurant`);
 
       });
   };
@@ -249,7 +250,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     <AiOutlineClockCircle className="border text-3xl lg:text-5xl p-1 lg:p-3 text-slate-600" />
                   </div>
                   <div className="pl-3">
-                    <h1 className="text-sm lg:text-md">Duration</h1>
+                    <h1 className="text-sm lg:text-md dark:text-black">Duration</h1>
                     <h2 className="text-md lg:text-lg font-light text-slate-500">
                       <span className="text-[#627FF4]">
                         {singelsHotels?.duration}
@@ -264,7 +265,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     <FaShoePrints className="border text-3xl lg:text-5xl p-1 lg:p-3 text-slate-600" />
                   </div>
                   <div className="pl-3">
-                    <h1 className="text-sm lg:text-md">Tour Type</h1>
+                    <h1 className="text-sm lg:text-md dark:text-black">Tour Type</h1>
                     <h2 className="text-md lg:text-lg font-light text-slate-500">
                       {singelsHotels?.tourType}
                     </h2>
@@ -276,7 +277,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     <FaUsers className="border text-3xl lg:text-5xl p-1 lg:p-3 text-slate-600" />
                   </div>
                   <div className="pl-3">
-                    <h1 className="text-sm lg:text-md">Group Size</h1>
+                    <h1 className="text-sm lg:text-md dark:text-black">Group Size</h1>
                     <h2 className="text-md lg:text-lg font-light text-slate-500">
                       <span className="text-[#627FF4]">12</span> Peoples
                     </h2>
@@ -288,7 +289,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                     <TbWorld className="border text-3xl lg:text-5xl p-1 lg:p-3 text-slate-600" />
                   </div>
                   <div className="pl-3">
-                    <h1 className="text-sm lg:text-md">Languages</h1>
+                    <h1 className="text-sm lg:text-md dark:text-black">Languages</h1>
                     <h2 className="text-md lg:text-lg font-light text-slate-500">
                       {singelsHotels?.language}
                     </h2>
@@ -361,156 +362,51 @@ const detailsHostel01 = ({ detailsHotel }) => {
                   Reviews
                 </h1>
                 {/* --------------- Single reviews -------------- */}
-                <div className="border p-5 my-7">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center justify-between">
-                      {/* <FaUserAlt className=" " /> */}
-                      <img
-                        loading="lazy"
-                        className="rounded-full bg-[#3D3D3D] text-6xl p-2 text-white w-20 h-20"
-                        src="https://media.licdn.com/dms/image/D5603AQFAv-ZfyGJC6A/profile-displayphoto-shrink_400_400/0/1680587786974?e=1687996800&v=beta&t=Q7DRuXsOW-EXKMx1-eOOP3dE-vOuWz8gBkh_jba7lhE"
-                        alt=""
-                      />
-                      <div className="pl-5">
-                        <p className="text-md md:text-md lg:text-xl text-black">
-                          Rasel Khan
-                        </p>
-                        <h1 className="text-sm text-slate-500">
-                          Founder of travel.xone.com
+                {
+                  singleRevie?.map(review => {
+                    return (
+                      <div key={review._id} className="border p-5 my-7">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center justify-between">
+                            {/* <FaUserAlt className=" " /> */}
+                            <img
+                              loading="lazy"
+                              className="rounded-full bg-[#3D3D3D] text-6xl p-2 text-white w-20 h-20"
+                              src="https://media.licdn.com/dms/image/D5603AQFAv-ZfyGJC6A/profile-displayphoto-shrink_400_400/0/1680587786974?e=1687996800&v=beta&t=Q7DRuXsOW-EXKMx1-eOOP3dE-vOuWz8gBkh_jba7lhE"
+                              alt=""
+                            />
+                            <div className="pl-5">
+                              <p className="text-md md:text-md lg:text-xl text-black">
+                                {review.name}
+                              </p>
+                              <h1 className="text-sm text-slate-500">
+                                {review.designation}
+                              </h1>
+                            </div>
+                          </div>
+                          <div className="flex gap-2 items-center justify-between cursor-pointer">
+                            <AiOutlineLike className="text-[#627FF4] " />
+                            <p className="text-[#627FF4] ">10.5k</p>
+                          </div>
+                        </div>
+                        <div className="text-[#e2a04a] flex text-lg pt-4">
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                        </div>
+                        <h1 className="text-md md:text-lg lg:text-xl pb-3 dark:text-black">
+                          {review.title}
                         </h1>
+                        <h2 className="text-lg text-slate-500">
+                          {review.message}
+                        </h2>
                       </div>
-                    </div>
-                    <div className="flex gap-2 items-center justify-between cursor-pointer">
-                      <AiOutlineLike className="text-[#627FF4] " />
-                      <p className="text-[#627FF4] ">10.5k</p>
-                    </div>
-                  </div>
-                  <div className="text-[#e2a04a] flex text-lg pt-4">
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                  </div>
-                  <h1 className="text-md md:text-lg lg:text-xl pb-3">
-                    Quality Services
-                  </h1>
-                  <h2 className="text-lg text-slate-500">
-                    We have been on a couple of cycling trips before and this
-                    one was probably the best. Tri our guide was outstanding and
-                    all our fellow cyclists were a great bunch of people. We got
-                    a real flavour of life in Vietnam. Lots of interesting
-                    food.The meals were good and plentiful. Thought we would
-                    lose weight but didn't! Good
-                  </h2>
-                  <div className="flex items-center gap-3 pt-2">
-                    <h1 className="text-[#627FF4] text-sm">View More</h1>
-                    <AiFillCaretDown />
-                  </div>
-                </div>
-                {/* --------------- Single reviews -------------- */}
-                <div className="border p-5 my-7">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center justify-between">
-                      {/* <FaUserAlt className=" " /> */}
-                      <img
-                        loading="lazy"
-                        className="rounded-full bg-[#3D3D3D] text-6xl p-2 text-white w-20 h-20"
-                        src="https://media.licdn.com/dms/image/D5603AQHwrKq2JfCBhg/profile-displayphoto-shrink_400_400/0/1673467931951?e=1687996800&v=beta&t=oDo5LJ6gncC2mjRAks8TNbsIVcZEIIjg_pKL0Kd5lts"
-                        alt=""
-                      />
-                      <div className="pl-5">
-                        <p className="text-md md:text-md lg:text-xl text-black">
-                          Jorna katun
-                        </p>
-                        <h1 className="text-sm text-slate-500">
-                          Founder of travel.xone.com
-                        </h1>
-                      </div>
-                    </div>
-                    <div className="flex gap-2 items-center justify-between cursor-pointer">
-                      <AiOutlineLike className="text-[#627FF4] " />
-                      <p className="text-[#627FF4]">1k</p>
-                    </div>
-                  </div>
-                  <div className="text-[#e2a04a] flex text-lg pt-4">
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                  </div>
-                  <h1 className="text-md md:text-lg lg:text-xl pb-3">
-                    Quality Services
-                  </h1>
-                  <h2 className="text-lg text-slate-500">
-                    We have been on a couple of cycling trips before and this
-                    one was probably the best. Tri our guide was outstanding and
-                    all our fellow cyclists were a great bunch of people. We got
-                    a real flavour of life in Vietnam. Lots of interesting
-                    food.The meals were good and plentiful. Thought we would
-                    lose weight but didn't! Good
-                  </h2>
-                  <div className="flex items-center gap-3 pt-2">
-                    <h1 className="text-[#627FF4] text-sm">View More</h1>
-                    <AiFillCaretDown />
-                  </div>
-                </div>
-                {/* --------------- Single reviews -------------- */}
-                <div className="border p-5 my-7">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center justify-between">
-                      {/* <FaUserAlt className=" " /> */}
-                      <img
-                        loading="lazy"
-                        className="rounded-full bg-[#3D3D3D] text-6xl p-2 text-white w-20 h-20"
-                        src="https://media.licdn.com/dms/image/D5603AQGbtEaPt9PVKg/profile-displayphoto-shrink_400_400/0/1673089173008?e=1687996800&v=beta&t=4CkeUsiUmqjqkM5-KkPpGTG3EtUCiLqmJPlo7_3BVrI"
-                        alt=""
-                      />
-                      <div className="pl-5">
-                        <p className="text-md md:text-md lg:text-xl text-black">
-                          Rakib hasan
-                        </p>
-                        <h1 className="text-sm text-slate-500">
-                          Founder of travel.xone.com
-                        </h1>
-                      </div>
-                    </div>
-                    <div className="flex gap-2 items-center justify-between cursor-pointer">
-                      <AiOutlineLike className="text-[#627FF4] " />
-                      <p className="text-[#627FF4] ">1.5k</p>
-                    </div>
-                  </div>
-                  <div className="text-[#e2a04a] flex text-lg pt-4">
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                  </div>
-                  <h1 className="text-md md:text-lg lg:text-xl pb-3">
-                    Quality Services
-                  </h1>
-                  <h2 className="text-lg text-slate-500">
-                    We have been on a couple of cycling trips before and this
-                    one was probably the best. Tri our guide was outstanding and
-                    all our fellow cyclists were a great bunch of people. We got
-                    a real flavour of life in Vietnam. Lots of interesting
-                    food.The meals were good and plentiful. Thought we would
-                    lose weight but didn't! Good
-                  </h2>
-                  <div className="flex items-center gap-3 pt-2">
-                    <h1 className="text-[#627FF4] text-sm">View More</h1>
-                    <AiFillCaretDown />
-                  </div>
-                </div>
+                    )
+                  })
+                }
               </div>
-              {/* <Link href="/comment">
-                <div className="bg-[#3264FF] inline-block p-2 lg:p-3 text-white text-md lg:text-xl ">
-                  <h1>Write a Review</h1>
-                </div>
-              </Link> */}
-              {/* The button to open modal */}
               <label htmlFor="my-modal-3" className="btn">Write Your Review</label>
 
               {/* ---------------------------------Modal for Review--------------------------- */}
@@ -624,7 +520,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                   </h1>
                   <h1 className="text-slate-100">Dhaka</h1>
                 </div>
-                <h1 className="font-semibold text-2xl">BOOK TOUR</h1>
+                <h1 className="font-semibold text-2xl dark:text-black">BOOK TOUR</h1>
                 <h2 className="text-xl text-slate-600">
                   Find your dream tour today
                 </h2>
@@ -704,7 +600,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
                 </form>
               </div>
               <div className="w-11/12 p-5 border">
-                <h1 className="text-2xl ">Tour Information</h1>
+                <h1 className="text-2xl dark:text-black">Tour Information</h1>
                 <div className="flex items-center pt-3">
                   <HiUsers className="text-4xl p-2 text-[#1751E4] " />
                   <div className="pl-5">

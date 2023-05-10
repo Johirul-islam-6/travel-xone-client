@@ -210,7 +210,7 @@ const Contact = () => {
                 </div>
                 <div className="">
                   <input
-                    className="mt-5 btn w-full md:w-[30%] lg:w-[30%] bg-blue-500 border-none"
+                    className="mt-5 btn w-full md:w-[30%] lg:w-[30%] bg-blue-500 border-none dark:text-black dark:hover:text-white"
                     type="submit"
                     value="Submit"
                   />

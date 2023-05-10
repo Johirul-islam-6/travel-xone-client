@@ -1,11 +1,23 @@
+import { AuthContext } from "@/ContextApi";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const AdminSidebar = () => {
   const [isToggle, setIsToggle] = useState(false);
+  const{user,logOut} = useContext(AuthContext);
+  console.log(user?.email);
+  const logout = e =>{
+    logOut().then(res=>{
+      router.push('/')
+    })
+    .catch(e=>{
+      console.log(e)
+    })
+  }
 
   const iconStyle = classNames(
     "relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
@@ -277,8 +289,9 @@ const AdminSidebar = () => {
                   {/* -----------Dropdown menu start--------- */}
               </li>
               <li>
-                <a href="#" className={iconStyle}>
-                  <span className={smallsidebarbtn}>
+                <button onClick={logout}>
+                <a href="/" className={iconStyle}>
+                  <span className="inline-flex justify-center items-center ml-4">
                     <svg
                       className="w-5 h-5"
                       fill="none"
@@ -294,10 +307,12 @@ const AdminSidebar = () => {
                       ></path>
                     </svg>
                   </span>
-                  <span className={smallsidebarstyle}>
+                  <span className="ml-2 text-sm tracking-wide truncate">
                     Logout
                   </span>
                 </a>
+                </button>
+                
               </li>
             </ul>
           </div>}
@@ -505,7 +520,7 @@ const AdminSidebar = () => {
                 </a>
               </li>
               <li className="dropdown dropdown-hover">
-                <a href="/admin/settings/general" className={iconStyle}>
+                <a href="/admin/settings" className={iconStyle}>
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
                       className="w-5 h-5"
@@ -532,23 +547,10 @@ const AdminSidebar = () => {
                     Settings
                   </span>
                 </a>
-                {/* -----------Dropdown menu start--------- */}
-                <ul
-                    tabIndex={0}
-                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-64 ml-4 text-sm"
-                  >
-                    <li>
-                    <a href="/admin/settings/general" className={iconStyle}>General</a>
-                    </li>
-                    <li>
-                    <a href="/admin/settings/reading" className={iconStyle}>Reading</a>
-                    </li>
-
-                  </ul>
-                  {/* -----------Dropdown menu start--------- */}
               </li>
               <li>
-                <a href="#" className={iconStyle}>
+                <button onClick={logout}>
+                <a href="/" className={iconStyle}>
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
                       className="w-5 h-5"
@@ -569,6 +571,7 @@ const AdminSidebar = () => {
                     Logout
                   </span>
                 </a>
+                </button>
               </li>
             </ul>
           </div>

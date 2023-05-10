@@ -7,7 +7,7 @@ import jsonData from "../../public/destination.json";
 
 const Destination = () => {
   const regionHeader = classNames(
-    "text-center text-xl lg:text-2xl bg-[#1751E4] w-9/12 md:w-5/12 lg:w-1/3 text-white rounded py-1 hover:bg-white hover:border hover:text-slate-900"
+    "text-center text-xl lg:text-2xl bg-[#1751E4] w-9/12 md:w-5/12 lg:w-1/3 text-white rounded py-1 hover:bg-white hover:border hover:text-slate-900 transition duration-200 ease-linear"
   );
   return (
     <>
@@ -21,10 +21,10 @@ const Destination = () => {
           </h1>
         </div>
         <div
-          className={`${styles.hover14} block lg:flex gap-10 px-10 lg:px-20 mx-auto py-5 md:py-16 lg:py-16`}
+          className= "block lg:flex gap-10 px-10 lg:px-20 mx-auto py-5 md:py-16 lg:py-16"
         >
           <div className="max-w-full lg:max-w-[25%] shadow-md px-6 py-2 lg:py-5">
-            <h1 className="text-lg lg:text-2xl font-bold">
+            <h1 className="text-lg lg:text-2xl font-bold dark:text-black">
               Tourist Attractions of Bangladesh
             </h1>
             <h2 className="pt-4 text-md lg:text-[19px] text-slate-600">
@@ -43,6 +43,22 @@ const Destination = () => {
               the whole Bangladesh is a classic hotspot of eco-tourism with
               diverse beauty and natural wonders.
             </h2>
+            {/* <h2 className="pt-4 text-md lg:text-[19px] text-slate-600">
+              Bangladesh is situated in the north-east part of South Asia which
+              is blessed with natural beauty, ranging from mountains, rivers,
+              beaches, biodiversity, ancient archaeological sites, medieval
+              monasteries to temples, pagodas, mosques, churches and many more.
+              The majestic Himalayas locate some distance to the north, while in
+              the south lays the Bay of Bengal. This big delta is marked by lush
+              greenery and many waterways. Its Padma (Ganges), Meghna and Jamuna
+              rivers create fertile plains and the monsoon brings the necessary
+              rain to soothe the hot summer making a charming weather round the
+              year. Bangladesh has been ranked seventh out of ‘top ten best
+              value’ travel destinations for 2019 launched by Lonely Planet, a
+              global leader of travel guidebook publisher. But in true sense,
+              the whole Bangladesh is a classic hotspot of eco-tourism with
+              diverse beauty and natural wonders.
+            </h2> */}
           </div>
           <div>
             {/* ------- Single Region -------- */}
@@ -51,7 +67,7 @@ const Destination = () => {
               <div className="divider"></div>
               <div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -62,13 +78,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="/destinations/1">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Paharpur
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -79,13 +95,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Mahasthangar
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -96,7 +112,7 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Dinajpur
                     </h1>
                   </Link>
@@ -110,7 +126,7 @@ const Destination = () => {
               <div className="divider"></div>
               <div className="pb-5">
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -121,13 +137,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Dhaka city
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -138,13 +154,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Lalbagh fort
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -155,13 +171,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Ahsan Manzil
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -172,13 +188,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Panamnagar
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -189,13 +205,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Sonargaon
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -206,7 +222,7 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Shalban Vihara
                     </h1>
                   </Link>
@@ -220,7 +236,7 @@ const Destination = () => {
               <div className="divider"></div>
               <div className="pb-5">
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -231,13 +247,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Cox's bazar
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -248,13 +264,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Teknaf
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -265,13 +281,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Bandarban
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -282,7 +298,7 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Rangamati
                     </h1>
                   </Link>
@@ -296,7 +312,7 @@ const Destination = () => {
               <div className="divider"></div>
               <div className="pb-5">
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -307,13 +323,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Tanguar Haor
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -324,13 +340,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Shadapathor
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -341,13 +357,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Jaflong
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -358,7 +374,7 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Sreemangal
                     </h1>
                   </Link>
@@ -372,7 +388,7 @@ const Destination = () => {
               <div className="divider"></div>
               <div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -383,13 +399,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Sunderbans
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -400,13 +416,13 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Kuakata Sea Beach
                     </h1>
                   </Link>
                 </div>
                 {/* ------ All place cards----- */}
-                <div className=" border hover:shadow-lg hover:border-none p-3 mb-6 rounded">
+                <div className={`${styles.hover14} border hover:shadow-lg hover:border-none p-3 mb-6 rounded`}>
                   <div>
                     <figure>
                       <img
@@ -417,7 +433,7 @@ const Destination = () => {
                     </figure>
                   </div>
                   <Link href="">
-                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2">
+                    <h1 className="text-center text-lg hover:text-[#627FF4] pt-2 dark:text-black">
                       Bagerhat
                     </h1>
                   </Link>

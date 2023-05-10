@@ -27,7 +27,7 @@ const AddNew = () => {
         <div className="w-[100%] lg:w-[80%] bg-slate-300 py-10 px-10 ">
           {/* -------------body content Start------------------ */}
           <div className=" px-0 py-0 lg:px-20 lg:py-10">
-            <h1 className="text-lg lg:text-xl">Add New Post :</h1>
+            <h1 className="text-lg lg:text-xl dark:text-black">Add New Post :</h1>
             <div className="divider -mt-1"></div>
             <form>
               <div>
@@ -166,7 +166,7 @@ const AddNew = () => {
                 <div class="mb-3 ">
                   <label
                     for="formFileMultiple"
-                    class="mb-2 inline-block text-neutral-700 dark:text-neutral-200"
+                    class="mb-2 inline-block text-neutral-700 dark:text-[#333232]"
                   >
                     Upload Images
                   </label>

@@ -36,7 +36,7 @@ const Login = () => {
           email: res?.user?.email,
           role: "user"
         }
-        fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/chena`, {
+        fetch(`https://travel-xone-server-five.vercel.app/api/v1/chena`, {
           method: "POST", // or 'PUT'
           headers: {
             "Content-Type": "application/json",
@@ -109,6 +109,19 @@ const Login = () => {
                   Register
                 </Link>
               </p>
+              <div className="divider my-1"></div>
+              {/* -------Admin LogIn ?------- */}
+              <div className="text-center">
+                <h5 className="text-slate-300 text-center font-normal text-sm">
+                  Log In for 
+                  <Link
+                    href="/adminLogin"
+                    className="text-[#627ff4] hover:text-white pl-2"
+                  >
+                    Admin 
+                  </Link>
+                </h5>
+              </div>
               {/* -------Already have an account ?------- */}
               <div className="text-center pt-3">
                 <button onClick={googlesignin}

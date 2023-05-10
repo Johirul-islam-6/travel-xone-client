@@ -8,7 +8,7 @@ const AdminLogin = () => {
                     <p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800 pb-2">Admin LogIn</p>
                         <div>
                             <label id="email" class="text-sm font-medium leading-none text-gray-800">
-                                Email / User Name
+                                Email 
                             </label>
                             <input aria-labelledby="email" type="email" class="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"/>
                         </div>
@@ -18,8 +18,7 @@ const AdminLogin = () => {
                             </label>
                            <div class="relative flex items-center justify-center">
                             <input id="pass" type="password" class="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"/>
-                            <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
-                              <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg5.svg" alt="viewport"/>                                    
+                            <div class="absolute right-0 mt-2 mr-3 cursor-pointer">                                   
                             </div>
                            </div>
                         </div>

@@ -39,13 +39,13 @@ const Blogs = () => {
                     className="w-[500px] h-[200px] lg:h-[240px]"
                   />
                 </figure>
-                <div className="card-body">
-                  <h1 className="card-title font-normal">{b?.title}</h1>
+                <div className="card-body dark:bg-slate-100">
+                  <h1 className="card-title font-normal dark:text-black">{b?.title}</h1>
                   <h2 className="text-[17px] text-slate-600">
                     {b?.description.slice(0, 120)}..
                   </h2>
                   <div className="card-actions justify-end">
-                    <button className="btn bg-blue-500 border-none">
+                    <button className="btn bg-blue-500 border-none dark:text-black">
                       <Link href={`Travels/${b?._id}`}>Details</Link>
                     </button>
                   </div>

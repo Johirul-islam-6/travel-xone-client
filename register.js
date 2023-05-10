@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BsPencilSquare } from "react-icons/bs";
 import classNames from "classnames";
+import { useForm } from "react-hook-form";
 import Head from "next/head";
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "@/ContextApi";
@@ -31,7 +32,7 @@ const Registration = () => {
           email : res?.user?.email,
           role : "user"
         }
-        fetch(`https://travel-xone-server-five.vercel.app/api/v1/chena`, {
+        fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/chena`, {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +42,7 @@ const Registration = () => {
       .then((res) => res.json())
       .then((data) => {
         e.target.reset();
-        console.log(data, "register");
+        console.log(data);
         handleRouter()
       });
 
@@ -57,7 +58,7 @@ const Registration = () => {
           email : res?.user?.email,
           role : "user"
         }
-        fetch(`https://travel-xone-server-five.vercel.app/api/v1/chena`, {
+        fetch(`https://travel-xone-server-ridoymia.vercel.app/api/v1/chena`, {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

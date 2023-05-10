@@ -28,7 +28,7 @@ const AddNew = () => {
         <div className="w-[100%] lg:w-[80%] bg-slate-300 px-10">
           {/* -------------body content Start------------------ */}
           <div className=" px-0 py-0 lg:px-20 lg:py-10">
-            <h1 className="text-lg lg:text-xl">
+            <h1 className="text-lg lg:text-xl dark:text-black">
               Create a brand new user and add them to this site :
             </h1>
             <div className="divider -mt-1"></div>

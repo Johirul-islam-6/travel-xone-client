@@ -38,7 +38,7 @@ const AllPages = () => {
         <div className="w-[100%] lg:w-[80%] bg-slate-300 py-10 px-10">
           {/* -------------body content Start------------------ */}
           <div className="overflow-x-auto">
-            <table className="table w-full">
+            <table className="table w-full dark:text-[#d6d3d3]">
               {/* head */}
               <thead>
                 <tr className="shadow-lg border-b-2 border-blue-300">
