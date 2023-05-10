@@ -173,12 +173,10 @@ const Hero = () => {
 
 
   // console.log(hotels?.data)
-  console.log("user", user)
+
   return (
     <>
-      {
-        console.log("user", user)
-      }
+
       <section className="Section01 text-center">
         {/* The button to open modal */}
         <div
