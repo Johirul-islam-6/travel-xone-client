@@ -55,7 +55,7 @@ const Plain = ({ detailsTransport }) => {
     // -----discount calculation-----
 
     let privMember = num + 1;
-    console.log(priceTravel)
+
     let discountPrice = 10 / 100 * priceTravel;
     console.log(discountPrice)
     let totalPrice = priceTravel - discountPrice;
@@ -125,7 +125,7 @@ const Plain = ({ detailsTransport }) => {
       phone: "018282312",
 
     }
-    setBooking(bookingMember)
+
     // console.log(bookingMember)
 
 
@@ -144,22 +144,25 @@ const Plain = ({ detailsTransport }) => {
     const location = targetValue?.location?.value;
     const JarnyDate = targetValue?.jdate?.value;
     const message = targetValue?.message?.value;
+    // const price = targetValue?.price?.value;
 
 
 
     const bookingMember = {
       names: names,
+      image: detailsTransport?.img,
       email: email,
       transportName: transportName,
       location: location,
       JarnyDate: JarnyDate,
       message: message,
-      booking: "success"
+      price: parseFloat(PriceTotal),
+      booking: "unpaid"
     }
     console.log("show booking", bookingMember)
 
     try {
-      fetch('http://localhost:5000/api/v1/booking-transport', {
+      fetch('https://travel-xone-server.vercel.app/api/v1/transfortbooking', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -368,7 +371,7 @@ const Plain = ({ detailsTransport }) => {
                                 price : <span className=" text-black text-[16px] px-1" > {displayPrice}</span>$ <br></br>
                                 discount :  <span className="text-red-700 pt-1 pr-1 absolute text-[12px]"><FaMinus /></span>
                                 <span className="px-4 text-yellow-500 text-[16px]" > {discountPrice}$</span>  <br></br>
-                                <span className=" text-black text-[16px] px-1 text-left bg-lime-500 mt-[2px]" >total = {PriceTotal} $</span>
+                                <span className=" text-black text-[16px] px-1 text-left bg-lime-500 mt-[2px]" >total = <span name="price" type="text">{PriceTotal} </span>$</span>
                               </span>
                               </p>
                               <p className="py-3 px-2 rounded-md flex input-bordered w-full max-w-xs bg-white text-yellow-600 text-center  justify-center text-[12px]"> </p>
