@@ -58,7 +58,7 @@ const Hero = () => {
                   data-aos="fade-right"
                   data-aos-easing="ease-in-out"
                   data-aos-duration="1200"
-                  className={` ${styles.text_font} pt-5 w-10/12 text-start font-sans text-[18px]`}> Travel writers submit pieces for publication in magazines, blogs, travel brands' websites, newsletters, and other print or digital outlets. They may pen feature stories, first-person articles, blog posts, listicles, itineraries, or contribute to ongoing columns.</p>
+                  className={` ${styles.text_font} pt-5 w-10/12 text-[#f5eeee] text-start font-sans text-[18px]`}> Travel writers submit pieces for publication in magazines, blogs, travel brands' websites, newsletters, and other print or digital outlets. They may pen feature stories, first-person articles, blog posts, listicles, itineraries, or contribute to ongoing columns.</p>
                 <div className="flex mt-6">
                   <Link href={'/blogs'}>  <button
                     data-aos="zoom-in"
