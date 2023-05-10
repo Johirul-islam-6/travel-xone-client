@@ -19,10 +19,15 @@ import { AuthContext } from "@/ContextApi";
 import { Button } from "@mui/material";
 
 const Header = () => {
-  const{user,logOut} = useContext(AuthContext);
+  const{user,logOut,setAdmin} = useContext(AuthContext);
   console.log(user?.email);
   const logout =e =>{
     logOut()
+    .then(res =>{
+      setAdmin(null)
+    }).catch(e =>{
+      console.log(e);
+    })
   }
   const buttonStyle = classNames(
     "border border-blue-500 p-2 rounded-full hover:bg-blue-500 hover:text-white transition duration-200 ease-linear hover:shadow-lg hover:cursor-pointer"

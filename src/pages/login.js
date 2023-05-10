@@ -32,9 +32,10 @@ const handleRouter = ()=>{
   router.push('/')
 }
 const loginhandler = e=>{
-  e.prevnetDefault();
+  e.preventDefault();
   const email = e.target.email.value;
   const password = e.target.password.value;
+  
   Login(email,password)
   .then(res => {
     console.log(res);
