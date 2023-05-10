@@ -122,6 +122,7 @@ const detailsHostel01 = ({ detailsHotel }) => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("user Booking Hotel successfull");
+        router.push('/');
         router.push(`dashboard/booking/restaurant`);
 
       });

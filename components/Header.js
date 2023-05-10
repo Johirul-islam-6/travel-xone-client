@@ -48,7 +48,7 @@ const Header = () => {
             </label>
             <ul
               tabIndex="1"
-              className="menu menu-compact dropdown-content mt-3 bg-[#020202e7] rounded-box w-[70vw] md:w-[50vw] h-[90vh] pl-5"
+              className="menu menu-compact dropdown-content mt-3 bg-[#1e1d1dd1] rounded-box w-[70vw] md:w-[50vw] h-[90vh] pl-5"
             >
               {/* Dropdown menu */}
               <div className="h-[100vh] p-0 space-y-2  md:w-60 lg:hidden block py-4">
