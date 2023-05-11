@@ -8,8 +8,8 @@ import Aos from "aos";
 
 
 const DestinationProduct = (props) => {
-  console.log(props.value)
-  // const singel_location = props?.value?.data
+  // console.log(props.value)
+  const singel_location = props?.value?.data
   const [placeId, setPlace] = useState();
   const [loding, setLoding] = useState(true);
   const [hotelAll, sethotelAll] = useState()
