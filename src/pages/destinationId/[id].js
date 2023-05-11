@@ -58,7 +58,10 @@ const detailsHostel01 = ({ detailsHotel }) => {
   }
   const HotelBooking = () => {
     router.push('/');
-    router.push('/dashboard/booking/restaurant')
+    toast.success("user Review successfull")
+    setTimeout(() => {
+      router.push('/dashboard/booking/restaurant')
+    }, 1000);
   }
   // review(pageid);
   const bookingsubmit = (e) => {
