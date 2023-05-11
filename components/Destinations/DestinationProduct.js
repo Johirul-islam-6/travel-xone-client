@@ -8,8 +8,9 @@ import Aos from "aos";
 
 
 const DestinationProduct = (props) => {
-  // console.log(props.value)
+
   const singel_location = props?.value?.data
+  console.log("details locat", singel_location)
   const [placeId, setPlace] = useState();
   const [loding, setLoding] = useState(true);
   const [hotelAll, sethotelAll] = useState()
@@ -81,7 +82,7 @@ const DestinationProduct = (props) => {
           <div className="bg-gray-100">
             <div className="">
               <h1 className="text-left text-lg md:text-xl lg:text-2xl font-semibold text-[#1751E4] py-2">
-                Area : {props?.value?.area}
+                Area : {singel_location?.area}
               </h1>
               {/*------- features property ------- */}
               <div className="hidden md:block xl:block">
