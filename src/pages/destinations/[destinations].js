@@ -8,7 +8,9 @@ import { useEffect, useState } from "react";
 import axios from "../../../hooks/hook.axios"
 import { useRouter } from "next/router";
 
-const Destinations = ({location}) => {
+const Destinations = ({ location }) => {
+
+  console.log("location", location)
 
   return (
     <>
@@ -16,8 +18,8 @@ const Destinations = ({location}) => {
         <title>Restaurants</title>
       </Head>
       <div className="bg-gray-100 pt-4">
-      <Slider value={location} />
-      <DestinationProduct value={location} />
+        <Slider value={location} />
+        <DestinationProduct value={location} />
       </div>
     </>
   );
@@ -26,11 +28,11 @@ const Destinations = ({location}) => {
 export default Destinations;
 
 export const getServerSideProps = async (context) => {
- const res = await axios.get(`/api/v1/locations?_id=${context.query.destinations}`)
+  const res = await axios.get(`/api/v1/locations?_id=${context.query.destinations}`)
   return {
-      props: {
-          location: res.data.data[0]
-      }
+    props: {
+      location: res.data.data[0]
+    }
   }
 }
 

@@ -3,25 +3,32 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Carousel from "react-grid-carousel";
 
-const Transport = () => {
-  const [transport, setTransport] = useState();
+const Transport = ({ transport }) => {
+  // const [transport, setTransport] = useState();
   const [loding, setLoding] = useState(true)
+  // useEffect(() => {
+  //   try {
+
+  //     fetch(`https://travel-xone-server-five.vercel.app/api/v1/totalTransport/All`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setTransport(data?.data);
+  //         console.log("transport", data)
+  //         setLoding(false)
+  //       });
+
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }, []);
+
   useEffect(() => {
-    try {
+    setTimeout(() => {
+      setLoding(false)
+    }, 1000);
+  }, [])
 
-      fetch(`https://travel-xone-server-five.vercel.app/api/v1/totalTransport/All`)
-        .then((res) => res.json())
-        .then((data) => {
-          setTransport(data?.data);
-          setLoding(false)
-        });
-
-    } catch (error) {
-      console.log(error)
-    }
-  }, []);
-
-
+  console.log(transport)
 
   if (loding) {
     return <>
@@ -82,3 +89,16 @@ const Transport = () => {
 };
 
 export default Transport;
+
+export const getStaticProps = async (context) => {
+  const res = await fetch(
+    `https://travel-xone-server-five.vercel.app/api/v1/totalTransport/All`
+  );
+  const data = await res.json();
+
+  return {
+    props: {
+      transport: data?.data,
+    },
+  };
+};
