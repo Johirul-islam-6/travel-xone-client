@@ -29,7 +29,7 @@ const DestinationProduct = ({ singelLocation }) => {
 
     if (!cetagoryId) return
 
-    fetch(`https://travel-xone-server.vercel.app/api/v1/hotels?placeID=${cetagoryId}`)
+    fetch(`https://travel-xone-server-five.vercel.app/api/v1/hotels?placeID=${cetagoryId}`)
       .then(res => res.json())
       .then(data => {
         sethotelAll(data.data)
