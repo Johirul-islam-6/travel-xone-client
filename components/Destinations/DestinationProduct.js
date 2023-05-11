@@ -40,7 +40,7 @@ const DestinationProduct = ({ singelLocation }) => {
 
   // cetagory hotel place name
   useEffect(() => {
-    fetch(`https://travel-xone-server.vercel.app/api/v1/hotels`)
+    fetch(`https://travel-xone-server-five.vercel.app/api/v1/hotels`)
       .then(res => res.json())
       .then(data => {
         sethotelCetagory(data?.data)
