@@ -8,8 +8,12 @@ import Link from "next/link";
 import { FaLinkedinIn, FaPhoneVolume } from "react-icons/fa";
 import classNames from "classnames";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
 
 const Contact = () => {
+
+  const router = useRouter()
   const inputStyle = classNames(
     "border-b-2 bg-white text-slate-600 text-lg font-medium border-gray-300 focus:outline-none focus:border-blue-500 focus:border-spacing-2 px-2 py-1 text-start focus:border-b-1"
   );
@@ -23,12 +27,14 @@ const Contact = () => {
     const email = form.email.value;
     const message = form.message.value;
     console.log(firstName, lastName, phone, email, message);
+    toast.success("your massage successfully submite")
+    router.push('/')
   };
   return (
     <section className="">
-    <Head>
-      <title>Contact Page</title>
-    </Head>
+      <Head>
+        <title>Contact Page</title>
+      </Head>
       {/* -----------header design Start----------- */}
       <div className="bg-[url('https://i.ibb.co/nkNGLdF/banner.png')] bg-no-repeat bg-cover bg-left-bottom pt-32 lg:pt-40 pb-4 ">
         <h1 className="text-2xl lg:text-3xl text-white font-bold  pl-10 lg:pl-20">
