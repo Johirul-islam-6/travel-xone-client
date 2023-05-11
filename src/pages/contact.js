@@ -28,6 +28,7 @@ const Contact = () => {
     const message = form.message.value;
     console.log(firstName, lastName, phone, email, message);
     toast.success("your massage successfully submite")
+
     router.push('/')
   };
   return (
