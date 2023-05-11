@@ -8,15 +8,14 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBFdtEfx-hjnOcGtq3OTkCeKcutJC18DMI",
-  authDomain: "travelxone-fe128.firebaseapp.com",
-  projectId: "travelxone-fe128",
-  storageBucket: "travelxone-fe128.appspot.com",
-  messagingSenderId: "889068198194",
-  appId: "1:889068198194:web:ba2c82715a76e4d9959f2b",
-  measurementId: "G-PXXKF6381G"
+  apiKey: "AIzaSyDTRl20Nl8ukTu2LOSiJq0JOLSVOIfBIfc",
+  authDomain: "travel-xonebd.firebaseapp.com",
+  projectId: "travel-xonebd",
+  storageBucket: "travel-xonebd.appspot.com",
+  messagingSenderId: "542696079915",
+  appId: "1:542696079915:web:222b816e8208235718a06e"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);  
+const app = initializeApp(firebaseConfig);
 export default app;
